@@ -1,0 +1,205 @@
+import { ChartData, VoteItem, MVStats, ChartSong } from "./types";
+
+// Use local data files for development
+const DATA_BASE_URL = process.env.NEXT_PUBLIC_DATA_BASE_URL || "/data";
+
+export async function fetchChartData(): Promise<ChartData> {
+  try {
+    const response = await fetch(`${DATA_BASE_URL}/latest.json`, {
+      cache: "no-cache",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch chart data");
+    }
+
+    const rawData = await response.json();
+
+    console.log("response", rawData);
+
+    // Transform the data to match our types
+    const transformSongs = (songs: unknown[]): ChartSong[] => {
+      return songs.map((song) => {
+        const s = song as Record<string, unknown>;
+        return {
+          rank: s.rank as number,
+          title: s.title as string,
+          artist: s.artist as string,
+          change: (s.change as number) || 0,
+          album: (s.album as string) || "Band Aid", // Default album if not provided
+          timestamp: rawData.collectedAtKST,
+        };
+      });
+    };
+
+    return {
+      collectedAtKST: rawData.collectedAtKST,
+      artist: rawData.artist,
+      tracks: rawData.tracks || [],
+      melon: transformSongs(rawData.melon || []),
+      genie: transformSongs(rawData.genie || []),
+      bugs: transformSongs(rawData.bugs || []),
+      vibe: transformSongs(rawData.vibe || []),
+      flo: transformSongs(rawData.flo || []),
+      last_updated: rawData.collectedAtKST,
+    };
+  } catch (error) {
+    console.error("Error fetching chart data:", error);
+    // Return mock data for development
+    return {
+      collectedAtKST: new Date().toISOString(),
+      artist: "DAY6",
+      tracks: [],
+      melon: [],
+      genie: [],
+      bugs: [],
+      vibe: [],
+      flo: [],
+    };
+  }
+}
+
+export async function fetchSummaryData(): Promise<Record<string, unknown>> {
+  try {
+    const response = await fetch(`${DATA_BASE_URL}/summary.json`, {
+      next: { revalidate: 300 },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch summary data");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching summary data:", error);
+    return {};
+  }
+}
+
+// Mock data for votes (would come from API/database in production)
+export async function fetchVotes(): Promise<VoteItem[]> {
+  return [
+    {
+      id: "1",
+      title: "MMA 2025 - Best Band Performance",
+      category: "award",
+      deadline: new Date("2025-09-15"),
+      difficulty: "hard",
+      link: "https://www.melon.com/mma/vote",
+      platform: "Melon",
+    },
+    {
+      id: "2",
+      title: "DAY6 엠카운트다운 사전투표",
+      category: "music_show",
+      deadline: new Date("2025-08-15"),
+      difficulty: "easy",
+      link: "https://x.com/day6official/status/1926128894127513619",
+      platform: "X (Twitter)",
+    },
+    {
+      id: "3",
+      title: "Billboard Fan Army",
+      category: "global",
+      deadline: new Date("2025-08-20"),
+      difficulty: "medium",
+      link: "https://www.billboard.com/fan-army",
+      platform: "Billboard",
+    },
+  ];
+}
+
+// Fetch MV stats from YouTube crawler data
+export async function fetchMVStats(): Promise<MVStats[]> {
+  try {
+    // Try to fetch from actual YouTube stats data first
+    const response = await fetch(`${DATA_BASE_URL}/youtube_stats.json`, {
+      cache: "no-cache",
+    });
+
+    if (response.ok) {
+      const youtubeStats = await response.json();
+      
+      if (Array.isArray(youtubeStats) && youtubeStats.length > 0) {
+        return youtubeStats.map((stat) => ({
+          title: stat.title || "Unknown",
+          views: stat.views || 0,
+          likes: stat.likes || 0,
+          viewsDelta24h: stat.viewsDelta24h || 0,
+          likesDelta24h: stat.likesDelta24h || 0,
+          link: stat.link || "#",
+        }));
+      }
+    }
+
+    // Fallback to summary data
+    const summaryData = await fetchSummaryData();
+    const youtubeStats = summaryData?.youtubeStats as
+      | {
+          views: number;
+          likes: number;
+          dailyViews: number;
+          dailyLikes: number;
+        }
+      | undefined;
+
+    if (youtubeStats) {
+      return [
+        {
+          title: "Melt Down",
+          views: Math.floor(youtubeStats.views * 0.4), 
+          likes: Math.floor(youtubeStats.likes * 0.4),
+          viewsDelta24h: Math.floor(youtubeStats.dailyViews * 0.4),
+          likesDelta24h: Math.floor(youtubeStats.dailyLikes * 0.4),
+          link: "https://youtu.be/uFqJDgIaNNg",
+        },
+        {
+          title: "HAPPY",
+          views: Math.floor(youtubeStats.views * 0.35),
+          likes: Math.floor(youtubeStats.likes * 0.35),
+          viewsDelta24h: Math.floor(youtubeStats.dailyViews * 0.35),
+          likesDelta24h: Math.floor(youtubeStats.dailyLikes * 0.35),
+          link: "https://youtu.be/ooxqwAc1dIg",
+        },
+        {
+          title: "예뻤어",
+          views: Math.floor(youtubeStats.views * 0.25),
+          likes: Math.floor(youtubeStats.likes * 0.25),
+          viewsDelta24h: Math.floor(youtubeStats.dailyViews * 0.25),
+          likesDelta24h: Math.floor(youtubeStats.dailyLikes * 0.25),
+          link: "https://youtu.be/_4-LWtJ2CAg",
+        },
+      ];
+    }
+  } catch (error) {
+    console.error("Error fetching MV stats:", error);
+  }
+
+  // Final fallback to mock data
+  return [
+    {
+      title: "Melt Down",
+      views: 5234567,
+      likes: 234567,
+      viewsDelta24h: 123456,
+      likesDelta24h: 12345,
+      link: "https://youtu.be/uFqJDgIaNNg",
+    },
+    {
+      title: "HAPPY",
+      views: 8234567,
+      likes: 334567,
+      viewsDelta24h: 223456,
+      likesDelta24h: 22345,
+      link: "https://youtu.be/ooxqwAc1dIg",
+    },
+    {
+      title: "예뻤어",
+      views: 15234567,
+      likes: 654321,
+      viewsDelta24h: 89012,
+      likesDelta24h: 5432,
+      link: "https://youtu.be/_4-LWtJ2CAg",
+    },
+  ];
+}

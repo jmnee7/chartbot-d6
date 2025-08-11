@@ -1,0 +1,91 @@
+name: Crawl Music Charts
+
+on:
+  schedule:
+    # 한국 시간(KST) 기준 매 시간 정각에 실행
+    # KST = UTC + 9시간이므로, UTC로 9시간 전에 실행하면 KST 정각이 됨
+    - cron: '0 15-23,0-14 * * *'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  crawl-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        cd crawlers
+        pip install -r requirements.txt
+    
+    - name: Run chart crawler
+      run: |
+        # 최신 변경사항을 먼저 가져오기 (특히 last_tweet_timestamp.json)
+        git pull origin main --no-rebase
+        # last_tweet_timestamp.json 파일이 없으면 생성
+        mkdir -p docs
+        if [ ! -f docs/last_tweet_timestamp.json ]; then
+          echo '{}' > docs/last_tweet_timestamp.json
+        fi
+        cd crawlers
+        python main.py
+      env:
+        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+        TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+    
+    - name: Verify data generation
+      run: |
+        # 크롤러가 직접 생성한 데이터 확인
+        echo "Generated data files:"
+        ls -la frontend/public/data/ || echo "frontend/public/data not found"
+        ls -la crawlers/docs/ || echo "crawlers/docs not found"
+    
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add frontend/public/data/ crawlers/docs/
+        # 변경 사항이 있을 때만 커밋
+        if ! git diff --staged --quiet; then
+          git commit -m "📈 차트 데이터 자동 업데이트 - $(date +'%Y-%m-%d %H:%M KST')"
+          # 원격 변경사항을 먼저 가져오기
+          git pull origin main --no-rebase
+          git push origin main
+        else
+          echo "No changes to commit."
+        fi
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      with:
+        enablement: true
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './docs'
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4 
