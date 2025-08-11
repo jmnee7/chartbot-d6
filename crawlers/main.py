@@ -385,12 +385,15 @@ def generate_html_page(chart_data, output_dir="docs", is_filtered=True):
 </html>
     """
     
-    # 타겟 곡 전용 HTML 페이지만 생성
-    output_file = os.path.join(output_dir, "target_index.html")
-    print(f"Target HTML page generated at {output_file}")
+    # 타겟 곡 전용 HTML 페이지 생성 (루트 진입용 index.html 포함)
+    target_file = os.path.join(output_dir, "target_index.html")
+    index_file = os.path.join(output_dir, "index.html")
+    print(f"Target HTML page generated at {target_file}")
+    print(f"Root index generated at {index_file}")
     
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html_content)
+    for path in [target_file, index_file]:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html_content)
 
 
 def generate_service_sections(chart_data, is_filtered=True):
