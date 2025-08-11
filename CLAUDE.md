@@ -50,7 +50,7 @@ python test_melon.py                # Test Melon crawler specifically
 - `main.py`: Orchestrates all crawlers, filters target songs, generates HTML output
 - `target_songs.py`: Defines which artists/songs to track
 - `rank_tracker.py`: Tracks rank changes over time
-- `twitter_bot.py`: Posts rank updates to Twitter
+
 
 #### Frontend (`/frontend`)
 
@@ -110,7 +110,7 @@ Chart data is stored as JSON with this schema:
 
 - All timestamps use KST (Korea Standard Time, UTC+9)
 - Crawlers handle chart-out scenarios by storing `rank: null`
-- Twitter bot only posts at full hours (e.g., 15:00, not 15:30)
+
 - HTML generation creates `target_index.html` for filtered target songs
 - Rank tracking maintains 24-hour history for change detection
 - shadcn/ui components must follow Tailwind CSS class naming conventions
@@ -125,7 +125,6 @@ Chart data is stored as JSON with this schema:
 
 Required for full functionality:
 
-- `TWITTER_API_KEY`, `TWITTER_API_SECRET`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_TOKEN_SECRET`, `TWITTER_BEARER_TOKEN`
 - `YOUTUBE_API_KEY` (for YouTube stats collection)
 
 These are configured in **GitHub Actions secrets** for automated runs.

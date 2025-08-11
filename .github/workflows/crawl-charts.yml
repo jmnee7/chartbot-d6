@@ -37,21 +37,10 @@ jobs:
     
     - name: Run chart crawler
       run: |
-        # 최신 변경사항을 먼저 가져오기 (특히 last_tweet_timestamp.json)
         git pull origin main --no-rebase
-        # last_tweet_timestamp.json 파일이 없으면 생성
-        mkdir -p docs
-        if [ ! -f docs/last_tweet_timestamp.json ]; then
-          echo '{}' > docs/last_tweet_timestamp.json
-        fi
         cd crawlers
         python main.py
       env:
-        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-        TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
     
     - name: Verify data generation
