@@ -9,7 +9,7 @@ import AlertBanner from "@/components/home/alert-banner";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
 
-import { formatKoreanDate, formatKoreanDateTime } from "@/lib/date-utils";
+import { formatKoreanDate } from "@/lib/date-utils";
 import { useSidebar } from "@/components/layout/mobile-app-layout";
 import { useEffect, useState } from "react";
 import { getLastUpdateTime } from "@/lib/utils/index";

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, createContext, useContext } from "react";
-import { MobileHeader } from "./mobile-header";
 import { DesktopHeader } from "./desktop-header";
 import { OverlayHeader } from "./overlay-header";
 import { Sidebar } from "./sidebar";
