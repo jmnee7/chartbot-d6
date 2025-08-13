@@ -1,34 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  X,
   Home,
   BarChart3,
-  Vote,
-  Play,
-  BookOpen,
-  Music,
   Download,
-  Mic,
+  Play,
+  Vote,
+  Heart,
+  HelpCircle,
   ChevronDown,
   ChevronRight,
-  Radio,
-  ShoppingBag,
-  Users,
-  Heart,
-  DollarSign,
+  Music,
+  X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SocialLinks } from "@/components/social-links";
-
-interface SidebarProps {
-  open: boolean;
-  onClose: () => void;
-}
 
 interface NavigationItem {
   name: string;
@@ -37,6 +27,11 @@ interface NavigationItem {
   hasChildren?: boolean;
   children?: NavigationItem[];
   external?: boolean;
+}
+
+interface SidebarProps {
+  open: boolean;
+  onClose: () => void;
 }
 
 const navigation = [
@@ -62,6 +57,11 @@ const navigation = [
           {
             name: "스포티파이",
             href: "/streaming/music/spotify",
+            external: true,
+          },
+          {
+            name: "스테이션헤드",
+            href: "/streaming/music/stationhead",
             external: true,
           },
         ],
@@ -153,22 +153,34 @@ const navigation = [
     ],
   },
   {
-    name: "컴백",
-    icon: Mic,
+    name: "라디오 신청",
+    icon: HelpCircle,
     hasChildren: true,
     children: [
-      { name: "앨범 공구", href: "/comeback/group-order", icon: ShoppingBag },
-      {
-        name: "다운 헬퍼 지원",
-        href: "/comeback/download-helper",
-        icon: Users,
-      },
-      { name: "아이디 기부", href: "/comeback/id-donation", icon: Heart },
-      { name: "라디오 신청", href: "/comeback/radio-request", icon: Radio },
-      { name: "모금 안내", href: "/comeback/fundraising", icon: DollarSign },
+      { name: "KBS", href: "/radio/kbs", external: true },
+      { name: "MBC", href: "/radio/mbc", external: true },
+      { name: "SBS", href: "/radio/sbs", external: true },
     ],
   },
-  { name: "가이드", href: "/guide", icon: BookOpen },
+  {
+    name: "서포트",
+    icon: Heart,
+    hasChildren: true,
+    children: [
+      { name: "앨범 공구", href: "/support/group-order" },
+      { name: "아이디 기부", href: "/support/id-donation" },
+      { name: "헬퍼 지원", href: "/support/helper-support" },
+      {
+        name: "모금",
+        hasChildren: true,
+        children: [
+          { name: "총공 모금", href: "/support/fundraising/streaming" },
+          { name: "투표 모금", href: "/support/fundraising/voting" },
+        ],
+      },
+    ],
+  },
+  { name: "가이드", href: "/guide", icon: HelpCircle },
 ];
 
 export function Sidebar({ open, onClose }: SidebarProps) {
@@ -219,7 +231,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
           {isExpanded && (
             <div className="space-y-1 mt-1">
-              {item?.children?.map((child: NavigationItem) =>
+              {item.children?.map((child: NavigationItem) =>
                 renderNavigationItem(child, level + 1, key)
               )}
             </div>
@@ -232,7 +244,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       <div key={key} className={`${level > 0 ? "ml-4" : ""}`}>
         {item.external ? (
           <a
-            href={item.href}
+            href={item.href || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -240,8 +252,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               level > 0
                 ? "text-sm text-gray-600 hover:bg-gray-50"
                 : isActive
-                ? "bg-blue-50 text-blue-600"
-                : "text-gray-700 hover:bg-gray-50"
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
             )}
           >
             {item.icon && <item.icon className="h-4 w-4" />}
@@ -251,15 +263,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           </a>
         ) : (
           <Link
-            href={item.href || ""}
+            href={item.href || "#"}
             onClick={onClose}
             className={cn(
               "flex items-center gap-3 px-3 py-2 rounded-lg transition-colors",
               level > 0
                 ? "text-sm text-gray-600 hover:bg-gray-50"
                 : isActive
-                ? "bg-blue-50 text-blue-600"
-                : "text-gray-700 hover:bg-gray-50"
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
             )}
           >
             {item.icon && <item.icon className="h-4 w-4" />}

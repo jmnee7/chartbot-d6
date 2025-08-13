@@ -9,11 +9,19 @@ interface PlatformFiltersProps {
 }
 
 const PLATFORMS = [
-  { id: "melon" as const, name: "멜론", color: "bg-green-500" },
-  { id: "genie" as const, name: "지니", color: "bg-blue-500" },
-  { id: "bugs" as const, name: "벅스", color: "bg-orange-500" },
-  { id: "vibe" as const, name: "바이브", color: "bg-purple-500" },
-  { id: "flo" as const, name: "플로", color: "bg-pink-500" },
+  { id: "melon" as const, name: "멜론", color: "bg-[#49c4b0]" },
+  { id: "genie" as const, name: "지니", color: "bg-[#3ba89a]" },
+  {
+    id: "bugs" as const,
+    name: "벅스",
+    color: "bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0]",
+  },
+  { id: "vibe" as const, name: "바이브", color: "bg-[#6dd5c0]" },
+  {
+    id: "flo" as const,
+    name: "플로",
+    color: "bg-gradient-to-br from-[#49c4b0] to-[#1e3a8a]",
+  },
 ];
 
 export function PlatformFilters({

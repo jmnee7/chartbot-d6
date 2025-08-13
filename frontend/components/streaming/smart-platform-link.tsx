@@ -1,7 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ExternalLink, Heart } from "lucide-react";
+
+// 컴포넌트 외부로 이동
+function checkMobile(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const userAgent = navigator.userAgent.toLowerCase();
+  const mobileKeywords = ["android", "iphone", "ipad", "mobile"];
+  return mobileKeywords.some((keyword) => userAgent.includes(keyword));
+}
 
 interface SmartPlatformLinkProps {
   appLink: string;
@@ -10,49 +18,45 @@ interface SmartPlatformLinkProps {
   isActive?: boolean;
 }
 
-export function SmartPlatformLink({ 
-  appLink, 
-  webLink, 
-  platformName, 
-  isActive = true 
+export function SmartPlatformLink({
+  appLink,
+  webLink,
+  platformName,
+  isActive = true,
 }: SmartPlatformLinkProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // 모바일 디바이스 감지
-    const checkMobile = () => {
-      const userAgent = navigator.userAgent.toLowerCase();
-      const mobileKeywords = ['android', 'iphone', 'ipad', 'mobile'];
-      return mobileKeywords.some(keyword => userAgent.includes(keyword));
-    };
-
     setIsMobile(checkMobile());
   }, []);
 
-  const handleClick = (e: React.MouseEvent) => {
-    if (!isActive) {
-      e.preventDefault();
-      return;
-    }
-
-    if (isMobile) {
-      // 모바일에서는 앱 링크 시도 → 실패 시 웹으로 fallback
-      try {
-        window.location.href = appLink;
-        
-        // 일정 시간 후 앱이 열리지 않으면 웹 링크로 이동
-        setTimeout(() => {
-          if (!document.hidden) {
-            window.open(webLink, '_blank', 'noopener,noreferrer');
-          }
-        }, 500);
-      } catch {
-        window.open(webLink, '_blank', 'noopener,noreferrer');
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isActive) {
+        e.preventDefault();
+        return;
       }
-      e.preventDefault();
-    }
-    // 데스크톱은 기본적으로 webLink로 이동 (target="_blank")
-  };
+
+      if (isMobile) {
+        // 모바일에서는 앱 링크 시도 → 실패 시 웹으로 fallback
+        try {
+          window.location.href = appLink;
+
+          // 일정 시간 후 앱이 열리지 않으면 웹 링크로 이동
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.open(webLink, "_blank", "noopener,noreferrer");
+            }
+          }, 500);
+        } catch {
+          window.open(webLink, "_blank", "noopener,noreferrer");
+        }
+        e.preventDefault();
+      }
+      // 데스크톱은 기본적으로 webLink로 이동 (target="_blank")
+    },
+    [isActive, isMobile, appLink, webLink]
+  );
 
   if (!isActive) {
     return (

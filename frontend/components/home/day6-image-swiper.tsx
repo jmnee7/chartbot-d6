@@ -10,8 +10,8 @@ interface DAY6ImageSwiperProps {
 export default function DAY6ImageSwiper({ onMenuClick }: DAY6ImageSwiperProps) {
   return (
     <div className="relative w-full">
-      {/* Header Overlay */}
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3">
+      {/* Header Overlay - Mobile Only */}
+      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 md:hidden">
         {/* Menu Button */}
         <button
           onClick={onMenuClick}
@@ -21,12 +21,19 @@ export default function DAY6ImageSwiper({ onMenuClick }: DAY6ImageSwiperProps) {
         </button>
 
         {/* Title */}
-        <h1 className="text-lg md:text-xl font-bold text-white drop-shadow-lg">
+        <h1 className="text-lg font-bold text-white drop-shadow-lg">
           DAY6 STRM
         </h1>
 
         {/* Balance */}
         <div className="w-9"></div>
+      </div>
+
+      {/* Desktop Title Overlay */}
+      <div className="hidden md:flex absolute top-0 left-0 right-0 z-20 items-center justify-center px-4 py-3">
+        <h1 className="text-xl lg:text-2xl font-bold text-white drop-shadow-lg">
+          DAY6 STRM
+        </h1>
       </div>
 
       {/* Banner Image */}

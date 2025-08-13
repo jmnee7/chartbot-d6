@@ -1,16 +1,32 @@
 "use client";
 
-import { Music } from "lucide-react";
+import { Menu } from "lucide-react";
+import { useSidebar } from "./mobile-app-layout";
 
 export function DesktopHeader() {
+  const { openSidebar } = useSidebar();
+
   return (
     <header className="flex items-center justify-between px-6 lg:px-8 xl:px-12 py-4 bg-white border-b border-gray-100">
-      {/* Left - Title */}
-      <div className="flex items-center gap-3">
-        <Music className="h-6 w-6 lg:h-7 lg:w-7 text-blue-600" />
-        <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900">
-          데이식스 음원총공팀
-        </h1>
+      {/* Left - Menu button and Title */}
+      <div className="flex items-center gap-4">
+        {/* Menu Button */}
+        <button
+          onClick={openSidebar}
+          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          aria-label="Open navigation menu"
+        >
+          <Menu className="h-6 w-6 text-gray-700" />
+        </button>
+
+        <div className="flex items-end gap-3">
+          <h1 className="font-montserrat text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 tracking-tight leading-none m-0">
+            DAY<span className="text-[#49c4b0]">6</span> STRM
+          </h1>
+          <span className="text-base lg:text-lg text-gray-500 ml-2 leading-none">
+            DAY6 음원정보팀
+          </span>
+        </div>
       </div>
 
       {/* Right side - could add navigation or user menu later */}

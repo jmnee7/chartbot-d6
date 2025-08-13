@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --color-mint-primary: #49c4b0;
+  --color-mint-light: #6dd5c0;
+  --color-mint-dark: #3ba89a;
+  --color-navy-dark: #1e3a8a;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -96,7 +103,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(
+      135deg,
+      rgba(73, 196, 176, 0.08) 0%,
+      rgba(255, 255, 255, 1) 30%,
+      rgba(255, 255, 255, 1) 70%,
+      rgba(30, 58, 138, 0.08) 100%
+    ) !important;
+    min-height: 100vh;
   }
 }
 
@@ -174,7 +189,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(
+      135deg,
+      rgba(73, 196, 176, 0.08) 0%,
+      rgba(255, 255, 255, 1) 30%,
+      rgba(255, 255, 255, 1) 70%,
+      rgba(30, 58, 138, 0.08) 100%
+    ) !important;
+    min-height: 100vh;
   }
 }
 
@@ -223,7 +246,7 @@
     width: 35px;
     height: 35px;
   }
-  
+
   .day6-swiper .swiper-button-next::after,
   .day6-swiper .swiper-button-prev::after {
     font-size: 14px;
@@ -243,4 +266,26 @@
 /* 모달 오픈 시 배경 스크롤 방지 */
 body.modal-open {
   overflow: hidden;
+}
+
+/* DAY6 민트 테마 색상 */
+:root {
+  --mint-primary: #49c4b0;
+  --mint-light: #6dd5c0;
+  --mint-dark: #3ba89a;
+  --navy-dark: #1e3a8a;
+  --gradient-mint-navy: linear-gradient(135deg, #49c4b0 0%, #1e3a8a 100%);
+  --gradient-mint-light: linear-gradient(135deg, #6dd5c0 0%, #49c4b0 100%);
+}
+
+/* 강제 배경 그라데이션 적용 */
+html {
+  background: linear-gradient(
+    135deg,
+    rgba(73, 196, 176, 0.3) 0%,
+    rgba(73, 196, 176, 0.15) 40%,
+    rgba(255, 255, 255, 1) 100%
+  ) !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
 }

@@ -12,12 +12,14 @@ export function ShareButton({ title, slug }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleShare = async () => {
-    const url = slug 
+    const url = slug
       ? `${window.location.origin}/guide/${slug}`
       : window.location.href;
     const shareData = {
       title: slug ? `DAY6 응원 가이드 - ${title}` : `DAY6 - ${title}`,
-      text: slug ? `DAY6 ${title} 가이드를 확인해보세요!` : `DAY6 ${title} 페이지를 확인해보세요!`,
+      text: slug
+        ? `DAY6 ${title} 가이드를 확인해보세요!`
+        : `DAY6 ${title} 페이지를 확인해보세요!`,
       url: url,
     };
 
