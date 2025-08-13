@@ -24,14 +24,14 @@ export function ImageGallery({ images, label }: ImageGalleryProps) {
   // 모달 오픈/클로즈 시 body 스크롤 제어
   useEffect(() => {
     if (selectedImage) {
-      document.body.classList.add('modal-open');
+      document.body.classList.add("modal-open");
     } else {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     }
 
     // 클린업: 컴포넌트 언마운트 시 클래스 제거
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     };
   }, [selectedImage]);
 

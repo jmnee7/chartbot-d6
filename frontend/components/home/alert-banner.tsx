@@ -29,20 +29,14 @@ export default function AlertBanner() {
         <div className="space-y-2">
           {urgentVotes.map((vote) => (
             <div key={vote.id} className="flex items-center justify-between">
-              <span className="text-sm">
-                {vote.title} 마감 임박!
-              </span>
+              <span className="text-sm">{vote.title} 마감 임박!</span>
               <Button
                 asChild
                 variant="outline"
                 size="sm"
                 className="border-red-200 text-red-700 hover:bg-red-50"
               >
-                <a
-                  href={vote.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={vote.link} target="_blank" rel="noopener noreferrer">
                   지금 투표하기 →
                 </a>
               </Button>

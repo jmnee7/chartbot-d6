@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, createContext, useContext } from "react";
-import { MobileHeader } from "./mobile-header";
 import { DesktopHeader } from "./desktop-header";
 import { OverlayHeader } from "./overlay-header";
 import { Sidebar } from "./sidebar";
-import { MobileNav } from "../mobile-nav";
+import { MobileNav } from "@/components/mobile-nav";
 import { usePathname } from "next/navigation";
 
 // Context for sidebar control
@@ -39,8 +38,8 @@ export function MobileAppLayout({ children }: MobileAppLayoutProps) {
   return (
     <SidebarContext.Provider value={sidebarContextValue}>
       {/* Mobile Layout (sm and below) */}
-      <div className="md:hidden min-h-screen bg-gray-50 flex justify-center">
-        <div className="w-full max-w-[375px] bg-white shadow-xl min-h-screen relative">
+      <div className="md:hidden min-h-screen flex justify-center">
+        <div className="w-full bg-transparent shadow-xl min-h-screen relative">
           {!isHomePage && (
             <OverlayHeader
               onMenuClick={() => setSidebarOpen(true)}
@@ -62,12 +61,14 @@ export function MobileAppLayout({ children }: MobileAppLayoutProps) {
       </div>
 
       {/* Desktop Layout (md and above) */}
-      <div className="hidden md:block min-h-screen bg-gray-50">
-        <div className="w-full bg-white min-h-screen">
+      <div className="hidden md:block min-h-screen">
+        <div className="w-full bg-transparent min-h-screen">
           <DesktopHeader />
 
-          <main className="px-6 lg:px-8 xl:px-12 py-6 overflow-y-auto">
-            <div className="max-w-7xl mx-auto">{children}</div>
+          <main className="py-6 overflow-y-auto">
+            <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 xl:px-16 2xl:px-24">
+              {children}
+            </div>
           </main>
 
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />

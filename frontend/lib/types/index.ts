@@ -36,11 +36,11 @@ export interface SummaryData {
 }
 
 export interface Alert {
-  type: 'near_entry' | 'near_exit' | 'vote_deadline' | 'mv_milestone';
+  type: "near_entry" | "near_exit" | "vote_deadline" | "mv_milestone";
   title: string;
   rank?: number;
   message?: string;
-  urgency: 'low' | 'medium' | 'high';
+  urgency: "low" | "medium" | "high";
   deadline?: string;
 }
 
@@ -58,9 +58,9 @@ export interface MVData {
 export interface VoteItem {
   id: string;
   title: string;
-  category: 'awards' | 'music-shows' | 'global';
+  category: "awards" | "music-shows" | "global";
   deadline: string;
-  difficulty: 'easy' | 'medium' | 'hard';
+  difficulty: "easy" | "medium" | "hard";
   requiredPoints?: number;
   url: string;
   description?: string;
@@ -72,23 +72,23 @@ export interface TodoItem {
   title: string;
   description?: string;
   completed: boolean;
-  priority: 'low' | 'medium' | 'high';
+  priority: "low" | "medium" | "high";
   deepLink?: string;
-  category: 'streaming' | 'voting' | 'social' | 'mv';
+  category: "streaming" | "voting" | "social" | "mv";
 }
 
 export interface StreamingPlatform {
   id: string;
   name: string;
-  type: 'app' | 'web';
+  type: "app" | "web";
   url: string;
   playlistUrl?: string;
   icon: string;
   color: string;
 }
 
-export type Platform = 'melon' | 'genie' | 'bugs' | 'vibe' | 'flo';
-export type Period = 'realtime' | 'daily' | 'weekly';
+export type Platform = "melon" | "genie" | "bugs" | "vibe" | "flo";
+export type Period = "realtime" | "daily" | "weekly";
 
 export interface ApiResponse<T> {
   data: T;

@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { PageHeader } from "@/components/common/page-header";
@@ -78,8 +76,8 @@ function CategorySection({
                             {categoryKey === "streaming"
                               ? "🎵"
                               : categoryKey === "support"
-                              ? "📁"
-                              : "📺"}
+                                ? "📁"
+                                : "📺"}
                           </div>
                         )
                       ) : (
@@ -96,10 +94,10 @@ function CategorySection({
                         {categoryKey === "streaming"
                           ? `${item.label}에서 스트리밍`
                           : categoryKey === "support"
-                          ? `${item.label} 다운로드`
-                          : categoryKey === "donation"
-                          ? `${item.label} 아이디 기부`
-                          : `${item.label} 투표하기`}
+                            ? `${item.label} 다운로드`
+                            : categoryKey === "donation"
+                              ? `${item.label} 아이디 기부`
+                              : `${item.label} 투표하기`}
                       </p>
                     </div>
                   </div>

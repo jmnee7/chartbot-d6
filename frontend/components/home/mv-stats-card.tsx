@@ -1,10 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Eye, Clock, Heart } from "lucide-react";
+import { Eye, Heart } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMVStats } from "@/lib/api";
-import { getLastUpdateTime } from "@/lib/utils/index";
 
 export default function MVStatsCard() {
   const { data: mvStats } = useQuery({

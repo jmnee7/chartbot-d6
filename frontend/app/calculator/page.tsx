@@ -20,7 +20,11 @@ export default function CalculatorPage() {
     { platform: "플로", current: 0, goal: 150, timeLeft: 24 },
   ]);
 
-  const updateGoal = (index: number, field: keyof StreamingGoal, value: number) => {
+  const updateGoal = (
+    index: number,
+    field: keyof StreamingGoal,
+    value: number
+  ) => {
     const newGoals = [...goals];
     newGoals[index] = { ...newGoals[index], [field]: value };
     setGoals(newGoals);
@@ -29,7 +33,7 @@ export default function CalculatorPage() {
   const calculateStreamsNeeded = (goal: StreamingGoal) => {
     const remaining = goal.goal - goal.current;
     if (remaining <= 0) return { needed: 0, perHour: 0 };
-    
+
     const perHour = Math.ceil(remaining / goal.timeLeft);
     return { needed: remaining, perHour };
   };
@@ -66,7 +70,7 @@ export default function CalculatorPage() {
             </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-3">
-            <div 
+            <div
               className="bg-green-600 h-3 rounded-full transition-all duration-500"
               style={{ width: `${getTotalProgress()}%` }}
             />
@@ -80,12 +84,14 @@ export default function CalculatorPage() {
           const calc = calculateStreamsNeeded(goal);
           const progress = Math.min((goal.current / goal.goal) * 100, 100);
           const isCompleted = goal.current >= goal.goal;
-          
+
           return (
             <Card key={goal.platform} className="p-4">
               <CardContent className="p-0">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">{goal.platform}</h3>
+                  <h3 className="font-semibold text-gray-900">
+                    {goal.platform}
+                  </h3>
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <Clock className="h-4 w-4" />
                     {goal.timeLeft}시간 남음
@@ -101,7 +107,13 @@ export default function CalculatorPage() {
                     <input
                       type="number"
                       value={goal.current}
-                      onChange={(e) => updateGoal(index, 'current', parseInt(e.target.value) || 0)}
+                      onChange={(e) =>
+                        updateGoal(
+                          index,
+                          "current",
+                          parseInt(e.target.value) || 0
+                        )
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="0"
                     />
@@ -113,7 +125,9 @@ export default function CalculatorPage() {
                     <input
                       type="number"
                       value={goal.goal}
-                      onChange={(e) => updateGoal(index, 'goal', parseInt(e.target.value) || 0)}
+                      onChange={(e) =>
+                        updateGoal(index, "goal", parseInt(e.target.value) || 0)
+                      }
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       placeholder="1000"
                     />
@@ -127,9 +141,9 @@ export default function CalculatorPage() {
                     <span>{Math.round(progress)}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
+                    <div
                       className={`h-2 rounded-full transition-all duration-500 ${
-                        isCompleted ? 'bg-green-500' : 'bg-blue-600'
+                        isCompleted ? "bg-green-500" : "bg-blue-600"
                       }`}
                       style={{ width: `${Math.min(progress, 100)}%` }}
                     />
@@ -141,20 +155,31 @@ export default function CalculatorPage() {
                   <div className="bg-blue-50 rounded-lg p-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Target className="h-4 w-4 text-blue-600" />
-                      <span className="font-medium text-blue-900">달성 가이드</span>
+                      <span className="font-medium text-blue-900">
+                        달성 가이드
+                      </span>
                     </div>
                     <div className="text-sm text-blue-800">
                       <p className="mb-1">
-                        <span className="font-semibold">{calc.needed.toLocaleString()}회</span> 더 스트리밍 필요
+                        <span className="font-semibold">
+                          {calc.needed.toLocaleString()}회
+                        </span>{" "}
+                        더 스트리밍 필요
                       </p>
                       <p>
-                        시간당 <span className="font-semibold text-blue-600">{calc.perHour.toLocaleString()}회</span> 스트리밍하면 달성!
+                        시간당{" "}
+                        <span className="font-semibold text-blue-600">
+                          {calc.perHour.toLocaleString()}회
+                        </span>{" "}
+                        스트리밍하면 달성!
                       </p>
                     </div>
                   </div>
                 ) : (
                   <div className="bg-green-50 rounded-lg p-3 text-center">
-                    <div className="text-green-600 font-semibold">🎉 목표 달성!</div>
+                    <div className="text-green-600 font-semibold">
+                      🎉 목표 달성!
+                    </div>
                     <div className="text-sm text-green-700 mt-1">
                       축하합니다! 목표를 달성했습니다.
                     </div>

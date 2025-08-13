@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { MobileAppLayout } from "@/components/layout/mobile-app-layout";
@@ -8,6 +8,12 @@ const notoSansKR = Noto_Sans_KR({
   variable: "--font-noto-sans-kr",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${notoSansKR.variable} antialiased font-sans`}>
+      <body
+        className={`${notoSansKR.variable} ${montserrat.variable} antialiased font-sans`}
+      >
         <Providers>
           <MobileAppLayout>{children}</MobileAppLayout>
         </Providers>

@@ -8,7 +8,14 @@ export type GuideCategory = {
   images?: string[]; // 2뎁스 상세 이미지들
   cta?: { label: string; href: string; external?: boolean }; // 하단 버튼
   category?: "streaming" | "voting" | "support" | "donation" | "comeback"; // 카테고리 분류
-  subcategory?: "streaming-list" | "music-streaming" | "mv-streaming" | "music-download" | "mv-download" | "music-show" | "awards"; // 서브카테고리
+  subcategory?:
+    | "streaming-list"
+    | "music-streaming"
+    | "mv-streaming"
+    | "music-download"
+    | "mv-download"
+    | "music-show"
+    | "awards"; // 서브카테고리
   subcategories?: GuideCategory[]; // 서브 카테고리 (투표 하위 항목들)
 };
 
@@ -255,10 +262,10 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     label: "v컬러링",
     heroImage: "/guide/v-coloring-download.webp",
     images: ["/guide/v-coloring-download.webp"],
-    cta: { 
-      label: "v컬러링 설정하기", 
+    cta: {
+      label: "v컬러링 설정하기",
       href: "https://www.sktelecom.com/index_real.html",
-      external: true
+      external: true,
     },
     category: "support",
   },
@@ -269,10 +276,10 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     label: "지니 기부",
     heroImage: "/guide/genie-streaming.png",
     images: ["/guide/genie-streaming.png"],
-    cta: { 
-      label: "지니 아이디 기부하기", 
+    cta: {
+      label: "지니 아이디 기부하기",
       href: "https://www.genie.co.kr",
-      external: true 
+      external: true,
     },
     category: "donation",
   },
@@ -281,14 +288,14 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     label: "벅스 기부",
     heroImage: "/guide/bugs-streaming.webp",
     images: ["/guide/bugs-streaming.webp"],
-    cta: { 
-      label: "벅스 아이디 기부하기", 
+    cta: {
+      label: "벅스 아이디 기부하기",
       href: "https://music.bugs.co.kr",
-      external: true 
+      external: true,
     },
     category: "donation",
   },
-  
+
   // === 음악방송 투표 ===
   {
     slug: "inkigayo",
@@ -384,7 +391,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "linc",
     label: "LiNC",
-    date: "2025.08.10", 
+    date: "2025.08.10",
     heroImage: "/guide/link1.webp",
     images: ["/guide/link1.webp"],
     cta: {
@@ -398,7 +405,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "highter",
     label: "하이어",
     date: "2025.08.10",
-    heroImage: "/guide/highter1.webp", 
+    heroImage: "/guide/highter1.webp",
     images: ["/guide/highter1.webp"],
     cta: {
       label: "하이어 투표하기",

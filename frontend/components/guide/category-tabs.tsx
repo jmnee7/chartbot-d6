@@ -20,21 +20,24 @@ export function CategoryTabs({ categoryItems, activeSlug }: CategoryTabsProps) {
       if (tabsContainerRef.current && activeTabRef.current) {
         const container = tabsContainerRef.current;
         const activeTab = activeTabRef.current;
-        
+
         const containerRect = container.getBoundingClientRect();
         const tabRect = activeTab.getBoundingClientRect();
-        
+
         // 탭이 컨테이너 영역을 벗어났는지 확인
-        const isTabVisible = 
-          tabRect.left >= containerRect.left && 
+        const isTabVisible =
+          tabRect.left >= containerRect.left &&
           tabRect.right <= containerRect.right;
-        
+
         if (!isTabVisible) {
           // 활성화된 탭을 가운데로 스크롤
-          const scrollLeft = activeTab.offsetLeft - (container.offsetWidth / 2) + (activeTab.offsetWidth / 2);
+          const scrollLeft =
+            activeTab.offsetLeft -
+            container.offsetWidth / 2 +
+            activeTab.offsetWidth / 2;
           container.scrollTo({
             left: scrollLeft,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         }
       }
@@ -48,10 +51,7 @@ export function CategoryTabs({ categoryItems, activeSlug }: CategoryTabsProps) {
   return (
     <div className="mt-3">
       <Tabs value={activeSlug} className="w-full">
-        <div 
-          ref={tabsContainerRef}
-          className="overflow-x-auto pb-2"
-        >
+        <div ref={tabsContainerRef} className="overflow-x-auto pb-2">
           <TabsList className="flex w-full justify-start bg-transparent p-0 h-auto gap-0 min-w-max border-b border-gray-200">
             {categoryItems.map((item) => (
               <Link key={item.slug} href={`/guide/${item.slug}`}>
