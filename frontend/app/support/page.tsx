@@ -71,9 +71,7 @@ export default function SupportPage() {
               DAY6를 응원하는 다양한 방법들
             </p>
           </div>
-          <div className="text-gray-300">
-            <ExternalLink className="h-5 w-5" />
-          </div>
+          <div className="text-gray-300"></div>
         </div>
 
         {/* Support Grid - similar to QuickAccessCard style */}

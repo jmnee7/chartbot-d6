@@ -20,9 +20,7 @@ export default function DownloadPage() {
               DAY6 음원 다운로드로 응원하기
             </p>
           </div>
-          <div className="text-gray-300">
-            <Download className="h-5 w-5" />
-          </div>
+          <div className="text-gray-300"></div>
         </div>
 
         <Tabs defaultValue="music" className="w-full">

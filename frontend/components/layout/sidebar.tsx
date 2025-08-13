@@ -13,12 +13,12 @@ import {
   HelpCircle,
   ChevronDown,
   ChevronRight,
-  Music,
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SocialLinks } from "@/components/social-links";
+import Image from "next/image";
 
 interface NavigationItem {
   name: string;
@@ -326,7 +326,13 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <Music className="h-6 w-6 text-blue-600" />
+                <Image
+                  src="/streaming/day-6-logo.jpg"
+                  alt="DAY6 STRM"
+                  width={32}
+                  height={32}
+                  className="rounded-md"
+                />
                 <span className="font-bold text-lg">DAY6 STRM</span>
               </div>
               <button
@@ -338,12 +344,20 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             </div>
 
             {/* Navigation */}
-            <nav className="p-4 space-y-1 overflow-y-auto flex-1">
+            <nav
+              className="p-4 space-y-1 flex-1"
+              style={{
+                overflowY: "auto",
+                maxHeight: "calc(100vh - 200px)",
+                scrollbarWidth: "thin",
+                scrollbarColor: "#d1d5db #f3f4f6",
+              }}
+            >
               {navigation.map((item) => renderNavigationItem(item))}
             </nav>
 
             {/* Social Links */}
-            <div className="absolute bottom-4 left-4 right-4 border-t border-gray-100 pt-4">
+            <div className="border-t border-gray-100 p-4 mt-auto">
               <p className="text-xs font-medium text-gray-500 mb-3">
                 DAY6 공식 SNS
               </p>

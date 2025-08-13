@@ -14,6 +14,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useQuery } from "@tanstack/react-query";
 import { fetchComebackData } from "@/lib/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 // TODO: 실제 날짜 계산 로직으로 변경 필요
 const comebackInfo = {
@@ -72,24 +76,34 @@ const comebackSchedule = [
     event: "디지털 싱글 발매",
     status: "completed",
     description: "Maybe Tomorrow + 끝났지 공개",
+    dDay: 0, // 완료됨
   },
   {
     date: "2025.05.09",
     event: "KSPO 돔 콘서트",
     status: "completed",
     description: "첫 K-밴드 돔 공연 성공",
+    dDay: 0, // 완료됨
   },
   {
     date: "2025.09.05",
     event: "정규 4집 발매",
     status: "upcoming",
     description: "데뷔 10주년 기념 앨범 'The DECADE'",
+    dDay: Math.ceil(
+      (new Date("2025-09-05").getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
   },
   {
     date: "2025.09.20",
     event: "정규 4집 활동 시작",
     status: "upcoming",
     description: "음악방송 및 프로모션 활동",
+    dDay: Math.ceil(
+      (new Date("2025-09-20").getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
   },
 ];
 
@@ -140,14 +154,18 @@ export default function ComebackPage() {
               DAY6 &apos;Maybe Tomorrow&apos; 현재 활동 및 정규 4집 대비
             </p>
           </div>
-          <div className="text-gray-300">
-            <ExternalLink className="h-5 w-5" />
-          </div>
+          <div className="text-gray-300"></div>
         </div>
 
         {/* Comeback Status Banner */}
-        <Card className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white">
-          <CardContent className="p-6">
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000 }}
+          className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
+        >
+          {/* Maybe Tomorrow 카드 */}
+          <SwiperSlide className="p-6">
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -170,8 +188,56 @@ export default function ComebackPage() {
                 <div className="text-sm text-white/80">일 경과</div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </SwiperSlide>
+
+          {/* 정규 4집 발매 카드 */}
+          <SwiperSlide className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-6 h-6" />
+                  <Badge className="bg-white/20 text-white border-white/30">
+                    D-{comebackSchedule[2].dDay}
+                  </Badge>
+                </div>
+                <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
+                <p className="text-white/80 text-sm">
+                  {comebackSchedule[2].date} - {comebackSchedule[2].description}
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-3xl font-bold">
+                  {comebackSchedule[2].dDay}
+                </div>
+                <div className="text-sm text-white/80">일 남음</div>
+              </div>
+            </div>
+          </SwiperSlide>
+
+          {/* 정규 4집 활동 시작 카드 */}
+          <SwiperSlide className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <TrendingUp className="w-6 h-6" />
+                  <Badge className="bg-white/20 text-white border-white/30">
+                    D-{comebackSchedule[3].dDay}
+                  </Badge>
+                </div>
+                <h3 className="text-2xl font-bold mb-1">정규 4집 활동 시작</h3>
+                <p className="text-white/80 text-sm">
+                  {comebackSchedule[3].date} - {comebackSchedule[3].description}
+                </p>
+              </div>
+              <div className="text-right">
+                <div className="text-3xl font-bold">
+                  {comebackSchedule[3].dDay}
+                </div>
+                <div className="text-sm text-white/80">일 남음</div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
 
         {/* Current Goals */}
         <div>
@@ -260,6 +326,12 @@ export default function ComebackPage() {
           </div>
         </div>
 
+        {/* Mobile Divider */}
+        <div
+          className="md:hidden -mx-9"
+          style={{ borderBottom: "0.6rem solid #f7f8f9" }}
+        ></div>
+
         {/* Comeback Schedule */}
         <div>
           <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
@@ -310,6 +382,12 @@ export default function ComebackPage() {
             ))}
           </div>
         </div>
+
+        {/* Mobile Divider */}
+        <div
+          className="md:hidden -mx-9"
+          style={{ borderBottom: "0.6rem solid #f7f8f9" }}
+        ></div>
 
         {/* Priority Missions */}
         <div>

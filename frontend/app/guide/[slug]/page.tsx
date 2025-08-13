@@ -23,7 +23,7 @@ export default async function GuideDetailPage({ params }: Props) {
   return (
     <div className="mx-auto w-full max-w-screen-sm px-4 pb-24">
       {/* 헤더 동일 */}
-      <header className="sticky top-0 z-30 bg-white pb-3 pt-4">
+      <header className="sticky top-0 z-30  pb-3 pt-4">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-bold">DAY6 응원 가이드</h1>
           <div className="text-xs text-gray-500">

@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { PageHeader } from "@/components/common/page-header";
 import { GUIDE_CATEGORIES } from "@/content/guide.config";
+import Image from "next/image";
 
 // 카테고리별로 그룹핑
 const categoryGroups = {
@@ -63,25 +64,23 @@ function CategorySection({
                 <CardContent className="p-4">
                   <div className="space-y-3">
                     {/* 이미지 영역 */}
-                    <div className="w-full h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                    <div className="w-full h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
                       {item.heroImage ? (
-                        item.heroImage.includes("placeholder") ||
-                        item.heroImage.includes("hero") ? (
-                          <div className="text-center">
-                            <div className="text-2xl mb-1">📖</div>
-                            <p className="text-xs text-gray-500">가이드</p>
-                          </div>
-                        ) : (
-                          <div className="text-2xl">
-                            {categoryKey === "streaming"
-                              ? "🎵"
-                              : categoryKey === "support"
-                                ? "📁"
-                                : "📺"}
-                          </div>
-                        )
+                        <Image
+                          src={item.heroImage}
+                          alt={item.label}
+                          width={160}
+                          height={80}
+                          className="w-full h-full object-cover"
+                        />
                       ) : (
-                        <div className="text-xs text-gray-400">준비중</div>
+                        <div className="text-2xl">
+                          {categoryKey === "streaming"
+                            ? "🎵"
+                            : categoryKey === "support"
+                              ? "📁"
+                              : "📺"}
+                        </div>
                       )}
                     </div>
 

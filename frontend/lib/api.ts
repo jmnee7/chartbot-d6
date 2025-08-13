@@ -229,32 +229,42 @@ export async function fetchComebackData(): Promise<{
     ];
 
     if (chartResponse?.ok) {
-      const chartData = await chartResponse.json();
-      // Find DAY6 "Maybe Tomorrow" in each platform
-      chartRanks = chartRanks.map((item) => {
-        const platformSongs = chartData[item.platform] || [];
-        const day6Song = platformSongs.find(
-          (song: { artist?: string; title?: string; rank?: number }) =>
-            song.artist?.includes("DAY6") &&
-            song.title?.includes("Maybe Tomorrow")
-        );
-        return {
-          ...item,
-          rank: day6Song?.rank || null,
-        };
-      });
+      try {
+        const chartData = await chartResponse.json();
+        // Find DAY6 "Maybe Tomorrow" in each platform
+        chartRanks = chartRanks.map((item) => {
+          const platformSongs = chartData[item.platform] || [];
+          const day6Song = platformSongs.find(
+            (song: { artist?: string; title?: string; rank?: number }) =>
+              song.artist?.includes("DAY6") &&
+              song.title?.includes("Maybe Tomorrow")
+          );
+          return {
+            ...item,
+            rank: day6Song?.rank || null,
+          };
+        });
+      } catch (jsonError) {
+        console.warn("Invalid JSON in chart data:", jsonError);
+        // Keep default chartRanks with null values
+      }
     }
 
     // Process YouTube data
     const youtubeStats = { views: 0, target: 3000000 };
     if (youtubeResponse?.ok) {
-      const youtubeData = await youtubeResponse.json();
-      const maybeTomorrowStats = Array.isArray(youtubeData)
-        ? youtubeData.find((video) => video.title?.includes("Maybe Tomorrow"))
-        : null;
+      try {
+        const youtubeData = await youtubeResponse.json();
+        const maybeTomorrowStats = Array.isArray(youtubeData)
+          ? youtubeData.find((video) => video.title?.includes("Maybe Tomorrow"))
+          : null;
 
-      if (maybeTomorrowStats) {
-        youtubeStats.views = maybeTomorrowStats.views || 0;
+        if (maybeTomorrowStats) {
+          youtubeStats.views = maybeTomorrowStats.views || 0;
+        }
+      } catch (jsonError) {
+        console.warn("Invalid JSON in YouTube data:", jsonError);
+        // Keep default youtubeStats with 0 views
       }
     }
 

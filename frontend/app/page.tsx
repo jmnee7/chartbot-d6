@@ -34,9 +34,6 @@ export default function HomePage() {
                 {formatKoreanDate(currentTime)}
               </p>
             </div>
-            <div className="text-mint-primary">
-              <ExternalLink className="h-5 w-5" />
-            </div>
           </div>
           <CompactChart />
           <div
@@ -56,9 +53,6 @@ export default function HomePage() {
                 <p className="text-xs md:text-sm text-gray-500">
                   {formatKoreanDate(currentTime)}
                 </p>
-              </div>
-              <div className="text-mint-primary">
-                <ExternalLink className="h-5 w-5" />
               </div>
             </div>
           </CardHeader>

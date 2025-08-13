@@ -49,7 +49,7 @@ export function MobileAppLayout({ children }: MobileAppLayoutProps) {
 
           <main
             className={`overflow-y-auto ${
-              isHomePage ? "px-0 py-0 pb-20" : "px-4 pt-16 pb-20"
+              isHomePage ? "px-0 py-0 pb-20" : "px-0 pt-16 pb-20"
             }`}
           >
             {children}

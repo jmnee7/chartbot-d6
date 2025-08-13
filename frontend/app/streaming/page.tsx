@@ -19,9 +19,7 @@ export default function StreamingPage() {
               DAY6 음원 및 뮤직비디오 스트리밍
             </p>
           </div>
-          <div className="text-gray-300">
-            <ExternalLink className="h-5 w-5" />
-          </div>
+          <div className="text-gray-300"></div>
         </div>
 
         <Tabs defaultValue="music" className="w-full">

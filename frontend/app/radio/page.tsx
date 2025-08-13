@@ -80,9 +80,7 @@ export default function RadioPage() {
               각종 라디오 프로그램에 DAY6 신곡 신청
             </p>
           </div>
-          <div className="text-gray-300">
-            <ExternalLink className="h-5 w-5" />
-          </div>
+          <div className="text-gray-300"></div>
         </div>
 
         {/* Current Status */}
