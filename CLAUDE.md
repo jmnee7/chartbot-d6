@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SixBeat is a K-pop music chart tracking application focused on DAY6 fandom streaming and voting support. It consists of:
+is a K-pop music chart tracking application focused on DAY6 fandom streaming and voting support. It consists of:
 
 - **Python crawlers** for collecting chart data from Korean music platforms (Melon, Genie, Bugs, Vibe, Flo)
 - **Next.js frontend** for displaying charts and providing streaming/voting guidance
@@ -50,7 +50,6 @@ python test_melon.py                # Test Melon crawler specifically
 - `main.py`: Orchestrates all crawlers, filters target songs, generates HTML output
 - `target_songs.py`: Defines which artists/songs to track
 - `rank_tracker.py`: Tracks rank changes over time
-
 
 #### Frontend (`/frontend`)
 

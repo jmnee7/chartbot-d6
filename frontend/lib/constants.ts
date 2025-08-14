@@ -1,11 +1,11 @@
 // 앱 설정
 export const APP_CONFIG = {
-  name: "SixBeat",
+  name: "",
   artist: "DAY6",
   displayName: "DAY6 STRM",
   description: "DAY6 음원정보팀",
   fullDescription: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
-  copyright: `© ${new Date().getFullYear()} SixBeat`,
+  copyright: `© ${new Date().getFullYear()} `,
   tagline: "DAY6 팬덤을 위한 비영리 프로젝트",
 } as const;
 

@@ -17,31 +17,30 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "SixBeat - DAY6 음원정보팀",
+  title: " - DAY6 음원정보팀",
   description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
   keywords:
     "DAY6, 데이식스, 음원차트, 스트리밍, 투표, K-pop, 차트분석, 음악방송",
-  authors: [{ name: "SixBeat Team" }],
-  creator: "SixBeat",
-  publisher: "SixBeat",
+  authors: [{ name: " Team" }],
+  creator: "",
+  publisher: "",
 
   // Next.js 15 메타데이터 베이스 URL
-  metadataBase: new URL("https://sixbeat.vercel.app"),
+  metadataBase: new URL("https://.vercel.app"),
 
   // Open Graph 메타데이터
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://sixbeat.vercel.app",
-    title: "SixBeat - DAY6 음원정보팀",
+    url: "https://.vercel.app",
+    title: "DAY6 음원정보팀",
     description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
-    siteName: "SixBeat",
     images: [
       {
         url: "/open-graph.jpg",
         width: 1200,
         height: 800,
-        alt: "DAY6 - SixBeat 음원정보팀",
+        alt: "DAY6 - 음원정보팀",
       },
     ],
   },
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
   // Twitter Card 메타데이터
   twitter: {
     card: "summary_large_image",
-    title: "SixBeat - DAY6 음원정보팀",
+    title: " - DAY6 음원정보팀",
     description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
     images: ["/open-graph.jpg"],
     creator: "@Day6_vote_team",
@@ -73,7 +72,7 @@ export const metadata: Metadata = {
 
   // Next.js 15 기능 - 대체 언어
   alternates: {
-    canonical: "https://sixbeat.vercel.app",
+    canonical: "https://.vercel.app",
   },
 
   // 검증
