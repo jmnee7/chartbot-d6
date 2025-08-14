@@ -131,7 +131,6 @@ const albumStores = [
 const supportItems = [
   {
     title: "앨범 공구",
-    description: "함께 모여 대량 구매",
     icon: ShoppingBag,
     color: "bg-purple-500",
     links: [
@@ -152,7 +151,6 @@ const supportItems = [
   },
   {
     title: "아이디 기부",
-    description: "스트리밍 계정 기부",
     icon: Heart,
     color: "bg-red-500",
     links: [
@@ -167,7 +165,6 @@ const supportItems = [
   },
   {
     title: "헬퍼 지원",
-    description: "다운로드 헬퍼 활동",
     icon: Users,
     color: "bg-blue-500",
     links: [
@@ -177,7 +174,6 @@ const supportItems = [
   },
   {
     title: "모금",
-    description: "팬덤 모금 활동 참여",
     icon: DollarSign,
     color: "bg-yellow-500",
     subItems: [
@@ -283,9 +279,6 @@ export default function SupportPage() {
                         <h3 className="font-bold text-gray-900">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mt-1">
-                          {item.description}
-                        </p>
                       </div>
                     </div>
 
