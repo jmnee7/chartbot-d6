@@ -66,9 +66,7 @@ export default function ComingSoonPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
         >
-          <p className="text-sm text-gray-500">
-            DAY6 스트리밍 지원 사이트 • SixBeat
-          </p>
+          <p className="text-sm text-gray-500">DAY6 스트리밍 지원 사이트 •</p>
         </motion.div>
       </div>
     </div>

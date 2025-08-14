@@ -4,7 +4,7 @@ import { PlatformType } from "@/lib/types";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_DATA_BASE_URL ||
-  "https://raw.githubusercontent.com/YOUR_USERNAME/sixbeat/main/public-data";
+  "https://raw.githubusercontent.com/YOUR_USERNAME//main/public-data";
 
 class ApiClient {
   private async fetchWithRetry<T>(url: string, retries = 3): Promise<T> {

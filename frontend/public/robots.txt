@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sixbeat.vercel.app/sitemap.xml
+Sitemap: https://.vercel.app/sitemap.xml
 
 # Allow all major search engines
 User-agent: Googlebot
