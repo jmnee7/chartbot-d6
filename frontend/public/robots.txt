@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sixbeat.vercel.app/sitemap.xml
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot  
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Crawl-delay for general bots
+User-agent: *
+Crawl-delay: 1
+
+# Disallow certain paths if needed (currently none)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Allow important pages
+Allow: /charts
+Allow: /streaming
+Allow: /download
+Allow: /votes
+Allow: /guide

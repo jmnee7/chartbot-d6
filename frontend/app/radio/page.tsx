@@ -19,7 +19,7 @@ const radioStations = [
       {
         name: "키스 더 라디오",
         time: "KBS Cool FM",
-        url: "https://program.kbs.co.kr/2fm/radio/hanhaekiss/pc/board.html?smenu=858a12&bbs_loc=R2025-0082-03-947487,list,none,1,0",
+        url: "https://program.kbs.co.kr/2fm/radio/hanhaekiss/pc/board.html?smenu=858a12&bbs_loc=R2025-0082-03-947487,list,none,1,0ㄴ",
         description: "KBS 대표 아이돌·K-POP 신청 창구",
         icon: "💋",
       },
@@ -209,25 +209,6 @@ export default function RadioPage() {
         </Card>
 
         {/* SMS Request Info */}
-        <Card className="bg-blue-50 border-blue-200">
-          <CardContent className="p-4">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <MessageCircle className="w-4 h-4 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-blue-900 mb-2">문자 신청</h3>
-                <div className="text-sm text-blue-700 space-y-1">
-                  <div>• MBC 굿모닝 FM: 문자 #8000</div>
-                  <div>• 기타 프로그램은 웹사이트에서 신청</div>
-                  <div className="text-xs text-blue-600 mt-2">
-                    ※ 문자 요금이 발생할 수 있습니다
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
 
       {/* Bottom spacing for mobile nav */}

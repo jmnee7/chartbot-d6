@@ -150,7 +150,7 @@ export default function ComebackPage() {
             <h2 className="text-lg md:text-xl font-bold text-gray-900">
               컴백 지원 센터
             </h2>
-            <p className="text-xs md:text-sm text-gray-500">
+            <p className="text-xs md:text-sm text-gray-500 mt-1">
               DAY6 &apos;Maybe Tomorrow&apos; 현재 활동 및 정규 4집 대비
             </p>
           </div>

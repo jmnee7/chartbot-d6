@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/common/page-header";
 import { GUIDE_CATEGORIES } from "@/content/guide.config";
 import Image from "next/image";
+import { SectionHeader } from "@/components/ui/section-header";
 
 // 카테고리별로 그룹핑
 const categoryGroups = {
@@ -112,11 +113,8 @@ function CategorySection({
 
 export default function GuidePage() {
   return (
-    <div className="mx-auto w-full max-w-screen-sm px-4 pb-20">
-      <PageHeader
-        title="DAY6 응원 가이드"
-        description="DAY6를 응원하는 다양한 방법들을 확인해보세요"
-      />
+    <div className="mx-auto w-full max-w-screen-sm mt-5 px-4 pb-20">
+      <SectionHeader title="DAY6 응원 가이드" />
 
       <div className="mt-6">
         <CategorySection
