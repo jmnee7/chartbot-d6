@@ -101,7 +101,7 @@ export default function ChartsPage() {
       {/* Content with same padding as homepage */}
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
         {/* Section Header - same style as homepage */}
-        <SectionHeader title="차트 모니터링" />
+        <SectionHeader title="차트" />
 
         {/* Mobile Layout */}
         <div className="md:hidden">
@@ -114,9 +114,6 @@ export default function ChartsPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 차트 데이터 수집 중
               </h3>
-              <p className="text-blue-600 font-medium">
-                실시간 차트 정보를 가져오고 있습니다...
-              </p>
             </div>
           ) : error ? (
             <div className="text-center py-6">
@@ -127,9 +124,6 @@ export default function ChartsPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 차트 데이터 로딩 실패
               </h3>
-              <p className="text-red-600 font-medium">
-                데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.
-              </p>
             </div>
           ) : stats ? (
             <>
@@ -143,18 +137,12 @@ export default function ChartsPage() {
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {stats.inChartPlatforms}개 플랫폼 차트 진입
                     </h3>
-                    <p className="text-gray-600 text-sm">
-                      DAY6가 현재 활동 중입니다 🎵
-                    </p>
                   </>
                 ) : (
                   <>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                       차트 진입 대기 중
                     </h3>
-                    <p className="text-gray-600 text-sm">
-                      함께 스트리밍으로 차트에 올려보아요! 💪
-                    </p>
                   </>
                 )}
               </div>
@@ -268,16 +256,13 @@ export default function ChartsPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 차트 데이터 대기
               </h3>
-              <p className="text-gray-600 font-medium">
-                차트 정보를 기다리고 있습니다...
-              </p>
             </div>
           )}
         </div>
 
         {/* Desktop Layout */}
         <Card className="hidden md:block bg-white/60 backdrop-blur-sm border-navy-dark/20 shadow-sm">
-          <CardContent className="p-6">
+          <CardContent className="">
             {isLoading ? (
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium mb-3">
@@ -287,9 +272,6 @@ export default function ChartsPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   차트 데이터 수집 중
                 </h3>
-                <p className="text-blue-600 font-medium">
-                  실시간 차트 정보를 가져오고 있습니다...
-                </p>
               </div>
             ) : error ? (
               <div className="text-center">
@@ -300,9 +282,6 @@ export default function ChartsPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   차트 데이터 로딩 실패
                 </h3>
-                <p className="text-red-600 font-medium">
-                  데이터를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.
-                </p>
               </div>
             ) : stats ? (
               <>
@@ -316,28 +295,12 @@ export default function ChartsPage() {
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
                         {stats.inChartPlatforms}개 플랫폼 차트 진입
                       </h3>
-                      <p className="text-gray-600 text-sm">
-                        DAY6가 현재 활동 중입니다 🎵
-                      </p>
                     </>
-                  ) : (
-                    <>
-                      <div className="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium mb-3">
-                        <div className="w-4 h-4 bg-yellow-600 rounded-full"></div>
-                        <span>차트 모니터링</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
-                        차트 진입 대기 중
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        함께 스트리밍으로 차트에 올려보아요! 💪
-                      </p>
-                    </>
-                  )}
+                  ) : null}
                 </div>
 
                 {/* 플랫폼별 순위 표시 - 데스크톱 */}
-                <div className="space-y-3">
+                <div className="">
                   <h4 className="text-sm font-semibold text-gray-700 mb-3">
                     플랫폼별 현재 순위
                   </h4>
@@ -445,9 +408,6 @@ export default function ChartsPage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   차트 데이터 대기
                 </h3>
-                <p className="text-gray-600 font-medium">
-                  차트 정보를 기다리고 있습니다...
-                </p>
               </div>
             )}
           </CardContent>
@@ -495,32 +455,6 @@ export default function ChartsPage() {
                 isLoading={isLoading}
               />
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Chart Info Tips */}
-        <Card className="bg-gray-50 border-gray-200">
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <BarChart3 className="w-3 h-3 text-white" />
-              </div>
-              <h3 className="font-bold text-gray-900">차트 정보</h3>
-            </div>
-            <ul className="text-sm text-gray-700 space-y-1">
-              <li className="before:content-['•'] before:text-[#49c4b0] before:mr-2">
-                실시간 차트는 매시간 업데이트됩니다
-              </li>
-              <li className="before:content-['•'] before:text-[#49c4b0] before:mr-2">
-                순위 변동은 전 시간 대비 변화량입니다
-              </li>
-              <li className="before:content-['•'] before:text-[#49c4b0] before:mr-2">
-                여러 플랫폼을 선택하여 비교 가능합니다
-              </li>
-              <li className="before:content-['•'] before:text-[#49c4b0] before:mr-2">
-                차트 밖으로 벗어난 곡은 &apos;-&apos; 표시됩니다
-              </li>
-            </ul>
           </CardContent>
         </Card>
       </div>

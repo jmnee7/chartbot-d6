@@ -16,24 +16,24 @@ const categoryGroups = {
 // 카테고리 아이콘 및 제목
 const categoryInfo = {
   streaming: {
-    icon: "📱",
+    icon: "",
     title: "스트리밍",
-    description: "음원 플랫폼에서 DAY6를 스트리밍해주세요",
+    description: "",
   },
   support: {
-    icon: "📥",
+    icon: "",
     title: "다운로드",
-    description: "음원 다운로드로 DAY6를 응원해주세요",
+    description: "",
   },
   donation: {
-    icon: "🤝",
+    icon: "",
     title: "아이디 기부",
-    description: "아이디 기부로 DAY6를 응원해주세요",
+    description: "",
   },
   voting: {
-    icon: "🗳️",
+    icon: "",
     title: "음악방송 투표",
-    description: "음악방송 1위를 위해 투표해주세요",
+    description: "",
   },
 };
 
@@ -49,11 +49,7 @@ function CategorySection({
   return (
     <div className="space-y-4">
       <div>
-        <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-          <span>{icon}</span>
-          {title}
-        </h2>
-        <p className="text-sm text-gray-600 mt-1">{description}</p>
+        <h2 className="text-lg font-bold text-gray-900">{title}</h2>
       </div>
 
       {/* 가로 스크롤 카드 컨테이너 */}
@@ -75,13 +71,7 @@ function CategorySection({
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <div className="text-2xl">
-                          {categoryKey === "streaming"
-                            ? "🎵"
-                            : categoryKey === "support"
-                              ? "📁"
-                              : "📺"}
-                        </div>
+                        <div className="text-gray-400">{/* Placeholder */}</div>
                       )}
                     </div>
 
@@ -90,15 +80,6 @@ function CategorySection({
                       <h3 className="font-medium text-gray-900 text-sm leading-tight">
                         {item.label}
                       </h3>
-                      <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                        {categoryKey === "streaming"
-                          ? `${item.label}에서 스트리밍`
-                          : categoryKey === "support"
-                            ? `${item.label} 다운로드`
-                            : categoryKey === "donation"
-                              ? `${item.label} 아이디 기부`
-                              : `${item.label} 투표하기`}
-                      </p>
                     </div>
                   </div>
                 </CardContent>

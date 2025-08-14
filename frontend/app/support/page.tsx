@@ -42,8 +42,7 @@ const albumStores = [
       earphone: "66,700원 (4종 랜덤)",
     },
     shipping: "5만원 미만 3,000원",
-    benefit:
-      "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정 (4종 구매 시 중복)",
+    benefit: "포토카드 증정",
     note: "",
     url: "https://bit.ly/45fHCLp",
   },
@@ -226,18 +225,16 @@ export default function SupportPage() {
               </div>
               <div className="flex-1">
                 <h3 className="font-bold text-purple-900 mb-1">
-                  🎉 정규 4집 &apos;The DECADE&apos; 공구 준비 중!
+                  정규 4집 &apos;The DECADE&apos; 공구 준비 중!
                 </h3>
                 <p className="text-sm text-purple-700 mb-2">
                   데이식스 음원총공팀에서 공구를 준비하고 있습니다.
                 </p>
                 <div className="text-xs text-purple-600 space-y-1">
-                  <p>▪️ The DECADE Ver. - Random / 2종 SET</p>
-                  <p>▪️ The DECADE (Nemo Ver.) - Random / 2종 SET</p>
-                  <p>▪️ The DECADE (ID Card Ver.)</p>
-                  <p>
-                    ▪️ The DECADE (In-Ear Earphones Ver.) - Random / 4종 SET
-                  </p>
+                  <p>The DECADE Ver. - Random / 2종 SET</p>
+                  <p>The DECADE (Nemo Ver.) - Random / 2종 SET</p>
+                  <p>The DECADE (ID Card Ver.)</p>
+                  <p>The DECADE (In-Ear Earphones Ver.) - Random / 4종 SET</p>
                 </div>
                 <Button
                   asChild
@@ -257,6 +254,12 @@ export default function SupportPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Mobile Divider */}
+        <div
+          className="md:hidden -mx-9"
+          style={{ borderBottom: "0.6rem solid #f7f8f9" }}
+        ></div>
 
         {/* Support Activities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -367,8 +370,6 @@ export default function SupportPage() {
             );
           })}
         </div>
-
-        {/* Quick Tips Section */}
       </div>
 
       {/* Price Comparison Modal */}
@@ -411,8 +412,8 @@ export default function SupportPage() {
                 {/* Warning */}
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
                   <p className="text-sm text-amber-800">
-                    💡 공구 참여 시 <strong>더 저렴한 가격과 추가 특전</strong>
-                    을 받을 수 있어요!
+                    공구 참여 시 <strong>더 저렴한 가격과 추가 특전</strong>을
+                    받을 수 있어요!
                   </p>
                 </div>
 
@@ -493,7 +494,7 @@ export default function SupportPage() {
                         {store.benefit && (
                           <div className="bg-green-50 border border-green-200 rounded p-2">
                             <p className="text-xs text-green-800">
-                              🎁 <strong>특전:</strong> {store.benefit}
+                              <strong>특전:</strong> {store.benefit}
                             </p>
                           </div>
                         )}
@@ -546,7 +547,7 @@ export default function SupportPage() {
                 {/* Warning */}
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
                   <p className="text-sm text-amber-800">
-                    💡 아래는 일반 구매 가격입니다.{" "}
+                    아래는 일반 구매 가격입니다.{" "}
                     <strong>공구 참여 시 더 저렴한 가격과 추가 특전</strong>을
                     받을 수 있어요!
                   </p>
@@ -623,7 +624,7 @@ export default function SupportPage() {
                 {/* Special Benefits Info */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                   <h4 className="font-semibold text-blue-900 mb-2">
-                    🎁 특전 정보
+                    특전 정보
                   </h4>
                   <div className="space-y-1 text-xs text-blue-800">
                     <p>
@@ -647,7 +648,7 @@ export default function SupportPage() {
                 <Card className="bg-purple-50 border-purple-200">
                   <CardContent className="p-4">
                     <p className="text-sm text-purple-800 mb-3">
-                      🎉 <strong>공구로 더 저렴하게 구매하세요!</strong>
+                      <strong>공구로 더 저렴하게 구매하세요!</strong>
                     </p>
                     <Button
                       asChild

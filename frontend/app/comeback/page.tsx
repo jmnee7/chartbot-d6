@@ -111,21 +111,20 @@ const comebackMissions = [
   {
     priority: 1,
     title: "정규 4집 대비 스트리밍",
-    description: "9월 정규 4집 발매 전까지 꾸준한 스트리밍이 필요해요",
     href: "/streaming",
     action: "지금 스트리밍하기",
   },
   {
     priority: 2,
     title: "Maybe Tomorrow 조회수",
-    description: "현재 185만뷰, 300만뷰 목표까지 함께해주세요",
+    description: "",
+
     href: "/streaming?tab=mv",
     action: "MV 보러가기",
   },
   {
     priority: 3,
     title: "10주년 응원 준비",
-    description: "데뷔 10주년 기념 정규 4집을 함께 응원해요",
     href: "/guide",
     action: "응원 가이드 보기",
   },
@@ -150,9 +149,6 @@ export default function ComebackPage() {
             <h2 className="text-lg md:text-xl font-bold text-gray-900">
               컴백 지원 센터
             </h2>
-            <p className="text-xs md:text-sm text-gray-500 mt-1">
-              DAY6 &apos;Maybe Tomorrow&apos; 현재 활동 및 정규 4집 대비
-            </p>
           </div>
           <div className="text-gray-300"></div>
         </div>
@@ -239,11 +235,7 @@ export default function ComebackPage() {
           </SwiperSlide>
         </Swiper>
 
-        {/* Current Goals */}
         <div>
-          <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
-            현재 목표 달성률
-          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {isLoading
               ? // 로딩 상태
@@ -410,9 +402,6 @@ export default function ComebackPage() {
                         <h4 className="font-medium text-gray-900 mb-1">
                           {mission.title}
                         </h4>
-                        <p className="text-sm text-gray-600 mb-3">
-                          {mission.description}
-                        </p>
                         <Button
                           asChild
                           size="sm"

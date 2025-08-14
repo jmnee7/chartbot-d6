@@ -24,16 +24,7 @@ export default function HomePage() {
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-lg font-bold text-gray-900">
-                실시간 차트 순위
-              </h2>
-              <p className="text-xs text-gray-500">
-                {formatKoreanDate(currentTime)}
-              </p>
-            </div>
-          </div>
+          <SectionHeader title="실시간 차트 순위" />
           <CompactChart />
           <div
             className="mt-6 -mx-5"
