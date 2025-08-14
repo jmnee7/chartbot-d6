@@ -1,8 +1,9 @@
 "use client";
 
-import { Download, Music, Video } from "lucide-react";
+import { Download, Music, Video, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { DOWNLOAD_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { DownloadTips } from "@/components/download/download-tips";
@@ -23,6 +24,34 @@ export default function DownloadPage() {
           <div className="text-gray-300"></div>
         </div>
 
+        {/* 가이드 안내 카드 */}
+        <Card className="bg-blue-50 border-blue-200">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white text-lg">📖</span>
+                </div>
+                <div>
+                  <div className="font-medium text-blue-900">
+                    다운로드 가이드
+                  </div>
+                  <div className="text-sm text-blue-700">
+                    효과적인 다운로드 방법을 확인하세요
+                  </div>
+                </div>
+              </div>
+              <Button
+                size="sm"
+                className="bg-blue-500 hover:bg-blue-600 text-white"
+                onClick={() => window.open("/guide", "_blank")}
+              >
+                가이드 보기
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
         <Tabs defaultValue="music" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="music" className="flex items-center gap-2">
@@ -37,8 +66,76 @@ export default function DownloadPage() {
 
           <TabsContent value="music" className="mt-6">
             <div className="space-y-6">
+              {/* Featured Download Section */}
+              <Card className="bg-gradient-to-r from-mint-primary/10 to-mint-light/5 border-mint-primary/30">
+                <CardContent className="p-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2 text-mint-dark">
+                      <Download className="w-5 h-5" />
+                      <h3 className="font-bold">DAY6 최신 음원 다운로드</h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-mint-primary rounded-lg flex items-center justify-center">
+                            <Music className="w-5 h-5 text-white" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">
+                              Maybe Tomorrow
+                            </div>
+                            <div className="text-xs text-gray-500">대표곡</div>
+                          </div>
+                        </div>
+                        <button
+                          className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7 rounded"
+                          onClick={() => {
+                            const urls = [
+                              "https://www.melon.com/search/total/index.htm?q=Day6+Maybe+Tomorrow&section=&mwkLogType=T",
+                              "https://www.genie.co.kr/search/searchMain?query=day6+maybe+tomorrow",
+                              "https://music.bugs.co.kr/search/track?q=day6+maybe+tomorrow",
+                            ];
+                            urls.forEach((url) => window.open(url, "_blank"));
+                          }}
+                        >
+                          원클릭 다운
+                        </button>
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-mint-primary rounded-lg flex items-center justify-center">
+                            <Music className="w-5 h-5 text-white" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">
+                              끝났지 (game over)
+                            </div>
+                            <div className="text-xs text-gray-500">인기곡</div>
+                          </div>
+                        </div>
+                        <button
+                          className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7 rounded"
+                          onClick={() => {
+                            const urls = [
+                              "https://www.melon.com/search/total/index.htm?q=Day6+끝났지&section=&mwkLogType=T",
+                              "https://www.genie.co.kr/search/searchMain?query=day6+끝났지",
+                              "https://music.bugs.co.kr/search/track?q=day6+끝났지",
+                            ];
+                            urls.forEach((url) => window.open(url, "_blank"));
+                          }}
+                        >
+                          원클릭 다운
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
               <Card>
-                <CardContent className="p-0">
+                <CardContent className="p-4">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {DOWNLOAD_PLATFORMS.map((platform) => (
                       <PlatformCard
@@ -52,6 +149,44 @@ export default function DownloadPage() {
               </Card>
 
               <DownloadTips />
+
+              {/* 추천 다운로드 사이트 */}
+              <Card className="bg-gradient-to-r from-mint-50 to-mint-100/50 border-mint-200">
+                <CardContent className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-mint-primary rounded-full flex items-center justify-center flex-shrink-0">
+                      <Music className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-mint-dark mb-2">
+                        추천 다운로드 사이트
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100 mt-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-mint-primary rounded-lg flex items-center justify-center">
+                        <Music className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">DAY6.kr</div>
+                        <div className="text-sm text-gray-500">
+                          플레이리스트 & 디스코그래피
+                        </div>
+                      </div>
+                    </div>
+                    <Button
+                      size="sm"
+                      className="bg-mint-primary hover:bg-mint-dark text-white"
+                      onClick={() => window.open("https://day6.kr/", "_blank")}
+                    >
+                      <ExternalLink className="w-4 h-4 mr-1" />
+                      방문하기
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
 
               <Card className="bg-purple-50 border-purple-200">
                 <CardContent className="p-4">

@@ -31,34 +31,55 @@ export default function VotesPage() {
                   <MusicShowCard key={show.id} show={show} />
                 ))}
               </div>
+
+              {/* DAY6 투표독려팀 */}
+              <Card className="bg-gradient-to-r from-mint-50 to-mint-100/50 border-mint-200">
+                <CardContent className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-mint-primary rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold">📊</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">
+                          DAY6 투표독려팀
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          투표 가이드 및 독려 정보
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      className="bg-mint-primary hover:bg-mint-dark text-white px-4 py-2 rounded text-sm font-medium"
+                      onClick={() =>
+                        window.open("https://x.com/Day6_vote_team", "_blank")
+                      }
+                    >
+                      팔로우하기
+                    </button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </TabsContent>
 
           <TabsContent value="awards" className="mt-6">
             <div className="space-y-6">
-              <Card className="bg-yellow-50 border-yellow-200">
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <AlertCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-yellow-900 mb-2">
-                        시상식 투표 안내
-                      </h3>
-                      <p className="text-sm text-yellow-700">
-                        현재 진행 중인 시상식 투표가 있을 때 이곳에 표시됩니다.
-                      </p>
-                    </div>
+              <Card className="bg-gray-50 border-gray-200">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-200 rounded-full mb-4">
+                    <AlertCircle className="w-8 h-8 text-gray-500" />
                   </div>
+                  <h3 className="font-bold text-gray-900 mb-2">
+                    시상식 투표 준비 중입니다
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    연말 시상식 시즌에 맞춰 투표 정보를 준비하고 있습니다.
+                    <br />
+                    투표가 오픈되면 바로 안내해드릴게요!
+                  </p>
                 </CardContent>
               </Card>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {AWARDS.map((award) => (
-                  <AwardCard key={award.id} award={award} />
-                ))}
-              </div>
             </div>
           </TabsContent>
         </Tabs>

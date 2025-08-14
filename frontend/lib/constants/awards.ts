@@ -2,79 +2,85 @@ export interface Award {
   id: string;
   name: string;
   organizer: string;
-  date: string;
+  date?: string;
   votingPlatform: string;
+  links: {
+    web?: string;
+    android?: string;
+    ios?: string;
+  };
   icon: string;
   color: string;
   description: string;
   isActive: boolean;
+  notes?: string;
 }
 
 export const AWARDS: Award[] = [
   {
     id: "mama",
-    name: "MAMA Awards",
-    organizer: "Mnet",
-    date: "2024년 11월",
+    name: "MAMA AWARDS",
+    organizer: "CJ ENM",
     votingPlatform: "Mnet Plus",
+    links: {
+      web: "https://www.mnetplus.world/",
+    },
     icon: "🏅",
     color: "bg-red-600",
-    description: "아시아 최대 음악 시상식",
+    description: "공식 투표는 Mnet Plus에서 오픈되는 'Vote' 섹션 확인",
     isActive: false,
+    notes: "연도별 투표 오픈 시기 확인 필요",
   },
   {
-    id: "mma",
-    name: "Melon Music Awards",
-    organizer: "Melon",
-    date: "2024년 12월",
-    votingPlatform: "멜론",
-    icon: "🎯",
-    color: "bg-green-600",
-    description: "멜론 뮤직 어워드",
-    isActive: false,
-  },
-  {
-    id: "gda",
-    name: "Golden Disc Awards",
-    organizer: "일간스포츠",
-    date: "2025년 1월",
+    id: "golden-disc",
+    name: "골든디스크어워즈",
+    organizer: "JDG",
     votingPlatform: "공식 홈페이지",
+    links: {
+      web: "https://www.goldendisc.co.kr/",
+    },
     icon: "💿",
     color: "bg-yellow-600",
-    description: "골든디스크 시상식",
+    description: "투표/팬초이스 여부는 연도별 공지 확인",
     isActive: false,
   },
   {
-    id: "sma",
-    name: "Seoul Music Awards",
+    id: "seoul-music",
+    name: "서울가요대상 (SMA)",
     organizer: "스포츠서울",
-    date: "2025년 1월",
     votingPlatform: "공식 홈페이지",
+    links: {
+      web: "https://www.seoulmusicawards.com/",
+    },
     icon: "🌟",
     color: "bg-blue-600",
-    description: "서울가요대상",
+    description: "서울가요대상 공식 홈페이지",
+    isActive: false,
+  },
+  {
+    id: "circle",
+    name: "서클차트 뮤직어워즈",
+    organizer: "서클차트",
+    votingPlatform: "공식 홈페이지",
+    links: {
+      web: "https://www.circlemusicawards.co.kr/",
+    },
+    icon: "📊",
+    color: "bg-green-600",
+    description: "서클차트 뮤직어워즈 공식 사이트",
     isActive: false,
   },
   {
     id: "aaa",
-    name: "Asia Artist Awards",
-    organizer: "스타뉴스",
-    date: "2024년 12월",
+    name: "AAA",
+    organizer: "STARNEWS",
     votingPlatform: "공식 홈페이지",
+    links: {
+      web: "https://www.asiaartistawards.com/",
+    },
     icon: "🎪",
     color: "bg-purple-600",
     description: "아시아 아티스트 어워즈",
-    isActive: false,
-  },
-  {
-    id: "the-fact",
-    name: "THE FACT Music Awards",
-    organizer: "THE FACT",
-    date: "2024년 10월",
-    votingPlatform: "공식 홈페이지",
-    icon: "🎭",
-    color: "bg-orange-600",
-    description: "더팩트 뮤직 어워즈",
     isActive: false,
   },
 ];

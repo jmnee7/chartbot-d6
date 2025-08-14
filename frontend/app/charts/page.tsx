@@ -435,12 +435,6 @@ export default function ChartsPage() {
                     ))}
                   </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-gray-200 text-center">
-                  <p className="text-xs text-gray-500">
-                    마지막 업데이트: {stats.lastUpdated}
-                  </p>
-                </div>
               </>
             ) : (
               <div className="text-center">

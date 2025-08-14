@@ -1,57 +1,76 @@
 "use client";
 
-import { ExternalLink, Radio, Clock, MessageCircle, Phone } from "lucide-react";
+import { ExternalLink, Radio, Clock, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const radioStations = [
   {
     id: "kbs",
-    name: "KBS 쿨FM",
+    name: "KBS",
     programs: [
       {
-        name: "박명수의 라디오쇼",
-        time: "평일 12:00-14:00",
-        url: "https://www.kbs.co.kr/radio/coolfm/radioshow",
+        name: "K-POP Connection",
+        time: "글로벌 프로그램",
+        url: "https://world.kbs.co.kr/service/program_songrequest_list.htm?bbs=kpop_conn_song&lang=e&procode=kpop_conn",
+        description: "영어로도 신청 가능한 글로벌 K-POP 신청 프로그램",
+        icon: "🌏",
       },
       {
-        name: "옥상달빛의 밤편지",
-        time: "평일 24:00-02:00",
-        url: "https://www.kbs.co.kr/radio/coolfm/letter",
+        name: "키스 더 라디오",
+        time: "KBS Cool FM",
+        url: "https://program.kbs.co.kr/2fm/radio/hanhaekiss/pc/board.html?smenu=858a12&bbs_loc=R2025-0082-03-947487,list,none,1,0",
+        description: "KBS 대표 아이돌·K-POP 신청 창구",
+        icon: "💋",
       },
     ],
     color: "bg-blue-500",
   },
   {
     id: "mbc",
-    name: "MBC FM4U",
+    name: "MBC",
     programs: [
       {
-        name: "정오의 희망곡",
-        time: "평일 12:00-14:00",
-        url: "https://www.imbc.com/broad/radio/fm4u/hope",
+        name: "굿모닝 FM 테이입니다",
+        time: "평일 아침",
+        url: "https://www.imbc.com/broad/radio/fm4u/morningfm/requestsong/index.html",
+        description: "문자 #8000으로도 참여 가능",
+        icon: "☀️",
       },
       {
-        name: "배철수의 음악캠프",
-        time: "평일 20:00-22:00",
-        url: "https://www.imbc.com/broad/radio/fm/camp",
+        name: "아이돌 스테이션",
+        time: "아이돌 전문 프로그램",
+        url: "https://www.imbc.com/broad/radio/fm/idolstation/request/index.html",
+        description: "아이돌 팬들을 위한 전용 신청 코너",
+        icon: "💫",
       },
     ],
     color: "bg-green-500",
   },
   {
     id: "sbs",
-    name: "SBS 파워FM",
+    name: "SBS",
     programs: [
       {
-        name: "두시탈출 컬투쇼",
-        time: "평일 14:00-16:00",
-        url: "https://www.sbs.co.kr/radio/cultwoshow",
+        name: "파워타임",
+        time: "매일 진행",
+        url: "https://programs.sbs.co.kr/radio/powertime/boards/57973",
+        description: "사연과 신청곡을 받는 대표 프로그램",
+        icon: "⚡",
       },
       {
-        name: "이국주의 영스트리트",
-        time: "평일 18:00-20:00",
-        url: "https://www.sbs.co.kr/radio/youngstreet",
+        name: "두시탈출 컬투쇼",
+        time: "평일 오후 2시",
+        url: "https://programs.sbs.co.kr/radio/cultwoshow/boards/58047",
+        description: "사연 접수 및 생방송 방청 신청 가능",
+        icon: "🎭",
+      },
+      {
+        name: "황제성의 황제파워",
+        time: "주말 프로그램",
+        url: "https://programs.sbs.co.kr/radio/kingcastlepower/boards/74230",
+        description: "드디어 신청곡 받습니다 - 다양한 참여 방식 지원",
+        icon: "👑",
       },
     ],
     color: "bg-red-500",
@@ -59,10 +78,10 @@ const radioStations = [
 ];
 
 const radioTips = [
-  "사연과 함께 신청하면 선곡 확률이 높아져요",
-  "여러 프로그램에 동시 신청 가능해요",
-  "매일 꾸준히 신청하는 것이 중요해요",
-  "최신곡과 인기곡을 골고루 신청해주세요",
+  "DAY6 곡과 함께 짧은 사연을 작성해 주세요",
+  "신청곡명과 아티스트명을 정확히 입력해 주세요",
+  "방송 시간대를 확인하고 적절한 시간에 신청하세요",
+  "문자 신청 시 요금이 발생할 수 있습니다",
 ];
 
 export default function RadioPage() {
@@ -129,7 +148,7 @@ export default function RadioPage() {
                   </div>
 
                   {/* Programs */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 gap-2">
                     {station.programs.map((program, index) => (
                       <Button
                         key={index}
@@ -142,13 +161,19 @@ export default function RadioPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <div className="text-left">
-                            <div className="text-sm font-medium text-gray-700">
-                              {program.name}
+                          <div className="text-left flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-lg">{program.icon}</span>
+                              <div className="text-sm font-medium text-gray-700">
+                                {program.name}
+                              </div>
                             </div>
-                            <div className="text-xs text-gray-500 flex items-center gap-1 mt-1">
+                            <div className="text-xs text-gray-500 flex items-center gap-1 mb-1">
                               <Clock className="w-3 h-3" />
                               {program.time}
+                            </div>
+                            <div className="text-xs text-gray-400">
+                              {program.description}
                             </div>
                           </div>
                           <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0" />
@@ -183,21 +208,20 @@ export default function RadioPage() {
           </CardContent>
         </Card>
 
-        {/* Quick Contact Info */}
+        {/* SMS Request Info */}
         <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <Phone className="w-4 h-4 text-white" />
+                <MessageCircle className="w-4 h-4 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold text-blue-900 mb-2">전화 신청</h3>
+                <h3 className="font-bold text-blue-900 mb-2">문자 신청</h3>
                 <div className="text-sm text-blue-700 space-y-1">
-                  <div>• KBS 쿨FM: 02-781-1007</div>
-                  <div>• MBC FM4U: 02-789-2580</div>
-                  <div>• SBS 파워FM: 02-2061-0103</div>
+                  <div>• MBC 굿모닝 FM: 문자 #8000</div>
+                  <div>• 기타 프로그램은 웹사이트에서 신청</div>
                   <div className="text-xs text-blue-600 mt-2">
-                    ※ 프로그램 방송 시간에만 연결됩니다
+                    ※ 문자 요금이 발생할 수 있습니다
                   </div>
                 </div>
               </div>

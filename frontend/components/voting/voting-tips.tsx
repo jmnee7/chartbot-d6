@@ -5,24 +5,53 @@ import { AlertCircle } from "lucide-react";
 
 export function VotingTips() {
   return (
-    <Card className="bg-blue-50 border-blue-200">
-      <CardContent className="p-4">
-        <div className="flex items-start gap-3">
-          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-            <AlertCircle className="w-4 h-4 text-white" />
+    <div className="space-y-4">
+      <Card className="bg-blue-50 border-blue-200">
+        <CardContent className="p-4">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <AlertCircle className="w-4 h-4 text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-bold text-blue-900 mb-2">
+                음악방송 투표 가이드
+              </h3>
+              <div className="text-sm text-blue-700 space-y-2">
+                <div>
+                  <strong>시작 앱 추천:</strong> Mnet Plus, IDOL CHAMP, Mubeat
+                </div>
+                <div>
+                  <strong>투표 화폐:</strong>
+                  <ul className="ml-4 mt-1 space-y-1">
+                    <li>• STAR PLANET: Jelly (100 Jelly = 1표)</li>
+                    <li>• IDOL CHAMP: Chamsim(❤️/💙) → 티켓 교환</li>
+                    <li>• Mubeat: Heart/Star Beats → 투표</li>
+                  </ul>
+                </div>
+                <div>
+                  <strong>투표 제한:</strong> IDOL CHAMP 최대 300회/일, Mubeat
+                  무제한
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex-1">
-            <h3 className="font-bold text-blue-900 mb-2">투표 팁</h3>
-            <ul className="text-sm text-blue-700 space-y-1">
-              <li>• 매일 꾸준히 투표하기</li>
-              <li>• 투표 시간 알람 설정하기</li>
-              <li>• 여러 계정 활용하기 (앱별 정책 확인)</li>
-              <li>• 투표 인증 이벤트 참여하기</li>
-              <li>• 팬덤과 함께 조직 투표 참여</li>
-            </ul>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-mint-50 border-mint-200">
+        <CardContent className="p-4">
+          <div className="text-sm text-mint-dark">
+            <div className="font-bold mb-2">🗓️ 주요 투표 스케줄</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>• 더쇼: 일요일 오후 ~ 월요일 오후</div>
+              <div>• 쇼챔피언: 월요일 ~ 화요일</div>
+              <div>• 엠카운트다운: 금요일 ~ 월요일</div>
+              <div>• 뮤직뱅크: 월요일 ~ 수요일</div>
+              <div>• 쇼! 음악중심: 화요일 ~ 금요일</div>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

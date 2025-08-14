@@ -4,6 +4,7 @@ import { GUIDE_CATEGORIES } from "@/content/guide.config";
 import { CategoryTabs } from "@/components/guide/category-tabs";
 import { ImageGallery } from "@/components/guide/image-gallery";
 import { ShareButton } from "@/components/guide/share-button";
+import { SectionHeader } from "@/components/ui/section-header";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -24,8 +25,8 @@ export default async function GuideDetailPage({ params }: Props) {
     <div className="mx-auto w-full max-w-screen-sm px-4 pb-24">
       {/* 헤더 동일 */}
       <header className="sticky top-0 z-30  pb-3 pt-4">
-        <div className="flex items-center justify-between">
-          <h1 className="text-lg font-bold">DAY6 응원 가이드</h1>
+        {/* <div className="flex items-center justify-between"> */}
+        {/* <h1 className="text-lg font-bold">DAY6 응원 가이드</h1>
           <div className="text-xs text-gray-500">
             {c.date ??
               new Intl.DateTimeFormat("ko-KR", {
@@ -38,8 +39,9 @@ export default async function GuideDetailPage({ params }: Props) {
                 .replace(".", "")}
           </div>
 
-          <ShareButton title={c.label} slug={slug} />
-        </div>
+          <ShareButton title={c.label} slug={slug} /> */}
+        <SectionHeader title="DAY6 응원 가이드" />
+        {/* </div> */}
 
         {/* 카테고리 탭 */}
         <CategoryTabs categoryItems={categoryItems} activeSlug={slug} />
@@ -93,21 +95,6 @@ export default async function GuideDetailPage({ params }: Props) {
           )}
         </div>
       </section>
-
-      {/* 하단 고정 버튼(모바일 UX) */}
-      {c.cta && (
-        <div className="fixed inset-x-0 bottom-20 z-20 mx-auto w-full max-w-screen-sm px-4">
-          <Link
-            href={c.cta.href}
-            {...(c.cta.external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
-            className="block w-full py-3 bg-gray-900 text-white text-center rounded-lg font-medium hover:bg-gray-800 transition-colors"
-          >
-            {c.cta.label.replace(" >", "")}
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
