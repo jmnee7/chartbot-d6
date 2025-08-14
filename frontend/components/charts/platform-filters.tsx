@@ -2,10 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { PlatformType } from "@/lib/types";
+import { useCallback, memo } from "react";
 
 interface PlatformFiltersProps {
   selectedPlatforms: PlatformType[];
-  onPlatformChange: (platforms: PlatformType[]) => void;
+  onPlatformChange: (
+    platforms: PlatformType[] | ((prev: PlatformType[]) => PlatformType[])
+  ) => void;
 }
 
 const PLATFORMS = [
@@ -24,17 +27,22 @@ const PLATFORMS = [
   },
 ];
 
-export function PlatformFilters({
+export const PlatformFilters = memo(function PlatformFilters({
   selectedPlatforms,
   onPlatformChange,
 }: PlatformFiltersProps) {
-  const togglePlatform = (platform: PlatformType) => {
-    if (selectedPlatforms.includes(platform)) {
-      onPlatformChange(selectedPlatforms.filter((p) => p !== platform));
-    } else {
-      onPlatformChange([...selectedPlatforms, platform]);
-    }
-  };
+  const togglePlatform = useCallback(
+    (platform: PlatformType) => {
+      onPlatformChange((prev) => {
+        if (prev.includes(platform)) {
+          return prev.filter((p) => p !== platform);
+        } else {
+          return [...prev, platform];
+        }
+      });
+    },
+    [onPlatformChange]
+  );
 
   return (
     <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -57,4 +65,4 @@ export function PlatformFilters({
       ))}
     </div>
   );
-}
+});

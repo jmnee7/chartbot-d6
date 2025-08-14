@@ -1,6 +1,9 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function QuickAccessCard() {
   const streamingPlatforms = [
@@ -40,28 +43,42 @@ export default function QuickAccessCard() {
     <Card>
       <CardContent className="p-0">
         <div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3">
-          {streamingPlatforms.map((platform) => (
-            <Button
+          {streamingPlatforms.map((platform, index) => (
+            <motion.div
               key={platform.name}
-              asChild
-              variant="ghost"
-              className="flex flex-col items-center p-3 h-auto border border-gray-100 hover:border-gray-200"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.2,
+                delay: index * 0.05,
+                ease: "easeOut",
+              }}
             >
-              <a href={platform.url} target="_blank" rel="noopener noreferrer">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mb-2 bg-white overflow-hidden">
-                  <Image
-                    src={platform.logo}
-                    alt={platform.name}
-                    width={28}
-                    height={28}
-                    className="rounded object-cover"
-                  />
-                </div>
-                <span className="text-xs lg:text-sm font-medium text-gray-700 text-center">
-                  {platform.name}
-                </span>
-              </a>
-            </Button>
+              <Button
+                asChild
+                variant="ghost"
+                className="w-full flex flex-col items-center p-3 h-auto border border-gray-100 hover:border-gray-200 transition-colors"
+              >
+                <a
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mb-2 bg-white overflow-hidden">
+                    <Image
+                      src={platform.logo}
+                      alt={platform.name}
+                      width={28}
+                      height={28}
+                      className="rounded object-cover"
+                    />
+                  </div>
+                  <span className="text-xs lg:text-sm font-medium text-gray-700 text-center">
+                    {platform.name}
+                  </span>
+                </a>
+              </Button>
+            </motion.div>
           ))}
         </div>
       </CardContent>

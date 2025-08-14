@@ -37,7 +37,7 @@ const socialLinks = [
   },
   {
     name: "Fans Community",
-    url: "https://app.fans/community/day6/artist",
+    url: "https://day6.jype.com",
     icon: ExternalLink,
     color: "hover:text-purple-500",
   },

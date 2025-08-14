@@ -35,7 +35,7 @@ export function PageHeader({
       .replace(/\.$/, "");
 
   return (
-    <header className="sticky top-0 z-30 bg-white pb-3 pt-4">
+    <header className="sticky top-0 z-30 pb-3 pt-4">
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-lg font-bold">{title}</h1>

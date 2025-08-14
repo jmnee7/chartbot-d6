@@ -12,6 +12,8 @@ export default function AlertBanner() {
     queryFn: fetchVotes,
   });
 
+  console.log("votes", votes);
+
   const urgentVotes = votes?.filter((v) => {
     const daysLeft = Math.ceil(
       (v.deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)

@@ -17,7 +17,7 @@ export function MusicShowCard({ show }: MusicShowCardProps) {
           <div
             className={`w-full h-16 ${show.color} rounded-lg flex items-center justify-center`}
           >
-            <span className="text-2xl">{show.icon}</span>
+            <Vote className="w-8 h-8 text-white" />
           </div>
 
           <div>
@@ -31,7 +31,7 @@ export function MusicShowCard({ show }: MusicShowCardProps) {
               <span>{show.schedule}</span>
             </div>
 
-            {show.votingPeriod && show.votingPeriod !== "사전투표 없음" && (
+            {show.hasVoting && show.votingPeriod && (
               <div className="flex items-center gap-2 text-gray-600">
                 <Clock className="w-3 h-3" />
                 <span>투표: {show.votingPeriod}</span>
@@ -41,14 +41,10 @@ export function MusicShowCard({ show }: MusicShowCardProps) {
             <div className="flex items-center gap-2">
               <Vote className="w-3 h-3 text-gray-600" />
               <Badge
-                variant={
-                  show.votingMethod === "사전투표 없음"
-                    ? "secondary"
-                    : "default"
-                }
+                variant={show.hasVoting ? "default" : "secondary"}
                 className="text-xs"
               >
-                {show.votingMethod}
+                {show.votingApp}
               </Badge>
             </div>
           </div>

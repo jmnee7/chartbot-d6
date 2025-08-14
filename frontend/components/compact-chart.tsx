@@ -123,9 +123,7 @@ export function CompactChart() {
                     </>
                   ) : (
                     <>
-                      <p className="font-medium text-sm text-orange-600">
-                        우리가 올려줘💪
-                      </p>
+                      <p className="font-medium text-sm text-orange-600">❌</p>
                       <p className="text-xs text-gray-500 truncate">
                         {song?.title || "DAY6"}
                       </p>

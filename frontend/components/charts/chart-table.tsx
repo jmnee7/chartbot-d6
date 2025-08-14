@@ -121,7 +121,7 @@ function SongRow({
         {song.rank === null && (
           <div className="text-right">
             <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-medium block">
-              우리가 올려줘💪
+              ❌
             </span>
           </div>
         )}

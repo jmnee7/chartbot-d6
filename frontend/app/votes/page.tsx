@@ -3,19 +3,20 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertCircle } from "lucide-react";
-import { PageHeader } from "@/components/common/page-header";
 import { MUSIC_SHOWS } from "@/lib/constants/music-shows";
-import { AWARDS } from "@/lib/constants/awards";
 import { MusicShowCard } from "@/components/voting/music-show-card";
-import { AwardCard } from "@/components/voting/award-card";
-import { VotingTips } from "@/components/voting/voting-tips";
 
 export default function VotesPage() {
   return (
-    <div className="min-h-screen pb-24">
-      <PageHeader title="투표" description="DAY6의 1위를 위해 투표해주세요" />
-
-      <div className="px-4 md:px-6 lg:px-8 space-y-6">
+    <div>
+      <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
+        {/* Section Header - same style as homepage */}
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg md:text-xl font-bold text-gray-900">투표</h2>
+          </div>
+          <div className="text-gray-300"></div>
+        </div>
         <Tabs defaultValue="music-shows" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="music-shows">음악방송</TabsTrigger>
@@ -24,45 +25,54 @@ export default function VotesPage() {
 
           <TabsContent value="music-shows" className="mt-6">
             <div className="space-y-6">
-              <VotingTips />
+              {/* Mobile Divider */}
+              <div
+                className="md:hidden -mx-9"
+                style={{ borderBottom: "0.6rem solid #f7f8f9" }}
+              ></div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {MUSIC_SHOWS.map((show) => (
                   <MusicShowCard key={show.id} show={show} />
                 ))}
               </div>
+
+              {/* DAY6 투표독려팀 */}
+              <Card className="bg-gradient-to-r from-mint-50 to-mint-100/50 border-mint-200">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-mint-primary rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold">V</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">
+                        DAY6 투표독려팀
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </TabsContent>
 
           <TabsContent value="awards" className="mt-6">
             <div className="space-y-6">
-              <Card className="bg-yellow-50 border-yellow-200">
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <AlertCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold text-yellow-900 mb-2">
-                        시상식 투표 안내
-                      </h3>
-                      <p className="text-sm text-yellow-700">
-                        현재 진행 중인 시상식 투표가 있을 때 이곳에 표시됩니다.
-                      </p>
-                    </div>
+              <Card className="bg-gray-50 border-gray-200">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-200 rounded-full mb-4">
+                    <AlertCircle className="w-8 h-8 text-gray-500" />
                   </div>
+                  <h3 className="font-bold text-gray-900 mb-2">준비중</h3>
+                  <p className="text-sm text-gray-600">준비중</p>
                 </CardContent>
               </Card>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {AWARDS.map((award) => (
-                  <AwardCard key={award.id} award={award} />
-                ))}
-              </div>
             </div>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Bottom spacing for mobile nav */}
+      <div className="h-20 md:h-8"></div>
     </div>
   );
 }
