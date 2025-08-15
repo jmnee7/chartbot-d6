@@ -117,6 +117,18 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "streaming",
   },
+  {
+    slug: "stationhead",
+    label: "스테이션헤드",
+    heroImage: "/guide/stationhead-streaming.webp",
+    images: ["/guide/station-head-streaming.webp"],
+    cta: {
+      label: "스테이션헤드로 이동",
+      href: "https://stationhead.com/day6strmteam",
+      external: true,
+    },
+    category: "streaming",
+  },
 
   // === 다운로드 ===
   {

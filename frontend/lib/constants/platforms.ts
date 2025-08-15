@@ -72,6 +72,14 @@ export const MUSIC_PLATFORMS: Platform[] = [
     color: "bg-gray-800",
     category: "music",
   },
+  {
+    id: "stationhead",
+    name: "스테이션헤드",
+    logo: "/streaming/station-head-logo.webp",
+    url: "https://stationhead.com/day6strmteam",
+    color: "bg-indigo-500",
+    category: "music",
+  },
 ];
 
 export const MV_PLATFORMS: Platform[] = [

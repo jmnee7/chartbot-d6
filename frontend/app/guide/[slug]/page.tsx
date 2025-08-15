@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GUIDE_CATEGORIES } from "@/content/guide.config";
 import { CategoryTabs } from "@/components/guide/category-tabs";
 import { ImageGallery } from "@/components/guide/image-gallery";
-import { ShareButton } from "@/components/guide/share-button";
 import { SectionHeader } from "@/components/ui/section-header";
 
 type Props = { params: Promise<{ slug: string }> };

@@ -6,7 +6,7 @@ export function MelonMusicwaveBanner() {
   return (
     <div className="w-full">
       <a
-        href="https://musicwave.melon.com/"
+        href="https://kko.kakao.com/q2UMCC03-4"
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full p-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-colors rounded-lg shadow-md"

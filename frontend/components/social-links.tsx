@@ -7,8 +7,6 @@ import {
   Youtube,
   ExternalLink,
   ShoppingBag,
-  Radio,
-  Music,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -48,18 +46,6 @@ const socialLinks = [
     url: "https://app.fans/shop/day6",
     icon: ShoppingBag,
     color: "hover:text-green-500",
-  },
-  {
-    name: "뮤직웨이브 채널",
-    url: "https://kko.kakao.com/q2UMCC03-4",
-    icon: Music,
-    color: "hover:text-yellow-500",
-  },
-  {
-    name: "스테이션헤드 채널",
-    url: "https://stationhead.com/day6strmteam",
-    icon: Radio,
-    color: "hover:text-indigo-500",
   },
 ];
 

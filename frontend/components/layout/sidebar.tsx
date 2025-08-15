@@ -63,6 +63,7 @@ const navigation: NavigationItem[] = [
           { name: "유튜브", href: "/guide/youtube" },
           { name: "애플", href: "/guide/apple-music" },
           { name: "스포티파이", href: "/guide/spotify" },
+          { name: "스테이션헤드", href: "/guide/stationhead" },
         ],
       },
       {

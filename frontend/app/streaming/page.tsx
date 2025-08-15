@@ -46,6 +46,11 @@ const streamingPlatforms = [
     url: "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
     color: "bg-green-600",
   },
+  {
+    name: "스테이션헤드",
+    url: "https://stationhead.com/day6strmteam",
+    color: "bg-indigo-500",
+  },
 ];
 
 export default function StreamingPage() {
