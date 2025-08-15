@@ -21,7 +21,6 @@ export type GuideCategory = {
 
 export const GUIDE_CATEGORIES: GuideCategory[] = [
   // === 스트리밍 ===
-  // 국내 음원 플랫폼
   {
     slug: "melon",
     label: "멜론",
@@ -29,7 +28,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/melon-streaming.webp"],
     cta: {
       label: "멜론으로 이동",
-      href: "https://www.melon.com",
+      href: "https://www.melon.com/album/detail.htm?albumId=11796328",
       external: true,
     },
     category: "streaming",
@@ -41,7 +40,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/genie-streaming.png"],
     cta: {
       label: "지니로 이동",
-      href: "https://www.genie.co.kr",
+      href: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
       external: true,
     },
     category: "streaming",
@@ -53,19 +52,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/bugs-streaming.webp"],
     cta: {
       label: "벅스로 이동",
-      href: "https://music.bugs.co.kr",
-      external: true,
-    },
-    category: "streaming",
-  },
-  {
-    slug: "flo",
-    label: "플로",
-    heroImage: "/guide/flo-streaming.webp",
-    images: ["/guide/flo-streaming.webp"],
-    cta: {
-      label: "플로로 이동",
-      href: "https://www.music-flo.com",
+      href: "https://music.bugs.co.kr/album/20724195",
       external: true,
     },
     category: "streaming",
@@ -77,12 +64,35 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/vibe-streaming.webp"],
     cta: {
       label: "바이브로 이동",
-      href: "https://vibe.naver.com",
+      href: "https://vibe.naver.com/search?query=DAY6",
       external: true,
     },
     category: "streaming",
   },
-  // 글로벌 음원 플랫폼
+  {
+    slug: "flo",
+    label: "플로",
+    heroImage: "/guide/flo-streaming.webp",
+    images: ["/guide/flo-streaming.webp"],
+    cta: {
+      label: "플로로 이동",
+      href: "http://bit.ly/4iNKK4I",
+      external: true,
+    },
+    category: "streaming",
+  },
+  {
+    slug: "youtube",
+    label: "유튜브",
+    heroImage: "/guide/youtube-mv-streaming.webp",
+    images: ["/guide/youtube-mv-streaming.webp"],
+    cta: {
+      label: "YouTube로 이동",
+      href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      external: true,
+    },
+    category: "streaming",
+  },
   {
     slug: "apple-music",
     label: "애플뮤직",
@@ -90,7 +100,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/apple-streaming.webp"],
     cta: {
       label: "Apple Music으로 이동",
-      href: "https://music.apple.com",
+      href: "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
       external: true,
     },
     category: "streaming",
@@ -102,82 +112,57 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/spotify-streaming.webp"],
     cta: {
       label: "Spotify로 이동",
-      href: "https://open.spotify.com",
-      external: true,
-    },
-    category: "streaming",
-  },
-  {
-    slug: "youtube-music",
-    label: "유튜브뮤직",
-    heroImage: "/guide/youtube-streaming.png",
-    images: ["/guide/youtube-streaming.png"],
-    cta: {
-      label: "YouTube Music으로 이동",
-      href: "https://music.youtube.com",
-      external: true,
-    },
-    category: "streaming",
-  },
-  {
-    slug: "youtube",
-    label: "유튜브 뮤직비디오",
-    heroImage: "/guide/youtube-mv-streaming.webp",
-    images: ["/guide/youtube-mv-streaming.webp"],
-    cta: {
-      label: "YouTube로 이동",
-      href: "https://www.youtube.com",
+      href: "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
       external: true,
     },
     category: "streaming",
   },
 
   // === 다운로드 ===
-  // 음원 다운로드
   {
     slug: "download-melon",
-    label: "멜론 음원",
+    label: "멜론",
     heroImage: "/guide/melon-download.webp",
     images: ["/guide/melon-download.webp"],
     cta: {
       label: "멜론 다운로드",
-      href: "https://www.melon.com",
+      href: "https://www.melon.com/song/detail.htm?songId=38892497",
       external: true,
     },
     category: "support",
   },
   {
     slug: "download-genie",
-    label: "지니 음원",
+    label: "지니",
     heroImage: "/guide/genie-download.jpg",
     images: ["/guide/genie-download.jpg"],
     cta: {
       label: "지니 다운로드",
-      href: "https://www.genie.co.kr",
+      href: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
       external: true,
     },
     category: "support",
   },
   {
     slug: "download-bugs",
-    label: "벅스 음원",
+    label: "벅스",
     heroImage: "/guide/bugs-download.jpg",
     images: ["/guide/bugs-download.jpg"],
     cta: {
       label: "벅스 다운로드",
-      href: "https://music.bugs.co.kr",
+      href: "https://music.bugs.co.kr/track/33526777",
       external: true,
     },
     category: "support",
   },
   {
     slug: "download-vibe",
-    label: "바이브 음원",
+    label: "바이브",
     heroImage: "/guide/vibe-download.webp",
     images: ["/guide/vibe-download.webp"],
     cta: {
       label: "바이브 다운로드",
-      href: "https://vibe.naver.com",
+      href: "https://vibe.naver.com/artist/455339",
       external: true,
     },
     category: "support",
@@ -189,12 +174,23 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/kakao-download.webp"],
     cta: {
       label: "카카오뮤직 다운로드",
-      href: "https://music.kakao.com",
+      href: "https://kakaomusic.kakao.com/bridge/music_room?mrId=18952246&version=v11&channelId=URL&contentId=18952246",
       external: true,
     },
     category: "support",
   },
-  // 뮤비 다운로드
+  {
+    slug: "vcoloring",
+    label: "V컬러링",
+    heroImage: "/guide/v-coloring-download.webp",
+    images: ["/guide/v-coloring-download.webp"],
+    cta: {
+      label: "V컬러링 설정하기",
+      href: "https://www.vcoloring.com/outlink/join_pc.html",
+      external: true,
+    },
+    category: "support",
+  },
   {
     slug: "download-mv-melon",
     label: "멜론 뮤비",
@@ -202,7 +198,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/melon-music-vedio-download.webp"],
     cta: {
       label: "멜론 뮤비 다운로드",
-      href: "https://www.melon.com",
+      href: "https://www.melon.com/video/detail2.htm?mvId=50280400&menuId=26020105",
       external: true,
     },
     category: "support",
@@ -214,86 +210,10 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/bugs-music-vedio-download.webp"],
     cta: {
       label: "벅스 뮤비 다운로드",
-      href: "https://music.bugs.co.kr",
+      href: "https://music.bugs.co.kr/mv/632091",
       external: true,
     },
     category: "support",
-  },
-  // 기타 다운로드
-  {
-    slug: "itunes-gift",
-    label: "iTunes 기프트",
-    heroImage: "/guide/iTunes-giftt-download.webp",
-    images: ["/guide/iTunes-giftt-download.webp"],
-    cta: {
-      label: "iTunes로 이동",
-      href: "https://www.apple.com/itunes/",
-      external: true,
-    },
-    category: "support",
-  },
-  {
-    slug: "melon-gift",
-    label: "멜론 기프트",
-    heroImage: "/guide/melon-giftt-download.webp",
-    images: ["/guide/melon-giftt-download.webp"],
-    cta: {
-      label: "멜론 기프트샵",
-      href: "https://www.melon.com",
-      external: true,
-    },
-    category: "support",
-  },
-  {
-    slug: "amazon-download",
-    label: "아마존 뮤직",
-    heroImage: "/guide/Amozon-download.webp",
-    images: ["/guide/Amozon-download.webp"],
-    cta: {
-      label: "Amazon Music으로 이동",
-      href: "https://music.amazon.com",
-      external: true,
-    },
-    category: "support",
-  },
-  // v컬러링
-  {
-    slug: "vcoloring",
-    label: "v컬러링",
-    heroImage: "/guide/v-coloring-download.webp",
-    images: ["/guide/v-coloring-download.webp"],
-    cta: {
-      label: "v컬러링 설정하기",
-      href: "https://www.sktelecom.com/index_real.html",
-      external: true,
-    },
-    category: "support",
-  },
-
-  // === 아이디 기부 ===
-  {
-    slug: "genie-donation",
-    label: "지니 기부",
-    heroImage: "/guide/genie-streaming.png",
-    images: ["/guide/genie-streaming.png"],
-    cta: {
-      label: "지니 아이디 기부하기",
-      href: "https://www.genie.co.kr",
-      external: true,
-    },
-    category: "donation",
-  },
-  {
-    slug: "bugs-donation",
-    label: "벅스 기부",
-    heroImage: "/guide/bugs-streaming.webp",
-    images: ["/guide/bugs-streaming.webp"],
-    cta: {
-      label: "벅스 아이디 기부하기",
-      href: "https://music.bugs.co.kr",
-      external: true,
-    },
-    category: "donation",
   },
 
   // === 음악방송 투표 ===

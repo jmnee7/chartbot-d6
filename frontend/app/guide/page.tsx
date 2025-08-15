@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { PageHeader } from "@/components/common/page-header";
 import { GUIDE_CATEGORIES } from "@/content/guide.config";
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/section-header";

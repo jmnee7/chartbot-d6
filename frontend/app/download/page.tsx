@@ -4,7 +4,7 @@ import { Music, Video, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { DOWNLOAD_PLATFORMS } from "@/lib/constants/platforms";
+import { DOWNLOAD_PLATFORMS, MV_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 
 export default function DownloadPage() {
@@ -47,7 +47,7 @@ export default function DownloadPage() {
               <Card className="bg-gradient-to-r from-mint-primary/10 to-mint-light/5 border-mint-primary/30">
                 <CardContent className="p-4">
                   <div className="space-y-3">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
                       <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-mint-primary rounded-lg flex items-center justify-center">
@@ -64,36 +64,12 @@ export default function DownloadPage() {
                           className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7 rounded"
                           onClick={() => {
                             const urls = [
-                              "https://www.melon.com/search/total/index.htm?q=Day6+Maybe+Tomorrow&section=&mwkLogType=T",
-                              "https://www.genie.co.kr/search/searchMain?query=day6+maybe+tomorrow",
-                              "https://music.bugs.co.kr/search/track?q=day6+maybe+tomorrow",
-                            ];
-                            urls.forEach((url) => window.open(url, "_blank"));
-                          }}
-                        >
-                          원클릭 다운
-                        </button>
-                      </div>
-
-                      <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-mint-primary rounded-lg flex items-center justify-center">
-                            <Music className="w-5 h-5 text-white" />
-                          </div>
-                          <div>
-                            <div className="font-medium text-sm">
-                              끝났지 (game over)
-                            </div>
-                            <div className="text-xs text-gray-500">인기곡</div>
-                          </div>
-                        </div>
-                        <button
-                          className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7 rounded"
-                          onClick={() => {
-                            const urls = [
-                              "https://www.melon.com/search/total/index.htm?q=Day6+끝났지&section=&mwkLogType=T",
-                              "https://www.genie.co.kr/search/searchMain?query=day6+끝났지",
-                              "https://music.bugs.co.kr/search/track?q=day6+끝났지",
+                              "https://www.melon.com/song/detail.htm?songId=38892497",
+                              "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
+                              "https://music.bugs.co.kr/track/33526777",
+                              "https://vibe.naver.com/artist/455339",
+                              "https://kakaomusic.kakao.com/bridge/music_room?mrId=18952246&version=v11&channelId=URL&contentId=18952246",
+                              "https://www.vcoloring.com/outlink/join_pc.html",
                             ];
                             urls.forEach((url) => window.open(url, "_blank"));
                           }}
@@ -165,10 +141,59 @@ export default function DownloadPage() {
 
           <TabsContent value="mv" className="mt-6">
             <div className="space-y-6">
-              <Card className="bg-gray-50 border-gray-200">
-                <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-200 rounded-full mb-4">
-                    <Video className="w-8 h-8 text-gray-500" />
+              {/* Featured MV Download Section */}
+              <Card className="bg-gradient-to-r from-mint-primary/10 to-mint-light/5 border-mint-primary/30">
+                <CardContent className="p-4">
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-mint-primary rounded-lg flex items-center justify-center">
+                            <Video className="w-5 h-5 text-white" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-sm">
+                              Maybe Tomorrow
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              뮤직비디오
+                            </div>
+                          </div>
+                        </div>
+                        <button
+                          className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7 rounded"
+                          onClick={() => {
+                            const urls = [
+                              "https://www.melon.com/video/detail2.htm?mvId=50280400&menuId=26020105",
+                              "https://music.bugs.co.kr/mv/632091",
+                            ];
+                            urls.forEach((url) => window.open(url, "_blank"));
+                          }}
+                        >
+                          원클릭 MV 다운
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Mobile Divider */}
+              <div
+                className="md:hidden -mx-9"
+                style={{ borderBottom: "0.6rem solid #f7f8f9" }}
+              ></div>
+
+              <Card>
+                <CardContent className="p-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    {MV_PLATFORMS.map((platform) => (
+                      <PlatformCard
+                        key={platform.id}
+                        platform={platform}
+                        variant="grid"
+                      />
+                    ))}
                   </div>
                 </CardContent>
               </Card>

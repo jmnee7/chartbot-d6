@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Home,
   BarChart3,
   Download,
   Play,
@@ -15,11 +14,8 @@ import {
   ChevronRight,
   X,
   Music,
-  BookOpen,
   ExternalLink,
-  Mic,
-  Headphones,
-  Globe,
+  Home,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -45,12 +41,12 @@ const navigation: NavigationItem[] = [
   { name: "홈", href: "/", icon: Home },
   { name: "차트", href: "/charts", icon: BarChart3 },
   {
-    name: "스트리밍",
+    name: "스트리밍 가이드",
     icon: Play,
     hasChildren: true,
     children: [
       {
-        name: "스트리밍 리스트 (음원, MV)",
+        name: "스트리밍리스트/원클릭",
         href: "/streaming",
         icon: Music,
       },
@@ -59,87 +55,46 @@ const navigation: NavigationItem[] = [
         icon: Music,
         hasChildren: true,
         children: [
-          {
-            name: "멜론",
-            href: "https://www.melon.com/search/total/index.htm?q=Day6&section=&mwkLogType=T",
-            external: true,
-          },
-          {
-            name: "지니",
-            href: "https://www.genie.co.kr/search/searchMain?query=day6",
-            external: true,
-          },
-          {
-            name: "벅스",
-            href: "https://music.bugs.co.kr/search/track?q=day6",
-            external: true,
-          },
-          {
-            name: "바이브",
-            href: "https://vibe.naver.com/search?query=DAY6",
-            external: true,
-          },
-          {
-            name: "플로",
-            href: "https://www.music-flo.com/search/all?keyword=DAY6",
-            external: true,
-          },
-          { name: "애플뮤직", href: "https://music.apple.com", external: true },
-          {
-            name: "스포티파이",
-            href: "https://open.spotify.com/search/day6",
-            external: true,
-          },
-          {
-            name: "스테이션헤드",
-            href: "https://www.stationhead.com/day6strmteam",
-            external: true,
-          },
+          { name: "멜론", href: "/guide/melon" },
+          { name: "지니", href: "/guide/genie" },
+          { name: "벅스", href: "/guide/bugs" },
+          { name: "바이브", href: "/guide/vibe" },
+          { name: "플로", href: "/guide/flo" },
+          { name: "유튜브", href: "/guide/youtube" },
+          { name: "애플", href: "/guide/apple-music" },
+          { name: "스포티파이", href: "/guide/spotify" },
         ],
       },
       {
         name: "MV 스트리밍",
         icon: ExternalLink,
         hasChildren: true,
-        children: [
-          {
-            name: "유튜브",
-            href: "https://youtube.com/@day6_stream?si=Z2HBzbbAJgaNM4LM",
-            external: true,
-          },
-        ],
+        children: [{ name: "유튜브", href: "/guide/youtube" }],
       },
     ],
   },
   {
-    name: "다운로드",
+    name: "다운로드 가이드",
     icon: Download,
     hasChildren: true,
+
     children: [
       {
-        name: "다운로드 목록 (음원, MV)",
+        name: "다운로드",
         href: "/download",
-        icon: Download,
+        icon: Music,
       },
       {
         name: "음원 다운로드",
         icon: Download,
         hasChildren: true,
         children: [
-          { name: "멜론", href: "https://www.melon.com", external: true },
-          { name: "지니", href: "https://www.genie.co.kr", external: true },
-          { name: "벅스", href: "https://music.bugs.co.kr", external: true },
-          { name: "바이브", href: "https://vibe.naver.com", external: true },
-          {
-            name: "카카오뮤직",
-            href: "https://music.kakao.com",
-            external: true,
-          },
-          {
-            name: "V컬러링",
-            href: "https://www.sktelecom.com/index_real.html",
-            external: true,
-          },
+          { name: "멜론", href: "/guide/download-melon" },
+          { name: "지니", href: "/guide/download-genie" },
+          { name: "벅스", href: "/guide/download-bugs" },
+          { name: "바이브", href: "/guide/download-vibe" },
+          { name: "카카오뮤직", href: "/guide/download-kakao" },
+          { name: "V컬러링", href: "/guide/vcoloring" },
         ],
       },
       {
@@ -147,8 +102,8 @@ const navigation: NavigationItem[] = [
         icon: ExternalLink,
         hasChildren: true,
         children: [
-          { name: "멜론", href: "https://www.melon.com", external: true },
-          { name: "벅스", href: "https://music.bugs.co.kr", external: true },
+          { name: "멜론", href: "/guide/download-mv-melon" },
+          { name: "벅스", href: "/guide/download-mv-bugs" },
         ],
       },
     ],
@@ -159,24 +114,8 @@ const navigation: NavigationItem[] = [
     hasChildren: true,
     children: [
       {
-        name: "투표 가이드",
-        icon: BookOpen,
-        hasChildren: true,
-        children: [
-          { name: "더쇼", href: "/guide/theshow" },
-          { name: "쇼챔", href: "/guide/musiccore" },
-          { name: "엠카운트다운", href: "/guide/mcountdown" },
-          { name: "뮤직뱅크", href: "/guide/musicbank" },
-          { name: "음악중심", href: "/guide/musiccore" },
-          { name: "인기가요", href: "/guide/inkigayo" },
-          { name: "뮤빗", href: "/guide/mubeat" },
-          { name: "아이돌챔프", href: "/guide/idolchamp" },
-          { name: "스타플래닛", href: "/guide/starplanet" },
-        ],
-      },
-      {
-        name: "투표 사이트 바로가기",
-        icon: ExternalLink,
+        name: "음악방송",
+        icon: Vote,
         hasChildren: true,
         children: [
           {
@@ -190,68 +129,31 @@ const navigation: NavigationItem[] = [
             external: true,
           },
           {
-            name: "엠카운트다운",
+            name: "엠카",
             href: "https://share.mnetplus.world/download?hl=en",
             external: true,
           },
           {
-            name: "뮤직뱅크",
+            name: "뮤뱅",
             href: "https://program.kbs.co.kr/2tv/enter/musicbank/pc/index.html",
             external: true,
           },
           {
-            name: "음악중심",
+            name: "음중",
             href: "https://program.imbc.com/Info/musiccore?seq=5",
             external: true,
           },
           {
-            name: "인기가요",
+            name: "인가",
             href: "https://now.sbs.co.kr/now_web/main.html",
             external: true,
           },
-          { name: "뮤빗", href: "https://mubeat.com/", external: true },
-          {
-            name: "아이돌챔프",
-            href: "https://idolchamp.co.kr/",
-            external: true,
-          },
-          {
-            name: "스타플래닛",
-            href: "https://www.starplanet.kr/",
-            external: true,
-          },
-          {
-            name: "올차트",
-            href: "https://www.allchart.co.kr/",
-            external: true,
-          },
-          { name: "LiNC", href: "https://linc-app.com/", external: true },
         ],
       },
-    ],
-  },
-  {
-    name: "라디오",
-    icon: Radio,
-    hasChildren: true,
-    children: [
       {
-        name: "KBS",
-        href: "https://www.kbs.co.kr/radio/",
+        name: "시상식",
+        href: "/votes",
         icon: ExternalLink,
-        external: true,
-      },
-      {
-        name: "MBC",
-        href: "https://www.imbc.com/broad/radio/",
-        icon: ExternalLink,
-        external: true,
-      },
-      {
-        name: "SBS",
-        href: "https://www.sbs.co.kr/radio/",
-        icon: ExternalLink,
-        external: true,
       },
     ],
   },
@@ -261,15 +163,30 @@ const navigation: NavigationItem[] = [
     hasChildren: true,
     children: [
       {
-        name: "서포트 안내",
+        name: "앨범 공구",
+        href: "https://docs.google.com/forms/d/e/1FAIpQLSfIHNDZNuR2mgfTmQWGMeHBgiNp3nFs7jZ0Ok3Tz0EFengsyw/viewform",
+        icon: ExternalLink,
+        external: true,
+      },
+      {
+        name: "다운 헬퍼 지원",
         href: "/support",
         icon: Heart,
       },
       {
-        name: "공동 구매링크",
-        href: "https://docs.google.com/forms/d/e/1FAIpQLSfIHNDZNuR2mgfTmQWGMeHBgiNp3nFs7jZ0Ok3Tz0EFengsyw/viewform",
+        name: "아이디 기부",
+        href: "/support",
         icon: ExternalLink,
-        external: true,
+      },
+      {
+        name: "라디오 신청",
+        href: "/radio",
+        icon: Radio,
+      },
+      {
+        name: "모금",
+        href: "/support",
+        icon: ExternalLink,
       },
     ],
   },

@@ -10,7 +10,51 @@ import { PlatformCard } from "@/components/platform/platform-card";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+const streamingPlatforms = [
+  {
+    name: "멜론",
+    url: "https://www.melon.com/album/detail.htm?albumId=11796328",
+    color: "bg-green-500",
+  },
+  {
+    name: "지니",
+    url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
+    color: "bg-blue-500",
+  },
+  {
+    name: "벅스",
+    url: "https://music.bugs.co.kr/album/20724195",
+    color: "bg-red-500",
+  },
+  {
+    name: "플로",
+    url: "http://bit.ly/4iNKK4I",
+    color: "bg-purple-500",
+  },
+  {
+    name: "유튜브",
+    url: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+    color: "bg-red-600",
+  },
+  {
+    name: "애플뮤직",
+    url: "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
+    color: "bg-gray-800",
+  },
+  {
+    name: "스포티파이",
+    url: "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
+    color: "bg-green-600",
+  },
+];
+
 export default function StreamingPage() {
+  const handleOneClickStreaming = () => {
+    streamingPlatforms.forEach((platform) => {
+      window.open(platform.url, "_blank");
+    });
+  };
+
   return (
     <div>
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
@@ -37,22 +81,12 @@ export default function StreamingPage() {
                 <Button
                   size="sm"
                   className="bg-mint-primary hover:bg-mint-dark text-white text-xs px-3 py-1 h-7"
-                  onClick={() => {
-                    // 여러 플랫폼 동시에 열기
-                    const urls = [
-                      "https://www.melon.com/song/detail.htm?songId=31650949",
-                      "https://www.genie.co.kr/detail/songInfo?xgnm=31650949",
-                      "https://music.bugs.co.kr/track/20447162",
-                      "https://www.youtube.com/watch?v=I1gI9ZCcSJs",
-                    ];
-                    urls.forEach((url) => window.open(url, "_blank"));
-                  }}
+                  onClick={handleOneClickStreaming}
                 >
                   원클릭 스트리밍
                 </Button>
               </div>
             </div>
-            <div className="mt-4 p-3 bg-white/50 rounded-lg"></div>
           </CardContent>
         </Card>
 

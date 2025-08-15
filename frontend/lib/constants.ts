@@ -34,6 +34,21 @@ export const DAY6_OFFICIAL = {
     name: "DAY6 Wikipedia",
     url: "https://en.wikipedia.org/wiki/Day6",
   },
+  // 음총팀 채널
+  fanStreamTeam: {
+    musicwave: {
+      name: "음총팀 뮤직웨이브 채널",
+      url: "https://kko.kakao.com/q2UMCC03-4",
+    },
+    stationhead: {
+      name: "음총팀 스테이션헤드 채널",
+      url: "https://stationhead.com/day6strmteam",
+    },
+    youtube: {
+      name: "음총팀 유튜브 채널",
+      url: "https://youtube.com/@day6_stream?si=Z2HBzbbAJgaNM4LM",
+    },
+  },
 } as const;
 
 // YouTube 설정
