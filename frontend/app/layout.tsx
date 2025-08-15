@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
     images: [
       {
-        url: "/open-graph.jpg",
+        url: "/day6-banner.jpeg",
         width: 1200,
         height: 800,
         alt: "DAY6 - 음원정보팀",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: " - DAY6 음원정보팀",
     description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
-    images: ["/open-graph.jpg"],
+    images: ["/day6-banner.jpeg"],
     creator: "@Day6_vote_team",
   },
 
