@@ -193,15 +193,15 @@ export default function SupportPage() {
   const getVersionInfo = (version: string) => {
     switch (version) {
       case "nemo":
-        return { name: "네모반", description: "11,900원 (2종)" };
+        return { name: "Nemo Ver.", description: "11,900원 (2종)" };
       case "standard":
-        return { name: "일반반", description: "19,300원 (2종)" };
+        return { name: "CD Ver.", description: "19,300원 (2종)" };
       case "idCard":
-        return { name: "ID카드", description: "22,300원" };
+        return { name: "ID Card Ver.", description: "22,300원" };
       case "earphone":
-        return { name: "이어폰반", description: "66,700원 (4종 랜덤)" };
+        return { name: "In Ear Earphones Ver.", description: "66,700원 (4종 랜덤)" };
       default:
-        return { name: "일반반", description: "19,300원 (2종)" };
+        return { name: "CD Ver.", description: "19,300원 (2종)" };
     }
   };
 
@@ -403,33 +403,29 @@ export default function SupportPage() {
 
               <div className="p-4 space-y-4">
                 {/* Warning */}
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
-                  <p className="text-sm text-amber-800">
-                    공구 참여 시 <strong>더 저렴한 가격과 추가 특전</strong>을
-                    받을 수 있어요!
-                  </p>
-                </div>
 
                 {/* Version Selector */}
-                <div className="flex flex-wrap gap-2">
-                  {(["nemo", "standard", "idCard", "earphone"] as const).map(
-                    (version) => {
-                      const info = getVersionInfo(version);
-                      return (
-                        <Badge
-                          key={version}
-                          className={`cursor-pointer px-3 py-2 text-sm ${
-                            selectedVersion === version
-                              ? "bg-mint-primary text-white"
-                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                          }`}
-                          onClick={() => setSelectedVersion(version)}
-                        >
-                          {info.name}
-                        </Badge>
-                      );
-                    }
-                  )}
+                <div className="overflow-x-auto -mx-4 px-4">
+                  <div className="flex gap-2 min-w-max">
+                    {(["nemo", "standard", "idCard", "earphone"] as const).map(
+                      (version) => {
+                        const info = getVersionInfo(version);
+                        return (
+                          <Badge
+                            key={version}
+                            className={`cursor-pointer px-3 py-2 text-sm whitespace-nowrap ${
+                              selectedVersion === version
+                                ? "bg-mint-primary text-white"
+                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            }`}
+                            onClick={() => setSelectedVersion(version)}
+                          >
+                            {info.name}
+                          </Badge>
+                        );
+                      }
+                    )}
+                  </div>
                 </div>
 
                 {/* Selected Version Info */}
@@ -552,9 +548,9 @@ export default function SupportPage() {
                     <thead>
                       <tr className="border-b bg-gray-50">
                         <th className="text-left py-3 px-4">구매처</th>
-                        <th className="text-center py-3 px-4">네모반</th>
-                        <th className="text-center py-3 px-4">일반반</th>
-                        <th className="text-center py-3 px-4">ID카드</th>
+                        <th className="text-center py-3 px-4">Nemo Ver.</th>
+                        <th className="text-center py-3 px-4">CD Ver.</th>
+                        <th className="text-center py-3 px-4">ID Card Ver.</th>
                         <th className="text-right py-3 px-4">배송비</th>
                         <th className="text-center py-3 px-4"></th>
                       </tr>
