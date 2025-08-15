@@ -231,13 +231,13 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   // === 음악방송 투표 ===
   {
     slug: "inkigayo",
-    label: "인기가요",
+    label: "팬 포인트",
     date: "2025.08.10",
     heroImage: "/guide/famous1.webp",
     images: ["/guide/famous1.webp", "/guide/famous2.webp"],
     cta: {
       label: "인기가요 투표하기",
-      href: "https://www.sbs.co.kr/now/app",
+      href: "h3ttps://www.sbs.co.kr/now/app",
       external: true,
     },
     category: "voting",
@@ -257,10 +257,14 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   },
   {
     slug: "musiccore",
-    label: "쇼!음악중심",
+    label: "뮤빗",
     date: "2025.08.10",
-    heroImage: "/guide/show1.webp",
-    images: ["/guide/show1.webp", "/guide/show2.webp"],
+    heroImage: "/guide/show-music1.webp",
+    images: [
+      "/guide/show-music1.webp",
+      "/guide/show-music2.webp",
+      "/guide/show-music3.webp",
+    ],
     cta: {
       label: "음악중심 투표하기",
       href: "https://www.imbc.com/broad/tv/ent/musiccore/",
@@ -298,8 +302,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "mubeat",
     label: "뮤빗",
     date: "2025.08.10",
-    heroImage: "/guide/mubeat1.webp",
-    images: ["/guide/mubeat1.webp", "/guide/mubeat2.webp"],
+    heroImage: "/guide/show-music2.webp",
+    images: ["/guide/show-music2.webp", "/guide/show-music3.webp"],
     cta: {
       label: "뮤빗 투표하기",
       href: "https://mubeat.com/",
@@ -335,9 +339,9 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   },
   {
     slug: "highter",
-    label: "하이어",
+    label: "루비",
     date: "2025.08.10",
-    heroImage: "/guide/highter1.webp",
+    heroImage: "/guide/h.webp",
     images: ["/guide/highter1.webp"],
     cta: {
       label: "하이어 투표하기",

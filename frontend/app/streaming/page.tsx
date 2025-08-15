@@ -55,9 +55,18 @@ const streamingPlatforms = [
 
 export default function StreamingPage() {
   const handleOneClickStreaming = () => {
-    streamingPlatforms.forEach((platform) => {
-      window.open(platform.url, "_blank");
-    });
+    // 여러 플랫폼 동시에 열기
+    const urls = [
+      "https://www.melon.com/album/detail.htm?albumId=11796328",
+      "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
+      "https://music.bugs.co.kr/album/20724195",
+      "http://bit.ly/4iNKK4I",
+      "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
+      "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
+      "https://stationhead.com/day6strmteam",
+    ];
+    urls.forEach((url) => window.open(url, "_blank"));
   };
 
   return (

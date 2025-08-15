@@ -32,11 +32,6 @@ export default function QuickAccessCard() {
       url: "https://www.music-flo.com",
       logo: "/fillo.png",
     },
-    {
-      name: "YouTube",
-      url: "https://www.youtube.com/c/DAY6Official",
-      logo: "/youtube.png",
-    },
   ];
 
   return (

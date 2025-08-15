@@ -19,7 +19,7 @@ export function MelonMusicwaveBanner() {
             <div>
               <h3 className="text-lg font-bold">멜론 뮤직웨이브</h3>
               <p className="text-sm opacity-90">
-                실시간 음악 스트리밍 참여하기
+                끊김 없이 스트리밍 리스트대로 재생 가능
               </p>
             </div>
           </div>
