@@ -7,9 +7,10 @@ import { SectionHeader } from "@/components/ui/section-header";
 // 카테고리별로 그룹핑
 const categoryGroups = {
   streaming: GUIDE_CATEGORIES.filter((c) => c.category === "streaming"),
-  support: GUIDE_CATEGORIES.filter((c) => c.category === "support"),
-  donation: GUIDE_CATEGORIES.filter((c) => c.category === "donation"),
+  download: GUIDE_CATEGORIES.filter((c) => c.category === "download"),
   voting: GUIDE_CATEGORIES.filter((c) => c.category === "voting"),
+  radio: GUIDE_CATEGORIES.filter((c) => c.category === "radio"),
+  support: GUIDE_CATEGORIES.filter((c) => c.category === "support"),
 };
 
 // 카테고리 아이콘 및 제목
@@ -19,19 +20,24 @@ const categoryInfo = {
     title: "스트리밍",
     description: "",
   },
-  support: {
+  download: {
     icon: "",
     title: "다운로드",
     description: "",
   },
-  donation: {
-    icon: "",
-    title: "아이디 기부",
-    description: "",
-  },
   voting: {
     icon: "",
-    title: "음악방송 투표",
+    title: "투표",
+    description: "",
+  },
+  radio: {
+    icon: "",
+    title: "라디오",
+    description: "",
+  },
+  support: {
+    icon: "",
+    title: "서포트",
     description: "",
   },
 };
@@ -96,17 +102,18 @@ export default function GuidePage() {
     <div className="mx-auto w-full max-w-screen-sm mt-5 px-4 pb-20">
       <SectionHeader title="DAY6 응원 가이드" />
 
-      <div className="mt-6">
+      <div className="mt-6 space-y-8">
         <CategorySection
           categoryKey="streaming"
           items={categoryGroups.streaming}
         />
-        <CategorySection categoryKey="support" items={categoryGroups.support} />
         <CategorySection
-          categoryKey="donation"
-          items={categoryGroups.donation}
+          categoryKey="download"
+          items={categoryGroups.download}
         />
         <CategorySection categoryKey="voting" items={categoryGroups.voting} />
+        <CategorySection categoryKey="radio" items={categoryGroups.radio} />
+        <CategorySection categoryKey="support" items={categoryGroups.support} />
       </div>
     </div>
   );

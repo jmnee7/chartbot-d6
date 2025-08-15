@@ -11,6 +11,24 @@ function getCategoryItems(category: string | undefined) {
   return GUIDE_CATEGORIES.filter((item) => item.category === category);
 }
 
+// 카테고리별 제목 매핑
+function getCategoryTitle(category: string | undefined): string {
+  switch (category) {
+    case "streaming":
+      return "DAY6 스트리밍 가이드";
+    case "download":
+      return "DAY6 다운로드 가이드";
+    case "voting":
+      return "DAY6 투표 가이드";
+    case "radio":
+      return "DAY6 라디오 가이드";
+    case "support":
+      return "DAY6 서포트 가이드";
+    default:
+      return "DAY6 응원 가이드";
+  }
+}
+
 export default async function GuideDetailPage({ params }: Props) {
   const { slug } = await params;
   const c = GUIDE_CATEGORIES.find((x) => x.slug === slug);
@@ -38,7 +56,7 @@ export default async function GuideDetailPage({ params }: Props) {
           </div>
 
           <ShareButton title={c.label} slug={slug} /> */}
-        <SectionHeader title="DAY6 응원 가이드" />
+        <SectionHeader title={getCategoryTitle(c.category)} />
         {/* </div> */}
 
         {/* 카테고리 탭 */}

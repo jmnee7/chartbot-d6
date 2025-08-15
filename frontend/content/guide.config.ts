@@ -7,7 +7,7 @@ export type GuideCategory = {
   heroImage?: string; // 1뎁스 큰 이미지
   images?: string[]; // 2뎁스 상세 이미지들
   cta?: { label: string; href: string; external?: boolean }; // 하단 버튼
-  category?: "streaming" | "voting" | "support" | "donation" | "comeback"; // 카테고리 분류
+  category?: "streaming" | "download" | "voting" | "radio" | "support"; // 카테고리 분류
   subcategory?:
     | "streaming-list"
     | "music-streaming"
@@ -20,12 +20,12 @@ export type GuideCategory = {
 };
 
 export const GUIDE_CATEGORIES: GuideCategory[] = [
-  // === 스트리밍 ===
+  // ===== 1. 스트리밍 가이드 (음원 스트리밍) =====
   {
     slug: "melon",
     label: "멜론",
-    heroImage: "/guide/melon-streaming.webp",
-    images: ["/guide/melon-streaming.webp"],
+    heroImage: "/streaming/music/Guide_melon.png",
+    images: ["/streaming/music/Guide_melon.png"],
     cta: {
       label: "멜론으로 이동",
       href: "https://www.melon.com/album/detail.htm?albumId=11796328",
@@ -36,8 +36,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "genie",
     label: "지니",
-    heroImage: "/guide/genie-streaming.png",
-    images: ["/guide/genie-streaming.png"],
+    heroImage: "/streaming/music/Guide_Genie.png",
+    images: ["/streaming/music/Guide_Genie.png"],
     cta: {
       label: "지니로 이동",
       href: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
@@ -48,8 +48,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "bugs",
     label: "벅스",
-    heroImage: "/guide/bugs-streaming.webp",
-    images: ["/guide/bugs-streaming.webp"],
+    heroImage: "/streaming/music/Guide_Bugs.png",
+    images: ["/streaming/music/Guide_Bugs.png"],
     cta: {
       label: "벅스로 이동",
       href: "https://music.bugs.co.kr/album/20724195",
@@ -60,8 +60,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "vibe",
     label: "바이브",
-    heroImage: "/guide/vibe-streaming.webp",
-    images: ["/guide/vibe-streaming.webp"],
+    heroImage: "/streaming/music/Guide_Vibe.png",
+    images: ["/streaming/music/Guide_Vibe.png"],
     cta: {
       label: "바이브로 이동",
       href: "https://vibe.naver.com/search?query=DAY6",
@@ -72,8 +72,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "flo",
     label: "플로",
-    heroImage: "/guide/flo-streaming.webp",
-    images: ["/guide/flo-streaming.webp"],
+    heroImage: "/streaming/music/Guide_Flo.png",
+    images: ["/streaming/music/Guide_Flo.png"],
     cta: {
       label: "플로로 이동",
       href: "http://bit.ly/4iNKK4I",
@@ -84,8 +84,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "youtube",
     label: "유튜브",
-    heroImage: "/guide/youtube-mv-streaming.webp",
-    images: ["/guide/youtube-mv-streaming.webp"],
+    heroImage: "/streaming/music/Guide_youtube.png",
+    images: ["/streaming/music/Guide_youtube.png"],
     cta: {
       label: "YouTube로 이동",
       href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
@@ -117,137 +117,205 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "streaming",
   },
-  {
-    slug: "stationhead",
-    label: "스테이션헤드",
-    heroImage: "/guide/stationhead-streaming.webp",
-    images: ["/guide/station-head-streaming.webp"],
-    cta: {
-      label: "스테이션헤드로 이동",
-      href: "https://stationhead.com/day6strmteam",
-      external: true,
-    },
-    category: "streaming",
-  },
 
-  // === 다운로드 ===
+  // ===== 2. 다운로드 가이드 =====
+  // 2-1. 음원 다운로드
   {
     slug: "download-melon",
     label: "멜론",
-    heroImage: "/guide/melon-download.webp",
-    images: ["/guide/melon-download.webp"],
+    heroImage: "/download/music/melon-download-1.jpg",
+    images: [
+      "/download/music/melon-download-1.jpg",
+      "/download/music/melon-download-2.jpg",
+    ],
     cta: {
       label: "멜론 다운로드",
       href: "https://www.melon.com/song/detail.htm?songId=38892497",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "download-genie",
     label: "지니",
-    heroImage: "/guide/genie-download.jpg",
-    images: ["/guide/genie-download.jpg"],
+    heroImage: "/download/music/genie-download-1.jpg",
+    images: [
+      "/download/music/genie-download-1.jpg",
+      "/download/music/genie-download-2.jpg",
+    ],
     cta: {
       label: "지니 다운로드",
       href: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "download-bugs",
     label: "벅스",
-    heroImage: "/guide/bugs-download.jpg",
-    images: ["/guide/bugs-download.jpg"],
+    heroImage: "/download/music/bugs-download-1.jpg",
+    images: [
+      "/download/music/bugs-download-1.jpg",
+      "/download/music/bugs-download-2.jpg",
+    ],
     cta: {
       label: "벅스 다운로드",
       href: "https://music.bugs.co.kr/track/33526777",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "download-vibe",
     label: "바이브",
-    heroImage: "/guide/vibe-download.webp",
-    images: ["/guide/vibe-download.webp"],
+    heroImage: "/download/music/vibe-download.png",
+    images: ["/download/music/vibe-download.png"],
     cta: {
       label: "바이브 다운로드",
       href: "https://vibe.naver.com/artist/455339",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "download-kakao",
     label: "카카오뮤직",
-    heroImage: "/guide/kakao-download.webp",
-    images: ["/guide/kakao-download.webp"],
+    heroImage: "/download/music/kakao-music-download.jpg",
+    images: ["/download/music/kakao-music-download.jpg"],
     cta: {
       label: "카카오뮤직 다운로드",
       href: "https://kakaomusic.kakao.com/bridge/music_room?mrId=18952246&version=v11&channelId=URL&contentId=18952246",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "vcoloring",
     label: "V컬러링",
-    heroImage: "/guide/v-coloring-download.webp",
-    images: ["/guide/v-coloring-download.webp"],
+    heroImage: "/download/music/v-coloring-download.png",
+    images: ["/download/music/v-coloring-download.png"],
     cta: {
       label: "V컬러링 설정하기",
       href: "https://www.vcoloring.com/outlink/join_pc.html",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
+
+  // 2-2. MV 다운로드
   {
     slug: "download-mv-melon",
     label: "멜론 뮤비",
-    heroImage: "/guide/melon-music-vedio-download.webp",
-    images: ["/guide/melon-music-vedio-download.webp"],
+    heroImage: "/download/mv/melon-mv-download.png",
+    images: ["/download/mv/melon-mv-download.png"],
     cta: {
       label: "멜론 뮤비 다운로드",
       href: "https://www.melon.com/video/detail2.htm?mvId=50280400&menuId=26020105",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
   {
     slug: "download-mv-bugs",
     label: "벅스 뮤비",
-    heroImage: "/guide/bugs-music-vedio-download.webp",
-    images: ["/guide/bugs-music-vedio-download.webp"],
+    heroImage: "/download/mv/bugs-mv-download.png",
+    images: ["/download/mv/bugs-mv-download.png"],
     cta: {
       label: "벅스 뮤비 다운로드",
       href: "https://music.bugs.co.kr/mv/632091",
       external: true,
     },
-    category: "support",
+    category: "download",
   },
 
-  // === 음악방송 투표 ===
+  // ===== 3. 투표 가이드 =====
+  // 3-1. 음악방송 투표 (사이드바 순서대로)
   {
-    slug: "inkigayo",
-    label: "팬 포인트",
-    date: "2025.08.10",
-    heroImage: "/guide/famous1.webp",
-    images: ["/guide/famous1.webp", "/guide/famous2.webp"],
+    slug: "theshow-vote",
+    label: "더쇼 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/the-show.png",
+    images: ["/vote/music-shows/the-show.png"],
     cta: {
-      label: "인기가요 투표하기",
-      href: "h3ttps://www.sbs.co.kr/now/app",
+      label: "더쇼 앱 다운로드",
+      href: "https://apps.apple.com/kr/app/%EC%8A%A4%ED%83%80-%ED%94%8C%EB%9E%98%EB%8B%9B-sbs-m-%EB%8D%94-%EC%87%BC-%EB%8D%94-%ED%8A%B8%EB%A1%AF%EC%87%BC-%ED%88%AC%ED%91%9C/id1377584935",
       external: true,
     },
     category: "voting",
   },
   {
+    slug: "showchampion-vote",
+    label: "쇼챔 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/show-champion.png",
+    images: ["/vote/music-shows/show-champion.png"],
+    cta: {
+      label: "쇼챔피언 투표하기",
+      href: "https://m.mbcplus.com/web/program/contentList.do?searchCondition=001002&programMenuSeq=176&programInfoSeq=67",
+      external: true,
+    },
+    category: "voting",
+  },
+  {
+    slug: "mcount-vote",
+    label: "엠카 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/mcountdown.png",
+    images: ["/vote/music-shows/mcountdown.png"],
+    cta: {
+      label: "엠넷플러스 앱 다운로드",
+      href: "https://share.mnetplus.world/download?hl=en",
+      external: true,
+    },
+    category: "voting",
+  },
+  {
+    slug: "musicbank-vote",
+    label: "뮤뱅 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/music-bank.png",
+    images: ["/vote/music-shows/music-bank.png"],
+    cta: {
+      label: "뮤직뱅크 투표하기",
+      href: "https://program.kbs.co.kr/2tv/enter/musicbank/pc/index.html",
+      external: true,
+    },
+    category: "voting",
+  },
+  {
+    slug: "musiccore-vote",
+    label: "음중 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/music-core.png",
+    images: ["/vote/music-shows/music-core.png"],
+    cta: {
+      label: "음악중심 투표하기",
+      href: "https://program.imbc.com/Info/musiccore?seq=5",
+      external: true,
+    },
+    category: "voting",
+  },
+  {
+    slug: "inkigayo-vote",
+    label: "인가 투표",
+    date: "2025.08.15",
+    heroImage: "/vote/music-shows/inkigayo.png",
+    images: ["/vote/music-shows/inkigayo.png"],
+    cta: {
+      label: "SBS NOW 앱 다운로드",
+      href: "https://now.sbs.co.kr/now_web/main.html",
+      external: true,
+    },
+    category: "voting",
+  },
+
+  // 3-2. 기타 투표 앱들 (기존 앱 가이드)
+  {
     slug: "musicbank",
     label: "뮤직뱅크",
     date: "2025.08.10",
-    heroImage: "/guide/music-bank1.webp",
-    images: ["/guide/music-bank1.webp", "/guide/music-bank2.webp"],
+    heroImage: "/vote/music-shows/music-bank.png",
+    images: ["/vote/music-shows/music-bank.png"],
     cta: {
       label: "뮤직뱅크 투표하기",
       href: "https://www.kbs.co.kr/2tv/enter/musicbank/",
@@ -259,12 +327,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "musiccore",
     label: "뮤빗",
     date: "2025.08.10",
-    heroImage: "/guide/show-music1.webp",
-    images: [
-      "/guide/show-music1.webp",
-      "/guide/show-music2.webp",
-      "/guide/show-music3.webp",
-    ],
+    heroImage: "/vote/music-shows/music-core.png",
+    images: ["/vote/music-shows/music-core.png"],
     cta: {
       label: "음악중심 투표하기",
       href: "https://www.imbc.com/broad/tv/ent/musiccore/",
@@ -276,8 +340,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "mcountdown",
     label: "엠카운트다운",
     date: "2025.08.10",
-    heroImage: "/guide/m-count1.webp",
-    images: ["/guide/m-count1.webp", "/guide/m-count2.webp"],
+    heroImage: "/vote/music-shows/mcountdown.png",
+    images: ["/vote/music-shows/mcountdown.png"],
     cta: {
       label: "엠카운트다운 투표하기",
       href: "https://www.mnet.com/",
@@ -289,8 +353,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "theshow",
     label: "더쇼",
     date: "2025.08.10",
-    heroImage: "/guide/the-show1.webp",
-    images: ["/guide/the-show1.webp", "/guide/the-show2.webp"],
+    heroImage: "/vote/music-shows/the-show.png",
+    images: ["/vote/music-shows/the-show.png"],
     cta: {
       label: "더쇼 투표하기",
       href: "https://theshow.sbs.co.kr/",
@@ -302,8 +366,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     slug: "mubeat",
     label: "뮤빗",
     date: "2025.08.10",
-    heroImage: "/guide/show-music2.webp",
-    images: ["/guide/show-music2.webp", "/guide/show-music3.webp"],
+    heroImage: "/vote/music-shows/show-champion.png",
+    images: ["/vote/music-shows/show-champion.png"],
     cta: {
       label: "뮤빗 투표하기",
       href: "https://mubeat.com/",
@@ -388,5 +452,84 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
       external: true,
     },
     category: "voting",
+  },
+
+  // 3-3. 컴백 재화 모으기 (사이드바 컴백 섹션)
+  {
+    slug: "inkigayo",
+    label: "팬 포인트",
+    date: "2025.08.10",
+    heroImage: "/vote/music-shows/inkigayo.png",
+    images: ["/vote/music-shows/inkigayo.png"],
+    cta: {
+      label: "인기가요 투표하기",
+      href: "h3ttps://www.sbs.co.kr/now/app",
+      external: true,
+    },
+    category: "voting",
+  },
+
+  // ===== 4. 라디오 신청 가이드 =====
+  {
+    slug: "radio-sbs",
+    label: "SBS 라디오",
+    heroImage: "/radio/sbs-radio.jpg",
+    images: ["/radio/sbs-radio.jpg"],
+    cta: {
+      label: "SBS 라디오 신청하기",
+      href: "https://www.sbs.co.kr/",
+      external: true,
+    },
+    category: "radio",
+  },
+  {
+    slug: "radio-kbs",
+    label: "KBS 라디오",
+    heroImage: "/radio/kbs-radio.jpg",
+    images: ["/radio/kbs-radio.jpg"],
+    cta: {
+      label: "KBS 라디오 신청하기",
+      href: "https://www.kbs.co.kr/",
+      external: true,
+    },
+    category: "radio",
+  },
+  {
+    slug: "radio-mbc",
+    label: "MBC 라디오",
+    heroImage: "/radio/mbc-radio.jpg",
+    images: ["/radio/mbc-radio.jpg"],
+    cta: {
+      label: "MBC 라디오 신청하기",
+      href: "https://www.imbc.com/",
+      external: true,
+    },
+    category: "radio",
+  },
+
+  // ===== 5. 서포트 가이드 =====
+  {
+    slug: "album-group-order",
+    label: "앨범 공구",
+    heroImage: "/support/album-group-order.jpg",
+    images: ["/support/album-group-order.jpg"],
+    cta: {
+      label: "앨범 공구 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "id-donation",
+    label: "아이디 기부",
+    heroImage: "/support/id-donation.jpg",
+    images: ["/support/id-donation.jpg"],
+    cta: {
+      label: "아이디 기부 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
   },
 ];

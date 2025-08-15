@@ -65,7 +65,6 @@ const navigation: NavigationItem[] = [
           { name: "유튜브", href: "/guide/youtube" },
           { name: "애플", href: "/guide/apple-music" },
           { name: "스포티파이", href: "/guide/spotify" },
-          { name: "스테이션헤드", href: "/guide/stationhead" },
         ],
       },
       {
@@ -123,33 +122,27 @@ const navigation: NavigationItem[] = [
         children: [
           {
             name: "더쇼",
-            href: "https://apps.apple.com/kr/app/%EC%8A%A4%ED%83%80-%ED%94%8C%EB%9E%98%EB%8B%9B-sbs-m-%EB%8D%94-%EC%87%BC-%EB%8D%94-%ED%8A%B8%EB%A1%AF%EC%87%BC-%ED%88%AC%ED%91%9C/id1377584935",
-            external: true,
+            href: "/guide/theshow-vote",
           },
           {
             name: "쇼챔",
-            href: "https://m.mbcplus.com/web/program/contentList.do?searchCondition=001002&programMenuSeq=176&programInfoSeq=67",
-            external: true,
+            href: "/guide/showchampion-vote",
           },
           {
             name: "엠카",
-            href: "https://share.mnetplus.world/download?hl=en",
-            external: true,
+            href: "/guide/mcount-vote",
           },
           {
             name: "뮤뱅",
-            href: "https://program.kbs.co.kr/2tv/enter/musicbank/pc/index.html",
-            external: true,
+            href: "/guide/musicbank-vote",
           },
           {
             name: "음중",
-            href: "https://program.imbc.com/Info/musiccore?seq=5",
-            external: true,
+            href: "/guide/musiccore-vote",
           },
           {
             name: "인가",
-            href: "https://now.sbs.co.kr/now_web/main.html",
-            external: true,
+            href: "/guide/inkigayo-vote",
           },
         ],
       },
@@ -170,10 +163,29 @@ const navigation: NavigationItem[] = [
         icon: Coins,
         hasChildren: true,
         children: [
-          { name: "음악중심 - 뮤빗", href: "/guide/musiccore" },
+          { name: "음악중심 - 뮤빗", href: "/guide/mubeat" },
           { name: "인기가요 - 팬 포인트", href: "/guide/inkigayo" },
           { name: "하이어 - 루비", href: "/guide/highter" },
         ],
+      },
+    ],
+  },
+  {
+    name: "라디오 신청",
+    icon: Radio,
+    hasChildren: true,
+    children: [
+      {
+        name: "SBS",
+        href: "/guide/radio-sbs",
+      },
+      {
+        name: "KBS",
+        href: "/guide/radio-kbs",
+      },
+      {
+        name: "MBC",
+        href: "/guide/radio-mbc",
       },
     ],
   },
@@ -184,9 +196,8 @@ const navigation: NavigationItem[] = [
     children: [
       {
         name: "앨범 공구",
-        href: "https://docs.google.com/forms/d/e/1FAIpQLSfIHNDZNuR2mgfTmQWGMeHBgiNp3nFs7jZ0Ok3Tz0EFengsyw/viewform",
+        href: "/guide/album-group-order",
         icon: ExternalLink,
-        external: true,
       },
       {
         name: "다운 헬퍼 지원",
@@ -195,13 +206,8 @@ const navigation: NavigationItem[] = [
       },
       {
         name: "아이디 기부",
-        href: "/support",
+        href: "/guide/id-donation",
         icon: ExternalLink,
-      },
-      {
-        name: "라디오 신청",
-        href: "/radio",
-        icon: Radio,
       },
       {
         name: "모금",
