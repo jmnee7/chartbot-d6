@@ -26,13 +26,13 @@ export const metadata: Metadata = {
   publisher: "",
 
   // Next.js 15 메타데이터 베이스 URL
-  metadataBase: new URL("https://sixbeat.vercel.app"),
+  metadataBase: new URL("https://day6-dev.vercel.app/"),
 
   // Open Graph 메타데이터
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://sixbeat.vercel.app",
+    url: "https://day6-dev.vercel.app/",
     title: "데이식스 음원총공팀",
     description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
   },
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 
   // Next.js 15 기능 - 대체 언어
   alternates: {
-    canonical: "https://sixbeat.vercel.app",
+    canonical: "https://day6-dev.vercel.app/",
   },
 
   // 검증

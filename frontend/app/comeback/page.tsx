@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ExternalLink,
   Calendar,
   Gift,
   Clock,

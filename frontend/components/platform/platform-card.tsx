@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, TrendingUp } from "lucide-react";
+import { ExternalLink, TrendingUp, Smartphone } from "lucide-react";
 import { Platform } from "@/lib/constants/platforms";
+import { useDeviceType } from "@/lib/hooks/useDeviceType";
+
+type DeviceType = "android" | "ios" | "pc";
 
 interface PlatformCardProps {
   platform: Platform;
@@ -17,14 +20,15 @@ export function PlatformCard({
   variant = "default",
   showDescription = true,
 }: PlatformCardProps) {
+  const deviceType = useDeviceType() as DeviceType;
+
+  const deeplinks = platform.deeplinks?.[deviceType] || [];
+  const hasDeeplinks = deeplinks.length > 0;
+
   if (variant === "grid") {
     return (
-      <Button
-        asChild
-        variant="ghost"
-        className="flex flex-col items-center p-3 h-auto border border-gray-100 hover:border-gray-200"
-      >
-        <a href={platform.url} target="_blank" rel="noopener noreferrer">
+      <div className="relative">
+        <div className="flex flex-col items-center p-3 border border-gray-100 hover:border-gray-200 rounded-lg">
           <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mb-2 bg-white border border-gray-100 overflow-hidden">
             {platform.logo !== "/file.svg" ? (
               <Image
@@ -38,11 +42,74 @@ export function PlatformCard({
               <TrendingUp className="w-6 h-6 text-white" />
             )}
           </div>
-          <span className="text-xs lg:text-sm font-medium text-gray-700 text-center">
+          <span className="text-xs lg:text-sm font-medium text-gray-700 text-center mb-2">
             {platform.name}
           </span>
-        </a>
-      </Button>
+
+          {/* 디바이스에 맞는 링크 자동 선택 */}
+          {hasDeeplinks ? (
+            <>
+              {deeplinks.length === 1 ? (
+                // 단일 딥링크인 경우 바로 표시
+                <Button
+                  asChild
+                  size="sm"
+                  className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                >
+                  <a
+                    href={deeplinks[0].uri}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Smartphone className="w-3 h-3 mr-1" />
+                    {deeplinks[0].label}
+                  </a>
+                </Button>
+              ) : (
+                // 여러 딥링크인 경우 한 줄로 배치
+                <div className="w-full flex gap-1">
+                  {deeplinks.map((link, index) => (
+                    <Button
+                      key={index}
+                      asChild
+                      size="sm"
+                      className="flex-1 text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                    >
+                      <a
+                        href={link.uri}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Smartphone className="w-3 h-3 mr-1" />
+                        {link.label}
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+              )}
+              {/* 플랫폼 안내 메시지 */}
+              {platform.note && (
+                <p className="text-xs text-gray-500 text-center mt-1 px-1">
+                  {platform.note}
+                </p>
+              )}
+            </>
+          ) : (
+            // 딥링크가 없으면 웹 링크 표시
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="w-full text-xs"
+            >
+              <a href={platform.url} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-3 h-3 mr-1" />
+                웹에서 열기
+              </a>
+            </Button>
+          )}
+        </div>
+      </div>
     );
   }
 

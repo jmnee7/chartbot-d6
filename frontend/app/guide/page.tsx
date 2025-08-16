@@ -49,7 +49,7 @@ function CategorySection({
   categoryKey: keyof typeof categoryInfo;
   items: typeof GUIDE_CATEGORIES;
 }) {
-  const { icon, title, description } = categoryInfo[categoryKey];
+  const { title } = categoryInfo[categoryKey];
 
   return (
     <div className="space-y-4">
