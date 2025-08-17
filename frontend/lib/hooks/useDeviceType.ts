@@ -23,7 +23,7 @@ export function useDeviceAndAppType(
   initialDevice?: DeviceType,
   initialApp?: AppType
 ) {
-  const deviceType = useDeviceType(initialDevice);
+  const deviceType = useDeviceType();
   const appType = useAppType(initialApp);
 
   return { deviceType, appType };
