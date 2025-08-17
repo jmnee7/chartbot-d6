@@ -14,6 +14,8 @@ import Image from "next/image";
 export default function ChartsPage() {
   const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformType[]>([
     "melon",
+    "melon_top100",
+    "melon_hot100",
   ]);
 
   const handlePlatformChange = useCallback(
@@ -41,6 +43,8 @@ export default function ChartsPage() {
     // 플랫폼 데이터만 필터링 (메타데이터 제외)
     const validPlatforms: PlatformType[] = [
       "melon",
+      "melon_top100",
+      "melon_hot100",
       "genie",
       "bugs",
       "vibe",
@@ -301,9 +305,6 @@ export default function ChartsPage() {
 
                 {/* 플랫폼별 순위 표시 - 데스크톱 */}
                 <div className="">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                    플랫폼별 현재 순위
-                  </h4>
                   <div className="grid grid-cols-2 gap-2">
                     {stats.platformRanks.map((platform) => (
                       <div
@@ -314,7 +315,9 @@ export default function ChartsPage() {
                           <div className="flex items-center gap-2">
                             <Image
                               src={
-                                platform.platform === "melon"
+                                platform.platform === "melon" ||
+                                platform.platform === "melon_top100" ||
+                                platform.platform === "melon_hot100"
                                   ? "/ico_melon.png"
                                   : platform.platform === "genie"
                                     ? "/Geenie.png"
@@ -329,15 +332,19 @@ export default function ChartsPage() {
                               alt={
                                 platform.platform === "melon"
                                   ? "멜론"
-                                  : platform.platform === "genie"
-                                    ? "지니"
-                                    : platform.platform === "bugs"
-                                      ? "벅스"
-                                      : platform.platform === "vibe"
-                                        ? "바이브"
-                                        : platform.platform === "flo"
-                                          ? "플로"
-                                          : platform.platform
+                                  : platform.platform === "melon_top100"
+                                    ? "멜론 TOP100"
+                                    : platform.platform === "melon_hot100"
+                                      ? "멜론 HOT100"
+                                      : platform.platform === "genie"
+                                        ? "지니"
+                                        : platform.platform === "bugs"
+                                          ? "벅스"
+                                          : platform.platform === "vibe"
+                                            ? "바이브"
+                                            : platform.platform === "flo"
+                                              ? "플로"
+                                              : platform.platform
                               }
                               width={20}
                               height={20}
@@ -345,16 +352,20 @@ export default function ChartsPage() {
                             />
                             <span className="text-sm font-medium text-gray-800">
                               {platform.platform === "melon"
-                                ? "멜론"
-                                : platform.platform === "genie"
-                                  ? "지니"
-                                  : platform.platform === "bugs"
-                                    ? "벅스"
-                                    : platform.platform === "vibe"
-                                      ? "바이브"
-                                      : platform.platform === "flo"
-                                        ? "플로"
-                                        : platform.platform}
+                                ? "멜론 실시간"
+                                : platform.platform === "melon_top100"
+                                  ? "멜론 TOP100"
+                                  : platform.platform === "melon_hot100"
+                                    ? "멜론 HOT100"
+                                    : platform.platform === "genie"
+                                      ? "지니"
+                                      : platform.platform === "bugs"
+                                        ? "벅스"
+                                        : platform.platform === "vibe"
+                                          ? "바이브"
+                                          : platform.platform === "flo"
+                                            ? "플로"
+                                            : platform.platform}
                             </span>
                           </div>
                         </div>

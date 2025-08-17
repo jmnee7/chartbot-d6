@@ -12,7 +12,9 @@ interface PlatformFiltersProps {
 }
 
 const PLATFORMS = [
-  { id: "melon" as const, name: "멜론", color: "bg-[#49c4b0]" },
+  { id: "melon" as const, name: "멜론 실시간", color: "bg-[#49c4b0]" },
+  { id: "melon_top100" as const, name: "멜론 TOP100", color: "bg-[#49c4b0]" },
+  { id: "melon_hot100" as const, name: "멜론 HOT100", color: "bg-[#49c4b0]" },
   { id: "genie" as const, name: "지니", color: "bg-[#3ba89a]" },
   {
     id: "bugs" as const,

@@ -29,7 +29,15 @@ export function CompactChart() {
     );
   }
 
-  const platforms = ["melon", "genie", "bugs", "vibe", "flo"];
+  const platforms = [
+    "melon",
+    "melon_top100",
+    "melon_hot100",
+    "genie",
+    "bugs",
+    "vibe",
+    "flo",
+  ];
   const platformData: { platform: string; song: ChartSong | null }[] = [];
 
   // DAY6 타겟 곡 정보
@@ -59,6 +67,8 @@ export function CompactChart() {
   const getPlatformLogo = (platform: string) => {
     const logos: Record<string, string> = {
       melon: "/ico_melon.png",
+      melon_top100: "/ico_melon.png",
+      melon_hot100: "/ico_melon.png",
       genie: "/Geenie.png",
       bugs: "/bucks.png",
       vibe: "/vibe.jpeg",
@@ -70,8 +80,8 @@ export function CompactChart() {
   return (
     <Card>
       <CardContent className="p-0">
-        <div className="grid grid-cols-2 gap-2">
-          {platformData.slice(0, 6).map(({ platform, song }) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          {platformData.map(({ platform, song }) => (
             <div
               key={platform}
               className="bg-gray-50 rounded-lg p-3 border border-gray-100"
