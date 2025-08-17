@@ -19,9 +19,12 @@ export default function HomePage() {
 
   return (
     <div>
-      <YouTubeBanner onMenuClick={openSidebar} />
+      {/* YouTube Banner - 카드와 동일한 너비 */}
+      <div className="px-5 md:px-6 lg:px-8 xl:px-12 pb-6">
+        <YouTubeBanner onMenuClick={openSidebar} />
+      </div>
 
-      <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
+      <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
           <SectionHeader title="실시간 차트 순위" />

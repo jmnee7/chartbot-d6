@@ -13,7 +13,7 @@ export default function YouTubeBanner({
   videoId = "0fyZqS0N19o", // DAY6 - Maybe Tomorrow
 }: YouTubeBannerProps) {
   return (
-    <div className="relative w-full h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden">
+    <div className="relative w-full aspect-video overflow-hidden rounded-lg">
       {/* Menu Button - positioned over the video */}
       <Button
         variant="ghost"
@@ -26,15 +26,9 @@ export default function YouTubeBanner({
 
       {/* YouTube Embedded Video */}
       <iframe
-        className="w-full h-full scale-150 origin-center"
-        style={{
-          minWidth: "177.78%",
-          minHeight: "100%",
-          transform: "translateX(-21.78%)",
-        }}
+        className="w-full h-full"
         src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
         title="DAY6 Music Video"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
