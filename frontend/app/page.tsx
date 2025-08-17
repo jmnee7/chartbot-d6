@@ -3,7 +3,7 @@
 import { Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CompactChart } from "@/components/compact-chart";
-import DAY6ImageSwiper from "@/components/home/day6-image-swiper";
+import YouTubeBanner from "@/components/home/youtube-banner";
 import MVStatsCard from "@/components/home/mv-stats-card";
 import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <DAY6ImageSwiper onMenuClick={openSidebar} />
+      <YouTubeBanner onMenuClick={openSidebar} />
 
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
         {/* Mobile Layout */}
