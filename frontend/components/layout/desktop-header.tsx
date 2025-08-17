@@ -27,7 +27,7 @@ export function DesktopHeader() {
             </h1>
           </Link>
           <span className="text-base lg:text-lg text-gray-500 ml-2 leading-none">
-            데이식스 음원정보팀
+            데이식스 음원총공팀
           </span>
         </div>
       </div>

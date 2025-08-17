@@ -50,7 +50,7 @@ export function OverlayHeader({
             isOverlay ? "text-white/90" : "text-gray-500"
           }`}
         >
-          데이식스 음원정보팀
+          데이식스 음원총공팀
         </span>
       </Link>
 

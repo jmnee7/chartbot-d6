@@ -3,7 +3,7 @@ export const APP_CONFIG = {
   name: "",
   artist: "DAY6",
   displayName: "DAY6 STRM",
-  description: "데이식스 음원정보팀",
+  description: "데이식스 음원총공팀",
   fullDescription: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
   copyright: `© ${new Date().getFullYear()} `,
   tagline: "DAY6 팬덤을 위한 비영리 프로젝트",
