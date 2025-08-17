@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "DAY6 음원정보팀",
+  title: "데이식스 음원정보팀",
   description: "DAY6 음원 차트 실시간 추적 및 스트리밍/투표 지원 서비스",
   keywords:
     "DAY6, 데이식스, 음원차트, 스트리밍, 투표, K-pop, 차트분석, 음악방송",

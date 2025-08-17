@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Link from "next/link";
 
 interface OverlayHeaderProps {
   onMenuClick?: () => void;
@@ -17,7 +18,7 @@ export function OverlayHeader({
 
   return (
     <div
-      className={`absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 py-3 ${
+      className={`fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-4 h-14 ${
         isOverlay ? "bg-black/20 backdrop-blur-sm" : "bg-white shadow-sm"
       }`}
     >
@@ -35,14 +36,23 @@ export function OverlayHeader({
         />
       </button>
 
-      {/* Title */}
-      <h1
-        className={`text-xl md:text-2xl font-bold ${
-          isOverlay ? "text-white drop-shadow-lg" : "text-[#333]"
-        }`}
-      >
-        {title}
-      </h1>
+      {/* Title with DAY6 STRM branding */}
+      <Link href="/" className="flex items-center gap-2">
+        <h1
+          className={`font-montserrat text-lg font-bold tracking-tight leading-none m-0 ${
+            isOverlay ? "text-white drop-shadow-lg" : "text-gray-900"
+          }`}
+        >
+          DAY<span className="text-[#49c4b0]">6</span> STRM
+        </h1>
+        <span
+          className={`text-xs leading-none ${
+            isOverlay ? "text-white/90" : "text-gray-500"
+          }`}
+        >
+          데이식스 음원정보팀
+        </span>
+      </Link>
 
       {/* Balance */}
       <div className="w-9"></div>

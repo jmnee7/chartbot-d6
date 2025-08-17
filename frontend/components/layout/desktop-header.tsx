@@ -8,7 +8,7 @@ export function DesktopHeader() {
   const { openSidebar } = useSidebar();
 
   return (
-    <header className="flex items-center justify-between px-6 lg:px-8 xl:px-12 py-4 bg-white border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-8 xl:px-12 h-16 bg-white border-b border-gray-100">
       {/* Left - Menu button and Title */}
       <div className="flex items-center gap-4">
         {/* Menu Button */}
@@ -27,7 +27,7 @@ export function DesktopHeader() {
             </h1>
           </Link>
           <span className="text-base lg:text-lg text-gray-500 ml-2 leading-none">
-            DAY6 음원정보팀
+            데이식스 음원정보팀
           </span>
         </div>
       </div>

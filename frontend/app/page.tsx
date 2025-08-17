@@ -9,19 +9,17 @@ import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
 import { formatKoreanDate } from "@/lib/date-utils";
-import { useSidebar } from "@/components/layout/mobile-app-layout";
 import { getLastUpdateTime } from "@/lib/utils/index";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export default function HomePage() {
   const currentTime = new Date();
-  const { openSidebar } = useSidebar();
 
   return (
     <div>
-      {/* YouTube Banner - 카드와 동일한 너비 */}
-      <div className="px-5 md:px-6 lg:px-8 xl:px-12 pb-6">
-        <YouTubeBanner onMenuClick={openSidebar} />
+      {/* YouTube Banner - 모바일에서는 전체 너비 */}
+      <div className="px-0 md:px-6 lg:px-8 xl:px-12 md:pt-0 pb-6">
+        <YouTubeBanner />
       </div>
 
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">

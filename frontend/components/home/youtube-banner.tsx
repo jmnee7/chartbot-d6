@@ -1,29 +1,14 @@
 "use client";
 
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 interface YouTubeBannerProps {
-  onMenuClick: () => void;
   videoId?: string;
 }
 
 export default function YouTubeBanner({
-  onMenuClick,
   videoId = "0fyZqS0N19o", // DAY6 - Maybe Tomorrow
 }: YouTubeBannerProps) {
   return (
-    <div className="relative w-full aspect-video overflow-hidden rounded-lg">
-      {/* Menu Button - positioned over the video */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute top-4 left-4 z-10 bg-black/50 hover:bg-black/70 text-white md:hidden"
-        onClick={onMenuClick}
-      >
-        <Menu className="h-6 w-6" />
-      </Button>
-
+    <div className="relative w-full aspect-video overflow-hidden">
       {/* YouTube Embedded Video */}
       <iframe
         className="w-full h-full"

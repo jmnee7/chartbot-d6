@@ -60,20 +60,20 @@ export function PlatformCard({
             <>
               {deeplinks.length === 1 ? (
                 // 단일 딥링크인 경우 바로 표시
-                <Button
-                  asChild
-                  size="sm"
-                  className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                <a
+                  href={deeplinks[0].uri}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  <a
-                    href={deeplinks[0].uri}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Button
+                    size="sm"
+                    className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
                   >
                     <Smartphone className="w-3 h-3 mr-1" />
                     {deeplinks[0].label}
-                  </a>
-                </Button>
+                  </Button>
+                </a>
               ) : (
                 // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식
                 <>
@@ -127,16 +127,20 @@ export function PlatformCard({
             </>
           ) : (
             // 딥링크가 없으면 웹 링크 표시
-            <Button
-              asChild
-              size="sm"
-              className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+            <a
+              href={platform.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
             >
-              <a href={platform.url} target="_blank" rel="noopener noreferrer">
+              <Button
+                size="sm"
+                className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+              >
                 <ExternalLink className="w-3 h-3 mr-1" />
                 {isHome ? "웹" : "웹에서 열기"}
-              </a>
-            </Button>
+              </Button>
+            </a>
           )}
         </div>
       </div>
