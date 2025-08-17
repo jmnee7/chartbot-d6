@@ -4,16 +4,20 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Home,
   BarChart3,
   Download,
   Play,
   Vote,
   Heart,
-  HelpCircle,
+  Radio,
   ChevronDown,
   ChevronRight,
   X,
+  Music,
+  ExternalLink,
+  Home,
+  Star,
+  Coins,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -27,6 +31,7 @@ interface NavigationItem {
   hasChildren?: boolean;
   children?: NavigationItem[];
   external?: boolean;
+  type?: "divider" | "section";
 }
 
 interface SidebarProps {
@@ -34,15 +39,183 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const navigation = [
+const navigation: NavigationItem[] = [
   { name: "홈", href: "/", icon: Home },
   { name: "차트", href: "/charts", icon: BarChart3 },
-  { name: "스트리밍", href: "/streaming", icon: Play },
-  { name: "다운로드", href: "/download", icon: Download },
-  { name: "투표", href: "/votes", icon: Vote },
-  { name: "라디오 신청", href: "/radio", icon: HelpCircle },
-  { name: "서포트", href: "/support", icon: Heart },
-  { name: "가이드", href: "/guide", icon: HelpCircle },
+  {
+    name: "스트리밍 가이드",
+    icon: Play,
+    hasChildren: true,
+    children: [
+      {
+        name: "스트리밍리스트/원클릭",
+        href: "/streaming",
+        icon: Music,
+      },
+      {
+        name: "음원 스트리밍",
+        icon: Music,
+        hasChildren: true,
+        children: [
+          { name: "멜론", href: "/guide/melon" },
+          { name: "지니", href: "/guide/genie" },
+          { name: "벅스", href: "/guide/bugs" },
+          { name: "바이브", href: "/guide/vibe" },
+          { name: "플로", href: "/guide/flo" },
+          { name: "유튜브", href: "/guide/youtube" },
+          { name: "애플", href: "/guide/apple-music" },
+          { name: "스포티파이", href: "/guide/spotify" },
+        ],
+      },
+      {
+        name: "MV 스트리밍",
+        icon: ExternalLink,
+        hasChildren: true,
+        children: [{ name: "유튜브", href: "/guide/youtube" }],
+      },
+    ],
+  },
+  {
+    name: "다운로드 가이드",
+    icon: Download,
+    hasChildren: true,
+
+    children: [
+      {
+        name: "다운로드",
+        href: "/download",
+        icon: Music,
+      },
+      {
+        name: "음원 다운로드",
+        icon: Download,
+        hasChildren: true,
+        children: [
+          { name: "멜론", href: "/guide/download-melon" },
+          { name: "지니", href: "/guide/download-genie" },
+          { name: "벅스", href: "/guide/download-bugs" },
+          { name: "바이브", href: "/guide/download-vibe" },
+          { name: "카카오뮤직", href: "/guide/download-kakao" },
+          { name: "V컬러링", href: "/guide/vcoloring" },
+        ],
+      },
+      {
+        name: "MV 다운로드",
+        icon: ExternalLink,
+        hasChildren: true,
+        children: [
+          { name: "멜론", href: "/guide/download-mv-melon" },
+          { name: "벅스", href: "/guide/download-mv-bugs" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "투표",
+    icon: Vote,
+    hasChildren: true,
+    children: [
+      {
+        name: "음악방송",
+        icon: Vote,
+        hasChildren: true,
+        children: [
+          {
+            name: "더쇼",
+            href: "/guide/theshow-vote",
+          },
+          {
+            name: "쇼챔",
+            href: "/guide/showchampion-vote",
+          },
+          {
+            name: "엠카",
+            href: "/guide/mcount-vote",
+          },
+          {
+            name: "뮤뱅",
+            href: "/guide/musicbank-vote",
+          },
+          {
+            name: "음중",
+            href: "/guide/musiccore-vote",
+          },
+          {
+            name: "인가",
+            href: "/guide/inkigayo-vote",
+          },
+        ],
+      },
+      {
+        name: "시상식",
+        href: "/votes",
+        icon: ExternalLink,
+      },
+    ],
+  },
+  {
+    name: "컴백",
+    icon: Star,
+    hasChildren: true,
+    children: [
+      {
+        name: "컴백 전 재화 모으기",
+        icon: Coins,
+        hasChildren: true,
+        children: [
+          { name: "음악중심 - 뮤빗", href: "/guide/mubeat" },
+          { name: "인기가요 - 팬 포인트", href: "/guide/inkigayo" },
+          { name: "하이어 - 루비", href: "/guide/highter" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "라디오 신청",
+    icon: Radio,
+    hasChildren: true,
+    children: [
+      {
+        name: "SBS",
+        href: "/guide/radio-sbs",
+      },
+      {
+        name: "KBS",
+        href: "/guide/radio-kbs",
+      },
+      {
+        name: "MBC",
+        href: "/guide/radio-mbc",
+      },
+    ],
+  },
+  {
+    name: "서포트",
+    icon: Heart,
+    hasChildren: true,
+    children: [
+      {
+        name: "앨범 공구",
+        href: "/guide/album-group-order",
+        icon: ExternalLink,
+      },
+      {
+        name: "다운 헬퍼 지원",
+        href: "/support",
+        icon: Heart,
+      },
+      {
+        name: "아이디 기부",
+        href: "/guide/id-donation",
+        icon: ExternalLink,
+      },
+      {
+        name: "모금",
+        href: "/support",
+        icon: ExternalLink,
+      },
+    ],
+  },
 ];
 
 export function Sidebar({ open, onClose }: SidebarProps) {
@@ -98,6 +271,14 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               )}
             </div>
           )}
+        </div>
+      );
+    }
+
+    if (item.type === "section") {
+      return (
+        <div key={key} className="px-3 pt-3 pb-1">
+          <div className="text-xs font-medium text-gray-500">{item.name}</div>
         </div>
       );
     }

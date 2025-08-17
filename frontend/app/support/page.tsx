@@ -199,7 +199,10 @@ export default function SupportPage() {
       case "idCard":
         return { name: "ID Card Ver.", description: "22,300원" };
       case "earphone":
-        return { name: "In Ear Earphones Ver.", description: "66,700원 (4종 랜덤)" };
+        return {
+          name: "In Ear Earphones Ver.",
+          description: "66,700원 (4종 랜덤)",
+        };
       default:
         return { name: "CD Ver.", description: "19,300원 (2종)" };
     }

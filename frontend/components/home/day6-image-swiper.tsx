@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface DAY6ImageSwiperProps {
   onMenuClick?: () => void;
@@ -21,9 +22,12 @@ export default function DAY6ImageSwiper({ onMenuClick }: DAY6ImageSwiperProps) {
         </button>
 
         {/* Title */}
-        <h1 className="text-lg font-bold text-white drop-shadow-lg">
+        <Link
+          href="/"
+          className="text-lg font-bold text-white drop-shadow-lg hover:opacity-80 transition-opacity"
+        >
           DAY6 STRM
-        </h1>
+        </Link>
 
         {/* Balance */}
         <div className="w-9"></div>
@@ -31,13 +35,24 @@ export default function DAY6ImageSwiper({ onMenuClick }: DAY6ImageSwiperProps) {
 
       {/* Desktop Title Overlay */}
       <div className="hidden md:flex absolute top-0 left-0 right-0 z-20 items-center justify-center px-4 py-3">
-        <h1 className="text-xl lg:text-2xl font-bold text-white drop-shadow-lg">
+        <Link
+          href="/"
+          className="text-xl lg:text-2xl font-bold text-white drop-shadow-lg hover:opacity-80 transition-opacity"
+        >
           DAY6 STRM
-        </h1>
+        </Link>
       </div>
 
       {/* Banner Image */}
-      <div className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-gradient-to-b from-gray-100 to-gray-200">
+      <div
+        className="relative w-full aspect-[4/3] md:aspect-[16/9] bg-gradient-to-b from-gray-100 to-gray-200 cursor-pointer hover:scale-[1.02] transition-transform duration-200"
+        onClick={() =>
+          window.open(
+            "https://youtu.be/0zdkvGDDnQg?si=8gVl_UcRn6B4hmUJ",
+            "_blank"
+          )
+        }
+      >
         <Image
           src="/day6-banner.jpeg"
           alt="DAY6 Banner"

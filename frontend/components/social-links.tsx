@@ -30,10 +30,10 @@ const socialLinks = [
     color: "hover:text-blue-600",
   },
   {
-    name: "YouTube",
-    url: "https://www.youtube.com/DAY6Official",
+    name: "음총팀 유튜브",
+    url: "https://youtube.com/@day6_stream?si=Z2HBzbbAJgaNM4LM",
     icon: Youtube,
-    color: "hover:text-red-500",
+    color: "hover:text-red-600",
   },
   {
     name: "Fans Community",

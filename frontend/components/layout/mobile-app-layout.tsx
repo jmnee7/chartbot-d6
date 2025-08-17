@@ -40,20 +40,12 @@ export function MobileAppLayout({ children }: MobileAppLayoutProps) {
       {/* Mobile Layout (sm and below) */}
       <div className="md:hidden min-h-screen flex justify-center">
         <div className="w-full bg-transparent shadow-xl min-h-screen relative">
-          {!isHomePage && (
-            <OverlayHeader
-              onMenuClick={() => setSidebarOpen(true)}
-              variant="solid"
-            />
-          )}
+          <OverlayHeader
+            onMenuClick={() => setSidebarOpen(true)}
+            variant="solid"
+          />
 
-          <main
-            className={`overflow-y-auto ${
-              isHomePage ? "px-0 py-0 pb-20" : "px-0 pt-16 pb-20"
-            }`}
-          >
-            {children}
-          </main>
+          <main className={`overflow-y-auto px-0 pt-14 pb-20`}>{children}</main>
 
           <MobileNav />
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -65,7 +57,9 @@ export function MobileAppLayout({ children }: MobileAppLayoutProps) {
         <div className="w-full bg-transparent min-h-screen">
           <DesktopHeader />
 
-          <main className="py-6 overflow-y-auto">
+          <main
+            className={`pt-16 ${isHomePage ? "" : "py-6"} pb-6 overflow-y-auto`}
+          >
             <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 xl:px-16 2xl:px-24">
               {children}
             </div>

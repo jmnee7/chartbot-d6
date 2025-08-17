@@ -3,25 +3,26 @@
 import { Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CompactChart } from "@/components/compact-chart";
-import DAY6ImageSwiper from "@/components/home/day6-image-swiper";
+import YouTubeBanner from "@/components/home/youtube-banner";
 import MVStatsCard from "@/components/home/mv-stats-card";
 import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
 import { formatKoreanDate } from "@/lib/date-utils";
-import { useSidebar } from "@/components/layout/mobile-app-layout";
 import { getLastUpdateTime } from "@/lib/utils/index";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export default function HomePage() {
   const currentTime = new Date();
-  const { openSidebar } = useSidebar();
 
   return (
     <div>
-      <DAY6ImageSwiper onMenuClick={openSidebar} />
+      {/* YouTube Banner - 모바일에서는 전체 너비 */}
+      <div className="px-0 md:px-6 lg:px-8 xl:px-12 md:pt-0 pb-6">
+        <YouTubeBanner />
+      </div>
 
-      <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
+      <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
           <SectionHeader title="실시간 차트 순위" />

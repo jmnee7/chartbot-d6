@@ -6,7 +6,7 @@ export function MelonMusicwaveBanner() {
   return (
     <div className="w-full">
       <a
-        href="https://musicwave.melon.com/"
+        href="https://kko.kakao.com/q2UMCC03-4"
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full p-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-colors rounded-lg shadow-md"
@@ -19,7 +19,7 @@ export function MelonMusicwaveBanner() {
             <div>
               <h3 className="text-lg font-bold">멜론 뮤직웨이브</h3>
               <p className="text-sm opacity-90">
-                실시간 음악 스트리밍 참여하기
+                끊김 없이 스트리밍 리스트대로 재생 가능
               </p>
             </div>
           </div>
