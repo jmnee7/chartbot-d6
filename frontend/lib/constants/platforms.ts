@@ -33,6 +33,7 @@ export interface Platform {
   };
 }
 
+// 주요 딥링크 지원 플랫폼 (홈페이지와 스트리밍 페이지 메인)
 export const MUSIC_PLATFORMS: Platform[] = [
   {
     id: "melon",
@@ -42,21 +43,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
     deeplinks: {
       android: [
         {
-          label: "멜론#1",
+          label: "#1",
           uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922",
           idParamKey: "cid",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "멜론#2",
+          label: "#2",
           uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,30232719,37946921,37323943",
           idParamKey: "cid",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "멜론#3",
+          label: "#3",
           uri: "melonapp://play?menuid=0&ctype=1&cid=37946927,38892497,38892498,37323944,7844374,37946924,37946920",
           idParamKey: "cid",
           idSeparator: ",",
@@ -65,7 +66,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       ],
       ios: [
         {
-          label: "멜론(iOS) 세트",
+          label: "iOS 세트",
           uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922,38892497,38892498,30232719,37946921,37323943,37946927,38892497,38892498,37323944,7844374,37946924,37946920",
           idParamKey: "cid",
           idSeparator: ",",
@@ -74,21 +75,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
       ],
       pc: [
         {
-          label: "멜론 PC#1",
+          label: "#1",
           uri: "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,37323944,37946921,31927275,37946922",
           idParamKey: "cList",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "멜론 PC#2",
+          label: "#2",
           uri: "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,30232719,37946921,37323943",
           idParamKey: "cList",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "멜론 PC#3",
+          label: "#3",
           uri: "melonapp://play?ctype=1&menuid=1000002721&cList=37946927,38892497,38892498,37323944,7844374,37946924,37946920",
           idParamKey: "cList",
           idSeparator: ",",
@@ -182,21 +183,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
     deeplinks: {
       android: [
         {
-          label: "바이브#1",
+          label: "#1",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "바이브#2",
+          label: "#2",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "바이브#3",
+          label: "#3",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
           idParamKey: "trackIds",
           idSeparator: ",",
@@ -205,21 +206,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
       ],
       ios: [
         {
-          label: "바이브#1",
+          label: "#1",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "바이브#2",
+          label: "#2",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
-          label: "바이브#3",
+          label: "#3",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
           idParamKey: "trackIds",
           idSeparator: ",",
@@ -228,7 +229,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       ],
       pc: [
         {
-          label: "바이브(앱 스킴)",
+          label: "앱 스킴",
           uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
           idParamKey: "trackIds",
           idSeparator: ",",
@@ -243,10 +244,31 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "flo",
     name: "플로",
     logo: "/streaming/FLO-logo.png",
-    url: "http://bit.ly/4iNKK4I",
+    url: "https://www.music-flo.com/detail/album/437566658/albumtrack",
+    deeplinks: {
+      android: [
+        {
+          label: "플로",
+          uri: "flomusic://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060",
+          dedupeIds: false,
+        },
+      ],
+      ios: [
+        {
+          label: "플로",
+          uri: "flomusic://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060",
+          dedupeIds: false,
+        },
+      ],
+      pc: [],
+    },
     color: "bg-gradient-to-br from-[var(--mint-primary)] to-[var(--navy-dark)]",
     category: "music",
   },
+];
+
+// 기타 음악 플랫폼 (딥링크 미지원)
+export const OTHER_MUSIC_PLATFORMS: Platform[] = [
   {
     id: "youtube-music",
     name: "유튜브뮤직",
@@ -353,6 +375,7 @@ export const DOWNLOAD_PLATFORMS: Platform[] = [
 
 export const ALL_PLATFORMS = [
   ...MUSIC_PLATFORMS,
+  ...OTHER_MUSIC_PLATFORMS,
   ...MV_PLATFORMS,
   ...DOWNLOAD_PLATFORMS,
 ];

@@ -5,7 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MUSIC_PLATFORMS, MV_PLATFORMS } from "@/lib/constants/platforms";
+import {
+  MUSIC_PLATFORMS,
+  OTHER_MUSIC_PLATFORMS,
+  MV_PLATFORMS,
+} from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -137,6 +141,24 @@ export default function StreamingPage() {
                   <CardContent className="p-4">
                     <div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                       {MUSIC_PLATFORMS.map((platform) => (
+                        <PlatformCard
+                          key={platform.id}
+                          platform={platform}
+                          variant="grid"
+                        />
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* 기타 음악 플랫폼 */}
+                <Card>
+                  <CardContent className="p-4">
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">
+                      기타 플랫폼
+                    </h3>
+                    <div className="grid grid-cols-3 lg:grid-cols-2 xl:grid-cols-4 gap-3">
+                      {OTHER_MUSIC_PLATFORMS.map((platform) => (
                         <PlatformCard
                           key={platform.id}
                           platform={platform}

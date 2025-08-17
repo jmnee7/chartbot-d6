@@ -6,16 +6,11 @@ import { MUSIC_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 
 export default function QuickAccessCard() {
-  // 플로를 제외한 주요 4개 플랫폼만 표시
-  const mainPlatforms = MUSIC_PLATFORMS.filter((platform) =>
-    ["melon", "genie", "bugs", "vibe"].includes(platform.id)
-  );
-
   return (
     <Card>
       <CardContent className="p-0">
-        <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-3">
-          {mainPlatforms.map((platform, index) => (
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 overflow-visible">
+          {MUSIC_PLATFORMS.map((platform, index) => (
             <motion.div
               key={platform.id}
               initial={{ opacity: 0, y: 10 }}
@@ -26,7 +21,7 @@ export default function QuickAccessCard() {
                 ease: "easeOut",
               }}
             >
-              <PlatformCard platform={platform} variant="grid" />
+              <PlatformCard platform={platform} variant="grid" isHome={true} />
             </motion.div>
           ))}
         </div>

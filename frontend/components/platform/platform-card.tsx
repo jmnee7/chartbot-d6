@@ -3,9 +3,15 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, TrendingUp, Smartphone } from "lucide-react";
+import {
+  ExternalLink,
+  TrendingUp,
+  Smartphone,
+  ChevronDown,
+} from "lucide-react";
 import { Platform } from "@/lib/constants/platforms";
 import { useDeviceType } from "@/lib/hooks/useDeviceType";
+import { useState } from "react";
 
 type DeviceType = "android" | "ios" | "pc";
 
@@ -13,14 +19,17 @@ interface PlatformCardProps {
   platform: Platform;
   variant?: "default" | "compact" | "grid";
   showDescription?: boolean;
+  isHome?: boolean;
 }
 
 export function PlatformCard({
   platform,
   variant = "default",
   showDescription = true,
+  isHome = false,
 }: PlatformCardProps) {
   const deviceType = useDeviceType() as DeviceType;
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const deeplinks = platform.deeplinks?.[deviceType] || [];
   const hasDeeplinks = deeplinks.length > 0;
@@ -66,31 +75,53 @@ export function PlatformCard({
                   </a>
                 </Button>
               ) : (
-                // 여러 딥링크인 경우 한 줄로 배치
-                <div className="w-full flex gap-1">
-                  {deeplinks.map((link, index) => (
-                    <Button
-                      key={index}
-                      asChild
-                      size="sm"
-                      className="flex-1 text-xs bg-mint-primary hover:bg-mint-dark text-white"
-                    >
-                      <a
-                        href={link.uri}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Smartphone className="w-3 h-3 mr-1" />
-                        {link.label}
-                      </a>
-                    </Button>
-                  ))}
-                </div>
+                // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식
+                <>
+                  <Button
+                    size="sm"
+                    className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                    onClick={() => setShowDropdown(!showDropdown)}
+                  >
+                    <Smartphone className="w-3 h-3 mr-1" />
+                    {isHome
+                      ? deviceType === "pc"
+                        ? "앱으로"
+                        : "앱으로"
+                      : deviceType === "pc"
+                        ? "데스크톱 앱으로 열기"
+                        : "앱으로 열기"}
+                    <ChevronDown
+                      className={`w-3 h-3 ml-1 transition-transform ${showDropdown ? "rotate-180" : ""}`}
+                    />
+                  </Button>
+
+                  {showDropdown && (
+                    <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 space-y-1">
+                      {deeplinks.map((link, index) => (
+                        <Button
+                          key={index}
+                          asChild
+                          size="sm"
+                          variant="ghost"
+                          className="w-full justify-start text-xs"
+                        >
+                          <a
+                            href={link.uri}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {link.label}
+                          </a>
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
               {/* 플랫폼 안내 메시지 */}
-              {platform.note && (
+              {deeplinks.length > 1 && (
                 <p className="text-xs text-gray-500 text-center mt-1 px-1">
-                  {platform.note}
+                  차례대로 모두 클릭
                 </p>
               )}
             </>
@@ -99,12 +130,11 @@ export function PlatformCard({
             <Button
               asChild
               size="sm"
-              variant="outline"
-              className="w-full text-xs"
+              className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
             >
               <a href={platform.url} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-3 h-3 mr-1" />
-                웹에서 열기
+                {isHome ? "웹" : "웹에서 열기"}
               </a>
             </Button>
           )}
