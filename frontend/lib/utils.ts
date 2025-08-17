@@ -49,7 +49,6 @@ export function getPlatformColor(platform: string): string {
 
 export function getPlatformName(platform: string): string {
   const names: Record<string, string> = {
-    melon: "멜론",
     genie: "지니",
     bugs: "벅스",
     vibe: "바이브",

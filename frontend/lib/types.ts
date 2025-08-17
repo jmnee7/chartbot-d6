@@ -22,7 +22,6 @@ export interface ChartData {
   collectedAtKST: string;
   artist: string;
   tracks: Track[];
-  melon: ChartSong[];
   melon_top100: ChartSong[];
   melon_hot100: ChartSong[];
   genie: ChartSong[];
@@ -71,7 +70,6 @@ export interface MVStats {
 }
 
 export type PlatformType =
-  | "melon"
   | "melon_top100"
   | "melon_hot100"
   | "genie"

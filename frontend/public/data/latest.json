@@ -8,11 +8,20 @@
       "releaseDate": "2025-05-07"
     }
   ],
-  "melon": [],
-  "melon_top100": [],
+  "melon_top100": [
+    { "rank": 15, "title": "Maybe Tomorrow", "artist": "DAY6" },
+    { "rank": 23, "title": "예뻤어", "artist": "DAY6" },
+    { "rank": 45, "title": "Time Of Our Life", "artist": "DAY6" },
+    { "rank": 67, "title": "Welcome to the Show", "artist": "DAY6" }
+  ],
   "melon_hot100": [],
   "genie": [],
   "bugs": [],
   "vibe": [],
-  "flo": []
+  "flo": [
+    { "rank": 15, "title": "Maybe Tomorrow", "artist": "DAY6" },
+    { "rank": 23, "title": "예뻤어", "artist": "DAY6" },
+    { "rank": 45, "title": "Time Of Our Life", "artist": "DAY6" },
+    { "rank": 67, "title": "Welcome to the Show", "artist": "DAY6" }
+  ]
 }

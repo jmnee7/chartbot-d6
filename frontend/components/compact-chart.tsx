@@ -30,7 +30,6 @@ export function CompactChart() {
   }
 
   const platforms = [
-    "melon",
     "melon_top100",
     "melon_hot100",
     "genie",
@@ -40,18 +39,31 @@ export function CompactChart() {
   ];
   const platformData: { platform: string; song: ChartSong | null }[] = [];
 
-  // DAY6 타겟 곡 정보
+  // DAY6 타겟 곡 정보 (변수화)
   const targetSongs = chartData?.tracks || [];
   const primaryTargetSong = targetSongs[0]; // "Maybe Tomorrow" 등
+  const TARGET_SONG_TITLE = "Maybe Tomorrow"; // 홈페이지에서 표시할 특정 곡
 
   platforms.forEach((platform) => {
     const songs =
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
-    let topSong = songs.length > 0 ? songs[0] : null;
 
-    // 차트에 곡이 없으면 타겟 곡 정보를 사용 (차트아웃 상태)
-    if (!topSong && primaryTargetSong) {
-      topSong = {
+    if (songs.length > 0) {
+      // 홈페이지에서는 특정 곡(Maybe Tomorrow)만 표시
+      const targetSong = songs.find((song) => song.title === TARGET_SONG_TITLE);
+      if (targetSong) {
+        platformData.push({ platform, song: targetSong });
+      } else {
+        // 타겟 곡이 없으면 가장 높은 순위 곡 표시
+        const bestSong = songs.reduce((best, current) => {
+          if (!best.rank || !current.rank) return current.rank ? current : best;
+          return current.rank < best.rank ? current : best;
+        });
+        platformData.push({ platform, song: bestSong });
+      }
+    } else if (primaryTargetSong) {
+      // 차트에 곡이 없으면 타겟 곡 정보를 사용 (차트아웃 상태)
+      const chartOutSong = {
         title: primaryTargetSong.title,
         artist: chartData?.artist || "DAY6",
         album: primaryTargetSong.album,
@@ -59,14 +71,14 @@ export function CompactChart() {
         change: 0,
         timestamp: "",
       } as ChartSong;
+      platformData.push({ platform, song: chartOutSong });
+    } else {
+      platformData.push({ platform, song: null });
     }
-
-    platformData.push({ platform, song: topSong });
   });
 
   const getPlatformLogo = (platform: string) => {
     const logos: Record<string, string> = {
-      melon: "/ico_melon.png",
       melon_top100: "/ico_melon.png",
       melon_hot100: "/ico_melon.png",
       genie: "/Geenie.png",

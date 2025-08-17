@@ -40,7 +40,6 @@ function PlatformChart({
 }) {
   const getPlatformLogo = (platform: PlatformType) => {
     const logos: Record<PlatformType, string> = {
-      melon: "/melone.webp",
       melon_top100: "/melone.webp",
       melon_hot100: "/melone.webp",
       genie: "/Geenie.png",
