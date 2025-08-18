@@ -107,35 +107,6 @@ export default function DownloadPage() {
                 className="md:hidden -mx-9"
                 style={{ borderBottom: "0.6rem solid #f7f8f9" }}
               ></div>
-
-              <Card className="bg-gradient-to-r from-mint-50 to-mint-100/50 border-mint-200">
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-1">
-                      <h3 className="font-bold  mb-2">추천 다운로드 사이트</h3>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 bg-white rounded-lg border border-mint-100 mt-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-mint-primary rounded-lg flex items-center justify-center">
-                        <Music className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-gray-900">DAY6.kr</div>
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      className="bg-mint-primary hover:bg-mint-dark text-white"
-                      onClick={() => window.open("https://day6.kr/", "_blank")}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      방문하기
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </TabsContent>
 

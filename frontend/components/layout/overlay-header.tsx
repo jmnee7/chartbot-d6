@@ -36,22 +36,15 @@ export function OverlayHeader({
         />
       </button>
 
-      {/* Title with DAY6 STRM branding */}
-      <Link href="/" className="flex items-center gap-2">
+      {/* Title */}
+      <Link href="/" className="flex items-center">
         <h1
-          className={`font-montserrat text-lg font-bold tracking-tight leading-none m-0 ${
-            isOverlay ? "text-white drop-shadow-lg" : "text-gray-900"
-          }`}
-        >
-          DAY<span className="text-[#49c4b0]">6</span> STRM
-        </h1>
-        <span
-          className={`text-xs leading-none ${
-            isOverlay ? "text-white/90" : "text-gray-500"
+          className={`font-sans text-lg font-bold tracking-tight leading-none m-0 ${
+            isOverlay ? "text-white drop-shadow-lg" : "text-[#666]"
           }`}
         >
           데이식스 음원총공팀
-        </span>
+        </h1>
       </Link>
 
       {/* Balance */}

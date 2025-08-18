@@ -20,15 +20,12 @@ export function DesktopHeader() {
           <Menu className="h-6 w-6 text-gray-700" />
         </button>
 
-        <div className="flex items-end gap-3">
+        <div className="flex items-center">
           <Link href="/">
-            <h1 className="font-montserrat text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 tracking-tight leading-none m-0 hover:opacity-80 transition-opacity cursor-pointer">
-              DAY<span className="text-[#49c4b0]">6</span> STRM
+            <h1 className="font-sans text-2xl lg:text-2xl xl:text-3xl font-bold text-[#666] tracking-tight leading-none m-0 hover:opacity-80 transition-opacity cursor-pointer">
+              데이식스 음원총공팀
             </h1>
           </Link>
-          <span className="text-base lg:text-lg text-gray-500 ml-2 leading-none">
-            데이식스 음원총공팀
-          </span>
         </div>
       </div>
 
