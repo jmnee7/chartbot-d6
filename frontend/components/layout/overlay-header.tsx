@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface OverlayHeaderProps {
   onMenuClick?: () => void;
@@ -37,7 +38,18 @@ export function OverlayHeader({
       </button>
 
       {/* Title */}
-      <Link href="/" className="flex items-center">
+      <Link href="/" className="flex items-center gap-2">
+        <Image
+          src="/day6 Logo Vector.svg"
+          alt="DAY6 Logo"
+          width={36}
+          height={36}
+          className="w-9 h-9"
+          style={{
+            filter:
+              "brightness(0) saturate(100%) invert(60%) sepia(91%) saturate(449%) hue-rotate(118deg) brightness(96%) contrast(91%)",
+          }}
+        />
         <h1
           className={`font-sans text-lg font-bold tracking-tight leading-none m-0 ${
             isOverlay ? "text-white drop-shadow-lg" : "text-[#666]"

@@ -7,6 +7,8 @@ import {
   Sparkles,
   Target,
   TrendingUp,
+  X,
+  Music,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,6 +19,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useState } from "react";
+import Link from "next/link";
 
 // TODO: 실제 날짜 계산 로직으로 변경 필요
 const comebackInfo = {
@@ -71,20 +75,6 @@ const getComebackGoals = (comebackData: ComebackData | undefined) => [
 
 const comebackSchedule = [
   {
-    date: "2025.05.07",
-    event: "디지털 싱글 발매",
-    status: "completed",
-    description: "Maybe Tomorrow + 끝났지 공개",
-    dDay: 0, // 완료됨
-  },
-  {
-    date: "2025.05.09",
-    event: "KSPO 돔 콘서트",
-    status: "completed",
-    description: "첫 K-밴드 돔 공연 성공",
-    dDay: 0, // 완료됨
-  },
-  {
     date: "2025.09.05",
     event: "정규 4집 발매",
     status: "upcoming",
@@ -130,6 +120,8 @@ const comebackMissions = [
 ];
 
 export default function ComebackPage() {
+  const [showStreamingModal, setShowStreamingModal] = useState(false);
+
   // React Query로 실시간 데이터 가져오기
   const { data: comebackData, isLoading } = useQuery({
     queryKey: ["comebackData"],
@@ -192,17 +184,17 @@ export default function ComebackPage() {
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[2].dDay}
+                    D-{comebackSchedule[0]?.dDay}
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[2].date} - {comebackSchedule[2].description}
+                  {comebackSchedule[0].date} - {comebackSchedule[0].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackSchedule[2].dDay}
+                  {comebackSchedule[0]?.dDay}
                 </div>
                 <div className="text-sm text-white/80">일 남음</div>
               </div>
@@ -216,17 +208,17 @@ export default function ComebackPage() {
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[3].dDay}
+                    D-{comebackSchedule[1].dDay}
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">정규 4집 활동 시작</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[3].date} - {comebackSchedule[3].description}
+                  {comebackSchedule[1].date} - {comebackSchedule[1].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackSchedule[3].dDay}
+                  {comebackSchedule[1].dDay}
                 </div>
                 <div className="text-sm text-white/80">일 남음</div>
               </div>
@@ -401,14 +393,39 @@ export default function ComebackPage() {
                         <h4 className="font-medium text-gray-900 mb-1">
                           {mission.title}
                         </h4>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="outline"
-                          className="w-full border-[#49c4b0] text-[#49c4b0] hover:bg-[#49c4b0] hover:text-white transition-all duration-200"
-                        >
-                          <a href={mission.href}>{mission.action}</a>
-                        </Button>
+                        {mission.title === "정규 4집 대비 스트리밍" ? (
+                          <Button
+                            onClick={() => setShowStreamingModal(true)}
+                            size="sm"
+                            variant="outline"
+                            className="w-full border-[#49c4b0] text-[#49c4b0] hover:bg-[#49c4b0] hover:text-white transition-all duration-200"
+                          >
+                            {mission.action}
+                          </Button>
+                        ) : mission.title === "Maybe Tomorrow 조회수" ? (
+                          <Button
+                            onClick={() =>
+                              window.open(
+                                "https://www.youtube.com/watch?v=I1gI9ZCcSJs",
+                                "_blank"
+                              )
+                            }
+                            size="sm"
+                            variant="outline"
+                            className="w-full border-[#49c4b0] text-[#49c4b0] hover:bg-[#49c4b0] hover:text-white transition-all duration-200"
+                          >
+                            {mission.action}
+                          </Button>
+                        ) : (
+                          <Button
+                            asChild
+                            size="sm"
+                            variant="outline"
+                            className="w-full border-[#49c4b0] text-[#49c4b0] hover:bg-[#49c4b0] hover:text-white transition-all duration-200"
+                          >
+                            <Link href={mission.href}>{mission.action}</Link>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -421,6 +438,74 @@ export default function ComebackPage() {
 
       {/* Bottom spacing for mobile nav */}
       <div className="h-20 md:h-8"></div>
+
+      {/* 정규 4집 스트리밍 모달 */}
+      {showStreamingModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-6 max-h-[80vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold">정규 4집 대비 스트리밍</h2>
+              <button
+                onClick={() => setShowStreamingModal(false)}
+                className="p-1 hover:bg-gray-100 rounded-full"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p className="text-sm text-gray-600 mb-4">
+              정규 4집 &ldquo;The DECADE&rdquo; 9월 5일 발매! 미리 영상을 보고
+              준비해보세요.
+            </p>
+
+            <div className="space-y-3 mb-4">
+              <a
+                href="https://www.youtube.com/watch?v=0zdkvGDDnQg"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 p-3 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100 transition-colors"
+              >
+                <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center">
+                  <Music className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-sm">
+                    The DECADE Trailer Film
+                  </div>
+                  <div className="text-xs text-red-700">
+                    정규 4집 트레일러 영상 보기
+                  </div>
+                </div>
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=qmAMfh_mbBA"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
+              >
+                <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <Music className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-medium text-sm">Track Preview Film</div>
+                  <div className="text-xs text-blue-700">트랙 프리뷰 영상</div>
+                </div>
+              </a>
+            </div>
+
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+              <div className="flex items-center gap-2 text-yellow-800 mb-2">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm font-medium">발매 전 준비사항</span>
+              </div>
+              <ul className="text-sm text-yellow-700 space-y-1">
+                <li>• 9월 5일 오후 6시 발매 - 알림 설정하기</li>
+                <li>• 플랫폼별 계정 로그인 미리 확인</li>
+                <li>• 스트리밍 플레이리스트 정리하기</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
