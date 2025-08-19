@@ -5,7 +5,7 @@ interface YouTubeBannerProps {
 }
 
 export default function YouTubeBanner({
-  videoId = "0fyZqS0N19o", // DAY6 - Maybe Tomorrow
+  videoId = "0zdkvGDDnQg", // DAY6 - The DECADE Trailer Film
 }: YouTubeBannerProps) {
   return (
     <div className="relative w-full aspect-video overflow-hidden">
