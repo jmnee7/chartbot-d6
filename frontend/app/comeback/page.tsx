@@ -28,6 +28,16 @@ const comebackInfo = {
 
 const comebackSchedule = [
   {
+    date: "2025.08.30",
+    event: "고양 콘서트",
+    status: "upcoming",
+    description: "10th Anniversary Tour - GOYANG STADIUM",
+    dDay: Math.ceil(
+      (new Date("2025-08-30").getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
+  },
+  {
     date: "2025.09.05",
     event: "정규 4집 발매",
     status: "upcoming",
@@ -38,12 +48,12 @@ const comebackSchedule = [
     ),
   },
   {
-    date: "2025.08.30",
-    event: "고양 콘서트",
+    date: "2025.09.20",
+    event: "10주년 콘서트",
     status: "upcoming",
-    description: "10th Anniversary Tour - GOYANG STADIUM",
+    description: "음악방송 및 프로모션 활동",
     dDay: Math.ceil(
-      (new Date("2025-08-30").getTime() - new Date().getTime()) /
+      (new Date("2025-09-20").getTime() - new Date().getTime()) /
         (1000 * 60 * 60 * 24)
     ),
   },
@@ -108,7 +118,7 @@ export default function ComebackPage() {
                     D-{comebackSchedule[0]?.dDay}
                   </Badge>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
+                <h3 className="text-2xl font-bold mb-1">고양 콘서트</h3>
                 <p className="text-white/80 text-sm">
                   {comebackSchedule[0].date}
                 </p>
