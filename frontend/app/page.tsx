@@ -2,7 +2,9 @@
 
 import { Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CompactChart } from "@/components/compact-chart";
+import Link from "next/link";
 import YouTubeBanner from "@/components/home/youtube-banner";
 import MVStatsCard from "@/components/home/mv-stats-card";
 import QuickAccessCard from "@/components/home/quick-access-card";
@@ -25,13 +27,16 @@ export default function HomePage() {
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <SectionHeader
-            title="실시간 차트 순위"
-            showMoreButton={true}
-            moreButtonText="차트 더보기"
-            moreButtonHref="/charts"
-          />
+          <SectionHeader title="실시간 차트 순위" />
           <CompactChart />
+          <div className="mt-4">
+            <Button
+              asChild
+              className="w-full bg-mint-primary hover:bg-mint-dark text-white"
+            >
+              <Link href="/charts">전체 차트 보기</Link>
+            </Button>
+          </div>
           <div
             className="mt-6 -mx-5"
             style={{ borderBottom: "0.6rem solid #f7f8f9" }}
@@ -41,15 +46,18 @@ export default function HomePage() {
         {/* Desktop Layout */}
         <Card className="hidden md:block bg-white/60 backdrop-blur-sm border-mint-primary/20 shadow-sm">
           <CardHeader>
-            <SectionHeader
-              title="실시간 차트 순위"
-              showMoreButton={true}
-              moreButtonText="차트 더보기"
-              moreButtonHref="/charts"
-            />
+            <SectionHeader title="실시간 차트 순위" />
           </CardHeader>
           <CardContent>
             <CompactChart />
+            <div className="mt-4">
+              <Button
+                asChild
+                className="w-full bg-mint-primary hover:bg-mint-dark text-white"
+              >
+                <Link href="/charts">전체 차트 보기</Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
 

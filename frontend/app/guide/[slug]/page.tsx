@@ -72,45 +72,6 @@ export default async function GuideDetailPage({ params }: Props) {
         }
         label={c.label}
       />
-
-      {/* 간단한 설명 텍스트 */}
-      <section className="mt-6 p-4 bg-gray-50 rounded-lg">
-        <h3 className="text-sm font-semibold text-gray-900 mb-2">
-          {c.label} 이용 팁
-        </h3>
-        <div className="text-sm text-gray-600 space-y-2">
-          {c.slug.includes("streaming") ||
-          c.slug.includes("melon") ||
-          c.slug.includes("genie") ||
-          c.slug.includes("bugs") ||
-          c.slug.includes("vibe") ||
-          c.slug.includes("flo") ? (
-            <>
-              <p>• 스트리밍은 30초 이상 재생해야 스트리밍 수에 반영됩니다</p>
-              <p>• 하루에 같은 곡을 무제한으로 들어도 집계됩니다</p>
-              <p>• 음소거나 볼륨 0으로는 스트리밍이 집계되지 않습니다</p>
-              <p>• 가능한 한 높은 음질로 재생하는 것이 좋습니다</p>
-            </>
-          ) : c.slug.includes("vote") ||
-            c.slug.includes("inkigayo") ||
-            c.slug.includes("musicbank") ||
-            c.slug.includes("musiccore") ||
-            c.slug.includes("mcountdown") ? (
-            <>
-              <p>• 투표 시간과 방법을 정확히 확인하세요</p>
-              <p>• 하나의 계정으로 하루 1회 투표가 가능합니다</p>
-              <p>• 투표 마감 시간을 놓치지 않도록 주의하세요</p>
-              <p>• 프로그램별로 투표 방식이 다를 수 있습니다</p>
-            </>
-          ) : (
-            <>
-              <p>• 해당 가이드를 참고하여 단계별로 진행해주세요</p>
-              <p>• 궁금한 점이 있으면 팬 커뮤니티에서 문의해보세요</p>
-              <p>• 정확한 정보는 공식 채널에서 확인하는 것이 좋습니다</p>
-            </>
-          )}
-        </div>
-      </section>
     </div>
   );
 }

@@ -96,8 +96,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "apple-music",
     label: "애플뮤직",
-    heroImage: "/guide/apple-streaming.webp",
-    images: ["/guide/apple-streaming.webp"],
+    heroImage: "/guide/apple-music-streming.jpg",
+    images: ["/guide/apple-music-streming.jpg"],
     cta: {
       label: "Apple Music으로 이동",
       href: "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
@@ -108,8 +108,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "spotify",
     label: "스포티파이",
-    heroImage: "/guide/spotify-streaming.webp",
-    images: ["/guide/spotify-streaming.webp"],
+    heroImage: "/guide/spotify-streamint.jpg",
+    images: ["/guide/spotify-streamint.jpg"],
     cta: {
       label: "Spotify로 이동",
       href: "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
@@ -325,7 +325,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   },
   {
     slug: "musiccore",
-    label: "뮤빗",
+    label: "음악중심",
     date: "2025.08.10",
     heroImage: "/vote/music-shows/music-core.png",
     images: ["/vote/music-shows/music-core.png"],
@@ -375,85 +375,6 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "voting",
   },
-  {
-    slug: "allchart",
-    label: "올차트",
-    date: "2025.08.10",
-    heroImage: "/guide/all-chart1.webp",
-    images: ["/guide/all-chart1.webp", "/guide/all-chart2.webp"],
-    cta: {
-      label: "올차트 투표하기",
-      href: "https://www.allchart.co.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "linc",
-    label: "LiNC",
-    date: "2025.08.10",
-    heroImage: "/guide/link1.webp",
-    images: ["/guide/link1.webp"],
-    cta: {
-      label: "LiNC 투표하기",
-      href: "https://linc-app.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "highter",
-    label: "루비",
-    date: "2025.08.10",
-    heroImage: "/guide/h.webp",
-    images: ["/guide/highter1.webp"],
-    cta: {
-      label: "하이어 투표하기",
-      href: "https://highter.app/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "idolchamp",
-    label: "아이돌챔프",
-    date: "2025.08.10",
-    heroImage: "/guide/idol1.webp",
-    images: ["/guide/idol1.webp", "/guide/idol2.webp", "/guide/idol3.webp"],
-    cta: {
-      label: "아이돌챔프 투표하기",
-      href: "https://idolchamp.co.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "starplanet",
-    label: "스타플래닛",
-    date: "2025.08.10",
-    heroImage: "/guide/star-planit1.webp",
-    images: ["/guide/star-planit1.webp"],
-    cta: {
-      label: "스타플래닛 투표하기",
-      href: "https://www.starplanet.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "mnetplus",
-    label: "엠넷플러스",
-    date: "2025.08.10",
-    heroImage: "/guide/m-net1.webp",
-    images: ["/guide/m-net1.webp", "/guide/m-net2.webp"],
-    cta: {
-      label: "엠넷플러스 투표하기",
-      href: "https://www.mnet.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-
   // 3-3. 컴백 재화 모으기 (사이드바 컴백 섹션)
   {
     slug: "inkigayo",

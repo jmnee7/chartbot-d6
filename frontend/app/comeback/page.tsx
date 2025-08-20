@@ -91,8 +91,9 @@ export default function ComebackPage() {
               <div className="text-right">
                 <div className="text-3xl font-bold">
                   {comebackInfo.daysLeft}
+                  <span className="text-lg ml-1">일</span>
                 </div>
-                <div className="text-sm text-white/80">일 경과</div>
+                <div className="text-sm text-white">경과</div>
               </div>
             </div>
           </SwiperSlide>
@@ -109,19 +110,23 @@ export default function ComebackPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[0].date} - {comebackSchedule[0].description}
+                  {comebackSchedule[0].date}
+                </p>
+                <p className="text-white/80 text-sm">
+                  {comebackSchedule[0].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
                   {comebackSchedule[0]?.dDay}
+                  <span className="text-lg ml-1">일</span>
                 </div>
-                <div className="text-sm text-white/80">일 남음</div>
+                <div className="text-sm text-white">남음</div>
               </div>
             </div>
           </SwiperSlide>
 
-          {/* 정규 4집 활동 시작 카드 */}
+          {/* 10주년 콘서트 카드 */}
           <SwiperSlide className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -131,16 +136,20 @@ export default function ComebackPage() {
                     D-{comebackSchedule[1].dDay}
                   </Badge>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">정규 4집 활동 시작</h3>
+                <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[1].date} - {comebackSchedule[1].description}
+                  {comebackSchedule[1].date}
+                </p>
+                <p className="text-white/80 text-sm">
+                  {comebackSchedule[1].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
                   {comebackSchedule[1].dDay}
+                  <span className="text-lg ml-1">일</span>
                 </div>
-                <div className="text-sm text-white/80">일 남음</div>
+                <div className="text-sm text-white">남음</div>
               </div>
             </div>
           </SwiperSlide>

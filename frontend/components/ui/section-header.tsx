@@ -26,22 +26,15 @@ export function SectionHeader({
   return (
     <div className="flex items-center justify-between mb-4">
       <h2 className="text-lg md:text-xl font-bold text-gray-900">{title}</h2>
-      <div className="flex items-center gap-3">
-        {showMoreButton && (
-          <Button asChild size="sm" variant="outline" className="text-xs">
-            <Link href={moreButtonHref}>{moreButtonText}</Link>
-          </Button>
-        )}
-        {showDateTime && (
-          <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
-            <span className="text-xs text-gray-500">
-              {formatKoreanDate(currentTime)}
-            </span>
-            <Clock className="h-3 w-3 text-mint-primary" />
-            <span>{getLastUpdateTime()} 기준</span>
-          </div>
-        )}
-      </div>
+      {showDateTime && (
+        <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
+          <span className="text-xs text-gray-500">
+            {formatKoreanDate(currentTime)}
+          </span>
+          <Clock className="h-3 w-3 text-mint-primary" />
+          <span>{getLastUpdateTime()} 기준</span>
+        </div>
+      )}
     </div>
   );
 }

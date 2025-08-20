@@ -190,19 +190,6 @@ export default function CalculatorPage() {
           );
         })}
       </div>
-
-      {/* 도움말 */}
-      <Card className="p-4 bg-gray-50">
-        <CardContent className="p-0">
-          <h3 className="font-semibold text-gray-900 mb-2">💡 스트리밍 팁</h3>
-          <div className="text-sm text-gray-600 space-y-1">
-            <p>• 각 곡은 30초 이상 재생해야 스트리밍으로 인정됩니다</p>
-            <p>• 플레이리스트를 만들어서 자동 재생을 활용하세요</p>
-            <p>• 여러 기기를 활용하면 더 효율적입니다</p>
-            <p>• 무음이나 낮은 볼륨으로도 스트리밍됩니다</p>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
