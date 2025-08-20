@@ -54,10 +54,7 @@ export function QuickLinksBanner() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
-              DAY6 &ldquo;Maybe Tomorrow&rdquo; 신청을 위해 모바일에서
-              접속해주세요.
-            </p>
+
             <div className="space-y-3">
               <a
                 href="sms:%238910?body=DAY6"
