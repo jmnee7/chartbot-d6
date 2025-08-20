@@ -60,7 +60,7 @@ export function QuickLinksBanner() {
             </p>
             <div className="space-y-3">
               <a
-                href="sms:%238910?body=DAY6의 Maybe Tomorrow 신청합니다."
+                href="sms:%238910?body=DAY6"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-red-500 hover:bg-red-600 text-white text-center rounded-lg font-medium transition-colors"
@@ -68,7 +68,7 @@ export function QuickLinksBanner() {
                 KBS 라디오 신청
               </a>
               <a
-                href="sms:%238000?body=DAY6의 Maybe Tomorrow 신청합니다."
+                href="sms:%238000?body=DAY6"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-blue-500 hover:bg-blue-600 text-white text-center rounded-lg font-medium transition-colors"
@@ -76,7 +76,7 @@ export function QuickLinksBanner() {
                 MBC 라디오 신청
               </a>
               <a
-                href="sms:%231077?body=DAY6의 Maybe Tomorrow 신청합니다."
+                href="sms:%231077?body=DAY6"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-green-500 hover:bg-green-600 text-white text-center rounded-lg font-medium transition-colors"
@@ -106,7 +106,7 @@ export function QuickLinksBanner() {
             </p>
             <div className="space-y-3">
               <a
-                href="sms:%230505?body=데이식스의 Maybe Tomorrow를 요청드려요."
+                href="sms:%230505?body=DAY6"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-blue-500 hover:bg-blue-600 text-white text-center rounded-lg font-medium transition-colors"

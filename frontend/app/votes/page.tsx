@@ -36,22 +36,6 @@ export default function VotesPage() {
                   <MusicShowCard key={show.id} show={show} />
                 ))}
               </div>
-
-              {/* DAY6 투표독려팀 */}
-              <Card className="bg-gradient-to-r from-mint-50 to-mint-100/50 border-mint-200">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-mint-primary rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold">V</span>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">
-                        DAY6 투표독려팀
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </TabsContent>
 

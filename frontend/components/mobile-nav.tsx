@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, BarChart3, Calendar, BookOpen, Headphones } from "lucide-react";
+import { Home, BarChart3, Vote, BookOpen, Headphones } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "홈", href: "/", icon: Home, type: "link" },
   { name: "차트", href: "/charts", icon: BarChart3, type: "link" },
-  { name: "컴백", href: "/comeback", icon: Calendar, type: "link" },
+  { name: "투표", href: "/comeback", icon: Vote, type: "link" },
   { name: "가이드", href: "/guide", icon: BookOpen, type: "link" },
   { name: "Support", href: "/support", icon: Headphones, type: "link" },
 ];

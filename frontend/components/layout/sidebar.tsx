@@ -16,8 +16,6 @@ import {
   Music,
   ExternalLink,
   Home,
-  Star,
-  Coins,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -150,23 +148,6 @@ const navigation: NavigationItem[] = [
         name: "시상식",
         href: "/votes",
         icon: ExternalLink,
-      },
-    ],
-  },
-  {
-    name: "컴백",
-    icon: Star,
-    hasChildren: true,
-    children: [
-      {
-        name: "컴백 전 재화 모으기",
-        icon: Coins,
-        hasChildren: true,
-        children: [
-          { name: "음악중심 - 뮤빗", href: "/guide/mubeat" },
-          { name: "인기가요 - 팬 포인트", href: "/guide/inkigayo" },
-          { name: "하이어 - 루비", href: "/guide/highter" },
-        ],
       },
     ],
   },
