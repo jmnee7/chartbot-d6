@@ -1,30 +1,12 @@
 "use client";
 
-import {
-  Calendar,
-  Sparkles,
-  TrendingUp,
-  Smartphone,
-  Heart,
-  Star,
-} from "lucide-react";
+import { Calendar, TrendingUp, Smartphone, Heart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
-
-// TODO: 실제 날짜 계산 로직으로 변경 필요
-const comebackInfo = {
-  title: "Maybe Tomorrow",
-  date: "2025년 5월 7일",
-  daysLeft: Math.floor(
-    (new Date().getTime() - new Date("2025-05-07").getTime()) /
-      (1000 * 60 * 60 * 24)
-  ), // 실제 날짜 계산
-  status: "완료",
-};
 
 const comebackSchedule = [
   {
@@ -81,33 +63,6 @@ export default function ComebackPage() {
           autoplay={{ delay: 5000 }}
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
-          {/* Maybe Tomorrow 카드 */}
-          <SwiperSlide className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-6 h-6" />
-                  <Badge className="bg-white/20 text-white border-white/30">
-                    {comebackInfo.status}
-                  </Badge>
-                </div>
-                <h3 className="text-2xl font-bold mb-1">
-                  {comebackInfo.title}
-                </h3>
-                <p className="text-white/80 text-sm">
-                  {comebackInfo.date} 발매
-                </p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {comebackInfo.daysLeft}
-                  <span className="text-lg ml-1">일</span>
-                </div>
-                <div className="text-sm text-white">경과</div>
-              </div>
-            </div>
-          </SwiperSlide>
-
           {/* 정규 4집 발매 카드 */}
           <SwiperSlide className="p-6">
             <div className="flex items-center justify-between">
