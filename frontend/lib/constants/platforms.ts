@@ -270,8 +270,8 @@ export const MUSIC_PLATFORMS: Platform[] = [
 // 기타 음악 플랫폼 (딥링크 미지원)
 export const OTHER_MUSIC_PLATFORMS: Platform[] = [
   {
-    id: "youtube-music",
-    name: "유튜브뮤직",
+    id: "youtube-music-vedio",
+    name: "유튜브 뮤비",
     logo: "/streaming/youtube-music-logo.png",
     url: "https://www.youtube.com/watch?v=0fyZqS0N19o",
     color: "bg-[var(--mint-dark)]",

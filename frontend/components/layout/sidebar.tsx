@@ -46,7 +46,7 @@ const navigation: NavigationItem[] = [
     hasChildren: true,
     children: [
       {
-        name: "스트리밍리스트/원클릭",
+        name: "원클릭 담기",
         href: "/streaming",
         icon: Music,
       },
@@ -170,33 +170,6 @@ const navigation: NavigationItem[] = [
       },
     ],
   },
-  {
-    name: "서포트",
-    icon: Heart,
-    hasChildren: true,
-    children: [
-      {
-        name: "앨범 공구",
-        href: "/guide/album-group-order",
-        icon: ExternalLink,
-      },
-      {
-        name: "다운 헬퍼 지원",
-        href: "/support",
-        icon: Heart,
-      },
-      {
-        name: "아이디 기부",
-        href: "/guide/id-donation",
-        icon: ExternalLink,
-      },
-      {
-        name: "모금",
-        href: "/support",
-        icon: ExternalLink,
-      },
-    ],
-  },
 ];
 
 export function Sidebar({ open, onClose }: SidebarProps) {
@@ -308,12 +281,14 @@ export function Sidebar({ open, onClose }: SidebarProps) {
     );
   };
 
-  // Close sidebar when clicking outside
+  // Close sidebar when clicking outside and reset expanded items
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      // Reset all expanded items when sidebar closes
+      setExpandedItems({});
     }
 
     return () => {

@@ -11,7 +11,7 @@ import Link from "next/link";
 const comebackSchedule = [
   {
     date: "2025.08.30",
-    event: "고양 콘서트",
+    event: "10주년 콘서트",
     status: "upcoming",
     description: "10th Anniversary Tour - GOYANG STADIUM",
     dDay: Math.ceil(

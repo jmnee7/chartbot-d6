@@ -56,7 +56,10 @@ export default async function GuideDetailPage({ params }: Props) {
           </div>
 
           <ShareButton title={c.label} slug={slug} /> */}
-        <SectionHeader title={getCategoryTitle(c.category)} />
+        <SectionHeader
+          title={getCategoryTitle(c.category)}
+          showDateTime={false}
+        />
         {/* </div> */}
 
         {/* 카테고리 탭 */}
