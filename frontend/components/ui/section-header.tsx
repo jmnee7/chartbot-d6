@@ -16,7 +16,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({
   title,
-  showDateTime = true,
+  showDateTime = false,
   showMoreButton = false,
   moreButtonText = "더보기",
   moreButtonHref = "#",

@@ -34,7 +34,7 @@ export default function ChartsPage() {
       {/* Content with same padding as homepage */}
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
         {/* Section Header - same style as homepage */}
-        <SectionHeader title="차트" />
+        <SectionHeader title="차트" showDateTime={false} />
 
         {/* Mobile Layout - Platform Filters & Chart Section */}
         <div className="md:hidden">

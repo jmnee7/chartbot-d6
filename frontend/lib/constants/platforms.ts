@@ -296,7 +296,7 @@ export const OTHER_MUSIC_PLATFORMS: Platform[] = [
   {
     id: "stationhead",
     name: "스테이션헤드",
-    logo: "/streaming/station-head-logo.webp",
+    logo: "/download/music/Guide_stationhead.png",
     url: "https://stationhead.com/day6strmteam",
     color: "bg-indigo-500",
     category: "music",

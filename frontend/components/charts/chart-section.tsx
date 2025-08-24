@@ -68,9 +68,6 @@ function PlatformChart({
               {getPlatformName(platform)}
             </h2>
           </div>
-          <span className="text-xs md:text-sm text-gray-500">
-            {chartData?.collectedAtKST}
-          </span>
         </div>
         <ChartTable
           songs={chartData?.[platform] || []}

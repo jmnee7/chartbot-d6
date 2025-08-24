@@ -117,6 +117,18 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "streaming",
   },
+  {
+    slug: "station-head",
+    label: "스테이션헤드",
+    heroImage: "/streaming/music/Guide_stationhead.png",
+    images: ["/streaming/music/Guide_stationhead.png"],
+    cta: {
+      label: "스테이션헤드 다운로드",
+      href: "https://stationhead.com/day6strmteam",
+      external: true,
+    },
+    category: "streaming",
+  },
 
   // ===== 2. 다운로드 가이드 =====
   // 2-1. 음원 다운로드
@@ -177,18 +189,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "download",
   },
-  {
-    slug: "stagion-head",
-    label: "스테이션헤드",
-    heroImage: "/download/music/Guide_stationhead.png",
-    images: ["/download/music/Guide_stationhead.png"],
-    cta: {
-      label: "스테이션헤드 다운로드",
-      href: "https://stationhead.com/day6strmteam",
-      external: true,
-    },
-    category: "download",
-  },
+
   {
     slug: "download-kakao",
     label: "카카오뮤직",

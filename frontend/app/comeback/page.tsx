@@ -134,7 +134,7 @@ export default function ComebackPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* 음악중심 뮤빗 */}
             <Link
-              href="/guide/mubeat"
+              href="/guide/musiccore-vote"
               className="flex items-center gap-3 p-4 bg-gradient-to-r from-mint-primary to-mint-dark hover:from-mint-dark hover:to-mint-primary transition-colors rounded-lg shadow-md text-white w-full text-left"
             >
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
@@ -148,7 +148,7 @@ export default function ComebackPage() {
 
             {/* 인기가요 하이어 */}
             <Link
-              href="/guide/highter"
+              href="/guide/inkigayo-vote"
               className="flex items-center gap-3 p-4 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 transition-colors rounded-lg shadow-md text-white w-full text-left"
             >
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
@@ -162,7 +162,7 @@ export default function ComebackPage() {
 
             {/* 인기가요 링크 */}
             <Link
-              href="/guide/inkigayo"
+              href="/guide/inkigayo-vote"
               className="flex items-center gap-3 p-4 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 transition-colors rounded-lg shadow-md text-white w-full text-left"
             >
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
