@@ -7,28 +7,8 @@ import { Button } from "@/components/ui/button";
 import { MUSIC_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { motion, AnimatePresence } from "framer-motion";
-import { getDeviceLabel } from "@/lib/utils/device-detection";
-import { useDeviceAndAppType } from "@/lib/hooks/useDeviceType";
 
 export default function StreamingPage() {
-  const { deviceType, appType } = useDeviceAndAppType();
-  const deviceLabel = getDeviceLabel(deviceType, appType);
-
-  const handleOneClickStreaming = () => {
-    const urls = [
-      "https://www.melon.com/album/detail.htm?albumId=11796328",
-      "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
-      "https://music.bugs.co.kr/album/20724195",
-      "https://vibe.naver.com/search?query=DAY6",
-      "https://www.music-flo.com/detail/album/437566658/albumtrack",
-      "https://www.youtube.com/watch?v=0fyZqS0N19o",
-      "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
-      "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
-      "https://stationhead.com/day6strmteam",
-    ];
-    urls.forEach((url) => window.open(url, "_blank"));
-  };
-
   return (
     <div>
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">

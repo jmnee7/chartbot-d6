@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { PlatformType } from "@/lib/types";
-import { useCallback, memo } from "react";
+import { useCallback, memo, useTransition } from "react";
 
 interface PlatformFiltersProps {
   selectedPlatforms: PlatformType[];
@@ -12,19 +12,19 @@ interface PlatformFiltersProps {
 }
 
 const PLATFORMS = [
-  { id: "melon_top100" as const, name: "멜론 TOP100", color: "bg-[#49c4b0]" },
-  { id: "melon_hot100" as const, name: "멜론 HOT100", color: "bg-[#49c4b0]" },
-  { id: "genie" as const, name: "지니", color: "bg-[#3ba89a]" },
+  { id: "melon_top100" as const, name: "멜론 TOP100", color: "#49c4b0" },
+  { id: "melon_hot100" as const, name: "멜론 HOT100", color: "#49c4b0" },
+  { id: "genie" as const, name: "지니", color: "#3ba89a" },
   {
     id: "bugs" as const,
     name: "벅스",
-    color: "bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0]",
+    color: "#5bd2b8",
   },
-  { id: "vibe" as const, name: "바이브", color: "bg-[#6dd5c0]" },
+  { id: "vibe" as const, name: "바이브", color: "#6dd5c0" },
   {
     id: "flo" as const,
     name: "플로",
-    color: "bg-gradient-to-br from-[#49c4b0] to-[#1e3a8a]",
+    color: "#3d9fa0",
   },
 ];
 
@@ -32,14 +32,18 @@ export const PlatformFilters = memo(function PlatformFilters({
   selectedPlatforms,
   onPlatformChange,
 }: PlatformFiltersProps) {
+  const [, startTransition] = useTransition();
+
   const togglePlatform = useCallback(
     (platform: PlatformType) => {
-      onPlatformChange((prev) => {
-        if (prev.includes(platform)) {
-          return prev.filter((p) => p !== platform);
-        } else {
-          return [...prev, platform];
-        }
+      startTransition(() => {
+        onPlatformChange((prev) => {
+          if (prev.includes(platform)) {
+            return prev.filter((p) => p !== platform);
+          } else {
+            return [...prev, platform];
+          }
+        });
       });
     },
     [onPlatformChange]
@@ -47,21 +51,34 @@ export const PlatformFilters = memo(function PlatformFilters({
 
   return (
     <div className="flex flex-wrap gap-2 sm:gap-3">
-      {PLATFORMS.map((platform) => (
-        <Button
-          key={platform.id}
-          variant="outline"
-          size="sm"
-          onClick={() => togglePlatform(platform.id)}
-          className={
-            selectedPlatforms.includes(platform.id)
-              ? `${platform.color} text-white hover:opacity-80 hover:scale-105 transition-all border-0`
-              : "hover:bg-gray-100"
-          }
-        >
-          {platform.name}
-        </Button>
-      ))}
+      {PLATFORMS.map((platform) => {
+        const isSelected = selectedPlatforms.includes(platform.id);
+        return (
+          <Button
+            key={platform.id}
+            variant="outline"
+            size="sm"
+            onClick={() => togglePlatform(platform.id)}
+            style={
+              isSelected
+                ? {
+                    backgroundColor: platform.color,
+                    color: "white",
+                    borderColor: platform.color,
+                    transform: "translateZ(0)",
+                  }
+                : undefined
+            }
+            className={
+              isSelected
+                ? "border-0 transition-colors"
+                : "hover:bg-gray-100 transition-colors"
+            }
+          >
+            {platform.name}
+          </Button>
+        );
+      })}
     </div>
   );
 });

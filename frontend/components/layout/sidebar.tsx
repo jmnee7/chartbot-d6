@@ -46,7 +46,7 @@ const navigation: NavigationItem[] = [
     hasChildren: true,
     children: [
       {
-        name: "원클릭 담기",
+        name: "원클릭 담기/스트리밍리스트",
         href: "/streaming",
         icon: Music,
       },

@@ -1,6 +1,5 @@
 "use client";
 
-import { Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CompactChart } from "@/components/compact-chart";
@@ -10,13 +9,9 @@ import MVStatsCard from "@/components/home/mv-stats-card";
 import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
-import { formatKoreanDate } from "@/lib/date-utils";
-import { getLastUpdateTime } from "@/lib/utils/index";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export default function HomePage() {
-  const currentTime = new Date();
-
   return (
     <div>
       {/* YouTube Banner - 모바일에서는 전체 너비 */}
@@ -82,7 +77,6 @@ export default function HomePage() {
         </Card>
 
         <MelonMusicwaveBanner />
-
         <QuickLinksBanner />
 
         {/* Mobile Divider */}

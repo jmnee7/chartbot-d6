@@ -103,7 +103,7 @@ export function QuickLinksBanner() {
             </p>
             <div className="space-y-3">
               <a
-                href="sms:%230505?body=DAY6"
+                href="sms:%230505?body=DAY6(데이식스)의 INSIDE OUT 신청합니다"
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-blue-500 hover:bg-blue-600 text-white text-center rounded-lg font-medium transition-colors"
