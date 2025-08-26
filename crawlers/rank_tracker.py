@@ -160,36 +160,68 @@ class RankTracker:
             current_songs = current_data.get(service_name, [])
             previous_songs = previous_data.get(service_name, [])
             
-            # 현재 순위 (타겟 곡이 있으면 첫 번째 곡의 순위, 없으면 None)
-            current_rank = None
-            current_timestamp = ""
-            chart_type = None
-            if current_songs:
-                current_rank = current_songs[0].get('rank')
-                current_timestamp = current_songs[0].get('timestamp', '')
-                chart_type = current_songs[0].get('chart_type')
+            # 각 곡별로 순위 변화 계산
+            service_changes = []
             
-            # 이전 순위 (타겟 곡이 있었으면 첫 번째 곡의 순위, 없었으면 None)
-            previous_rank = None
-            if previous_songs:
-                previous_rank = previous_songs[0].get('rank')
+            # 현재 차트에 있는 모든 곡에 대해 처리
+            for current_song in current_songs:
+                current_rank = current_song.get('rank')
+                current_title = current_song.get('title')
+                current_artist = current_song.get('artist')
+                current_timestamp = current_song.get('timestamp', '')
+                chart_type = current_song.get('chart_type')
+                
+                # 이전 데이터에서 같은 곡 찾기
+                previous_rank = None
+                for previous_song in previous_songs:
+                    if (previous_song.get('title') == current_title and 
+                        previous_song.get('artist') == current_artist):
+                        previous_rank = previous_song.get('rank')
+                        break
+                
+                # 순위 변화 정보 생성
+                change_info = {
+                    "rank": current_rank,
+                    "title": current_title,
+                    "artist": current_artist,
+                    "previous_rank": previous_rank,
+                    "change": self._calculate_change(current_rank, previous_rank),
+                    "change_text": self._get_change_text(current_rank, previous_rank),
+                    "timestamp": current_timestamp
+                }
+                
+                # 멜론의 경우 차트 타입도 포함
+                if chart_type:
+                    change_info["chart_type"] = chart_type
+                
+                service_changes.append(change_info)
             
-            # 순위 변화 정보 생성
-            change_info = {
-                "rank": current_rank,
-                "title": TARGET_SONG,  # 설정에서 가져옴
-                "artist": TARGET_ARTIST,  # 설정에서 가져옴
-                "previous_rank": previous_rank,
-                "change": self._calculate_change(current_rank, previous_rank),
-                "change_text": self._get_change_text(current_rank, previous_rank),
-                "timestamp": current_timestamp
-            }
+            # 현재 차트에 없지만 이전에는 있던 곡들도 처리 (차트아웃)
+            for previous_song in previous_songs:
+                previous_title = previous_song.get('title')
+                previous_artist = previous_song.get('artist')
+                
+                # 현재 차트에 이 곡이 있는지 확인
+                found_in_current = any(
+                    (current_song.get('title') == previous_title and 
+                     current_song.get('artist') == previous_artist)
+                    for current_song in current_songs
+                )
+                
+                # 현재 차트에 없으면 차트아웃으로 처리
+                if not found_in_current:
+                    change_info = {
+                        "rank": None,
+                        "title": previous_title,
+                        "artist": previous_artist, 
+                        "previous_rank": previous_song.get('rank'),
+                        "change": 0,
+                        "change_text": "차트아웃",
+                        "timestamp": ""
+                    }
+                    service_changes.append(change_info)
             
-            # 멜론의 경우 차트 타입도 포함
-            if chart_type:
-                change_info["chart_type"] = chart_type
-            
-            changes[service_name] = [change_info]
+            changes[service_name] = service_changes
         
         return changes
     
