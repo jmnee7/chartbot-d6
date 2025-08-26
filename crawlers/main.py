@@ -539,10 +539,18 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
             latest_data[service] = converted_songs
     
     # latest.json 저장
-    with open("../frontend/public/data/latest.json", "w", encoding="utf-8") as f:
-        json.dump(latest_data, f, ensure_ascii=False, indent=2)
-    
-    print("📊 latest.json 생성 완료")
+    latest_path = "../frontend/public/data/latest.json"
+    try:
+        print(f"📝 latest.json 저장 시도: {latest_path}")
+        with open(latest_path, "w", encoding="utf-8") as f:
+            json.dump(latest_data, f, ensure_ascii=False, indent=2)
+        
+        # 파일 크기 확인
+        import os
+        file_size = os.path.getsize(latest_path)
+        print(f"✅ latest.json 생성 완료 - 크기: {file_size} bytes")
+    except Exception as e:
+        print(f"❌ latest.json 저장 실패: {e}")
     
     # summary.json 생성 (YouTube 통계 기반)
     total_views = sum(stat.get("views", 0) for stat in youtube_stats)
@@ -567,10 +575,17 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
             summary_data["chartPositions"][service] = songs[0].get("rank", 0)
     
     # summary.json 저장
-    with open("../frontend/public/data/summary.json", "w", encoding="utf-8") as f:
-        json.dump(summary_data, f, ensure_ascii=False, indent=2)
-    
-    print("📊 summary.json 생성 완료")
+    summary_path = "../frontend/public/data/summary.json"
+    try:
+        print(f"📝 summary.json 저장 시도: {summary_path}")
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary_data, f, ensure_ascii=False, indent=2)
+        
+        # 파일 크기 확인
+        file_size = os.path.getsize(summary_path)
+        print(f"✅ summary.json 생성 완료 - 크기: {file_size} bytes")
+    except Exception as e:
+        print(f"❌ summary.json 저장 실패: {e}")
 
 
 def main():

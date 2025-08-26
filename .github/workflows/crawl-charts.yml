@@ -37,30 +37,58 @@ jobs:
       run: |
         git pull origin main --no-rebase
         cd crawlers
-        python main.py
+        echo "=== 크롤러 실행 시작 ==="
+        python main.py || echo "크롤러 실행 실패: $?"
+        echo "=== 크롤러 실행 완료 ==="
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
     
     - name: Verify data generation
       run: |
         # 크롤러가 직접 생성한 데이터 확인
-        echo "Generated data files:"
-        ls -la frontend/public/data/ || echo "frontend/public/data not found"
+        echo "=== Generated data files ==="
+        ls -la frontend/public/data/*.json || echo "No JSON files found"
+        echo "=== latest.json 존재 확인 ==="
+        if [ -f frontend/public/data/latest.json ]; then
+          echo "latest.json exists - size: $(wc -c < frontend/public/data/latest.json) bytes"
+          echo "First 5 lines:"
+          head -5 frontend/public/data/latest.json
+        else
+          echo "❌ latest.json NOT FOUND!"
+        fi
+        echo "=== summary.json 존재 확인 ==="
+        if [ -f frontend/public/data/summary.json ]; then
+          echo "summary.json exists - size: $(wc -c < frontend/public/data/summary.json) bytes"
+        else
+          echo "❌ summary.json NOT FOUND!"
+        fi
     
     - name: Commit and push changes
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        
+        echo "=== Git status before add ==="
+        git status --short
+        
         # 모든 JSON 파일을 추가 (latest.json 포함)
         git add frontend/public/data/*.json
+        
+        echo "=== Git status after add ==="
+        git status --short
+        
+        echo "=== Files to be committed ==="
+        git diff --staged --name-only
+        
         # 변경 사항이 있을 때만 커밋
         if ! git diff --staged --quiet; then
+          echo "=== Committing changes ==="
           git commit -m "📈 차트 데이터 자동 업데이트 - $(date +'%Y-%m-%d %H:%M KST')"
           # 원격 변경사항을 먼저 가져오기
           git pull origin main --no-rebase
           git push origin main
         else
-          echo "No changes to commit."
+          echo "❌ No changes to commit."
         fi
 
  
