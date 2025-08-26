@@ -91,7 +91,7 @@ export default function StreamingPage() {
                         className="bg-red-500 hover:bg-red-600 text-white text-xs w-full sm:w-auto"
                         onClick={() =>
                           window.open(
-                            "https://www.youtube.com/watch?v=I1gI9ZCcSJs",
+                            "https://www.youtube.com/watch?v=0fyZqS0N19o",
                             "_blank"
                           )
                         }

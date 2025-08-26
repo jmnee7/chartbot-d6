@@ -9,10 +9,10 @@ import {
   X,
   Package,
   Mail,
-  Youtube,
   Music,
   Radio,
   Twitter,
+  Youtube,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -140,10 +140,6 @@ const supportItems = [
     color: "bg-purple-500",
     links: [
       {
-        name: "앨범 구매처 확인하기",
-        url: "https://x.com/day6_stream/status/1956007712321318942?s=46&t=rKbH7lZmoLlCxgEAOrtAmg",
-      },
-      {
         name: "일반 구매처 가격 비교",
         url: "#",
         isModal: true,
@@ -172,9 +168,7 @@ const supportItems = [
     links: [
       {
         name: "헬퍼 지원 가이드",
-        url: "#",
-        isModal: true,
-        modalType: "comingSoon",
+        url: "/guide/helper-support",
       },
       {
         name: "헬퍼 지원하기",
@@ -187,8 +181,14 @@ const supportItems = [
     icon: DollarSign,
     color: "bg-yellow-500",
     subItems: [
-      { name: "총공 모금", url: "#", isModal: true, modalType: "comingSoon" },
-      { name: "광고 후원", url: "#", isModal: true, modalType: "comingSoon" },
+      {
+        name: "총공 모금",
+        url: "/guide/general-meeting",
+      },
+      {
+        name: "투표 모금",
+        url: "/guide/vote-collection",
+      },
     ],
   },
 ];
@@ -384,18 +384,18 @@ export default function SupportPage() {
                         {item.links.map((link, linkIndex) => (
                           <Button
                             key={linkIndex}
-                            asChild={!link.isModal}
+                            asChild={!("isModal" in link && link.isModal)}
                             variant="ghost"
                             className="justify-between p-3 h-auto border border-gray-100 hover:border-gray-200"
                             onClick={
-                              link.isModal
+                              "isModal" in link && link.isModal
                                 ? (link as LinkItem).modalType === "comingSoon"
                                   ? () => setShowComingSoonModal(true)
                                   : () => setShowPriceModal(true)
                                 : undefined
                             }
                           >
-                            {link.isModal ? (
+                            {"isModal" in link && link.isModal ? (
                               <>
                                 <span className="text-sm font-medium text-gray-700">
                                   {link.name}
@@ -422,11 +422,11 @@ export default function SupportPage() {
                         {item.subItems.map((subItem, subIndex) => (
                           <Button
                             key={subIndex}
-                            asChild={!subItem.isModal}
+                            asChild={!("isModal" in subItem && subItem.isModal)}
                             variant="ghost"
                             className="justify-between p-3 h-auto border border-gray-100 hover:border-gray-200"
                             onClick={
-                              subItem.isModal
+                              "isModal" in subItem && subItem.isModal
                                 ? (subItem as SubItem).modalType ===
                                   "comingSoon"
                                   ? () => setShowComingSoonModal(true)
@@ -434,7 +434,7 @@ export default function SupportPage() {
                                 : undefined
                             }
                           >
-                            {subItem.isModal ? (
+                            {"isModal" in subItem && subItem.isModal ? (
                               <>
                                 <span className="text-sm font-medium text-gray-700">
                                   {subItem.name}

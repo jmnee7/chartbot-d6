@@ -129,7 +129,18 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "streaming",
   },
-
+  {
+    slug: "youtube-mv",
+    label: "유튜브 뮤비",
+    heroImage: "/guide/youtube-mv.png",
+    images: ["/guide/youtube-mv.png"],
+    cta: {
+      label: "유튜브 뮤비",
+      href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      external: true,
+    },
+    category: "streaming",
+  },
   // ===== 2. 다운로드 가이드 =====
   // 2-1. 음원 다운로드
   {
@@ -380,6 +391,42 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/support/id-donation.jpg"],
     cta: {
       label: "아이디 기부 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "helper-support",
+    label: "헬퍼 지원",
+    heroImage: "/support/helper-support.jpg",
+    images: ["/support/helper-support.jpg"],
+    cta: {
+      label: "헬퍼 지원 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "general-meeting",
+    label: "총공 모금",
+    heroImage: "/support/general-meeting.jpg",
+    images: ["/support/general-meeting.jpg"],
+    cta: {
+      label: "총공 모금 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "vote-collection",
+    label: "투표 모금",
+    heroImage: "/support/vote-collection.jpg",
+    images: ["/support/vote-collection.jpg"],
+    cta: {
+      label: "투표 모금하기",
       href: "#",
       external: false,
     },

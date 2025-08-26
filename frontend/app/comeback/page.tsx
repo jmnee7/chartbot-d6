@@ -73,7 +73,7 @@ export default function ComebackPage() {
                     D-{comebackSchedule[0]?.dDay}
                   </Badge>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">고양 콘서트</h3>
+                <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
                 <p className="text-white/80 text-sm">
                   {comebackSchedule[0].date}
                 </p>
@@ -91,7 +91,7 @@ export default function ComebackPage() {
             </div>
           </SwiperSlide>
 
-          {/* 10주년 콘서트 카드 */}
+          {/* 정규 4집 발매 카드 */}
           <SwiperSlide className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -101,7 +101,7 @@ export default function ComebackPage() {
                     D-{comebackSchedule[1].dDay}
                   </Badge>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
+                <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
                 <p className="text-white/80 text-sm">
                   {comebackSchedule[1].date}
                 </p>
