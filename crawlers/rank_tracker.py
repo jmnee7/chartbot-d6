@@ -94,6 +94,8 @@ class RankTracker:
                     if isinstance(song, dict):
                         song_info = {
                             "rank": song.get("rank"),
+                            "title": song.get("title"),
+                            "artist": song.get("artist"),
                             "timestamp": song.get("timestamp", timestamp)
                         }
                         # 멜론의 경우 차트 타입도 저장
