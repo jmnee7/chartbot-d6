@@ -3,6 +3,7 @@
 import { Menu } from "lucide-react";
 import { useSidebar } from "./mobile-app-layout";
 import Link from "next/link";
+import Image from "next/image";
 
 export function DesktopHeader() {
   const { openSidebar } = useSidebar();
@@ -20,15 +21,23 @@ export function DesktopHeader() {
           <Menu className="h-6 w-6 text-gray-700" />
         </button>
 
-        <div className="flex items-end gap-3">
-          <Link href="/">
-            <h1 className="font-montserrat text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 tracking-tight leading-none m-0 hover:opacity-80 transition-opacity cursor-pointer">
-              DAY<span className="text-[#49c4b0]">6</span> STRM
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center gap-1">
+            <Image
+              src="/day6 Logo Vector.svg"
+              alt="DAY6 Logo"
+              width={36}
+              height={36}
+              className="w-9 h-9"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(60%) sepia(91%) saturate(449%) hue-rotate(118deg) brightness(96%) contrast(91%)",
+              }}
+            />
+            <h1 className="font-sans text-2xl lg:text-2xl xl:text-3xl font-bold text-[#666] tracking-tight leading-none m-0 hover:opacity-80 transition-opacity cursor-pointer">
+              데이식스 음원총공팀
             </h1>
           </Link>
-          <span className="text-base lg:text-lg text-gray-500 ml-2 leading-none">
-            데이식스 음원총공팀
-          </span>
         </div>
       </div>
 

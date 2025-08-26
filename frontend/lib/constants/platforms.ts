@@ -44,21 +44,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "#1",
-          uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922",
+          uri: "intent://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922#Intent;scheme=melonapp;package=com.iloen.melon;end",
           idParamKey: "cid",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
           label: "#2",
-          uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,30232719,37946921,37323943",
+          uri: "intent://play?menuid=0&ctype=1&cid=38892497,38892498,30232719,37946921,37323943#Intent;scheme=melonapp;package=com.iloen.melon;end",
           idParamKey: "cid",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
           label: "#3",
-          uri: "melonapp://play?menuid=0&ctype=1&cid=37946927,38892497,38892498,37323944,7844374,37946924,37946920",
+          uri: "intent://play?menuid=0&ctype=1&cid=37946927,38892497,38892498,37323944,7844374,37946924,37946920#Intent;scheme=melonapp;package=com.iloen.melon;end",
           idParamKey: "cid",
           idSeparator: ",",
           dedupeIds: true,
@@ -110,7 +110,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "지니(안드)",
-          uri: "cromegenie://scan/?landing_type=31&landing_target=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310",
+          uri: "intent://scan/?landing_type=31&landing_target=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310#Intent;scheme=cromegenie;package=com.ktmusic.geniemusic;end",
           idParamKey: "landing_target",
           idSeparator: ";",
           dedupeIds: false,
@@ -147,7 +147,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "벅스(모바일앱)",
-          uri: "bugs3://app/tracks/lists?title=전체듣기&miniplay=Y&track_ids=33526777|33526778|33122825|33284304|31650949|33284305|33526777|33526778|30540153|33284304|33122824|33284310|33526777|33526778|33122825|4551006|33284307|33284303",
+          uri: "intent://app/tracks/lists?title=전체듣기&miniplay=Y&track_ids=33526777|33526778|33122825|33284304|31650949|33284305|33526777|33526778|30540153|33284304|33122824|33284310|33526777|33526778|33122825|4551006|33284307|33284303#Intent;scheme=bugs3;package=com.neowiz.android.bugs;end",
           idParamKey: "track_ids",
           idSeparator: "|",
           dedupeIds: false,
@@ -184,21 +184,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "#1",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
+          uri: "intent://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441#Intent;scheme=vibe;package=com.naver.vibe;end",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
           label: "#2",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446",
+          uri: "intent://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446#Intent;scheme=vibe;package=com.naver.vibe;end",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
         },
         {
           label: "#3",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
+          uri: "intent://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439#Intent;scheme=vibe;package=com.naver.vibe;end",
           idParamKey: "trackIds",
           idSeparator: ",",
           dedupeIds: true,
@@ -249,7 +249,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "플로",
-          uri: "flomusic://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060",
+          uri: "intent://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060#Intent;scheme=flomusic;package=com.dreamuscompany.musicmate;end",
           dedupeIds: false,
         },
       ],
@@ -270,8 +270,8 @@ export const MUSIC_PLATFORMS: Platform[] = [
 // 기타 음악 플랫폼 (딥링크 미지원)
 export const OTHER_MUSIC_PLATFORMS: Platform[] = [
   {
-    id: "youtube-music",
-    name: "유튜브뮤직",
+    id: "youtube-music-vedio",
+    name: "유튜브 뮤비",
     logo: "/streaming/youtube-music-logo.png",
     url: "https://www.youtube.com/watch?v=0fyZqS0N19o",
     color: "bg-[var(--mint-dark)]",
@@ -296,7 +296,7 @@ export const OTHER_MUSIC_PLATFORMS: Platform[] = [
   {
     id: "stationhead",
     name: "스테이션헤드",
-    logo: "/streaming/station-head-logo.webp",
+    logo: "/download/music/Guide_stationhead.png",
     url: "https://stationhead.com/day6strmteam",
     color: "bg-indigo-500",
     category: "music",

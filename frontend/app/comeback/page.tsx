@@ -1,88 +1,23 @@
 "use client";
 
-import {
-  Calendar,
-  Gift,
-  Clock,
-  Sparkles,
-  Target,
-  TrendingUp,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Calendar, TrendingUp, Smartphone, Heart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useQuery } from "@tanstack/react-query";
-import { fetchComebackData } from "@/lib/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
-// TODO: 실제 날짜 계산 로직으로 변경 필요
-const comebackInfo = {
-  title: "Maybe Tomorrow",
-  date: "2025년 5월 7일",
-  daysLeft: Math.floor(
-    (new Date().getTime() - new Date("2025-05-07").getTime()) /
-      (1000 * 60 * 60 * 24)
-  ), // 실제 날짜 계산
-  status: "완료",
-};
-
-// 동적 데이터 사용 - React Query로 가져오기
-interface ComebackData {
-  chartRank?: Array<{ platform: string; rank: number | null; target: number }>;
-  youtubeStats?: { views: number; target: number };
-  streamingScore?: { current: number; target: number };
-}
-
-const getComebackGoals = (comebackData: ComebackData | undefined) => [
-  {
-    title: "멜론 실시간 차트",
-    current: comebackData?.chartRank?.[0]?.rank,
-    target: comebackData?.chartRank?.[0]?.target || 10,
-    unit: "위",
-    color: "text-green-600",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200",
-    icon: TrendingUp,
-  },
-  {
-    title: "YouTube 조회수",
-    current: comebackData?.youtubeStats?.views,
-    target: comebackData?.youtubeStats?.target || 3000000,
-    unit: "뷰",
-    color: "text-red-600",
-    bgColor: "bg-red-50",
-    borderColor: "border-red-200",
-    icon: Target,
-  },
-  {
-    title: "스트리밍 참여도",
-    current: comebackData?.streamingScore?.current,
-    target: comebackData?.streamingScore?.target || 100,
-    unit: "점",
-    color: "text-purple-600",
-    bgColor: "bg-purple-50",
-    borderColor: "border-purple-200",
-    icon: Gift,
-  },
-];
+import Link from "next/link";
 
 const comebackSchedule = [
   {
-    date: "2025.05.07",
-    event: "디지털 싱글 발매",
-    status: "completed",
-    description: "Maybe Tomorrow + 끝났지 공개",
-    dDay: 0, // 완료됨
-  },
-  {
-    date: "2025.05.09",
-    event: "KSPO 돔 콘서트",
-    status: "completed",
-    description: "첫 K-밴드 돔 공연 성공",
-    dDay: 0, // 완료됨
+    date: "2025.08.30",
+    event: "10주년 콘서트",
+    status: "upcoming",
+    description: "10th Anniversary Tour - GOYANG STADIUM",
+    dDay: Math.ceil(
+      (new Date("2025-08-30").getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
   },
   {
     date: "2025.09.05",
@@ -96,7 +31,7 @@ const comebackSchedule = [
   },
   {
     date: "2025.09.20",
-    event: "정규 4집 활동 시작",
+    event: "10주년 콘서트",
     status: "upcoming",
     description: "음악방송 및 프로모션 활동",
     dDay: Math.ceil(
@@ -106,38 +41,7 @@ const comebackSchedule = [
   },
 ];
 
-const comebackMissions = [
-  {
-    priority: 1,
-    title: "정규 4집 대비 스트리밍",
-    href: "/streaming",
-    action: "지금 스트리밍하기",
-  },
-  {
-    priority: 2,
-    title: "Maybe Tomorrow 조회수",
-    description: "",
-
-    href: "/streaming?tab=mv",
-    action: "MV 보러가기",
-  },
-  {
-    priority: 3,
-    title: "10주년 응원 준비",
-    href: "/guide",
-    action: "응원 가이드 보기",
-  },
-];
-
 export default function ComebackPage() {
-  // React Query로 실시간 데이터 가져오기
-  const { data: comebackData, isLoading } = useQuery({
-    queryKey: ["comebackData"],
-    queryFn: fetchComebackData,
-    refetchInterval: 5 * 60 * 1000, // 5분마다 새로고침
-  });
-
-  const comebackGoals = getComebackGoals(comebackData);
   return (
     <div>
       {/* Content with same padding as homepage */}
@@ -159,28 +63,30 @@ export default function ComebackPage() {
           autoplay={{ delay: 5000 }}
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
-          {/* Maybe Tomorrow 카드 */}
+          {/* 정규 4집 발매 카드 */}
           <SwiperSlide className="p-6">
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-6 h-6" />
+                  <Calendar className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    {comebackInfo.status}
+                    D-{comebackSchedule[0]?.dDay}
                   </Badge>
                 </div>
-                <h3 className="text-2xl font-bold mb-1">
-                  {comebackInfo.title}
-                </h3>
+                <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackInfo.date} 발매
+                  {comebackSchedule[0].date}
+                </p>
+                <p className="text-white/80 text-sm">
+                  {comebackSchedule[0].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackInfo.daysLeft}
+                  {comebackSchedule[0]?.dDay}
+                  <span className="text-lg ml-1">일</span>
                 </div>
-                <div className="text-sm text-white/80">일 경과</div>
+                <div className="text-sm text-white">남음</div>
               </div>
             </div>
           </SwiperSlide>
@@ -190,231 +96,83 @@ export default function ComebackPage() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-6 h-6" />
+                  <TrendingUp className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[2].dDay}
+                    D-{comebackSchedule[1].dDay}
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[2].date} - {comebackSchedule[2].description}
+                  {comebackSchedule[1].date}
                 </p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {comebackSchedule[2].dDay}
-                </div>
-                <div className="text-sm text-white/80">일 남음</div>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          {/* 정규 4집 활동 시작 카드 */}
-          <SwiperSlide className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-6 h-6" />
-                  <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[3].dDay}
-                  </Badge>
-                </div>
-                <h3 className="text-2xl font-bold mb-1">정규 4집 활동 시작</h3>
                 <p className="text-white/80 text-sm">
-                  {comebackSchedule[3].date} - {comebackSchedule[3].description}
+                  {comebackSchedule[1].description}
                 </p>
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackSchedule[3].dDay}
+                  {comebackSchedule[1].dDay}
+                  <span className="text-lg ml-1">일</span>
                 </div>
-                <div className="text-sm text-white/80">일 남음</div>
+                <div className="text-sm text-white">남음</div>
               </div>
             </div>
           </SwiperSlide>
         </Swiper>
 
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {isLoading
-              ? // 로딩 상태
-                Array.from({ length: 3 }, (_, index) => (
-                  <Card key={index} className="bg-gray-50 border-gray-200">
-                    <CardContent className="p-4">
-                      <div className="animate-pulse space-y-3">
-                        <div className="flex items-center gap-2">
-                          <div className="w-5 h-5 bg-gray-200 rounded" />
-                          <div className="h-4 bg-gray-200 rounded w-24" />
-                        </div>
-                        <div className="space-y-2">
-                          <div className="h-8 bg-gray-200 rounded w-16" />
-                          <div className="w-full bg-gray-200 rounded-full h-2" />
-                          <div className="h-3 bg-gray-200 rounded w-20" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))
-              : comebackGoals.map((goal, index) => {
-                  const IconComponent = goal.icon;
-                  const hasData =
-                    goal.current !== null && goal.current !== undefined;
-                  const progress = hasData
-                    ? Math.min((goal.current! / goal.target) * 100, 100)
-                    : 0;
-
-                  return (
-                    <Card
-                      key={index}
-                      className={`${goal.borderColor} ${goal.bgColor}`}
-                    >
-                      <CardContent className="p-4">
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="flex items-center gap-2">
-                            <IconComponent
-                              className={`w-5 h-5 ${goal.color}`}
-                            />
-                            <h4 className="font-medium text-gray-900 text-sm">
-                              {goal.title}
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="flex items-baseline gap-1">
-                            <span
-                              className={`text-2xl font-bold ${goal.color}`}
-                            >
-                              {hasData
-                                ? goal.unit === "뷰"
-                                  ? goal.current!.toLocaleString()
-                                  : goal.current!
-                                : "-"}
-                            </span>
-                            <span className="text-sm text-gray-500">
-                              /{" "}
-                              {goal.unit === "뷰"
-                                ? (goal.target / 1000000).toFixed(1) + "M"
-                                : goal.target}
-                              {goal.unit}
-                            </span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div
-                              className={`h-2 rounded-full transition-all duration-500 ${goal.color.replace("text-", "bg-")}`}
-                              style={{ width: `${progress}%` }}
-                            />
-                          </div>
-                          <div className="text-xs text-gray-600">
-                            {hasData
-                              ? `${Math.round(progress)}% 달성`
-                              : "데이터 수집 중..."}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-          </div>
-        </div>
-
         {/* Mobile Divider */}
         <div
           className="md:hidden -mx-9"
           style={{ borderBottom: "0.6rem solid #f7f8f9" }}
         ></div>
 
-        {/* Comeback Schedule */}
+        {/* 매일 재화 모으기 */}
         <div>
           <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
-            컴백 일정
+            매일 재화 모으기
           </h3>
-          <div className="space-y-3">
-            {comebackSchedule.map((item, index) => (
-              <Card
-                key={index}
-                className={
-                  item.status === "completed"
-                    ? "bg-green-50 border-green-200"
-                    : item.status === "active"
-                      ? "bg-blue-50 border-blue-200"
-                      : "bg-gray-50 border-gray-200"
-                }
-              >
-                <CardContent className="p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 mt-0.5">
-                      {item.status === "completed" ? (
-                        <div className="w-3 h-3 bg-green-500 rounded-full" />
-                      ) : item.status === "active" ? (
-                        <Clock className="w-5 h-5 text-blue-600" />
-                      ) : (
-                        <Calendar className="w-5 h-5 text-gray-400" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-medium text-gray-900">
-                          {item.event}
-                        </h4>
-                        {item.status === "active" && (
-                          <Badge className="bg-blue-500 text-white text-xs">
-                            진행중
-                          </Badge>
-                        )}
-                      </div>
-                      <p className="text-sm text-gray-600 mb-1">{item.date}</p>
-                      <p className="text-sm text-gray-500">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* 음악중심 뮤빗 */}
+            <Link
+              href="/guide/musiccore-vote"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-mint-primary to-mint-dark hover:from-mint-dark hover:to-mint-primary transition-colors rounded-lg shadow-md text-white w-full text-left"
+            >
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Smartphone className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold">음악중심</h3>
+                <p className="text-sm opacity-90">뮤빗 모으기</p>
+              </div>
+            </Link>
 
-        {/* Mobile Divider */}
-        <div
-          className="md:hidden -mx-9"
-          style={{ borderBottom: "0.6rem solid #f7f8f9" }}
-        ></div>
+            {/* 인기가요 하이어 */}
+            <Link
+              href="/guide/inkigayo-vote"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 transition-colors rounded-lg shadow-md text-white w-full text-left"
+            >
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Heart className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold">인기가요</h3>
+                <p className="text-sm opacity-90">하이어 루비 모으기</p>
+              </div>
+            </Link>
 
-        {/* Priority Missions */}
-        <div>
-          <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
-            우선순위 미션
-          </h3>
-          <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-3">
-            {comebackMissions.map((mission, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-md transition-all duration-200"
-              >
-                <CardContent className="p-0">
-                  <div className="p-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-[#49c4b0] rounded-full flex items-center justify-center flex-shrink-0 text-white text-sm font-bold">
-                        {mission.priority}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-medium text-gray-900 mb-1">
-                          {mission.title}
-                        </h4>
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="outline"
-                          className="w-full border-[#49c4b0] text-[#49c4b0] hover:bg-[#49c4b0] hover:text-white transition-all duration-200"
-                        >
-                          <a href={mission.href}>{mission.action}</a>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            {/* 인기가요 링크 */}
+            <Link
+              href="/guide/inkigayo-vote"
+              className="flex items-center gap-3 p-4 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 transition-colors rounded-lg shadow-md text-white w-full text-left"
+            >
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Star className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold">인기가요</h3>
+                <p className="text-sm opacity-90">링크 팬 포인트 모으기</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

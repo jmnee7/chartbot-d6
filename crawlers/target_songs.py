@@ -16,7 +16,7 @@ TARGET_ARTIST_SONG = ("DAY6", "Maybe Tomorrow")
 # "songs" - 지정된 곡들만 (가수 무관)  
 # "artist_songs" - 지정된 가수의 지정된 곡들만
 # "all" - 위 모든 조건에 해당하는 곡들
-SEARCH_MODE = "artist_songs"
+SEARCH_MODE = "artists"
 
 def is_target_song(artist_name, song_title):
     """
@@ -33,7 +33,7 @@ def is_target_song(artist_name, song_title):
     song_clean = song_title.strip()
     
     if SEARCH_MODE == "artists":
-        return artist_clean == TARGET_ARTIST
+        return TARGET_ARTIST in artist_clean
     
     elif SEARCH_MODE == "songs":
         return song_clean == TARGET_SONG

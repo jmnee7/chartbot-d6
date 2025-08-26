@@ -22,13 +22,12 @@ export interface ChartData {
   collectedAtKST: string;
   artist: string;
   tracks: Track[];
-  melon: ChartSong[];
+  melon_top100: ChartSong[];
+  melon_hot100: ChartSong[];
   genie: ChartSong[];
   bugs: ChartSong[];
   vibe: ChartSong[];
   flo: ChartSong[];
-  melon_top100?: ChartSong[];
-  melon_hot100?: ChartSong[];
   last_updated?: string;
 }
 
@@ -70,5 +69,11 @@ export interface MVStats {
   link: string;
 }
 
-export type PlatformType = "melon" | "genie" | "bugs" | "vibe" | "flo";
+export type PlatformType =
+  | "melon_top100"
+  | "melon_hot100"
+  | "genie"
+  | "bugs"
+  | "vibe"
+  | "flo";
 export type ChartPeriod = "realtime" | "daily" | "weekly" | "hot100";

@@ -1,20 +1,17 @@
 "use client";
 
-import { Clock } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CompactChart } from "@/components/compact-chart";
+import Link from "next/link";
 import YouTubeBanner from "@/components/home/youtube-banner";
 import MVStatsCard from "@/components/home/mv-stats-card";
 import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
-import { formatKoreanDate } from "@/lib/date-utils";
-import { getLastUpdateTime } from "@/lib/utils/index";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export default function HomePage() {
-  const currentTime = new Date();
-
   return (
     <div>
       {/* YouTube Banner - 모바일에서는 전체 너비 */}
@@ -25,8 +22,16 @@ export default function HomePage() {
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <SectionHeader title="실시간 차트 순위" />
+          <SectionHeader title="실시간 차트 순위" showDateTime={true} />
           <CompactChart />
+          <div className="mt-4">
+            <Button
+              asChild
+              className="w-full bg-mint-primary hover:bg-mint-dark text-white"
+            >
+              <Link href="/charts">전체 차트 보기</Link>
+            </Button>
+          </div>
           <div
             className="mt-6 -mx-5"
             style={{ borderBottom: "0.6rem solid #f7f8f9" }}
@@ -36,10 +41,18 @@ export default function HomePage() {
         {/* Desktop Layout */}
         <Card className="hidden md:block bg-white/60 backdrop-blur-sm border-mint-primary/20 shadow-sm">
           <CardHeader>
-            <SectionHeader title="실시간 차트 순위" />
+            <SectionHeader title="실시간 차트 순위" showDateTime={true} />
           </CardHeader>
           <CardContent>
             <CompactChart />
+            <div className="mt-4">
+              <Button
+                asChild
+                className="w-full bg-mint-primary hover:bg-mint-dark text-white"
+              >
+                <Link href="/charts">전체 차트 보기</Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
@@ -64,7 +77,6 @@ export default function HomePage() {
         </Card>
 
         <MelonMusicwaveBanner />
-
         <QuickLinksBanner />
 
         {/* Mobile Divider */}
@@ -75,7 +87,7 @@ export default function HomePage() {
 
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <SectionHeader title="뮤직비디오 조회수" />
+          <SectionHeader title="뮤직비디오 조회수" showDateTime={false} />
           <MVStatsCard />
         </div>
 
@@ -86,13 +98,6 @@ export default function HomePage() {
               <CardTitle className="text-lg md:text-xl font-bold text-gray-900">
                 뮤직비디오 조회수
               </CardTitle>
-              <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
-                <span className="text-xs md:text-sm text-gray-500">
-                  {formatKoreanDate(currentTime)}
-                </span>
-                <Clock className="h-3 w-3 text-mint-primary" />
-                <span>{getLastUpdateTime()} 기준</span>
-              </div>
             </div>
           </CardHeader>
           <CardContent>

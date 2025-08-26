@@ -83,7 +83,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   },
   {
     slug: "youtube",
-    label: "유튜브",
+    label: "유튜브 뮤직",
     heroImage: "/streaming/music/Guide_youtube.png",
     images: ["/streaming/music/Guide_youtube.png"],
     cta: {
@@ -96,8 +96,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "apple-music",
     label: "애플뮤직",
-    heroImage: "/guide/apple-streaming.webp",
-    images: ["/guide/apple-streaming.webp"],
+    heroImage: "/guide/apple-music-streming.jpg",
+    images: ["/guide/apple-music-streming.jpg"],
     cta: {
       label: "Apple Music으로 이동",
       href: "https://music.apple.com/us/album/maybe-tomorrow-single/1810090445",
@@ -108,8 +108,8 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   {
     slug: "spotify",
     label: "스포티파이",
-    heroImage: "/guide/spotify-streaming.webp",
-    images: ["/guide/spotify-streaming.webp"],
+    heroImage: "/guide/spotify-streamint.jpg",
+    images: ["/guide/spotify-streamint.jpg"],
     cta: {
       label: "Spotify로 이동",
       href: "https://open.spotify.com/album/2HhzHLoaQWdkvPQjoopUy6",
@@ -117,7 +117,30 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "streaming",
   },
-
+  {
+    slug: "station-head",
+    label: "스테이션헤드",
+    heroImage: "/streaming/music/Guide_stationhead.png",
+    images: ["/streaming/music/Guide_stationhead.png"],
+    cta: {
+      label: "스테이션헤드 다운로드",
+      href: "https://stationhead.com/day6strmteam",
+      external: true,
+    },
+    category: "streaming",
+  },
+  {
+    slug: "youtube-mv",
+    label: "유튜브 뮤비",
+    heroImage: "/guide/youtube-mv.png",
+    images: ["/guide/youtube-mv.png"],
+    cta: {
+      label: "유튜브 뮤비",
+      href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      external: true,
+    },
+    category: "streaming",
+  },
   // ===== 2. 다운로드 가이드 =====
   // 2-1. 음원 다운로드
   {
@@ -177,6 +200,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     },
     category: "download",
   },
+
   {
     slug: "download-kakao",
     label: "카카오뮤직",
@@ -309,166 +333,6 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     category: "voting",
   },
 
-  // 3-2. 기타 투표 앱들 (기존 앱 가이드)
-  {
-    slug: "musicbank",
-    label: "뮤직뱅크",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/music-bank.png",
-    images: ["/vote/music-shows/music-bank.png"],
-    cta: {
-      label: "뮤직뱅크 투표하기",
-      href: "https://www.kbs.co.kr/2tv/enter/musicbank/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "musiccore",
-    label: "뮤빗",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/music-core.png",
-    images: ["/vote/music-shows/music-core.png"],
-    cta: {
-      label: "음악중심 투표하기",
-      href: "https://www.imbc.com/broad/tv/ent/musiccore/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "mcountdown",
-    label: "엠카운트다운",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/mcountdown.png",
-    images: ["/vote/music-shows/mcountdown.png"],
-    cta: {
-      label: "엠카운트다운 투표하기",
-      href: "https://www.mnet.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "theshow",
-    label: "더쇼",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/the-show.png",
-    images: ["/vote/music-shows/the-show.png"],
-    cta: {
-      label: "더쇼 투표하기",
-      href: "https://theshow.sbs.co.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "mubeat",
-    label: "뮤빗",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/show-champion.png",
-    images: ["/vote/music-shows/show-champion.png"],
-    cta: {
-      label: "뮤빗 투표하기",
-      href: "https://mubeat.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "allchart",
-    label: "올차트",
-    date: "2025.08.10",
-    heroImage: "/guide/all-chart1.webp",
-    images: ["/guide/all-chart1.webp", "/guide/all-chart2.webp"],
-    cta: {
-      label: "올차트 투표하기",
-      href: "https://www.allchart.co.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "linc",
-    label: "LiNC",
-    date: "2025.08.10",
-    heroImage: "/guide/link1.webp",
-    images: ["/guide/link1.webp"],
-    cta: {
-      label: "LiNC 투표하기",
-      href: "https://linc-app.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "highter",
-    label: "루비",
-    date: "2025.08.10",
-    heroImage: "/guide/h.webp",
-    images: ["/guide/highter1.webp"],
-    cta: {
-      label: "하이어 투표하기",
-      href: "https://highter.app/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "idolchamp",
-    label: "아이돌챔프",
-    date: "2025.08.10",
-    heroImage: "/guide/idol1.webp",
-    images: ["/guide/idol1.webp", "/guide/idol2.webp", "/guide/idol3.webp"],
-    cta: {
-      label: "아이돌챔프 투표하기",
-      href: "https://idolchamp.co.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "starplanet",
-    label: "스타플래닛",
-    date: "2025.08.10",
-    heroImage: "/guide/star-planit1.webp",
-    images: ["/guide/star-planit1.webp"],
-    cta: {
-      label: "스타플래닛 투표하기",
-      href: "https://www.starplanet.kr/",
-      external: true,
-    },
-    category: "voting",
-  },
-  {
-    slug: "mnetplus",
-    label: "엠넷플러스",
-    date: "2025.08.10",
-    heroImage: "/guide/m-net1.webp",
-    images: ["/guide/m-net1.webp", "/guide/m-net2.webp"],
-    cta: {
-      label: "엠넷플러스 투표하기",
-      href: "https://www.mnet.com/",
-      external: true,
-    },
-    category: "voting",
-  },
-
-  // 3-3. 컴백 재화 모으기 (사이드바 컴백 섹션)
-  {
-    slug: "inkigayo",
-    label: "팬 포인트",
-    date: "2025.08.10",
-    heroImage: "/vote/music-shows/inkigayo.png",
-    images: ["/vote/music-shows/inkigayo.png"],
-    cta: {
-      label: "인기가요 투표하기",
-      href: "h3ttps://www.sbs.co.kr/now/app",
-      external: true,
-    },
-    category: "voting",
-  },
-
   // ===== 4. 라디오 신청 가이드 =====
   {
     slug: "radio-sbs",
@@ -510,11 +374,11 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
   // ===== 5. 서포트 가이드 =====
   {
     slug: "album-group-order",
-    label: "앨범 공구",
+    label: "앨범 구매처",
     heroImage: "/support/album-group-order.jpg",
     images: ["/support/album-group-order.jpg"],
     cta: {
-      label: "앨범 공구 참여하기",
+      label: "앨범 구매처 참여하기",
       href: "#",
       external: false,
     },
@@ -527,6 +391,42 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/support/id-donation.jpg"],
     cta: {
       label: "아이디 기부 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "helper-support",
+    label: "헬퍼 지원",
+    heroImage: "/support/helper-support.jpg",
+    images: ["/support/helper-support.jpg"],
+    cta: {
+      label: "헬퍼 지원 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "general-meeting",
+    label: "총공 모금",
+    heroImage: "/support/general-meeting.jpg",
+    images: ["/support/general-meeting.jpg"],
+    cta: {
+      label: "총공 모금 참여하기",
+      href: "#",
+      external: false,
+    },
+    category: "support",
+  },
+  {
+    slug: "vote-collection",
+    label: "투표 모금",
+    heroImage: "/support/vote-collection.jpg",
+    images: ["/support/vote-collection.jpg"],
+    cta: {
+      label: "투표 모금하기",
       href: "#",
       external: false,
     },

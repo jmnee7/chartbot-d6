@@ -8,6 +8,11 @@ import {
   DollarSign,
   X,
   Package,
+  Mail,
+  Music,
+  Radio,
+  Twitter,
+  Youtube,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -130,18 +135,10 @@ const albumStores = [
 
 const supportItems = [
   {
-    title: "앨범 공구",
+    title: "앨범 구매처",
     icon: ShoppingBag,
     color: "bg-purple-500",
     links: [
-      {
-        name: "FANS SHOP 예약판매",
-        url: "https://bit.ly/45fHCLp",
-      },
-      {
-        name: "JYP SHOP",
-        url: "https://en.thejypshop.com/category/merch/33/",
-      },
       {
         name: "일반 구매처 가격 비교",
         url: "#",
@@ -155,12 +152,13 @@ const supportItems = [
     color: "bg-red-500",
     links: [
       {
-        name: "아이디 기부 양식",
-        url: "#",
-        isModal: true,
-        modalType: "comingSoon",
+        name: "아이디 기부 가이드",
+        url: "/guide/id-donation",
       },
-      { name: "기부 현황", url: "#", isModal: true, modalType: "comingSoon" },
+      {
+        name: "아이디 기부하기",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSeO0Yadoe6W1ZILXbYIj7K2yWw77c2pipJijx8slbvbiqE5yA/viewform",
+      },
     ],
   },
   {
@@ -168,17 +166,29 @@ const supportItems = [
     icon: Users,
     color: "bg-blue-500",
     links: [
-      { name: "헬퍼 신청", url: "#", isModal: true, modalType: "comingSoon" },
-      { name: "헬퍼 모집", url: "#", isModal: true, modalType: "comingSoon" },
+      {
+        name: "헬퍼 지원 가이드",
+        url: "/guide/helper-support",
+      },
+      {
+        name: "헬퍼 지원하기",
+        url: "mailto:day6strmteam@gmail.com",
+      },
     ],
   },
   {
-    title: "모금",
+    title: "기타 활동",
     icon: DollarSign,
     color: "bg-yellow-500",
     subItems: [
-      { name: "총공 모금", url: "#", isModal: true, modalType: "comingSoon" },
-      { name: "투표 모금", url: "#", isModal: true, modalType: "comingSoon" },
+      {
+        name: "총공 모금",
+        url: "/guide/general-meeting",
+      },
+      {
+        name: "투표 모금",
+        url: "/guide/vote-collection",
+      },
     ],
   },
 ];
@@ -215,6 +225,89 @@ export default function SupportPage() {
         {/* Section Header */}
         <SectionHeader title="서포트 활동" showDateTime={false} />
 
+        {/* 데이식스 음원 총공팀 소셜 링크 */}
+        <Card className="bg-transparent from-mint-primary/5 to-mint-light/10 border-mint-primary/20">
+          <CardContent className="p-0">
+            <div className="space-y-3">
+              <h3 className="font-bold text-gray-900 flex items-center gap-2">
+                <Users className="w-4 h-4 text-mint-primary" />
+                데이식스 음원 총공팀
+              </h3>
+              <div className="overflow-x-auto pb-2">
+                <div className="flex gap-4 min-w-max px-2">
+                  <a
+                    href="mailto:day6strmteam@gmail.com"
+                    className="flex flex-col items-center gap-2 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-mint-primary/10 hover:bg-mint-primary/20 transition-colors flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-mint-primary" />
+                    </div>
+                    <span className="text-xs text-gray-600 whitespace-nowrap">
+                      메일
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://x.com/DAY6_STREAM?t=KO5LXMyTvTL2WrdIz8Z9jQ&s=09"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors flex items-center justify-center">
+                      <Twitter className="w-6 h-6 text-blue-500" />
+                    </div>
+                    <span className="text-xs text-gray-600 whitespace-nowrap">
+                      트위터
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://youtube.com/@day6_stream?si=Z2HBzbbAJgaNM4LM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-red-100 hover:bg-red-200 transition-colors flex items-center justify-center">
+                      <Youtube className="w-6 h-6 text-red-500" />
+                    </div>
+                    <span className="text-xs text-gray-600 whitespace-nowrap">
+                      유튜브
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://kko.kakao.com/q2UMCC03-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-yellow-100 hover:bg-yellow-200 transition-colors flex items-center justify-center">
+                      <Music className="w-6 h-6 text-yellow-600" />
+                    </div>
+                    <span className="text-xs text-gray-600 whitespace-nowrap">
+                      뮤직웨이브
+                    </span>
+                  </a>
+
+                  <a
+                    href="https://stationhead.com/day6strmteam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center gap-2 min-w-0"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-purple-100 hover:bg-purple-200 transition-colors flex items-center justify-center">
+                      <Radio className="w-6 h-6 text-purple-500" />
+                    </div>
+                    <span className="text-xs text-gray-600 whitespace-nowrap">
+                      스테이션헤드
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* 공구 진행 알림 배너 */}
         <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
           <CardContent className="p-4">
@@ -240,11 +333,8 @@ export default function SupportPage() {
                   size="sm"
                   className="mt-3 bg-purple-600 hover:bg-purple-700 text-white"
                 >
-                  <a
-                    href="https://twitter.com/DAY6_STREAM"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                  <a href="/guide/album-group-order">
                     공구 소식 확인하기
                     <ExternalLink className="w-3 h-3 ml-2" />
                   </a>
@@ -291,18 +381,18 @@ export default function SupportPage() {
                         {item.links.map((link, linkIndex) => (
                           <Button
                             key={linkIndex}
-                            asChild={!link.isModal}
+                            asChild={!("isModal" in link && link.isModal)}
                             variant="ghost"
                             className="justify-between p-3 h-auto border border-gray-100 hover:border-gray-200"
                             onClick={
-                              link.isModal
+                              "isModal" in link && link.isModal
                                 ? (link as LinkItem).modalType === "comingSoon"
                                   ? () => setShowComingSoonModal(true)
                                   : () => setShowPriceModal(true)
                                 : undefined
                             }
                           >
-                            {link.isModal ? (
+                            {"isModal" in link && link.isModal ? (
                               <>
                                 <span className="text-sm font-medium text-gray-700">
                                   {link.name}
@@ -329,11 +419,11 @@ export default function SupportPage() {
                         {item.subItems.map((subItem, subIndex) => (
                           <Button
                             key={subIndex}
-                            asChild={!subItem.isModal}
+                            asChild={!("isModal" in subItem && subItem.isModal)}
                             variant="ghost"
                             className="justify-between p-3 h-auto border border-gray-100 hover:border-gray-200"
                             onClick={
-                              subItem.isModal
+                              "isModal" in subItem && subItem.isModal
                                 ? (subItem as SubItem).modalType ===
                                   "comingSoon"
                                   ? () => setShowComingSoonModal(true)
@@ -341,7 +431,7 @@ export default function SupportPage() {
                                 : undefined
                             }
                           >
-                            {subItem.isModal ? (
+                            {"isModal" in subItem && subItem.isModal ? (
                               <>
                                 <span className="text-sm font-medium text-gray-700">
                                   {subItem.name}

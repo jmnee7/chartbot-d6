@@ -84,11 +84,9 @@ export function PlatformCard({
                   >
                     <Smartphone className="w-3 h-3 mr-1" />
                     {isHome
-                      ? deviceType === "pc"
-                        ? "앱으로"
-                        : "앱으로"
+                      ? "앱으로"
                       : deviceType === "pc"
-                        ? "데스크톱 앱으로 열기"
+                        ? "앱으로 열기"
                         : "앱으로 열기"}
                     <ChevronDown
                       className={`w-3 h-3 ml-1 transition-transform ${showDropdown ? "rotate-180" : ""}`}
@@ -138,7 +136,7 @@ export function PlatformCard({
                 className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
               >
                 <ExternalLink className="w-3 h-3 mr-1" />
-                {isHome ? "웹" : "웹에서 열기"}
+                {isHome ? "웹" : "웹으로"}
               </Button>
             </a>
           )}

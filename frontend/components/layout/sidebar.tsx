@@ -16,8 +16,6 @@ import {
   Music,
   ExternalLink,
   Home,
-  Star,
-  Coins,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -48,7 +46,7 @@ const navigation: NavigationItem[] = [
     hasChildren: true,
     children: [
       {
-        name: "스트리밍리스트/원클릭",
+        name: "원클릭 담기/스트리밍리스트",
         href: "/streaming",
         icon: Music,
       },
@@ -62,16 +60,17 @@ const navigation: NavigationItem[] = [
           { name: "벅스", href: "/guide/bugs" },
           { name: "바이브", href: "/guide/vibe" },
           { name: "플로", href: "/guide/flo" },
-          { name: "유튜브", href: "/guide/youtube" },
+          { name: "유튜브 뮤직", href: "/guide/youtube" },
           { name: "애플", href: "/guide/apple-music" },
           { name: "스포티파이", href: "/guide/spotify" },
+          { name: "스테이션헤드", href: "/guide/station-head" },
         ],
       },
       {
         name: "MV 스트리밍",
         icon: ExternalLink,
         hasChildren: true,
-        children: [{ name: "유튜브", href: "/guide/youtube" }],
+        children: [{ name: "유튜브 뮤비", href: "/guide/youtube-mv" }],
       },
     ],
   },
@@ -154,23 +153,6 @@ const navigation: NavigationItem[] = [
     ],
   },
   {
-    name: "컴백",
-    icon: Star,
-    hasChildren: true,
-    children: [
-      {
-        name: "컴백 전 재화 모으기",
-        icon: Coins,
-        hasChildren: true,
-        children: [
-          { name: "음악중심 - 뮤빗", href: "/guide/mubeat" },
-          { name: "인기가요 - 팬 포인트", href: "/guide/inkigayo" },
-          { name: "하이어 - 루비", href: "/guide/highter" },
-        ],
-      },
-    ],
-  },
-  {
     name: "라디오 신청",
     icon: Radio,
     hasChildren: true,
@@ -186,33 +168,6 @@ const navigation: NavigationItem[] = [
       {
         name: "MBC",
         href: "/guide/radio-mbc",
-      },
-    ],
-  },
-  {
-    name: "서포트",
-    icon: Heart,
-    hasChildren: true,
-    children: [
-      {
-        name: "앨범 공구",
-        href: "/guide/album-group-order",
-        icon: ExternalLink,
-      },
-      {
-        name: "다운 헬퍼 지원",
-        href: "/support",
-        icon: Heart,
-      },
-      {
-        name: "아이디 기부",
-        href: "/guide/id-donation",
-        icon: ExternalLink,
-      },
-      {
-        name: "모금",
-        href: "/support",
-        icon: ExternalLink,
       },
     ],
   },
@@ -327,12 +282,14 @@ export function Sidebar({ open, onClose }: SidebarProps) {
     );
   };
 
-  // Close sidebar when clicking outside
+  // Close sidebar when clicking outside and reset expanded items
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      // Reset all expanded items when sidebar closes
+      setExpandedItems({});
     }
 
     return () => {

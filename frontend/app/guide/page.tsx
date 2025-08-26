@@ -100,7 +100,7 @@ function CategorySection({
 export default function GuidePage() {
   return (
     <div className="mx-auto w-full max-w-screen-sm mt-5 px-4 pb-20">
-      <SectionHeader title="DAY6 응원 가이드" />
+      <SectionHeader title="DAY6 응원 가이드" showDateTime={false} />
 
       <div className="mt-6 space-y-8">
         <CategorySection

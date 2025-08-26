@@ -27,6 +27,7 @@ export async function fetchChartData(): Promise<ChartData> {
           artist: s.artist as string,
           change: (s.change as number) || 0,
           album: (s.album as string) || "Band Aid", // Default album if not provided
+          albumArt: (s.albumArt as string) || "",
           timestamp: rawData.collectedAtKST,
         };
       });
@@ -36,7 +37,8 @@ export async function fetchChartData(): Promise<ChartData> {
       collectedAtKST: rawData.collectedAtKST,
       artist: rawData.artist,
       tracks: rawData.tracks || [],
-      melon: transformSongs(rawData.melon || []),
+      melon_top100: transformSongs(rawData.melon_top100 || []),
+      melon_hot100: transformSongs(rawData.melon_hot100 || []),
       genie: transformSongs(rawData.genie || []),
       bugs: transformSongs(rawData.bugs || []),
       vibe: transformSongs(rawData.vibe || []),
@@ -50,7 +52,8 @@ export async function fetchChartData(): Promise<ChartData> {
       collectedAtKST: new Date().toISOString(),
       artist: "DAY6",
       tracks: [],
-      melon: [],
+      melon_top100: [],
+      melon_hot100: [],
       genie: [],
       bugs: [],
       vibe: [],
@@ -223,7 +226,7 @@ export async function fetchComebackData(): Promise<{
 
     // Process chart data
     let chartRanks = [
-      { platform: "melon", rank: null as number | null, target: 10 },
+      { platform: "melon_top100", rank: null as number | null, target: 10 },
       { platform: "genie", rank: null as number | null, target: 10 },
       { platform: "bugs", rank: null as number | null, target: 10 },
     ];
@@ -285,7 +288,7 @@ export async function fetchComebackData(): Promise<{
     // Return mock data on error
     return {
       chartRank: [
-        { platform: "melon", rank: null, target: 10 },
+        { platform: "melon_top100", rank: null, target: 10 },
         { platform: "genie", rank: null, target: 10 },
         { platform: "bugs", rank: null, target: 10 },
       ],

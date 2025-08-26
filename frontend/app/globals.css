@@ -112,6 +112,12 @@
       rgba(30, 58, 138, 0.08) 100%
     ) !important;
     min-height: 100vh;
+    /* iOS Safe Area 대응 */
+    min-height: 100dvh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 }
 

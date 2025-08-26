@@ -31,7 +31,7 @@ const socialLinks = [
   },
   {
     name: "음총팀 유튜브",
-    url: "https://youtube.com/@day6_stream?si=Z2HBzbbAJgaNM4LM",
+    url: "https://www.youtube.com/@day6official",
     icon: Youtube,
     color: "hover:text-red-600",
   },

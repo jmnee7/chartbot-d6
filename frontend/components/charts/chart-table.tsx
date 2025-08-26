@@ -134,9 +134,9 @@ function SongRow({
             TOP 100
           </span>
         )}
-        <span className="text-xs text-gray-500">
+        {/* <span className="text-xs text-gray-500">
           {song.timestamp && formatKSTDate(song.timestamp)}
-        </span>
+        </span> */}
       </div>
     </div>
   );
