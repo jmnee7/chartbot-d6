@@ -131,7 +131,6 @@ class RankTracker:
         Returns:
             Dict: 순위 변화 정보
         """
-        from target_songs import TARGET_ARTIST, TARGET_SONG
         
         if not self.history:
             return {}
@@ -139,9 +138,12 @@ class RankTracker:
         # 현재 시점보다 이전의 가장 최근 히스토리 가져오기
         from utils import get_current_kst_timestamp_short
         current_time = get_current_kst_timestamp_short()
+        print(f"🔍 현재 시간: {current_time}")
+        print(f"🔍 히스토리 키들: {list(self.history.keys())}")
         
         # 현재 시점보다 이전 시점들만 필터링
         previous_timestamps = [t for t in self.history.keys() if t < current_time]
+        print(f"🔍 이전 시점들: {previous_timestamps}")
         
         if not previous_timestamps:
             print("⚠️ 비교할 이전 시점 데이터가 없습니다.")
