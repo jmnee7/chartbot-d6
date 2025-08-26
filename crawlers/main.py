@@ -150,6 +150,7 @@ def filter_target_songs(chart_data, rank_tracker=None):
                         'title': title,
                         'artist': artist,
                         'album': prev_song.get('album', ''),
+                        'albumArt': prev_song.get('albumArt', ''),
                         'service': prev_song.get('service', service_name),  # 실제 서비스 이름 사용
                         'timestamp': current_timestamp  # 모든 서비스 동일한 KST 형식
                     }
@@ -531,6 +532,8 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
                     "rank": song.get("rank"),
                     "title": song.get("title"),
                     "artist": song.get("artist"),
+                    "album": song.get("album", ""),
+                    "albumArt": song.get("albumArt", ""),
                     "change": change_value
                 })
             latest_data[service] = converted_songs
