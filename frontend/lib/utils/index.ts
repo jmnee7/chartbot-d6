@@ -119,7 +119,24 @@ export function getRankingBadgeStyle(rank: number): string {
   return "bg-gray-100 text-gray-800 border-gray-300";
 }
 
-export function getLastUpdateTime(): string {
+export async function getLastUpdateTime(): Promise<string> {
+  try {
+    // 실제 크롤링된 데이터의 시간을 가져오기
+    const response = await fetch("/data/latest.json", { cache: "no-cache" });
+    if (response.ok) {
+      const data = await response.json();
+      const collectedTime = new Date(data.collectedAtKST);
+      return collectedTime.toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+    }
+  } catch (error) {
+    console.warn("Failed to fetch actual update time:", error);
+  }
+
+  // 실패시 현재 시간의 정각으로 fallback
   const now = new Date();
   const lastHour = new Date(now);
   lastHour.setMinutes(0, 0, 0);

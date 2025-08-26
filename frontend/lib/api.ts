@@ -27,6 +27,7 @@ export async function fetchChartData(): Promise<ChartData> {
           artist: s.artist as string,
           change: (s.change as number) || 0,
           album: (s.album as string) || "Band Aid", // Default album if not provided
+          albumArt: (s.albumArt as string) || "",
           timestamp: rawData.collectedAtKST,
         };
       });
