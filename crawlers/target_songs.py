@@ -33,7 +33,7 @@ def is_target_song(artist_name, song_title):
     song_clean = song_title.strip()
     
     if SEARCH_MODE == "artists":
-        return artist_clean == TARGET_ARTIST
+        return TARGET_ARTIST in artist_clean
     
     elif SEARCH_MODE == "songs":
         return song_clean == TARGET_SONG

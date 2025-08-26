@@ -8,9 +8,136 @@
       "releaseDate": "2025-05-07"
     }
   ],
-  "melon": [],
-  "genie": [],
+  "melon_top100": [
+    {
+      "rank": 28,
+      "title": "HAPPY",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 31,
+      "title": "한 페이지가 될 수 있게",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 41,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 46,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    }
+  ],
+  "melon_hot100": [],
+  "melon": [
+    {
+      "rank": 28,
+      "title": "HAPPY",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 31,
+      "title": "한 페이지가 될 수 있게",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 41,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 46,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    }
+  ],
+  "genie": [
+    {
+      "rank": 22,
+      "title": "HAPPY",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 32,
+      "title": "한 페이지가 될 수 있게",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 49,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 56,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    }
+  ],
   "bugs": [],
-  "vibe": [],
-  "flo": []
+  "vibe": [
+    {
+      "rank": 30,
+      "title": "HAPPY",
+      "artist": "DAY6(데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 33,
+      "title": "한 페이지가 될 수 있게",
+      "artist": "DAY6(데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 51,
+      "title": "Welcome to the Show",
+      "artist": "DAY6(데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 69,
+      "title": "예뻤어",
+      "artist": "DAY6(데이식스)",
+      "change": 0
+    }
+  ],
+  "flo": [
+    {
+      "rank": 40,
+      "title": "HAPPY",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 42,
+      "title": "한 페이지가 될 수 있게",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 64,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    },
+    {
+      "rank": 95,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "change": 0
+    }
+  ]
 }

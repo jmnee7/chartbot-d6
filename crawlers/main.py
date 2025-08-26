@@ -504,6 +504,8 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     "collectedAtKST": timestamp,
     "artist": "DAY6",
     "tracks": tracks_list,
+    "melon_top100": [],
+    "melon_hot100": [],
     "melon": [],
     "genie": [],
     "bugs": [],

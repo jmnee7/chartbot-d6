@@ -1104,11 +1104,26 @@
     ]
   },
   "2025-08-26 22:00:00": {
-    "_processed_at": "2025-08-26T22:24:15.049138",
+    "_processed_at": "2025-08-26T22:30:51.955295",
     "melon_top100": [
       {
-        "rank": null,
-        "timestamp": "2025-08-26 22:00:00",
+        "rank": 28,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 31,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 41,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 46,
+        "timestamp": "2025-08-26 22:00",
         "chart_type": "TOP100"
       }
     ],
@@ -1121,15 +1136,42 @@
     ],
     "melon": [
       {
-        "rank": null,
-        "timestamp": "2025-08-26 22:00:00",
-        "chart_type": "HOT100"
+        "rank": 28,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 31,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 41,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 46,
+        "timestamp": "2025-08-26 22:00",
+        "chart_type": "TOP100"
       }
     ],
     "genie": [
       {
-        "rank": null,
-        "timestamp": "2025-08-26 22:00:00"
+        "rank": 22,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 32,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 49,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 56,
+        "timestamp": "2025-08-26 22:00"
       }
     ],
     "bugs": [
@@ -1140,14 +1182,38 @@
     ],
     "vibe": [
       {
-        "rank": null,
-        "timestamp": "2025-08-26 22:00:00"
+        "rank": 30,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 33,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 51,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 69,
+        "timestamp": "2025-08-26 22:00"
       }
     ],
     "flo": [
       {
-        "rank": null,
-        "timestamp": "2025-08-26 22:00:00"
+        "rank": 40,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 42,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 64,
+        "timestamp": "2025-08-26 22:00"
+      },
+      {
+        "rank": 95,
+        "timestamp": "2025-08-26 22:00"
       }
     ]
   }
