@@ -1,16 +1,44 @@
 {
   "collectedAtKST": "2025-08-26 22:00:00",
-  "artist": "DAY6",
+  "artist": "BLACKPINK",
   "tracks": [
     {
-      "title": "Maybe Tomorrow",
-      "album": "Maybe Tomorrow - Single",
+      "title": "뛰어(JUMP)",
+      "album": "뛰어(JUMP)",
       "releaseDate": "2025-05-07"
     }
   ],
-  "melon": [],
-  "genie": [],
+  "melon": [
+    {
+      "rank": 2,
+      "title": "뛰어(JUMP)",
+      "artist": "BLACKPINK",
+      "change": 0
+    }
+  ],
+  "genie": [
+    {
+      "rank": 3,
+      "title": "뛰어(JUMP)",
+      "artist": "BLACKPINK",
+      "change": 0
+    }
+  ],
   "bugs": [],
-  "vibe": [],
-  "flo": []
+  "vibe": [
+    {
+      "rank": 3,
+      "title": "뛰어(JUMP)",
+      "artist": "BLACKPINK",
+      "change": 0
+    }
+  ],
+  "flo": [
+    {
+      "rank": 3,
+      "title": "뛰어(JUMP)",
+      "artist": "BLACKPINK",
+      "change": 0
+    }
+  ]
 }

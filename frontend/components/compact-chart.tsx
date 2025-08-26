@@ -48,12 +48,27 @@ export function CompactChart() {
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
 
     if (songs.length > 0) {
-      // 가장 높은 순위의 DAY6 곡 표시
-      const bestSong = songs.reduce((best, current) => {
-        if (!best.rank || !current.rank) return current.rank ? current : best;
-        return current.rank < best.rank ? current : best;
-      });
-      platformData.push({ platform, song: bestSong });
+      // "Maybe Tomorrow"만 찾아서 표시
+      const maybeTomorrowSong = songs.find(song => 
+        song.title && song.title.includes("Maybe Tomorrow")
+      );
+      
+      if (maybeTomorrowSong) {
+        platformData.push({ platform, song: maybeTomorrowSong });
+      } else {
+        // Maybe Tomorrow가 없으면 차트아웃 상태 표시
+        platformData.push({
+          platform,
+          song: {
+            title: "차트아웃",
+            artist: "DAY6",
+            album: "",
+            rank: null,
+            change: 0,
+            timestamp: "",
+          } as ChartSong,
+        });
+      }
     } else {
       // 차트에 곡이 없으면 차트아웃 상태 표시
       platformData.push({
