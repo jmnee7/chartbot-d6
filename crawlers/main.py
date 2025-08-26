@@ -468,17 +468,42 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     # frontend/public/data 디렉토리 생성 (직접 생성)
     os.makedirs("../frontend/public/data", exist_ok=True)
     
+    # 발견된 모든 DAY6 곡을 tracks에 추가
+    all_day6_tracks = set()
+    for service, songs in filtered_data.items():
+        for song in songs:
+            if song.get('artist') == 'DAY6':
+                all_day6_tracks.add((
+                    song.get('title'),
+                    song.get('album', 'Unknown Album'),
+                    song.get('releaseDate', '2025-05-07')  # 기본값
+                ))
+    
+    # tracks 리스트 생성
+    tracks_list = [
+        {
+            "title": title,
+            "album": album,
+            "releaseDate": release_date
+        }
+        for title, album, release_date in sorted(all_day6_tracks)
+    ]
+    
+    # 발견된 곡이 없으면 기본 곡 추가
+    if not tracks_list:
+        tracks_list = [
+            {
+                "title": "Maybe Tomorrow",
+                "album": "Maybe Tomorrow - Single",
+                "releaseDate": "2025-05-07"
+            }
+        ]
+    
     # latest.json 생성 (차트 데이터)
     latest_data = {
     "collectedAtKST": timestamp,
     "artist": "DAY6",
-    "tracks": [
-        {
-            "title": "Maybe Tomorrow",
-            "album": "Maybe Tomorrow - Single",
-            "releaseDate": "2025-05-07"
-        }
-    ],
+    "tracks": tracks_list,
     "melon": [],
     "genie": [],
     "bugs": [],
