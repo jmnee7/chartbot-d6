@@ -49,10 +49,10 @@ export function CompactChart() {
 
     if (songs.length > 0) {
       // "Maybe Tomorrow"만 찾아서 표시
-      const maybeTomorrowSong = songs.find(song => 
-        song.title && song.title.includes("Maybe Tomorrow")
+      const maybeTomorrowSong = songs.find(
+        (song) => song.title && song.title.includes("Maybe Tomorrow")
       );
-      
+
       if (maybeTomorrowSong) {
         platformData.push({ platform, song: maybeTomorrowSong });
       } else {

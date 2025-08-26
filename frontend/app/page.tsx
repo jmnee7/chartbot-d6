@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6">
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <SectionHeader title="실시간 차트 순위" showDateTime={false} />
+          <SectionHeader title="실시간 차트 순위" showDateTime={true} />
           <CompactChart />
           <div className="mt-4">
             <Button
@@ -41,7 +41,7 @@ export default function HomePage() {
         {/* Desktop Layout */}
         <Card className="hidden md:block bg-white/60 backdrop-blur-sm border-mint-primary/20 shadow-sm">
           <CardHeader>
-            <SectionHeader title="실시간 차트 순위" showDateTime={false} />
+            <SectionHeader title="실시간 차트 순위" showDateTime={true} />
           </CardHeader>
           <CardContent>
             <CompactChart />

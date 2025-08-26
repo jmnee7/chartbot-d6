@@ -1,11 +1,12 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Filter } from "lucide-react";
+import { Filter, Clock } from "lucide-react";
 import Image from "next/image";
 import { ChartTable } from "./chart-table";
 import { ChartData, PlatformType } from "@/lib/types";
 import { getPlatformName } from "@/lib/utils";
+import { formatKoreanDate } from "@/lib/date-utils";
 
 interface ChartSectionProps {
   selectedPlatforms: PlatformType[];
@@ -50,6 +51,13 @@ function PlatformChart({
     return logos[platform];
   };
 
+  const formatCollectionTime = (dateTimeString: string) => {
+    const date = new Date(dateTimeString);
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <Card key={platform} className="">
       <CardContent className="p-0">
@@ -68,6 +76,15 @@ function PlatformChart({
               {getPlatformName(platform)}
             </h2>
           </div>
+          {chartData?.collectedAtKST && (
+            <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
+              <span className="text-xs text-gray-500">
+                {formatKoreanDate(new Date(chartData.collectedAtKST))}
+              </span>
+              <Clock className="h-3 w-3 text-mint-primary" />
+              <span>{formatCollectionTime(chartData.collectedAtKST)} 기준</span>
+            </div>
+          )}
         </div>
         <ChartTable
           songs={chartData?.[platform] || []}
