@@ -76,10 +76,10 @@ function SongRow({
           className={`text-xs font-medium ${
             song.rank === null
               ? "text-orange-600"
-              : getRankChangeColor(song.change || 0)
+              : getRankChangeColor(song.change ?? 0)
           }`}
         >
-          {song.rank === null ? "올려줘" : getRankChangeIcon(song.change || 0)}
+          {song.rank === null ? "올려줘" : getRankChangeIcon(song.change ?? 0)}
         </div>
       </div>
 

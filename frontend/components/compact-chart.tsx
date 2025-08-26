@@ -141,10 +141,10 @@ export function CompactChart() {
                   {song?.change !== undefined && (
                     <div
                       className={`text-xs font-medium ${getRankChangeColor(
-                        song.change
+                        song.change ?? 0
                       )}`}
                     >
-                      {getRankChangeIcon(song.change)}
+                      {getRankChangeIcon(song.change ?? 0)}
                     </div>
                   )}
                 </div>
