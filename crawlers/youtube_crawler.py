@@ -142,24 +142,15 @@ def load_previous_youtube_data():
 
 def get_youtube_stats_for_dashboard():
     """
-    대시보드용 YouTube 통계 가져오기 (정각에만 실제 API 호출)
+    대시보드용 YouTube 통계 가져오기
     
     Returns:
         List[Dict]: YouTube 통계 정보 리스트
     """
     current_time = datetime.now()
     
-    # 정각이 아니면 이전 데이터 사용
-    if not is_exact_hour():
-        print(f"⏰ 현재 시간 {current_time.strftime('%H:%M')} - 정각이 아니므로 이전 YouTube 데이터 사용")
-        previous_data = load_previous_youtube_data()
-        if previous_data:
-            print(f"📊 이전 YouTube 데이터 사용 ({len(previous_data)}개 비디오)")
-            return previous_data
-        else:
-            print("⚠️ 이전 데이터가 없어 기본값으로 대체")
-    
-    print(f"🕒 정각 {current_time.strftime('%H:00')} - YouTube API 호출 시작")
+    # 항상 YouTube API 호출
+    print(f"📹 YouTube API 호출 시작 - {current_time.strftime('%H:%M')}")
     
     VIDEOS = [
         {"id": "0fyZqS0N19o", "title": "Maybe Tomorrow"},  # DAY6 
