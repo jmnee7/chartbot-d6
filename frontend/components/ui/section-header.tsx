@@ -1,10 +1,7 @@
 "use client";
 
 import { Clock } from "lucide-react";
-import { formatKoreanDate } from "@/lib/date-utils";
-import { getLastUpdateTime } from "@/lib/utils/index";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { getLastUpdateDateTime } from "@/lib/utils/index";
 import { useEffect, useState } from "react";
 
 interface SectionHeaderProps {
@@ -19,12 +16,17 @@ export function SectionHeader({
   title,
   showDateTime = false,
 }: SectionHeaderProps) {
-  const currentTime = new Date();
-  const [updateTime, setUpdateTime] = useState<string>("--:--");
+  const [updateDateTime, setUpdateDateTime] = useState<{
+    date: string;
+    time: string;
+  }>({
+    date: "--.--.--",
+    time: "--:--"
+  });
 
   useEffect(() => {
     if (showDateTime) {
-      getLastUpdateTime().then(setUpdateTime);
+      getLastUpdateDateTime().then(setUpdateDateTime);
     }
   }, [showDateTime]);
 
@@ -34,10 +36,10 @@ export function SectionHeader({
       {showDateTime && (
         <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
           <span className="text-xs text-gray-500">
-            {formatKoreanDate(currentTime)}
+            {updateDateTime.date}
           </span>
           <Clock className="h-3 w-3 text-mint-primary" />
-          <span>{updateTime} 기준</span>
+          <span>{updateDateTime.time} 기준</span>
         </div>
       )}
     </div>

@@ -146,3 +146,58 @@ export async function getLastUpdateTime(): Promise<string> {
     hour12: false,
   });
 }
+
+export async function getLastUpdateDateTime(): Promise<{
+  date: string;
+  time: string;
+}> {
+  try {
+    // 실제 크롤링된 데이터의 날짜와 시간을 가져오기
+    const response = await fetch("/data/latest.json", { cache: "no-cache" });
+    if (response.ok) {
+      const data = await response.json();
+      const collectedTime = new Date(data.collectedAtKST);
+      
+      const date = collectedTime
+        .toLocaleDateString("ko-KR", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        })
+        .replace(/\./g, ".")
+        .replace(/ /g, "");
+        
+      const time = collectedTime.toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+      
+      return { date, time };
+    }
+  } catch (error) {
+    console.warn("Failed to fetch actual update datetime:", error);
+  }
+
+  // 실패시 현재 시간의 정각으로 fallback
+  const now = new Date();
+  const lastHour = new Date(now);
+  lastHour.setMinutes(0, 0, 0);
+  
+  const date = lastHour
+    .toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\./g, ".")
+    .replace(/ /g, "");
+    
+  const time = lastHour.toLocaleTimeString("ko-KR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  
+  return { date, time };
+}
