@@ -110,7 +110,7 @@ def filter_target_songs(chart_data, rank_tracker=None):
     
     # 각 서비스별로 처리 (효율적인 처리를 위해 chart_data 키 기반으로 순회)
     service_names = ["melon_top100", "melon_hot100", "melon", "genie", "bugs", "vibe", "flo"]
-    current_timestamp = get_current_kst_timestamp_short()
+    current_timestamp = get_current_kst_timestamp_short() + ":00"
     
     for service_name in service_names:
         filtered_songs = []
@@ -503,9 +503,13 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
             }
         ]
     
+    # 정각 시간으로 collectedAtKST 설정 (시 + 00분)
+    from utils import get_current_kst_timestamp_short
+    collected_at_kst = get_current_kst_timestamp_short() + ":00"
+    
     # latest.json 생성 (차트 데이터)
     latest_data = {
-    "collectedAtKST": get_current_kst_exact(),
+    "collectedAtKST": collected_at_kst,
     "artist": "DAY6",
     "tracks": tracks_list,
     "melon_top100": [],
@@ -580,7 +584,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
             "dailyViews": 0,  # TODO: 실제 일일 증가량
             "dailyLikes": 0   # TODO: 실제 일일 증가량
         },
-        "lastUpdated": timestamp
+        "lastUpdated": collected_at_kst
     }
     
     # 차트 포지션 추가
@@ -607,7 +611,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
         "artist": "DAY6",
         "album": "Fourever", 
         "status": "chart_out",
-        "lastUpdated": timestamp,
+        "lastUpdated": collected_at_kst,
         "platforms": {}
     }
     
@@ -645,7 +649,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     # 2. day6_chart.json (차트 페이지용)
     day6_chart_data = {
         "artist": "DAY6",
-        "lastUpdated": timestamp,
+        "lastUpdated": collected_at_kst,
         "platforms": {}
     }
     
@@ -727,7 +731,7 @@ def main():
     # 트위터 연동 제거됨
     
     # 현재 데이터를 히스토리에 저장 (타겟 곡만)
-    current_timestamp = get_current_timestamp() # 정각 타임스탬프 가져오기
+    current_timestamp = get_current_kst_timestamp_short() + ":00" # 정각 타임스탬프 가져오기
     rank_tracker.update_history(filtered_data, current_timestamp)
     
     # 오래된 히스토리 정리 (최근 24시간만 유지)

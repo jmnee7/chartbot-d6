@@ -136,7 +136,7 @@ export async function getLastUpdateTime(): Promise<string> {
     console.warn("Failed to fetch actual update time:", error);
   }
 
-  // 실패시 현재 시간의 정각으로 fallback
+  // 실패시 현재 시간의 정각으로 fallback (시 + 00분)
   const now = new Date();
   const lastHour = new Date(now);
   lastHour.setMinutes(0, 0, 0);
@@ -184,7 +184,7 @@ export async function getLastUpdateDateTime(): Promise<{
     console.warn("Failed to fetch actual update datetime:", error);
   }
 
-  // 실패시 현재 시간의 정각으로 fallback
+  // 실패시 현재 시간의 정각으로 fallback (시 + 00분)
   const now = new Date();
   const lastHour = new Date(now);
   lastHour.setMinutes(0, 0, 0);
