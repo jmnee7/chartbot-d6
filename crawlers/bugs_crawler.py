@@ -74,15 +74,33 @@ class BugsCrawler(BaseCrawler):
             album_element = song_element.select_one('.album a')
             album = clean_text(album_element.text) if album_element else ""
             
-            # 앨범 아트
-            albumart_element = song_element.select_one('.thumbnail img')
-            albumart = albumart_element.get("src") if albumart_element else ""
+            # 앨범 아트 - 여러 선택자 시도
+            albumart = ""
+            albumart_selectors = [
+                '.thumbnail img',
+                'td:nth-child(3) img',
+                'td img[src*="image.bugsm.co.kr"]',
+                'img[src*="album"]'
+            ]
+            
+            for selector in albumart_selectors:
+                albumart_element = song_element.select_one(selector)
+                if albumart_element and albumart_element.get("src"):
+                    albumart = albumart_element.get("src")
+                    break
             
             # 앨범 아트 URL이 상대 경로인 경우 절대 경로로 변환
-            if albumart and albumart.startswith('//'):
-                albumart = 'https:' + albumart
-            elif albumart and albumart.startswith('/'):
-                albumart = 'https://image.bugsm.co.kr' + albumart
+            if albumart:
+                if albumart.startswith('//'):
+                    albumart = 'https:' + albumart
+                elif albumart.startswith('/'):
+                    albumart = 'https://image.bugsm.co.kr' + albumart
+                elif not albumart.startswith('http'):
+                    albumart = 'https://image.bugsm.co.kr/' + albumart
+            
+            # 앨범 아트가 없으면 기본 이미지 사용
+            if not albumart:
+                albumart = "https://image.bugsm.co.kr/album/images/50/000000/00000001.jpg"
             
             return {
                 "rank": rank,
@@ -95,7 +113,7 @@ class BugsCrawler(BaseCrawler):
             
         except Exception as e:
             print(f"Error parsing Bugs song data: {e}")
-            return None 
+            return None
 
     def crawl_chart(self, chart_type="top_100"):
         """
