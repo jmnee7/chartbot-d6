@@ -131,3 +131,17 @@ def get_current_kst_iso():
     # KST (UTC+9)로 변환
     now_kst = now_utc + timedelta(hours=9)
     return now_kst.isoformat() 
+
+
+def get_current_kst_exact():
+    """
+    현재 한국 시간(KST)을 정확한 시점으로 반환하는 함수 (실제 크롤링 시점 기록용)
+    
+    Returns:
+        str: 현재 KST 시간 (YYYY-MM-DD HH:mm:ss 형식)
+    """
+    # UTC 현재 시간
+    now_utc = datetime.utcnow()
+    # KST (UTC+9)로 변환
+    now_kst = now_utc + timedelta(hours=9)
+    return now_kst.strftime('%Y-%m-%d %H:%M:%S')

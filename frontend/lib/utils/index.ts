@@ -156,13 +156,17 @@ export async function getLastUpdateDateTime(): Promise<{
     const response = await fetch("/data/latest.json", { cache: "no-cache" });
     if (response.ok) {
       const data = await response.json();
-      const collectedTime = new Date(data.collectedAtKST);
+      
+      // collectedAtKST는 이미 KST 시간이므로 "+09:00" 타임존 정보 추가
+      const kstTimeString = data.collectedAtKST;
+      const collectedTime = new Date(kstTimeString + "+09:00");
       
       const date = collectedTime
         .toLocaleDateString("ko-KR", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
+          timeZone: "Asia/Seoul"
         })
         .replace(/\./g, ".")
         .replace(/ /g, "");
@@ -171,6 +175,7 @@ export async function getLastUpdateDateTime(): Promise<{
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
+        timeZone: "Asia/Seoul"
       });
       
       return { date, time };
@@ -189,6 +194,7 @@ export async function getLastUpdateDateTime(): Promise<{
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
+      timeZone: "Asia/Seoul"
     })
     .replace(/\./g, ".")
     .replace(/ /g, "");
@@ -197,6 +203,7 @@ export async function getLastUpdateDateTime(): Promise<{
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
+    timeZone: "Asia/Seoul"
   });
   
   return { date, time };

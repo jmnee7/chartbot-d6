@@ -14,7 +14,7 @@ from genie_crawler import GenieCrawler
 from bugs_crawler import BugsCrawler
 from vibe_crawler import VibeCrawler
 from flo_crawler import FloCrawler
-from utils import get_current_timestamp, get_current_kst_timestamp_short, get_current_kst_iso
+from utils import get_current_timestamp, get_current_kst_timestamp_short, get_current_kst_iso, get_current_kst_exact
 from target_songs import is_target_song, get_target_info
 from rank_tracker import RankTracker
 from youtube_crawler import get_youtube_stats_for_dashboard
@@ -502,7 +502,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     
     # latest.json 생성 (차트 데이터)
     latest_data = {
-    "collectedAtKST": timestamp,
+    "collectedAtKST": get_current_kst_exact(),
     "artist": "DAY6",
     "tracks": tracks_list,
     "melon_top100": [],
