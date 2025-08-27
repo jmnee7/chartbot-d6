@@ -598,6 +598,102 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     except Exception as e:
         print(f"❌ summary.json 저장 실패: {e}")
 
+    # 1. maybe_tomorrow.json (메인 페이지용)
+    maybe_tomorrow_data = {
+        "title": "Maybe Tomorrow",
+        "artist": "DAY6",
+        "album": "Maybe Tomorrow - Single", 
+        "status": "chart_out",
+        "lastUpdated": timestamp,
+        "platforms": {}
+    }
+    
+    # 각 플랫폼별로 Maybe Tomorrow 상태 확인
+    for service in ["melon_top100", "melon_hot100", "genie", "bugs", "vibe", "flo"]:
+        maybe_tomorrow_data["platforms"][service] = {"rank": None, "change": 0, "status": "chart_out"}
+        
+        # 실제로 차트에 있는지 확인
+        for song in filtered_data.get(service, []):
+            if (song.get('title') == 'Maybe Tomorrow' and 'DAY6' in song.get('artist', '')):
+                change_value = 0
+                if rank_changes and service in rank_changes:
+                    for change_info in rank_changes[service]:
+                        if (change_info.get('title') == 'Maybe Tomorrow' and 
+                            'DAY6' in change_info.get('artist', '')):
+                            change_value = change_info.get('change', 0)
+                            break
+                
+                maybe_tomorrow_data["platforms"][service] = {
+                    "rank": song.get('rank'),
+                    "change": change_value,
+                    "status": "in_chart"
+                }
+                maybe_tomorrow_data["status"] = "in_chart"
+                break
+    
+    # maybe_tomorrow.json 저장
+    try:
+        with open("../frontend/public/data/maybe_tomorrow.json", "w", encoding="utf-8") as f:
+            json.dump(maybe_tomorrow_data, f, ensure_ascii=False, indent=2)
+        print("✅ maybe_tomorrow.json 생성 완료")
+    except Exception as e:
+        print(f"❌ maybe_tomorrow.json 저장 실패: {e}")
+    
+    # 2. day6_chart.json (차트 페이지용)
+    day6_chart_data = {
+        "artist": "DAY6",
+        "lastUpdated": timestamp,
+        "platforms": {}
+    }
+    
+    platform_names = {
+        "melon_top100": "멜론 TOP100",
+        "melon_hot100": "멜론 HOT100", 
+        "genie": "지니",
+        "bugs": "벅스",
+        "vibe": "바이브",
+        "flo": "플로"
+    }
+    
+    for service, display_name in platform_names.items():
+        platform_songs = []
+        
+        for song in filtered_data.get(service, []):
+            if 'DAY6' in song.get('artist', ''):
+                change_value = 0
+                change_text = "-"
+                if rank_changes and service in rank_changes:
+                    for change_info in rank_changes[service]:
+                        if (change_info.get('title') == song.get('title') and
+                            change_info.get('artist') == song.get('artist')):
+                            change_value = change_info.get('change', 0)
+                            change_text = change_info.get('change_text', '-')
+                            break
+                
+                platform_songs.append({
+                    "rank": song.get('rank'),
+                    "title": song.get('title'),
+                    "artist": song.get('artist'),
+                    "album": song.get('album'),
+                    "albumArt": song.get('albumArt'),
+                    "change": change_value,
+                    "changeText": change_text
+                })
+        
+        platform_songs.sort(key=lambda x: x['rank'] if x['rank'] else 999)
+        day6_chart_data["platforms"][service] = {
+            "name": display_name,
+            "songs": platform_songs,
+            "count": len(platform_songs)
+        }
+    
+    # day6_chart.json 저장
+    try:
+        with open("../frontend/public/data/day6_chart.json", "w", encoding="utf-8") as f:
+            json.dump(day6_chart_data, f, ensure_ascii=False, indent=2)
+        print("✅ day6_chart.json 생성 완료")
+    except Exception as e:
+        print(f"❌ day6_chart.json 저장 실패: {e}")
 
 def main():
     """
