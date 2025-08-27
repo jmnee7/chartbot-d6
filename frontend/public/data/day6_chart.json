@@ -87,18 +87,9 @@
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/084/877/280/84877280_1710728168568_1_140x140.JPG/dims/resize/Q_80,0",
           "change": -18,
           "changeText": "↓18"
-        },
-        {
-          "rank": null,
-          "title": "Congratulations",
-          "artist": "DAY6 (데이식스)",
-          "album": "",
-          "albumArt": "",
-          "change": 0,
-          "changeText": "차트아웃"
         }
       ],
-      "count": 5
+      "count": 4
     },
     "bugs": {
       "name": "벅스",
@@ -249,18 +240,9 @@
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
           "change": 0,
           "changeText": "-"
-        },
-        {
-          "rank": null,
-          "title": "예뻤어",
-          "artist": "DAY6 (데이식스)",
-          "album": "",
-          "albumArt": "",
-          "change": 0,
-          "changeText": "차트아웃"
         }
       ],
-      "count": 4
+      "count": 3
     }
   }
 }
