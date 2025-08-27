@@ -139,23 +139,8 @@ def filter_target_songs(chart_data, rank_tracker=None):
                 else:
                     print(f"✅ [{service_name.upper()}] {song.get('rank', 'N/A')}위: {artist} - {title}")
         
-        # 차트아웃된 타겟 곡들 추가 (rank: null로 저장)
-        if service_name in previous_target_songs:
-            for song_key, prev_song in previous_target_songs[service_name].items():
-                if song_key not in current_target_songs:
-                    artist = prev_song.get('artist', '')
-                    title = prev_song.get('title', '')
-                    chart_out_song = {
-                        'rank': None,
-                        'title': title,
-                        'artist': artist,
-                        'album': prev_song.get('album', ''),
-                        'albumArt': prev_song.get('albumArt', ''),
-                        'service': prev_song.get('service', service_name),  # 실제 서비스 이름 사용
-                        'timestamp': current_timestamp  # 모든 서비스 동일한 KST 형식
-                    }
-                    filtered_songs.append(chart_out_song)
-                    print(f"📉 [{service_name.upper()}] 차트아웃: {artist} - {title}")
+        # 차트아웃된 타겟 곡들은 표시하지 않음 (사용자 요청사항)
+        # 현재 차트에 있는 곡들만 표시
         
         filtered_data[service_name] = filtered_songs
         if filtered_songs:
@@ -213,10 +198,9 @@ def print_target_summary(filtered_data, rank_changes=None):
                             change_text = f" {change_info.get('change_text', '')}"
                             break
                 
+                # 현재 차트에 있는 곡들만 표시 (rank가 None이 아닌 경우)
                 if rank is not None:
                     print(f"  {rank:3}위{change_text}: {artist} - {title}")
-                else:
-                    print(f"  차트아웃{change_text}: {artist} - {title}")
         else:
             print(f"\n📱 {service_name} (0곡)")
             print(f"-" * 30)

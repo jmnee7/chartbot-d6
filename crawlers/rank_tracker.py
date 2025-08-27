@@ -200,30 +200,8 @@ class RankTracker:
                 
                 service_changes.append(change_info)
             
-            # 현재 차트에 없지만 이전에는 있던 곡들도 처리 (차트아웃)
-            for previous_song in previous_songs:
-                previous_title = previous_song.get('title')
-                previous_artist = previous_song.get('artist')
-                
-                # 현재 차트에 이 곡이 있는지 확인
-                found_in_current = any(
-                    (current_song.get('title') == previous_title and 
-                     current_song.get('artist') == previous_artist)
-                    for current_song in current_songs
-                )
-                
-                # 현재 차트에 없으면 차트아웃으로 처리
-                if not found_in_current:
-                    change_info = {
-                        "rank": None,
-                        "title": previous_title,
-                        "artist": previous_artist, 
-                        "previous_rank": previous_song.get('rank'),
-                        "change": 0,
-                        "change_text": "차트아웃",
-                        "timestamp": ""
-                    }
-                    service_changes.append(change_info)
+            # 차트아웃된 곡들은 표시하지 않음 (사용자 요청사항)
+            # 현재 차트에 있는 곡들만 표시
             
             changes[service_name] = service_changes
         
