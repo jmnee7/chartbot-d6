@@ -79,7 +79,7 @@ function SongRow({
               : getRankChangeColor(song.change ?? 0)
           }`}
         >
-          {song.rank === null ? "올려줘" : getRankChangeIcon(song.change ?? 0)}
+          {song.rank === null ? "-" : getRankChangeIcon(song.change ?? 0)}
         </div>
       </div>
 

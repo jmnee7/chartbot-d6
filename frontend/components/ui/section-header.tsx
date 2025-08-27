@@ -21,7 +21,7 @@ export function SectionHeader({
     time: string;
   }>({
     date: "--.--.--",
-    time: "--:--"
+    time: "--:--",
   });
 
   useEffect(() => {
@@ -35,9 +35,7 @@ export function SectionHeader({
       <h2 className="text-lg md:text-xl font-bold text-gray-900">{title}</h2>
       {showDateTime && (
         <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
-          <span className="text-xs text-gray-500">
-            {updateDateTime.date}
-          </span>
+          <span className="text-xs text-gray-500">{updateDateTime.date}</span>
           <Clock className="h-3 w-3 text-mint-primary" />
           <span>{updateDateTime.time} 기준</span>
         </div>

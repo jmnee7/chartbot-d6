@@ -1,8 +1,9 @@
 import { ChartData, VoteItem, MVStats, ChartSong } from "./types";
 
 // Use GitHub raw data for production, local files for development
-const DATA_BASE_URL = process.env.NEXT_PUBLIC_DATA_BASE_URL || 
-  (process.env.NODE_ENV === 'production' 
+const DATA_BASE_URL =
+  process.env.NEXT_PUBLIC_DATA_BASE_URL ||
+  (process.env.NODE_ENV === "production"
     ? "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data"
     : "/data");
 
