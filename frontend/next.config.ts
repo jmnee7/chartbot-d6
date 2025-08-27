@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/image/**",
       },
+      {
+        protocol: "https",
+        hostname: "image.bugsm.co.kr",
+        port: "",
+        pathname: "/album/**",
+      },
     ],
   },
 };
