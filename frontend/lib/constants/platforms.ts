@@ -244,7 +244,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "flo",
     name: "플로",
     logo: "/streaming/FLO-logo.png",
-    url: "https://www.music-flo.com/detail/album/437566658/albumtrack",
+    url: "https://tinyurl.com/dekaadx3",
     urls: {
       android: ["https://www.music-flo.com/detail/album/437566658/albumtrack"],
       iphone: ["https://www.music-flo.com/detail/album/437566658/albumtrack"],
