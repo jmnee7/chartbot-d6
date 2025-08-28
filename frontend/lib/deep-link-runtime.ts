@@ -15,6 +15,14 @@ function getDeviceType(): "android" | "ios" | "pc" {
   return "pc";
 }
 
+// 인앱 브라우저 감지
+function isInAppBrowser(): boolean {
+  if (typeof window === "undefined") return false;
+  
+  const userAgent = window.navigator.userAgent;
+  return /KAKAO|NAVER|Line|Instagram|Facebook|Twitter/i.test(userAgent);
+}
+
 // Intent URL에 fallback URL 추가 (Android)
 function addFallbackToIntent(intentUrl: string, fallbackUrl: string): string {
   if (intentUrl.includes("S.browser_fallback_url=")) {
@@ -29,20 +37,55 @@ function addFallbackToIntent(intentUrl: string, fallbackUrl: string): string {
   return intentUrl;
 }
 
-// iOS용 Hidden iframe 방식
+// iOS용 딥링크 처리 (window.location 방식)
 function tryIOSDeeplink(url: string, fallbackUrl?: string): void {
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = url;
-  document.body.appendChild(iframe);
-  
-  // 2초 후 fallback 실행
-  setTimeout(() => {
-    document.body.removeChild(iframe);
+  // 인앱 브라우저에서는 안내 메시지와 함께 웹 폴백
+  if (isInAppBrowser()) {
+    alert("앱으로 열기가 제한될 수 있습니다. Safari나 Chrome 등 기본 브라우저에서 이용해주세요.");
     if (fallbackUrl) {
       window.open(fallbackUrl, "_blank");
     }
-  }, 2000);
+    return;
+  }
+  
+  // iOS에서는 window.location.href로 직접 시도
+  let hasFocus = true;
+  
+  // 페이지가 백그라운드로 가면 앱이 열린 것으로 간주
+  const handleVisibilityChange = () => {
+    if (document.hidden) {
+      hasFocus = false;
+    }
+  };
+  
+  const handlePageHide = () => {
+    hasFocus = false;
+  };
+  
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+  window.addEventListener('pagehide', handlePageHide);
+  
+  // 딥링크 시도
+  try {
+    window.location.href = url;
+  } catch (error) {
+    console.error("iOS deeplink failed:", error);
+    if (fallbackUrl) {
+      window.open(fallbackUrl, "_blank");
+    }
+    return;
+  }
+  
+  // 1.5초 후 앱이 안 열렸으면 폴백 실행
+  setTimeout(() => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    window.removeEventListener('pagehide', handlePageHide);
+    
+    if (hasFocus && fallbackUrl) {
+      // 여전히 포커스가 있다면 앱이 안 열린 것
+      window.open(fallbackUrl, "_blank");
+    }
+  }, 1500);
 }
 
 // Android용 Intent 처리
@@ -83,7 +126,7 @@ function tryPCDeeplink(url: string, fallbackUrl?: string): void {
  */
 export function openPlatformAuto(
   platform: Platform,
-  ids?: string[],
+  _ids?: string[],
   options: OpenOptions = {}
 ): void {
   const deviceType = getDeviceType();
