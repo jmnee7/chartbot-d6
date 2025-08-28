@@ -133,8 +133,14 @@ export function PlatformCard({
                 size="sm"
                 className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
               >
-                <ExternalLink className="w-3 h-3 mr-1" />
-                {isHome ? "웹" : "웹으로"}
+                {platform.id === "flo" ? (
+                  <Smartphone className="w-3 h-3 mr-1" />
+                ) : (
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                )}
+                {platform.id === "flo" 
+                  ? (isHome ? "앱으로" : "앱으로 열기")
+                  : (isHome ? "웹" : "웹으로")}
               </Button>
             </a>
           )}
@@ -228,13 +234,19 @@ export function PlatformCard({
                 </>
               ) : (
                 <>
-                  <ExternalLink className="w-3 h-3 mr-1" />
+                  {platform.id === "flo" ? (
+                    <Smartphone className="w-3 h-3 mr-1" />
+                  ) : (
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                  )}
                   <span>
-                    {platform.category === "music"
-                      ? "바로 스트리밍"
-                      : platform.category === "download"
-                        ? "바로 다운로드"
-                        : "바로 시청"}
+                    {platform.id === "flo"
+                      ? "앱으로 열기"
+                      : platform.category === "music"
+                        ? "바로 스트리밍"
+                        : platform.category === "download"
+                          ? "바로 다운로드"
+                          : "바로 시청"}
                   </span>
                 </>
               )}
