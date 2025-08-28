@@ -245,11 +245,16 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "플로",
     logo: "/streaming/FLO-logo.png",
     url: "https://www.music-flo.com/detail/album/437566658/albumtrack",
+    urls: {
+      android: ["https://www.music-flo.com/detail/album/437566658/albumtrack"],
+      iphone: ["https://www.music-flo.com/detail/album/437566658/albumtrack"],
+      pc: ["https://www.music-flo.com/detail/album/437566658/albumtrack"],
+    },
     deeplinks: {
       android: [
         {
           label: "플로",
-          uri: "flomusic://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060",
+          uri: "intent://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060#Intent;scheme=flomusic;package=com.dreamuscompany.musicmate;S.browser_fallback_url=https%3A%2F%2Fwww.music-flo.com%2Fdetail%2Falbum%2F437566658%2Falbumtrack;end",
           dedupeIds: false,
         },
       ],
