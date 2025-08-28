@@ -125,18 +125,6 @@ function SongRow({
             </span>
           </div>
         )}
-        {song.rank && song.rank <= 100 && (
-          <span
-            className={`${getPlatformColor(
-              platform
-            )} text-white px-2 py-1 rounded text-xs font-medium`}
-          >
-            TOP 100
-          </span>
-        )}
-        {/* <span className="text-xs text-gray-500">
-          {song.timestamp && formatKSTDate(song.timestamp)}
-        </span> */}
       </div>
     </div>
   );
