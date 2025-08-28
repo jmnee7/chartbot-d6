@@ -14,16 +14,16 @@ interface PlatformFiltersProps {
 const PLATFORMS = [
   { id: "melon_top100" as const, name: "멜론 TOP100", color: "#49c4b0" },
   { id: "melon_hot100" as const, name: "멜론 HOT100", color: "#49c4b0" },
-  { id: "genie" as const, name: "지니", color: "#3ba89a" },
+  { id: "genie" as const, name: "지니 실시간", color: "#3ba89a" },
   {
     id: "bugs" as const,
-    name: "벅스",
+    name: "벅스 실시간",
     color: "#5bd2b8",
   },
-  { id: "vibe" as const, name: "바이브", color: "#6dd5c0" },
+  { id: "vibe" as const, name: "바이브 TOP100", color: "#6dd5c0" },
   {
     id: "flo" as const,
-    name: "플로",
+    name: "플로 실시간",
     color: "#3d9fa0",
   },
 ];

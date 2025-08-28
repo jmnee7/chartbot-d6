@@ -73,7 +73,7 @@ function PlatformChart({
               />
             </div>
             <h2 className="text-lg md:text-xl font-bold text-gray-900">
-              {getPlatformName(platform)}
+              {platform === "melon_top100" ? "멜론" : platform === "melon_hot100" ? "멜론" : platform === "genie" ? "지니" : platform === "bugs" ? "벅스" : platform === "vibe" ? "바이브" : "플로"}
             </h2>
           </div>
           {chartData?.collectedAtKST && (

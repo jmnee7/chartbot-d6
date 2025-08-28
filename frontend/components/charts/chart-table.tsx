@@ -4,11 +4,9 @@ import { Music } from "lucide-react";
 import Image from "next/image";
 import { ChartSong } from "@/lib/types";
 import {
-  getPlatformColor,
   getPlatformName,
   getRankChangeIcon,
   getRankChangeColor,
-  formatKSTDate,
 } from "@/lib/utils";
 
 interface ChartTableProps {
@@ -45,11 +43,9 @@ function EmptyState({ platform }: { platform: string }) {
 
 function SongRow({
   song,
-  platform,
   index,
 }: {
   song: ChartSong;
-  platform: string;
   index: number;
 }) {
   return (
@@ -125,17 +121,6 @@ function SongRow({
             </span>
           </div>
         )}
-        {song.rank && song.rank <= 100 && (
-          <span
-            className={`${getPlatformColor(
-              platform
-            )} text-white px-2 py-1 rounded text-xs font-medium`}
-          >
-            {platform.includes('melon') ? 'TOP100' : 
-             platform === 'vibe' ? 'TOP100' : 
-             '실시간'}
-          </span>
-        )}
       </div>
     </div>
   );
@@ -156,7 +141,6 @@ export function ChartTable({ songs, platform, isLoading }: ChartTableProps) {
         <SongRow
           key={`${song.title}-${song.artist}-${index}`}
           song={song}
-          platform={platform}
           index={index}
         />
       ))}
