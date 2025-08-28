@@ -254,7 +254,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         {
           label: "플로",
-          uri: "intent://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060#Intent;scheme=flomusic;package=com.dreamuscompany.musicmate;S.browser_fallback_url=https%3A%2F%2Ftinyurl.com%2Fdekaadx3;end",
+          uri: "intent://play/track?ids=538889145,538889146,497881291,512780061,427164276,512780062,538889145,538889146,30540153,512780061,497881290,512780067,538889145,538889146,497881291,4551006,512780064,512780060#Intent;scheme=flomusic;package=com.dreamuscompany.musicmate;end",
           dedupeIds: false,
         },
       ],
