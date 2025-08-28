@@ -38,21 +38,23 @@ export function getRankChangeColor(delta: number | undefined): string {
 
 export function getPlatformColor(platform: string): string {
   const colors: Record<string, string> = {
-    melon: "bg-green-500",
-    genie: "bg-blue-500",
-    bugs: "bg-orange-500",
-    vibe: "bg-purple-500",
-    flo: "bg-pink-500",
+    melon: "bg-gradient-to-r from-green-500 to-green-600",
+    melon_top100: "bg-gradient-to-r from-green-500 to-green-600",
+    melon_hot100: "bg-gradient-to-r from-green-500 to-green-600",
+    genie: "bg-gradient-to-r from-sky-400 to-blue-500",
+    bugs: "bg-gradient-to-r from-orange-400 to-red-500",
+    vibe: "bg-gradient-to-r from-purple-500 to-pink-500",
+    flo: "bg-gradient-to-r from-purple-600 to-blue-600",
   };
-  return colors[platform.toLowerCase()] || "bg-gray-500";
+  return colors[platform.toLowerCase()] || "bg-gradient-to-r from-gray-400 to-gray-600";
 }
 
 export function getPlatformName(platform: string): string {
   const names: Record<string, string> = {
-    genie: "지니",
-    bugs: "벅스",
-    vibe: "바이브",
-    flo: "플로",
+    genie: "지니 실시간",
+    bugs: "벅스 실시간",
+    vibe: "바이브 TOP100",
+    flo: "플로 실시간",
     melon_top100: "멜론 TOP100",
     melon_hot100: "멜론 HOT100",
   };

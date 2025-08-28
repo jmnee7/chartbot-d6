@@ -125,6 +125,17 @@ function SongRow({
             </span>
           </div>
         )}
+        {song.rank && song.rank <= 100 && (
+          <span
+            className={`${getPlatformColor(
+              platform
+            )} text-white px-2 py-1 rounded text-xs font-medium`}
+          >
+            {platform.includes('melon') ? 'TOP100' : 
+             platform === 'vibe' ? 'TOP100' : 
+             '실시간'}
+          </span>
+        )}
       </div>
     </div>
   );
