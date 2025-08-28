@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Platform } from "@/lib/constants/platforms";
 import { useDeviceType } from "@/lib/hooks/useDeviceType";
+import { openPlatformAuto } from "@/lib/deep-link-runtime";
 import { useState } from "react";
 
 type DeviceType = "android" | "ios" | "pc";
@@ -33,6 +34,15 @@ export function PlatformCard({
 
   const deeplinks = platform.deeplinks?.[deviceType] || [];
   const hasDeeplinks = deeplinks.length > 0;
+
+  // 공용 핸들러 함수들
+  function openPrimary(platform: Platform) {
+    openPlatformAuto(platform);
+  }
+
+  function openStep(platform: Platform, stepIndex: number) {
+    openPlatformAuto(platform, undefined, { androidStep: stepIndex, iosStep: stepIndex });
+  }
 
   if (variant === "grid") {
     return (
@@ -60,20 +70,14 @@ export function PlatformCard({
             <>
               {deeplinks.length === 1 ? (
                 // 단일 딥링크인 경우 바로 표시
-                <a
-                  href={deeplinks[0].uri}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
+                <Button
+                  size="sm"
+                  className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                  onClick={() => openStep(platform, 0)}
                 >
-                  <Button
-                    size="sm"
-                    className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
-                  >
-                    <Smartphone className="w-3 h-3 mr-1" />
-                    {deeplinks[0].label}
-                  </Button>
-                </a>
+                  <Smartphone className="w-3 h-3 mr-1" />
+                  {deeplinks[0].label}
+                </Button>
               ) : (
                 // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식
                 <>
@@ -98,18 +102,12 @@ export function PlatformCard({
                       {deeplinks.map((link, index) => (
                         <Button
                           key={index}
-                          asChild
                           size="sm"
                           variant="ghost"
                           className="w-full justify-start text-xs"
+                          onClick={() => openStep(platform, index)}
                         >
-                          <a
-                            href={link.uri}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {link.label}
-                          </a>
+                          {link.label}
                         </Button>
                       ))}
                     </div>
@@ -147,61 +145,13 @@ export function PlatformCard({
 
   if (variant === "compact") {
     return (
-      <a href={platform.url} target="_blank" rel="noopener noreferrer">
-        <Card className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer">
-          <CardContent className="p-4">
-            <div className="space-y-3">
-              <div className="w-full h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
-                {platform.logo !== "/file.svg" ? (
-                  <Image
-                    src={platform.logo}
-                    alt={platform.name}
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 object-contain"
-                  />
-                ) : (
-                  <div className="text-2xl">
-                    {platform.category === "music"
-                      ? "🎵"
-                      : platform.category === "mv"
-                        ? "📺"
-                        : "📁"}
-                  </div>
-                )}
-              </div>
-              <div>
-                <h3 className="font-medium text-gray-900 text-sm leading-tight">
-                  {platform.name}
-                </h3>
-                {showDescription && (
-                  <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                    {platform.category === "music"
-                      ? `${platform.name}에서 스트리밍`
-                      : platform.category === "download"
-                        ? `${platform.name} 다운로드`
-                        : `${platform.name} 뮤직비디오`}
-                  </p>
-                )}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </a>
-    );
-  }
-
-  return (
-    <a
-      href={platform.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block w-full"
-    >
-      <Card className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer">
+      <Card 
+        className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer"
+        onClick={() => hasDeeplinks ? openPrimary(platform) : window.open(platform.url, "_blank")}
+      >
         <CardContent className="p-4">
           <div className="space-y-3">
-            <div className="w-full h-16 bg-white border border-gray-100 rounded-lg flex items-center justify-center">
+            <div className="w-full h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
               {platform.logo !== "/file.svg" ? (
                 <Image
                   src={platform.logo}
@@ -211,7 +161,7 @@ export function PlatformCard({
                   className="w-8 h-8 object-contain"
                 />
               ) : (
-                <div className="text-2xl text-white">
+                <div className="text-2xl">
                   {platform.category === "music"
                     ? "🎵"
                     : platform.category === "mv"
@@ -220,24 +170,78 @@ export function PlatformCard({
                 </div>
               )}
             </div>
-            <div className="text-center">
-              <h3 className="font-semibold text-gray-900 text-sm">
+            <div>
+              <h3 className="font-medium text-gray-900 text-sm leading-tight">
                 {platform.name}
               </h3>
-              <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
-                <ExternalLink className="w-3 h-3 mr-1" />
-                <span>
+              {showDescription && (
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">
                   {platform.category === "music"
-                    ? "바로 스트리밍"
+                    ? `${platform.name}에서 스트리밍`
                     : platform.category === "download"
-                      ? "바로 다운로드"
-                      : "바로 시청"}
-                </span>
-              </div>
+                      ? `${platform.name} 다운로드`
+                      : `${platform.name} 뮤직비디오`}
+                </p>
+              )}
             </div>
           </div>
         </CardContent>
       </Card>
-    </a>
+    );
+  }
+
+  return (
+    <Card 
+      className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
+      onClick={() => hasDeeplinks ? openPrimary(platform) : window.open(platform.url, "_blank")}
+    >
+      <CardContent className="p-4">
+        <div className="space-y-3">
+          <div className="w-full h-16 bg-white border border-gray-100 rounded-lg flex items-center justify-center">
+            {platform.logo !== "/file.svg" ? (
+              <Image
+                src={platform.logo}
+                alt={platform.name}
+                width={32}
+                height={32}
+                className="w-8 h-8 object-contain"
+              />
+            ) : (
+              <div className="text-2xl text-white">
+                {platform.category === "music"
+                  ? "🎵"
+                  : platform.category === "mv"
+                    ? "📺"
+                    : "📁"}
+              </div>
+            )}
+          </div>
+          <div className="text-center">
+            <h3 className="font-semibold text-gray-900 text-sm">
+              {platform.name}
+            </h3>
+            <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
+              {hasDeeplinks ? (
+                <>
+                  <Smartphone className="w-3 h-3 mr-1" />
+                  <span>앱으로 열기</span>
+                </>
+              ) : (
+                <>
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  <span>
+                    {platform.category === "music"
+                      ? "바로 스트리밍"
+                      : platform.category === "download"
+                        ? "바로 다운로드"
+                        : "바로 시청"}
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
