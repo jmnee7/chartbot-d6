@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-08-31 02:00:00",
+  "collectedAtKST": "2025-08-31 03:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -226,7 +226,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": 0
     },
     {
       "rank": 57,
@@ -237,12 +237,12 @@
       "change": 0
     },
     {
-      "rank": 95,
+      "rank": 99,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
       "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-      "change": -3
+      "change": -4
     }
   ]
 }
