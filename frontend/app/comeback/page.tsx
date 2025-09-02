@@ -10,16 +10,6 @@ import Link from "next/link";
 
 const comebackSchedule = [
   {
-    date: "2025.08.30",
-    event: "10주년 콘서트",
-    status: "upcoming",
-    description: "10th Anniversary Tour - GOYANG STADIUM",
-    dDay: Math.ceil(
-      (new Date("2025-08-30").getTime() - new Date().getTime()) /
-        (1000 * 60 * 60 * 24)
-    ),
-  },
-  {
     date: "2025.09.05",
     event: "정규 4집 발매",
     status: "upcoming",
