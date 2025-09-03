@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2025-09-04 06:00:00",
+  "lastUpdated": "2025-09-04 07:00:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -53,40 +53,40 @@
       "name": "지니",
       "songs": [
         {
-          "rank": 44,
+          "rank": 35,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/084/877/280/84877280_1710728168568_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": 9,
+          "changeText": "↑9"
         },
         {
-          "rank": 52,
+          "rank": 42,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "The Book of Us : Gravity",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/244/101/81244101_1563174738943_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": 10,
+          "changeText": "↑10"
         },
         {
-          "rank": 56,
-          "title": "예뻤어",
-          "artist": "DAY6 (데이식스)",
-          "album": "Every DAY6 February",
-          "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 63,
+          "rank": 57,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/084/877/280/84877280_1710728168568_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": 6,
+          "changeText": "↑6"
+        },
+        {
+          "rank": 58,
+          "title": "예뻤어",
+          "artist": "DAY6 (데이식스)",
+          "album": "Every DAY6 February",
+          "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
+          "change": -2,
+          "changeText": "↓2"
         }
       ],
       "count": 4
@@ -95,76 +95,76 @@
       "name": "벅스",
       "songs": [
         {
-          "rank": 32,
+          "rank": 23,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/202657/20265759.jpg?version=20211119004415",
-          "change": 0,
-          "changeText": "-"
+          "change": 9,
+          "changeText": "↑9"
         },
         {
-          "rank": 34,
+          "rank": 26,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-          "change": 0,
-          "changeText": "-"
+          "change": 8,
+          "changeText": "↑8"
         },
         {
-          "rank": 49,
+          "rank": 47,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-          "change": 0,
-          "changeText": "-"
+          "change": 2,
+          "changeText": "↑2"
         },
         {
-          "rank": 58,
+          "rank": 51,
           "title": "Maybe Tomorrow",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/207241/20724195.jpg?version=20250508024718",
-          "change": 0,
-          "changeText": "-"
+          "change": 7,
+          "changeText": "↑7"
         },
         {
-          "rank": 67,
+          "rank": 60,
           "title": "Congratulations",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/5297/529710.jpg?version=20190719114948",
-          "change": 0,
-          "changeText": "-"
+          "change": 7,
+          "changeText": "↑7"
         },
         {
-          "rank": 68,
-          "title": "Love me or Leave me",
-          "artist": "DAY6 (데이식스)",
-          "album": "",
-          "albumArt": "https://image.bugsm.co.kr/album/images/50/203237/20323788.jpg?version=20241114011724",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 80,
+          "rank": 76,
           "title": "예뻤어",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/200804/20080494.jpg?version=20240805121438",
-          "change": 0,
-          "changeText": "-"
+          "change": 4,
+          "changeText": "↑4"
         },
         {
-          "rank": 89,
+          "rank": 79,
+          "title": "Love me or Leave me",
+          "artist": "DAY6 (데이식스)",
+          "album": "",
+          "albumArt": "https://image.bugsm.co.kr/album/images/50/203237/20323788.jpg?version=20241114011724",
+          "change": -11,
+          "changeText": "↓11"
+        },
+        {
+          "rank": 93,
           "title": "녹아내려요",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/206680/20668087.jpg?version=20240903005613",
-          "change": 0,
-          "changeText": "-"
+          "change": -4,
+          "changeText": "↓4"
         }
       ],
       "count": 8
@@ -200,13 +200,13 @@
           "changeText": "-"
         },
         {
-          "rank": 65,
+          "rank": 67,
           "title": "예뻤어",
           "artist": "DAY6(데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/001/779/1779662.jpg?type=r480Fll&v=20240129085632",
-          "change": 0,
-          "changeText": "-"
+          "change": -2,
+          "changeText": "↓2"
         }
       ],
       "count": 4
@@ -220,8 +220,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": -7,
-          "changeText": "↓7"
+          "change": 0,
+          "changeText": "-"
         },
         {
           "rank": 48,
@@ -233,13 +233,13 @@
           "changeText": "-"
         },
         {
-          "rank": 66,
+          "rank": 67,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": -3,
-          "changeText": "↓3"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
           "rank": 96,
@@ -247,8 +247,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-          "change": -3,
-          "changeText": "↓3"
+          "change": 0,
+          "changeText": "-"
         }
       ],
       "count": 4
