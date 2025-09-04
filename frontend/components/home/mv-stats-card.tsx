@@ -11,8 +11,8 @@ export default function MVStatsCard() {
     queryFn: fetchMVStats,
   });
 
-  const videoId = "0fyZqS0N19o";
-  const videoTitle = "DAY6 - Maybe Tomorrow";
+  const videoId = "b_Eh-9Jz_L8";
+  const videoTitle = "DAY6 - INSIDE OUT";
 
   return (
     <Card className="md:p-6">
