@@ -108,7 +108,9 @@ export default function ComebackPage() {
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackSchedule[1].dDay === 0 ? "D-DAY" : `${comebackSchedule[1].dDay}일`}
+                  {comebackSchedule[1].dDay === 0
+                    ? "D-DAY"
+                    : `${comebackSchedule[1].dDay}일`}
                 </div>
                 <div className="text-sm text-white">
                   {comebackSchedule[1].dDay === 0 ? "오늘" : "남음"}

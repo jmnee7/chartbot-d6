@@ -8,7 +8,6 @@ import {
   Download,
   Play,
   Vote,
-  Heart,
   Radio,
   ChevronDown,
   ChevronRight,

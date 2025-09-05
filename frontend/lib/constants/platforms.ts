@@ -81,7 +81,11 @@ export const MUSIC_PLATFORMS: Platform[] = [
     logo: "/streaming/vibe-logo.png",
     urls: {
       android: ["https://tinyurl.com/ywjbu4rj"],
-      iphone: ["https://tinyurl.com/bdcjjjck", "https://tinyurl.com/4p3v7ufh", "https://tinyurl.com/2j29rz9z"],
+      iphone: [
+        "https://tinyurl.com/bdcjjjck",
+        "https://tinyurl.com/4p3v7ufh",
+        "https://tinyurl.com/2j29rz9z",
+      ],
     },
     url: "https://vibe.naver.com/search?query=DAY6",
     color: "bg-[var(--mint-light)]",

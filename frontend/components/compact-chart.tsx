@@ -48,13 +48,18 @@ export function CompactChart() {
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
 
     if (songs.length > 0) {
-      // "HAPPY"만 찾아서 표시
+      // "INSIDE OUT" 또는 "HAPPY" 찾아서 표시 (INSIDE OUT 우선)
+      const insideOutSong = songs.find(
+        (song) => song.title && song.title.includes("INSIDE OUT")
+      );
       const happySong = songs.find(
         (song) => song.title && song.title.includes("HAPPY")
       );
 
-      if (happySong) {
-        platformData.push({ platform, song: happySong });
+      const targetSong = insideOutSong || happySong;
+
+      if (targetSong) {
+        platformData.push({ platform, song: targetSong });
       } else {
         // HAPPY가 없으면 차트아웃 상태 표시
         platformData.push({

@@ -32,8 +32,18 @@ export function PlatformCard({
   const deviceType = useDeviceType() as DeviceType;
   const [showDropdown, setShowDropdown] = useState(false);
 
+  // urls 필드 확인 (새로운 tinyurl 링크)
+  const urls =
+    platform.urls?.[deviceType === "ios" ? "iphone" : deviceType] || [];
+  const hasUrls = urls.length > 0;
+
+  // 기존 deeplinks 폴백
   const deeplinks = platform.deeplinks?.[deviceType] || [];
   const hasDeeplinks = deeplinks.length > 0;
+
+  // urls가 있으면 우선 사용
+  const links = hasUrls ? urls : deeplinks;
+  const hasLinks = hasUrls || hasDeeplinks;
 
   // 공용 핸들러 함수들
   function openPrimary(platform: Platform) {
@@ -69,9 +79,9 @@ export function PlatformCard({
           </span>
 
           {/* 디바이스에 맞는 링크 자동 선택 */}
-          {hasDeeplinks ? (
+          {hasLinks ? (
             <>
-              {deeplinks.length === 1 ? (
+              {links.length === 1 ? (
                 // 단일 딥링크인 경우 바로 표시
                 <Button
                   size="sm"
@@ -79,7 +89,7 @@ export function PlatformCard({
                   onClick={() => openStep(platform, 0)}
                 >
                   <Smartphone className="w-3 h-3 mr-1" />
-                  {deeplinks[0].label}
+                  {hasUrls ? "앱으로" : deeplinks[0].label}
                 </Button>
               ) : (
                 // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식
@@ -102,30 +112,42 @@ export function PlatformCard({
 
                   {showDropdown && (
                     <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 space-y-1">
-                      {deeplinks.map((link, index) => (
-                        <Button
-                          key={index}
-                          size="sm"
-                          variant="ghost"
-                          className="w-full justify-start text-xs"
-                          onClick={() => openStep(platform, index)}
-                        >
-                          {link.label}
-                        </Button>
-                      ))}
+                      {hasUrls
+                        ? urls.map((url, index) => (
+                            <Button
+                              key={index}
+                              size="sm"
+                              variant="ghost"
+                              className="w-full justify-start text-xs"
+                              onClick={() => openStep(platform, index)}
+                            >
+                              링크 {index + 1}
+                            </Button>
+                          ))
+                        : deeplinks.map((link, index) => (
+                            <Button
+                              key={index}
+                              size="sm"
+                              variant="ghost"
+                              className="w-full justify-start text-xs"
+                              onClick={() => openStep(platform, index)}
+                            >
+                              {link.label}
+                            </Button>
+                          ))}
                     </div>
                   )}
                 </>
               )}
               {/* 플랫폼 안내 메시지 */}
-              {deeplinks.length > 1 && (
+              {links.length > 1 && (
                 <p className="text-xs text-gray-500 text-center mt-1 px-1">
                   차례대로 모두 클릭
                 </p>
               )}
             </>
           ) : (
-            // 딥링크가 없으면 웹 링크 표시
+            // 링크가 없으면 웹 링크 표시
             <a
               href={platform.url}
               target="_blank"
@@ -141,7 +163,7 @@ export function PlatformCard({
                 ) : (
                   <ExternalLink className="w-3 h-3 mr-1" />
                 )}
-                {platform.id === "flo"
+                {platform.id === "flo" || hasUrls
                   ? isHome
                     ? "앱으로"
                     : "앱으로 열기"
@@ -161,9 +183,7 @@ export function PlatformCard({
       <Card
         className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer"
         onClick={() =>
-          hasDeeplinks
-            ? openPrimary(platform)
-            : window.open(platform.url, "_blank")
+          hasLinks ? openPrimary(platform) : window.open(platform.url, "_blank")
         }
       >
         <CardContent className="p-4">
@@ -211,9 +231,7 @@ export function PlatformCard({
     <Card
       className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
       onClick={() =>
-        hasDeeplinks
-          ? openPrimary(platform)
-          : window.open(platform.url, "_blank")
+        hasLinks ? openPrimary(platform) : window.open(platform.url, "_blank")
       }
     >
       <CardContent className="p-4">
@@ -242,7 +260,7 @@ export function PlatformCard({
               {platform.name}
             </h3>
             <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
-              {hasDeeplinks ? (
+              {hasLinks || hasUrls ? (
                 <>
                   <Smartphone className="w-3 h-3 mr-1" />
                   <span>앱으로 열기</span>
