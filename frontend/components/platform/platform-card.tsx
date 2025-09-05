@@ -41,7 +41,10 @@ export function PlatformCard({
   }
 
   function openStep(platform: Platform, stepIndex: number) {
-    openPlatformAuto(platform, undefined, { androidStep: stepIndex, iosStep: stepIndex });
+    openPlatformAuto(platform, undefined, {
+      androidStep: stepIndex,
+      iosStep: stepIndex,
+    });
   }
 
   if (variant === "grid") {
@@ -138,9 +141,13 @@ export function PlatformCard({
                 ) : (
                   <ExternalLink className="w-3 h-3 mr-1" />
                 )}
-                {platform.id === "flo" 
-                  ? (isHome ? "앱으로" : "앱으로 열기")
-                  : (isHome ? "웹" : "웹으로")}
+                {platform.id === "flo"
+                  ? isHome
+                    ? "앱으로"
+                    : "앱으로 열기"
+                  : isHome
+                    ? "웹"
+                    : "웹으로"}
               </Button>
             </a>
           )}
@@ -151,9 +158,13 @@ export function PlatformCard({
 
   if (variant === "compact") {
     return (
-      <Card 
+      <Card
         className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer"
-        onClick={() => hasDeeplinks ? openPrimary(platform) : window.open(platform.url, "_blank")}
+        onClick={() =>
+          hasDeeplinks
+            ? openPrimary(platform)
+            : window.open(platform.url, "_blank")
+        }
       >
         <CardContent className="p-4">
           <div className="space-y-3">
@@ -197,9 +208,13 @@ export function PlatformCard({
   }
 
   return (
-    <Card 
+    <Card
       className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
-      onClick={() => hasDeeplinks ? openPrimary(platform) : window.open(platform.url, "_blank")}
+      onClick={() =>
+        hasDeeplinks
+          ? openPrimary(platform)
+          : window.open(platform.url, "_blank")
+      }
     >
       <CardContent className="p-4">
         <div className="space-y-3">

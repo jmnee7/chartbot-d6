@@ -333,7 +333,7 @@ export default function SupportPage() {
                   size="sm"
                   className="mt-3 bg-purple-600 hover:bg-purple-700 text-white"
                 >
-                  { }
+                  {}
                   <a href="https://x.com/DAY6_STREAM/status/1956007712321318942">
                     공구 소식 확인하기
                     <ExternalLink className="w-3 h-3 ml-2" />

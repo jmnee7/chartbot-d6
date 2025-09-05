@@ -46,7 +46,10 @@ export function getPlatformColor(platform: string): string {
     vibe: "bg-gradient-to-r from-purple-500 to-pink-500",
     flo: "bg-gradient-to-r from-purple-600 to-blue-600",
   };
-  return colors[platform.toLowerCase()] || "bg-gradient-to-r from-gray-400 to-gray-600";
+  return (
+    colors[platform.toLowerCase()] ||
+    "bg-gradient-to-r from-gray-400 to-gray-600"
+  );
 }
 
 export function getPlatformName(platform: string): string {

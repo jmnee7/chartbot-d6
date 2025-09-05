@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MUSIC_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function StreamingPage() {
   return (
@@ -49,6 +50,22 @@ export default function StreamingPage() {
                           variant="grid"
                         />
                       ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* 스트리밍 리스트 이미지 */}
+                <Card>
+                  <CardContent className="p-4">
+                    <div className="relative w-full">
+                      <Image
+                        src="/streaming/streaming-list.png"
+                        alt="스트리밍 리스트"
+                        width={1200}
+                        height={800}
+                        className="w-full h-auto rounded-lg"
+                        priority
+                      />
                     </div>
                   </CardContent>
                 </Card>

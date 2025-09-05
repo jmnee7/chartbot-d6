@@ -60,7 +60,9 @@ export default function ComebackPage() {
                 <div className="flex items-center gap-2 mb-2">
                   <Calendar className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[0]?.dDay}
+                    {comebackSchedule[0]?.dDay === 0
+                      ? "D-DAY"
+                      : `D-${comebackSchedule[0]?.dDay}`}
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
@@ -73,10 +75,13 @@ export default function ComebackPage() {
               </div>
               <div className="text-right">
                 <div className="text-3xl font-bold">
-                  {comebackSchedule[0]?.dDay}
-                  <span className="text-lg ml-1">일</span>
+                  {comebackSchedule[0]?.dDay === 0
+                    ? "D-DAY"
+                    : `${comebackSchedule[0]?.dDay}일`}
                 </div>
-                <div className="text-sm text-white">남음</div>
+                <div className="text-sm text-white">
+                  {comebackSchedule[0]?.dDay === 0 ? "오늘" : "남음"}
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -88,7 +93,9 @@ export default function ComebackPage() {
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp className="w-6 h-6" />
                   <Badge className="bg-white/20 text-white border-white/30">
-                    D-{comebackSchedule[1].dDay}
+                    {comebackSchedule[1].dDay === 0
+                      ? "D-DAY"
+                      : `D-${comebackSchedule[1].dDay}`}
                   </Badge>
                 </div>
                 <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>

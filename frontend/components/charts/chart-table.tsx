@@ -41,13 +41,7 @@ function EmptyState({ platform }: { platform: string }) {
   );
 }
 
-function SongRow({
-  song,
-  index,
-}: {
-  song: ChartSong;
-  index: number;
-}) {
+function SongRow({ song, index }: { song: ChartSong; index: number }) {
   return (
     <div
       key={`${song.title}-${song.artist}-${index}`}
