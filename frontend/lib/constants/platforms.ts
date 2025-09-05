@@ -40,9 +40,24 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "멜론",
     logo: "/streaming/melon-logo.png",
     urls: {
-      android: ["https://tinyurl.com/3v5rjazs"],
-      iphone: ["https://tinyurl.com/2x4hn7kh", "https://tinyurl.com/dekaadx3"],
-      pc: ["https://tinyurl.com/yx6n7nhz", "https://tinyurl.com/yc4wvr7p"],
+      android: [
+        "https://tinyurl.com/m2j69c8w",
+        "https://tinyurl.com/2m3c323w",
+        "https://tinyurl.com/5buw56a8"
+      ],
+      iphone: [
+        "https://tinyurl.com/m2j69c8w",
+        "https://tinyurl.com/2m3c323w",
+        "https://tinyurl.com/5buw56a8"
+      ],
+      pc: [
+        "https://tinyurl.com/yruv6wxf",
+        "https://tinyurl.com/3wkb7uhr",
+        "https://tinyurl.com/5e6thudj",
+        "https://tinyurl.com/28m4jbze",
+        "https://tinyurl.com/y5eynpfv",
+        "https://tinyurl.com/5975n5ae"
+      ],
     },
     url: "https://www.melon.com/album/detail.htm?albumId=11796328",
     deeplinks: {
@@ -111,9 +126,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "지니",
     logo: "/streaming/genie-logo.jpg",
     urls: {
-      android: ["https://tinyurl.com/yckxfz2x"],
-      iphone: ["https://tinyurl.com/mu8jsz4z"],
-      pc: ["https://tinyurl.com/yp5ahze8"],
+      android: ["https://tinyurl.com/4cheu3py"],
+      iphone: ["https://tinyurl.com/yndm9fu6"],
+      pc: ["https://tinyurl.com/4kujhmcb"],
     },
     url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
     deeplinks: {
@@ -153,9 +168,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "벅스",
     logo: "/streaming/bugs-logo.jpeg",
     urls: {
-      android: ["https://tinyurl.com/2s43z2aa"],
-      iphone: ["https://tinyurl.com/4kcyctpm"],
-      pc: ["https://tinyurl.com/48j7h2uv"],
+      android: ["https://tinyurl.com/2k3pumww"],
+      iphone: ["https://tinyurl.com/2k3pumww"],
+      pc: ["https://tinyurl.com/2565ex7c"],
     },
     url: "https://music.bugs.co.kr/album/20724195",
     deeplinks: {
@@ -195,11 +210,15 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "바이브",
     logo: "/streaming/vibe-logo.png",
     urls: {
-      android: ["https://tinyurl.com/ywjbu4rj"],
+      android: [
+        "https://tinyurl.com/mry674ry",
+        "https://tinyurl.com/yz4wu8an",
+        "https://tinyurl.com/36kcavbb"
+      ],
       iphone: [
-        "https://tinyurl.com/bdcjjjck",
-        "https://tinyurl.com/4p3v7ufh",
-        "https://tinyurl.com/2j29rz9z",
+        "https://tinyurl.com/mry674ry",
+        "https://tinyurl.com/yz4wu8an",
+        "https://tinyurl.com/36kcavbb"
       ],
     },
     url: "https://vibe.naver.com/search?query=DAY6",
@@ -268,8 +287,8 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "플로",
     logo: "/streaming/FLO-logo.png",
     urls: {
-      android: ["https://tinyurl.com/57yctn5f"],
-      iphone: ["https://tinyurl.com/ysrh9fzm"],
+      android: ["https://tinyurl.com/2k5psx66"],
+      iphone: ["https://tinyurl.com/2k5psx66"],
     },
     url: "https://tinyurl.com/dekaadx3",
     color: "bg-gradient-to-br from-[var(--mint-primary)] to-[var(--navy-dark)]",
