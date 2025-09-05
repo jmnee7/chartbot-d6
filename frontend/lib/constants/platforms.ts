@@ -39,64 +39,12 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "melon",
     name: "멜론",
     logo: "/streaming/melon-logo.png",
-    url: "https://www.melon.com/album/detail.htm?albumId=11796328",
-    deeplinks: {
-      android: [
-        {
-          label: "#1",
-          uri: "intent://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922#Intent;scheme=melonapp;package=com.iloen.melon;end",
-          idParamKey: "cid",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#2",
-          uri: "intent://play?menuid=0&ctype=1&cid=38892497,38892498,30232719,37946921,37323943#Intent;scheme=melonapp;package=com.iloen.melon;end",
-          idParamKey: "cid",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#3",
-          uri: "intent://play?menuid=0&ctype=1&cid=37946927,38892497,38892498,37323944,7844374,37946924,37946920#Intent;scheme=melonapp;package=com.iloen.melon;end",
-          idParamKey: "cid",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-      ],
-      ios: [
-        {
-          label: "iOS 세트",
-          uri: "melonapp://play?menuid=0&ctype=1&cid=38892497,38892498,37323944,37946921,31927275,37946922,38892497,38892498,30232719,37946921,37323943,37946927,38892497,38892498,37323944,7844374,37946924,37946920",
-          idParamKey: "cid",
-          idSeparator: ",",
-          dedupeIds: false,
-        },
-      ],
-      pc: [
-        {
-          label: "#1",
-          uri: "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,37323944,37946921,31927275,37946922",
-          idParamKey: "cList",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#2",
-          uri: "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,30232719,37946921,37323943",
-          idParamKey: "cList",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#3",
-          uri: "melonapp://play?ctype=1&menuid=1000002721&cList=37946927,38892497,38892498,37323944,7844374,37946924,37946920",
-          idParamKey: "cList",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-      ],
+    urls: {
+      android: ["https://tinyurl.com/3v5rjazs"],
+      iphone: ["https://tinyurl.com/2x4hn7kh", "https://tinyurl.com/dekaadx3"],
+      pc: ["https://tinyurl.com/yx6n7nhz", "https://tinyurl.com/yc4wvr7p"],
     },
+    url: "https://www.melon.com/album/detail.htm?albumId=11796328",
     color: "bg-[var(--mint-primary)]",
     category: "music",
     note: "중복곡 허용X, 순서대로 클릭",
@@ -105,36 +53,12 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "genie",
     name: "지니",
     logo: "/streaming/genie-logo.jpg",
-    url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
-    deeplinks: {
-      android: [
-        {
-          label: "지니(안드)",
-          uri: "intent://scan/?landing_type=31&landing_target=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310#Intent;scheme=cromegenie;package=com.ktmusic.geniemusic;end",
-          idParamKey: "landing_target",
-          idSeparator: ";",
-          dedupeIds: false,
-        },
-      ],
-      ios: [
-        {
-          label: "지니(iOS)",
-          uri: "ktolleh00167://landing/?landing_type=31&landing_target=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310",
-          idParamKey: "landing_target",
-          idSeparator: ";",
-          dedupeIds: false,
-        },
-      ],
-      pc: [
-        {
-          label: "지니(PC)",
-          uri: "https://www.genie.co.kr/player/shareProcessV2?xgnm=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310",
-          idParamKey: "xgnm",
-          idSeparator: ";",
-          dedupeIds: false,
-        },
-      ],
+    urls: {
+      android: ["https://tinyurl.com/yckxfz2x"],
+      iphone: ["https://tinyurl.com/mu8jsz4z"],
+      pc: ["https://tinyurl.com/yp5ahze8"],
     },
+    url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
     color: "bg-[var(--mint-dark)]",
     category: "music",
   },
@@ -142,36 +66,12 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "bugs",
     name: "벅스",
     logo: "/streaming/bugs-logo.jpeg",
-    url: "https://music.bugs.co.kr/album/20724195",
-    deeplinks: {
-      android: [
-        {
-          label: "벅스(모바일앱)",
-          uri: "intent://app/tracks/lists?title=전체듣기&miniplay=Y&track_ids=33526777|33526778|33122825|33284304|31650949|33284305|33526777|33526778|30540153|33284304|33122824|33284310|33526777|33526778|33122825|4551006|33284307|33284303#Intent;scheme=bugs3;package=com.neowiz.android.bugs;end",
-          idParamKey: "track_ids",
-          idSeparator: "|",
-          dedupeIds: false,
-        },
-      ],
-      ios: [
-        {
-          label: "벅스(모바일앱)",
-          uri: "bugs3://app/tracks/lists?title=전체듣기&miniplay=Y&track_ids=33526777|33526778|33122825|33284304|31650949|33284305|33526777|33526778|30540153|33284304|33122824|33284310|33526777|33526778|33122825|4551006|33284307|33284303",
-          idParamKey: "track_ids",
-          idSeparator: "|",
-          dedupeIds: false,
-        },
-      ],
-      pc: [
-        {
-          label: "벅스(PC)",
-          uri: "https://music.bugs.co.kr/newPlayer?trackId=33526777,33526778,33122825,33284304,31650949,33284305,33526777,33526778,30540153,33284304,33122824,33284310,33526777,33526778,33122825,4551006,33284307,33284303",
-          idParamKey: "trackId",
-          idSeparator: ",",
-          dedupeIds: false,
-        },
-      ],
+    urls: {
+      android: ["https://tinyurl.com/2s43z2aa"],
+      iphone: ["https://tinyurl.com/4kcyctpm"],
+      pc: ["https://tinyurl.com/48j7h2uv"],
     },
+    url: "https://music.bugs.co.kr/album/20724195",
     color: "bg-gradient-to-r from-[var(--mint-primary)] to-[var(--mint-light)]",
     category: "music",
   },
@@ -179,64 +79,11 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "vibe",
     name: "바이브",
     logo: "/streaming/vibe-logo.png",
-    url: "https://vibe.naver.com/search?query=DAY6",
-    deeplinks: {
-      android: [
-        {
-          label: "#1",
-          uri: "intent://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441#Intent;scheme=vibe;package=com.naver.vibe;end",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#2",
-          uri: "intent://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446#Intent;scheme=vibe;package=com.naver.vibe;end",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#3",
-          uri: "intent://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439#Intent;scheme=vibe;package=com.naver.vibe;end",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-      ],
-      ios: [
-        {
-          label: "#1",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#2",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-        {
-          label: "#3",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-      ],
-      pc: [
-        {
-          label: "앱 스킴",
-          uri: "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
-          idParamKey: "trackIds",
-          idSeparator: ",",
-          dedupeIds: true,
-        },
-      ],
+    urls: {
+      android: ["https://tinyurl.com/ywjbu4rj"],
+      iphone: ["https://tinyurl.com/bdcjjjck", "https://tinyurl.com/4p3v7ufh", "https://tinyurl.com/2j29rz9z"],
     },
+    url: "https://vibe.naver.com/search?query=DAY6",
     color: "bg-[var(--mint-light)]",
     category: "music",
   },
@@ -244,6 +91,10 @@ export const MUSIC_PLATFORMS: Platform[] = [
     id: "flo",
     name: "플로",
     logo: "/streaming/FLO-logo.png",
+    urls: {
+      android: ["https://tinyurl.com/57yctn5f"],
+      iphone: ["https://tinyurl.com/ysrh9fzm"],
+    },
     url: "https://tinyurl.com/dekaadx3",
     color: "bg-gradient-to-br from-[var(--mint-primary)] to-[var(--navy-dark)]",
     category: "music",
