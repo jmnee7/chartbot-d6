@@ -121,7 +121,7 @@ export function PlatformCard({
                               className="w-full justify-start text-xs"
                               onClick={() => openStep(platform, index)}
                             >
-                              링크 {index + 1}
+                              {`링크 ${index + 1}`}
                             </Button>
                           ))
                         : deeplinks.map((link, index) => (
