@@ -74,9 +74,9 @@ function PlatformChart({
             </div>
             <h2 className="text-lg md:text-xl font-bold text-gray-900">
               {platform === "melon_top100"
-                ? "멜론"
+                ? "멜론 TOP100"
                 : platform === "melon_hot100"
-                  ? "멜론"
+                  ? "멜론 HOT100"
                   : platform === "genie"
                     ? "지니"
                     : platform === "bugs"
