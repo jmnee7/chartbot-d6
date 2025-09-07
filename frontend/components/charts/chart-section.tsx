@@ -43,6 +43,9 @@ function PlatformChart({
     const logos: Record<PlatformType, string> = {
       melon_top100: "/melone.webp",
       melon_hot100: "/melone.webp",
+      melon_daily: "/melone.webp",
+      melon_weekly: "/melone.webp",
+      melon_monthly: "/melone.webp",
       genie: "/Geenie.png",
       bugs: "/bucks.png",
       vibe: "/vibe.jpeg",
@@ -77,13 +80,19 @@ function PlatformChart({
                 ? "멜론 TOP100"
                 : platform === "melon_hot100"
                   ? "멜론 HOT100"
-                  : platform === "genie"
-                    ? "지니"
-                    : platform === "bugs"
-                      ? "벅스"
-                      : platform === "vibe"
-                        ? "바이브"
-                        : "플로"}
+                  : platform === "melon_daily"
+                    ? "멜론 일간"
+                    : platform === "melon_weekly"
+                      ? "멜론 주간"
+                      : platform === "melon_monthly"
+                        ? "멜론 월간"
+                        : platform === "genie"
+                          ? "지니"
+                          : platform === "bugs"
+                            ? "벅스"
+                            : platform === "vibe"
+                              ? "바이브"
+                              : "플로"}
             </h2>
           </div>
           {chartData?.collectedAtKST && (

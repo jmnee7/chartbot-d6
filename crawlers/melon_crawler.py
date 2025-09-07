@@ -20,7 +20,7 @@ class MelonCrawler(BaseCrawler):
         멜론 차트 URL 반환
         
         Args:
-            chart_type (str): 차트 유형 ('top_100', 'hot_100', 'realtime')
+            chart_type (str): 차트 유형 ('top_100', 'hot_100', 'daily', 'weekly', 'monthly', 'realtime')
             
         Returns:
             str: 차트 URL
@@ -28,6 +28,9 @@ class MelonCrawler(BaseCrawler):
         chart_urls = {
             "top_100": "https://www.melon.com/chart/index.htm",
             "hot_100": "https://www.melon.com/chart/hot100/index.htm",
+            "daily": "https://www.melon.com/chart/day/index.htm",
+            "weekly": "https://www.melon.com/chart/week/index.htm", 
+            "monthly": "https://www.melon.com/chart/month/index.htm",
             "realtime": "https://www.melon.com/chart/index.htm"
         }
         
@@ -91,34 +94,38 @@ class MelonCrawler(BaseCrawler):
     
     def crawl_chart(self, chart_type="top_100"):
         """
-        멜론 TOP100과 HOT100 차트를 각각 크롤링하여 별도로 반환
+        멜론 모든 차트를 크롤링하여 별도로 반환
         
         Args:
-            chart_type (str): 차트 유형 (멜론의 경우 무시하고 두 차트 모두 크롤링)
+            chart_type (str): 차트 유형 (멜론의 경우 무시하고 모든 차트 크롤링)
             
         Returns:
-            dict: 각 차트별 크롤링된 데이터 {'top100': [...], 'hot100': [...]}
+            dict: 각 차트별 크롤링된 데이터 {'top100': [...], 'hot100': [...], 'daily': [...], 'weekly': [...], 'monthly': [...]}
         """
         from bs4 import BeautifulSoup
         from utils import make_request, validate_song_data
         
         chart_results = {}
         
-        # TOP100과 HOT100 차트 각각 크롤링
-        chart_types = ["top_100", "hot_100"]
+        # 모든 차트 타입 정의
+        chart_types = [
+            ("top_100", "TOP100", "top100"),
+            ("hot_100", "HOT100", "hot100"), 
+            ("daily", "일간", "daily"),
+            ("weekly", "주간", "weekly"),
+            ("monthly", "월간", "monthly")
+        ]
         
-        for chart in chart_types:
+        for chart_type_key, chart_name, result_key in chart_types:
             try:
-                chart_name = "TOP100" if chart == "top_100" else "HOT100"
-                chart_key = "top100" if chart == "top_100" else "hot100"
                 print(f"Crawling Melon {chart_name} chart...")
                 
-                url = self.get_chart_url(chart)
+                url = self.get_chart_url(chart_type_key)
                 response = make_request(url)
                 
                 if not response:
                     print(f"Error: Failed to fetch Melon {chart_name} chart")
-                    chart_results[chart_key] = []
+                    chart_results[result_key] = []
                     continue
                 
                 soup = BeautifulSoup(response.text, "html.parser")
@@ -136,19 +143,19 @@ class MelonCrawler(BaseCrawler):
                         print(f"Error parsing song data from Melon {chart_name}: {e}")
                         continue
                 
-                chart_results[chart_key] = chart_songs
+                chart_results[result_key] = chart_songs
                 print(f"Successfully crawled {len(chart_songs)} songs from Melon {chart_name}")
                 
             except Exception as e:
                 print(f"Error crawling Melon {chart_name} chart: {e}")
-                chart_results[chart_key] = []
+                chart_results[result_key] = []
         
         # 기존 방식과 호환성을 위해 합친 결과도 저장
         all_songs = []
         seen_songs = set()
         
-        for chart_key in ["top100", "hot100"]:
-            for song in chart_results.get(chart_key, []):
+        for result_key in ["top100", "hot100", "daily", "weekly", "monthly"]:
+            for song in chart_results.get(result_key, []):
                 song_key = f"{song['artist']}_{song['title']}"
                 if song_key not in seen_songs:
                     seen_songs.add(song_key)

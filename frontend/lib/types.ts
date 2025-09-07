@@ -24,6 +24,9 @@ export interface ChartData {
   tracks: Track[];
   melon_top100: ChartSong[];
   melon_hot100: ChartSong[];
+  melon_daily: ChartSong[];
+  melon_weekly: ChartSong[];
+  melon_monthly: ChartSong[];
   genie: ChartSong[];
   bugs: ChartSong[];
   vibe: ChartSong[];
@@ -72,6 +75,9 @@ export interface MVStats {
 export type PlatformType =
   | "melon_top100"
   | "melon_hot100"
+  | "melon_daily"
+  | "melon_weekly"
+  | "melon_monthly"
   | "genie"
   | "bugs"
   | "vibe"

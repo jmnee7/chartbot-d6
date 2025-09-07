@@ -59,9 +59,15 @@ def crawl_all_charts(crawlers, chart_type="top_100"):
             if service_name == "melon" and hasattr(crawler, 'chart_results'):
                 all_chart_data['melon_top100'] = crawler.chart_results.get('top100', [])
                 all_chart_data['melon_hot100'] = crawler.chart_results.get('hot100', [])
+                all_chart_data['melon_daily'] = crawler.chart_results.get('daily', [])
+                all_chart_data['melon_weekly'] = crawler.chart_results.get('weekly', [])
+                all_chart_data['melon_monthly'] = crawler.chart_results.get('monthly', [])
                 print(f"Successfully crawled {len(chart_data)} songs from {service_name}")
                 print(f"  - TOP100: {len(all_chart_data['melon_top100'])} songs")
                 print(f"  - HOT100: {len(all_chart_data['melon_hot100'])} songs")
+                print(f"  - 일간: {len(all_chart_data['melon_daily'])} songs")
+                print(f"  - 주간: {len(all_chart_data['melon_weekly'])} songs")
+                print(f"  - 월간: {len(all_chart_data['melon_monthly'])} songs")
             else:
                 print(f"Successfully crawled {len(chart_data)} songs from {service_name}")
         except Exception as e:
@@ -109,7 +115,7 @@ def filter_target_songs(chart_data, rank_tracker=None):
                         previous_target_songs[service_name][song_key] = song
     
     # 각 서비스별로 처리 (효율적인 처리를 위해 chart_data 키 기반으로 순회)
-    service_names = ["melon_top100", "melon_hot100", "melon", "genie", "bugs", "vibe", "flo"]
+    service_names = ["melon_top100", "melon_hot100", "melon_daily", "melon_weekly", "melon_monthly", "melon", "genie", "bugs", "vibe", "flo"]
     current_timestamp = get_current_kst_timestamp_short() + ":00"
     
     for service_name in service_names:
@@ -136,6 +142,12 @@ def filter_target_songs(chart_data, rank_tracker=None):
                     print(f"✅ [MELON TOP100] {song.get('rank', 'N/A')}위: {artist} - {title}")
                 elif service_name == "melon_hot100":
                     print(f"✅ [MELON HOT100] {song.get('rank', 'N/A')}위: {artist} - {title}")
+                elif service_name == "melon_daily":
+                    print(f"✅ [MELON 일간] {song.get('rank', 'N/A')}위: {artist} - {title}")
+                elif service_name == "melon_weekly":
+                    print(f"✅ [MELON 주간] {song.get('rank', 'N/A')}위: {artist} - {title}")
+                elif service_name == "melon_monthly":
+                    print(f"✅ [MELON 월간] {song.get('rank', 'N/A')}위: {artist} - {title}")
                 else:
                     print(f"✅ [{service_name.upper()}] {song.get('rank', 'N/A')}위: {artist} - {title}")
         
@@ -148,6 +160,12 @@ def filter_target_songs(chart_data, rank_tracker=None):
                 print(f"📊 melon_top100: {len(filtered_songs)}곡 발견")
             elif service_name == "melon_hot100":
                 print(f"📊 melon_hot100: {len(filtered_songs)}곡 발견")
+            elif service_name == "melon_daily":
+                print(f"📊 melon_daily: {len(filtered_songs)}곡 발견")
+            elif service_name == "melon_weekly":
+                print(f"📊 melon_weekly: {len(filtered_songs)}곡 발견")
+            elif service_name == "melon_monthly":
+                print(f"📊 melon_monthly: {len(filtered_songs)}곡 발견")
             else:
                 print(f"📊 {service_name}: {len(filtered_songs)}곡 발견")
             total_found += len(filtered_songs)
@@ -498,6 +516,9 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     "tracks": tracks_list,
     "melon_top100": [],
     "melon_hot100": [],
+    "melon_daily": [],
+    "melon_weekly": [],
+    "melon_monthly": [],
     "melon": [],
     "genie": [],
     "bugs": [],
