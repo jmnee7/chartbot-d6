@@ -10,10 +10,7 @@ import { ChartSection } from "@/components/charts/chart-section";
 import { SectionHeader } from "@/components/ui/section-header";
 
 export default function ChartsPage() {
-  const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformType[]>([
-    "melon_top100",
-    "melon_hot100",
-  ]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState<PlatformType[]>([]);
 
   const handlePlatformChange = useCallback(
     (
