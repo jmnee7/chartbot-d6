@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, TrendingUp, Smartphone, Heart, Star } from "lucide-react";
+import { Calendar, Smartphone, Heart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -10,22 +10,32 @@ import Link from "next/link";
 
 const comebackSchedule = [
   {
-    date: "2025.09.05",
-    event: "정규 4집 발매",
+    date: "2025.09.06",
+    event: "놀라운 토요일",
     status: "upcoming",
-    description: "데뷔 10주년 기념 앨범 'The DECADE'",
+    description: "StvN 놀라운 토요일 출연",
     dDay: Math.ceil(
-      (new Date("2025-09-05").getTime() - new Date().getTime()) /
+      (new Date("2025-09-06").getTime() - new Date().getTime()) /
         (1000 * 60 * 60 * 24)
     ),
   },
   {
-    date: "2025.09.20",
-    event: "10주년 콘서트",
+    date: "2025.09.07",
+    event: "1박 2일",
     status: "upcoming",
-    description: "음악방송 및 프로모션 활동",
+    description: "SKBS2 1박 2일 출연",
     dDay: Math.ceil(
-      (new Date("2025-09-20").getTime() - new Date().getTime()) /
+      (new Date("2025-09-07").getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
+  },
+  {
+    date: "2025.09.10",
+    event: "유 퀴즈 온 더 블럭",
+    status: "upcoming",
+    description: "StvN 유 퀴즈 온 더 블럭 출연",
+    dDay: Math.ceil(
+      (new Date("2025-09-10").getTime() - new Date().getTime()) /
         (1000 * 60 * 60 * 24)
     ),
   },
@@ -53,71 +63,37 @@ export default function ComebackPage() {
           autoplay={{ delay: 5000 }}
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
-          {/* 정규 4집 발매 카드 */}
-          <SwiperSlide className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="w-6 h-6" />
-                  <Badge className="bg-white/20 text-white border-white/30">
-                    {comebackSchedule[0]?.dDay === 0
+          {comebackSchedule
+            .filter(schedule => schedule.dDay >= 0) // 오늘 이후 일정만 표시
+            .map((schedule, index) => (
+            <SwiperSlide key={index} className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Calendar className="w-6 h-6" />
+                    <Badge className="bg-white/20 text-white border-white/30">
+                      {schedule.dDay === 0
+                        ? "D-DAY"
+                        : `D-${schedule.dDay}`}
+                    </Badge>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-1">{schedule.event}</h3>
+                  <p className="text-white/80 text-sm">{schedule.date}</p>
+                  <p className="text-white/80 text-sm">{schedule.description}</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-3xl font-bold">
+                    {schedule.dDay === 0
                       ? "D-DAY"
-                      : `D-${comebackSchedule[0]?.dDay}`}
-                  </Badge>
-                </div>
-                <h3 className="text-2xl font-bold mb-1">10주년 콘서트</h3>
-                <p className="text-white/80 text-sm">
-                  {comebackSchedule[0].date}
-                </p>
-                <p className="text-white/80 text-sm">
-                  {comebackSchedule[0].description}
-                </p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {comebackSchedule[0]?.dDay === 0
-                    ? "D-DAY"
-                    : `${comebackSchedule[0]?.dDay}일`}
-                </div>
-                <div className="text-sm text-white">
-                  {comebackSchedule[0]?.dDay === 0 ? "오늘" : "남음"}
+                      : `${schedule.dDay}일`}
+                  </div>
+                  <div className="text-sm text-white">
+                    {schedule.dDay === 0 ? "오늘" : "남음"}
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-
-          {/* 정규 4집 발매 카드 */}
-          <SwiperSlide className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-6 h-6" />
-                  <Badge className="bg-white/20 text-white border-white/30">
-                    {comebackSchedule[1].dDay === 0
-                      ? "D-DAY"
-                      : `D-${comebackSchedule[1].dDay}`}
-                  </Badge>
-                </div>
-                <h3 className="text-2xl font-bold mb-1">정규 4집 발매</h3>
-                <p className="text-white/80 text-sm">
-                  {comebackSchedule[1].date}
-                </p>
-                <p className="text-white/80 text-sm">
-                  {comebackSchedule[1].description}
-                </p>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {comebackSchedule[1].dDay === 0
-                    ? "D-DAY"
-                    : `${comebackSchedule[1].dDay}일`}
-                </div>
-                <div className="text-sm text-white">
-                  {comebackSchedule[1].dDay === 0 ? "오늘" : "남음"}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         {/* Mobile Divider */}
