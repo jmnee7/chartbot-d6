@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-09-08 03:00:00",
+  "collectedAtKST": "2025-09-08 04:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,12 +10,12 @@
   ],
   "melon_top100": [
     {
-      "rank": 18,
+      "rank": 17,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
+      "change": 1
     },
     {
       "rank": 25,
@@ -308,12 +308,12 @@
   ],
   "melon": [
     {
-      "rank": 18,
+      "rank": 17,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
+      "change": 1
     },
     {
       "rank": 25,
@@ -761,7 +761,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-      "change": 2
+      "change": 0
     },
     {
       "rank": 65,
@@ -777,7 +777,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/735/875/42/04/442875735_1861b36c51b94209_s.jpg?1756882609883/dims/resize/1000x1000/quality/90",
-      "change": -1
+      "change": 0
     },
     {
       "rank": 94,
@@ -785,7 +785,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
       "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": 0
     }
   ]
 }
