@@ -61,6 +61,9 @@ export function AllSongsChart() {
     const logos: Record<PlatformType, string> = {
       melon_top100: "/ico_melon.png",
       melon_hot100: "/ico_melon.png",
+      melon_daily: "/ico_melon.png",
+      melon_weekly: "/ico_melon.png",
+      melon_monthly: "/ico_melon.png",
       genie: "/Geenie.png",
       bugs: "/bucks.png",
       vibe: "/vibe.jpeg",
