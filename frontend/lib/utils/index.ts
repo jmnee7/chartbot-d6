@@ -125,7 +125,11 @@ export async function getLastUpdateTime(): Promise<string> {
     const response = await fetch("/data/latest.json", { cache: "no-cache" });
     if (response.ok) {
       const data = await response.json();
-      const collectedTime = new Date(data.collectedAtKST);
+      // collectedAtKST는 "YYYY-MM-DD HH:MM:SS" 형식
+      // 공백을 T로 바꾸고 타임존 정보 추가하여 올바른 ISO 형식으로 만들기
+      const kstTimeString = data.collectedAtKST;
+      const isoTimeString = kstTimeString.replace(" ", "T") + "+09:00";
+      const collectedTime = new Date(isoTimeString);
       return collectedTime.toLocaleTimeString("ko-KR", {
         hour: "2-digit",
         minute: "2-digit",
@@ -157,9 +161,11 @@ export async function getLastUpdateDateTime(): Promise<{
     if (response.ok) {
       const data = await response.json();
 
-      // collectedAtKST는 이미 KST 시간이므로 "+09:00" 타임존 정보 추가
+      // collectedAtKST는 "YYYY-MM-DD HH:MM:SS" 형식
+      // 공백을 T로 바꾸고 타임존 정보 추가하여 올바른 ISO 형식으로 만들기
       const kstTimeString = data.collectedAtKST;
-      const collectedTime = new Date(kstTimeString + "+09:00");
+      const isoTimeString = kstTimeString.replace(" ", "T") + "+09:00";
+      const collectedTime = new Date(isoTimeString);
 
       const date = collectedTime
         .toLocaleDateString("ko-KR", {
