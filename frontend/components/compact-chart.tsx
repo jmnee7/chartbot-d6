@@ -15,7 +15,12 @@ import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-export function CompactChart() {
+interface CompactChartProps {
+  targetSong?: string;
+  title?: string;
+}
+
+export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
   const { data: chartData, isLoading } = useQuery({
     queryKey: ["chartData"],
     queryFn: fetchChartData,
@@ -48,20 +53,32 @@ export function CompactChart() {
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
 
     if (songs.length > 0) {
-      // "INSIDE OUT" 또는 "HAPPY" 찾아서 표시 (INSIDE OUT 우선)
-      const insideOutSong = songs.find(
-        (song) => song.title && song.title.includes("INSIDE OUT")
-      );
-      const happySong = songs.find(
-        (song) => song.title && song.title.includes("HAPPY")
-      );
-
-      const targetSong = insideOutSong || happySong;
-
-      if (targetSong) {
-        platformData.push({ platform, song: targetSong });
+      // targetSong이 지정된 경우 해당 곡만 찾기
+      let targetSongData = null;
+      
+      if (targetSong === "INSIDE OUT") {
+        targetSongData = songs.find(
+          (song) => song.title && song.title.includes("INSIDE OUT")
+        );
+      } else if (targetSong === "꿈의 버스") {
+        targetSongData = songs.find(
+          (song) => song.title && song.title.includes("꿈의 버스")
+        );
       } else {
-        // HAPPY가 없으면 차트아웃 상태 표시
+        // targetSong이 없으면 기존 로직 (INSIDE OUT 우선)
+        const insideOutSong = songs.find(
+          (song) => song.title && song.title.includes("INSIDE OUT")
+        );
+        const dreamBusSong = songs.find(
+          (song) => song.title && song.title.includes("꿈의 버스")
+        );
+        targetSongData = insideOutSong || dreamBusSong;
+      }
+
+      if (targetSongData) {
+        platformData.push({ platform, song: targetSongData });
+      } else {
+        // 타겟 곡이 없으면 차트아웃 상태 표시
         platformData.push({
           platform,
           song: {
@@ -169,7 +186,7 @@ export function CompactChart() {
                     {song?.rank ? (
                       <>
                         <p className="font-medium text-sm truncate text-gray-900">
-                          {song.title}
+                          {targetSong || song.title}
                         </p>
                         <p className="text-xs text-gray-500 truncate">
                           {song.artist}
