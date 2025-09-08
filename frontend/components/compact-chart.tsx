@@ -28,16 +28,27 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
   });
   
   const [showFirstSong, setShowFirstSong] = useState(true);
+  const [isManualMode, setIsManualMode] = useState(false);
 
-  // 3초마다 곡 전환 (targetSong이 없을 때만)
+  // 3초마다 곡 전환 (targetSong이 없고, 수동 모드가 아닐 때만)
   useEffect(() => {
-    if (!targetSong) {
+    if (!targetSong && !isManualMode) {
       const interval = setInterval(() => {
         setShowFirstSong(prev => !prev);
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [targetSong]);
+  }, [targetSong, isManualMode]);
+  
+  // 인디케이터 클릭 핸들러
+  const handleDotClick = (isFirst: boolean) => {
+    setShowFirstSong(isFirst);
+    setIsManualMode(true);
+    // 10초 후 자동 모드로 복귀
+    setTimeout(() => {
+      setIsManualMode(false);
+    }, 10000);
+  };
 
   if (isLoading) {
     return (
@@ -140,6 +151,34 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
   return (
     <Card>
       <CardContent className="p-0">
+        {/* 타이틀곡 인디케이터 - targetSong이 없을 때만 표시 */}
+        {!targetSong && (
+          <div className="flex items-center gap-2 pt-3 pb-2 px-4">
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => handleDotClick(false)}
+                className={`rounded-full transition-all duration-300 hover:scale-110 ${
+                  !showFirstSong 
+                    ? 'bg-mint-primary w-4 h-2' 
+                    : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
+                }`}
+                aria-label="INSIDE OUT 보기"
+              />
+              <button
+                onClick={() => handleDotClick(true)}
+                className={`rounded-full transition-all duration-300 hover:scale-110 ${
+                  showFirstSong 
+                    ? 'bg-mint-primary w-4 h-2' 
+                    : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
+                }`}
+                aria-label="꿈의 버스 보기"
+              />
+            </div>
+            <span className="text-xs text-gray-600 font-medium">
+              {showFirstSong ? '꿈의 버스' : 'INSIDE OUT'}
+            </span>
+          </div>
+        )}
         <Swiper
           modules={[Autoplay, FreeMode]}
           slidesPerView={2}
