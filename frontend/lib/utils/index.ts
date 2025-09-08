@@ -156,8 +156,9 @@ export async function getLastUpdateDateTime(): Promise<{
   time: string;
 }> {
   try {
-    // Next.js API route 사용 (CORS 문제 해결)
-    const response = await fetch("/api/chart-data", {
+    // Next.js rewrites 사용 (CORS 문제 해결)
+    const timestamp = Date.now();
+    const response = await fetch(`/data/latest.json?t=${timestamp}`, {
       cache: "no-cache",
       headers: {
         "Cache-Control": "no-cache, no-store, must-revalidate",

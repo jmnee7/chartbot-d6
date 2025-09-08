@@ -1,10 +1,12 @@
 import { ChartData, VoteItem, MVStats, ChartSong } from "./types";
 
-// Use Next.js API route to avoid CORS issues
+// Use Next.js rewrites to avoid CORS issues
+const DATA_BASE_URL = "/data";
 
 export async function fetchChartData(): Promise<ChartData> {
   try {
-    const response = await fetch("/api/chart-data", {
+    const timestamp = Date.now();
+    const response = await fetch(`${DATA_BASE_URL}/latest.json?t=${timestamp}`, {
       cache: "no-cache",
       headers: {
         "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -21,7 +23,7 @@ export async function fetchChartData(): Promise<ChartData> {
 
     console.log("fetchChartData Debug:", {
       status: response.status,
-      url: "/api/chart-data",
+      url: `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
       hasData: !!rawData,
       collectedAt: rawData?.collectedAtKST,
       melonTop100Length: rawData?.melon_top100?.length || 0,
@@ -81,8 +83,7 @@ export async function fetchChartData(): Promise<ChartData> {
 
 export async function fetchSummaryData(): Promise<Record<string, unknown>> {
   try {
-    // TODO: 별도 API route 생성 필요
-    const response = await fetch("/api/summary-data", {
+    const response = await fetch(`${DATA_BASE_URL}/summary.json`, {
       next: { revalidate: 300 },
     });
 
@@ -133,8 +134,7 @@ export async function fetchVotes(): Promise<VoteItem[]> {
 // Fetch MV stats from YouTube crawler data
 export async function fetchMVStats(): Promise<MVStats[]> {
   try {
-    // TODO: 별도 API route 생성 필요 
-    const response = await fetch("/api/youtube-stats", {
+    const response = await fetch(`${DATA_BASE_URL}/youtube_stats.json`, {
       cache: "no-cache",
     });
 
@@ -234,8 +234,8 @@ export async function fetchComebackData(): Promise<{
   try {
     // Try to get real data from crawlers
     const [chartResponse, youtubeResponse] = await Promise.all([
-      fetch("/api/chart-data", { cache: "no-cache" }).catch(() => null),
-      fetch("/api/youtube-stats", { cache: "no-cache" }).catch(() => null),
+      fetch(`${DATA_BASE_URL}/latest.json`, { cache: "no-cache" }).catch(() => null),
+      fetch(`${DATA_BASE_URL}/youtube_stats.json`, { cache: "no-cache" }).catch(() => null),
     ]);
 
     // Process chart data
