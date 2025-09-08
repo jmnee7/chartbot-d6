@@ -34,9 +34,12 @@ export const PlatformFilters = memo(function PlatformFilters({
   onPlatformChange,
 }: PlatformFiltersProps) {
   const [, startTransition] = useTransition();
-  const [selectedMainPlatform, setSelectedMainPlatform] = useState<string | null>(null);
+  const [selectedMainPlatform, setSelectedMainPlatform] = useState<
+    string | null
+  >(null);
   const [showMelonSubCharts, setShowMelonSubCharts] = useState(false);
-  const [selectedMelonChart, setSelectedMelonChart] = useState<PlatformType>('melon_top100');
+  const [selectedMelonChart, setSelectedMelonChart] =
+    useState<PlatformType>("melon_top100");
 
   const handleMainPlatformClick = useCallback(
     (platformId: string) => {
@@ -48,18 +51,18 @@ export const PlatformFilters = memo(function PlatformFilters({
           // 멜론을 새로 선택
           setSelectedMainPlatform("melon");
           setShowMelonSubCharts(true);
-          
+
           // 기존 선택된 플랫폼들 제거하고 멜론 TOP100만 선택
-          setSelectedMelonChart('melon_top100');
+          setSelectedMelonChart("melon_top100");
           startTransition(() => {
-            onPlatformChange(['melon_top100']);
+            onPlatformChange(["melon_top100"]);
           });
         }
       } else {
         // 다른 플랫폼 선택
         setSelectedMainPlatform(platformId);
         setShowMelonSubCharts(false);
-        
+
         startTransition(() => {
           onPlatformChange([platformId as PlatformType]);
         });
@@ -67,7 +70,7 @@ export const PlatformFilters = memo(function PlatformFilters({
     },
     [selectedMainPlatform, showMelonSubCharts, onPlatformChange]
   );
-  
+
   const selectMelonSubChart = useCallback(
     (platform: PlatformType) => {
       setSelectedMelonChart(platform);
@@ -80,16 +83,18 @@ export const PlatformFilters = memo(function PlatformFilters({
 
   // 현재 선택된 플랫폼에 따라 selectedMainPlatform 동기화
   useEffect(() => {
-    const melonPlatform = selectedPlatforms.find(p => p.startsWith('melon_'));
-    const otherPlatform = selectedPlatforms.find(p => ['genie', 'bugs', 'vibe', 'flo'].includes(p));
-    
-    const currentMainPlatform = melonPlatform ? 'melon' : otherPlatform;
-      
+    const melonPlatform = selectedPlatforms.find((p) => p.startsWith("melon_"));
+    const otherPlatform = selectedPlatforms.find((p) =>
+      ["genie", "bugs", "vibe", "flo"].includes(p)
+    );
+
+    const currentMainPlatform = melonPlatform ? "melon" : otherPlatform;
+
     if (currentMainPlatform !== selectedMainPlatform) {
       setSelectedMainPlatform(currentMainPlatform || null);
-      setShowMelonSubCharts(currentMainPlatform === 'melon');
+      setShowMelonSubCharts(currentMainPlatform === "melon");
     }
-    
+
     // 멜론 서브차트 선택 동기화
     if (melonPlatform && melonPlatform !== selectedMelonChart) {
       setSelectedMelonChart(melonPlatform as PlatformType);
@@ -101,7 +106,7 @@ export const PlatformFilters = memo(function PlatformFilters({
       {/* Main Platforms */}
       <div>
         <h4 className="text-sm font-medium text-gray-700 mb-3">플랫폼 선택</h4>
-        <motion.div 
+        <motion.div
           className="flex flex-wrap gap-2 sm:gap-3"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,9 +119,9 @@ export const PlatformFilters = memo(function PlatformFilters({
                 key={platform.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  delay: index * 0.1, 
-                  duration: 0.2 
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.2,
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -166,18 +171,20 @@ export const PlatformFilters = memo(function PlatformFilters({
             initial={{ opacity: 0, x: -20, height: 0 }}
             animate={{ opacity: 1, x: 0, height: "auto" }}
             exit={{ opacity: 0, x: 20, height: 0 }}
-            transition={{ 
-              duration: 0.3, 
+            transition={{
+              duration: 0.3,
               ease: "easeInOut",
-              height: { duration: 0.2 }
+              height: { duration: 0.2 },
             }}
             className="overflow-hidden"
           >
-            <h4 className="text-sm font-medium text-gray-700 mb-3">멜론 차트 종류</h4>
-            
+            <h4 className="text-sm font-medium text-gray-700 mb-3">
+              멜론 차트 종류
+            </h4>
+
             {/* 모바일에서 스와이프 가능한 탭 목록 */}
             <div className="md:hidden overflow-x-auto">
-              <motion.div 
+              <motion.div
                 className="flex gap-2 pb-2 min-w-max"
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
@@ -190,9 +197,9 @@ export const PlatformFilters = memo(function PlatformFilters({
                       key={platform.id}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        delay: 0.15 + (index * 0.05), 
-                        duration: 0.2 
+                      transition={{
+                        delay: 0.15 + index * 0.05,
+                        duration: 0.2,
                       }}
                     >
                       <Button
@@ -222,9 +229,9 @@ export const PlatformFilters = memo(function PlatformFilters({
                 })}
               </motion.div>
             </div>
-            
+
             {/* 데스크톱에서 기존 레이아웃 */}
-            <motion.div 
+            <motion.div
               className="hidden md:flex flex-wrap gap-2 sm:gap-3"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -237,9 +244,9 @@ export const PlatformFilters = memo(function PlatformFilters({
                     key={platform.id}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ 
-                      delay: 0.15 + (index * 0.05), 
-                      duration: 0.2 
+                    transition={{
+                      delay: 0.15 + index * 0.05,
+                      duration: 0.2,
                     }}
                   >
                     <Button

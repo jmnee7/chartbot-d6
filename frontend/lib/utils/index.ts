@@ -156,8 +156,26 @@ export async function getLastUpdateDateTime(): Promise<{
   time: string;
 }> {
   try {
-    // 실제 크롤링된 데이터의 날짜와 시간을 가져오기
-    const response = await fetch("/data/latest.json", { cache: "no-cache" });
+    // DATA_BASE_URL 설정 (api.ts와 동일)
+    const DATA_BASE_URL =
+      process.env.NEXT_PUBLIC_DATA_BASE_URL ||
+      (process.env.NODE_ENV === "production"
+        ? "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data"
+        : "/data");
+
+    // 실제 크롤링된 데이터의 날짜와 시간을 가져오기 (캐시 방지용 타임스탬프 추가)
+    const timestamp = Date.now();
+    const response = await fetch(
+      `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
+      {
+        cache: "no-cache",
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
     if (response.ok) {
       const data = await response.json();
 
@@ -167,7 +185,11 @@ export async function getLastUpdateDateTime(): Promise<{
       const isoTimeString = kstTimeString.replace(" ", "T") + "+09:00";
       const collectedTime = new Date(isoTimeString);
 
-      const date = collectedTime
+      // 정각으로 표시 (원래 의도: 크롤링 시간 + 00분)
+      const roundedTime = new Date(collectedTime);
+      roundedTime.setMinutes(0, 0, 0);
+
+      const date = roundedTime
         .toLocaleDateString("ko-KR", {
           year: "numeric",
           month: "2-digit",
@@ -177,7 +199,7 @@ export async function getLastUpdateDateTime(): Promise<{
         .replace(/\./g, ".")
         .replace(/ /g, "");
 
-      const time = collectedTime.toLocaleTimeString("ko-KR", {
+      const time = roundedTime.toLocaleTimeString("ko-KR", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,

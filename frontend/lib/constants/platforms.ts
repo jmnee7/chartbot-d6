@@ -43,12 +43,12 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         "https://tinyurl.com/m2j69c8w",
         "https://tinyurl.com/2m3c323w",
-        "https://tinyurl.com/5buw56a8"
+        "https://tinyurl.com/5buw56a8",
       ],
       iphone: [
         "https://tinyurl.com/m2j69c8w",
         "https://tinyurl.com/2m3c323w",
-        "https://tinyurl.com/5buw56a8"
+        "https://tinyurl.com/5buw56a8",
       ],
       pc: [
         "https://tinyurl.com/yruv6wxf",
@@ -56,7 +56,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
         "https://tinyurl.com/5e6thudj",
         "https://tinyurl.com/28m4jbze",
         "https://tinyurl.com/y5eynpfv",
-        "https://tinyurl.com/5975n5ae"
+        "https://tinyurl.com/5975n5ae",
       ],
     },
     url: "https://www.melon.com/album/detail.htm?albumId=11796328",
@@ -213,12 +213,12 @@ export const MUSIC_PLATFORMS: Platform[] = [
       android: [
         "https://tinyurl.com/mry674ry",
         "https://tinyurl.com/yz4wu8an",
-        "https://tinyurl.com/36kcavbb"
+        "https://tinyurl.com/36kcavbb",
       ],
       iphone: [
         "https://tinyurl.com/mry674ry",
         "https://tinyurl.com/yz4wu8an",
-        "https://tinyurl.com/36kcavbb"
+        "https://tinyurl.com/36kcavbb",
       ],
     },
     url: "https://vibe.naver.com/search?query=DAY6",

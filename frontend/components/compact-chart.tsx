@@ -55,7 +55,7 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
     if (songs.length > 0) {
       // targetSong이 지정된 경우 해당 곡만 찾기
       let targetSongData = null;
-      
+
       if (targetSong === "INSIDE OUT") {
         targetSongData = songs.find(
           (song) => song.title && song.title.includes("INSIDE OUT")

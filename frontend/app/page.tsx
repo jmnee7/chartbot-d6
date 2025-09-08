@@ -25,11 +25,15 @@ export default function HomePage() {
           <SectionHeader title="실시간 차트 순위" showDateTime={true} />
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-medium text-gray-700 mb-2">INSIDE OUT</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                INSIDE OUT
+              </h3>
               <CompactChart targetSong="INSIDE OUT" />
             </div>
             <div>
-              <h3 className="text-sm font-medium text-gray-700 mb-2">꿈의 버스</h3>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">
+                꿈의 버스
+              </h3>
               <CompactChart targetSong="꿈의 버스" />
             </div>
           </div>
@@ -55,11 +59,15 @@ export default function HomePage() {
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">INSIDE OUT</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                  INSIDE OUT
+                </h3>
                 <CompactChart targetSong="INSIDE OUT" />
               </div>
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">꿈의 버스</h3>
+                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                  꿈의 버스
+                </h3>
                 <CompactChart targetSong="꿈의 버스" />
               </div>
             </div>

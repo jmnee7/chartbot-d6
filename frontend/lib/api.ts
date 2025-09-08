@@ -9,9 +9,18 @@ const DATA_BASE_URL =
 
 export async function fetchChartData(): Promise<ChartData> {
   try {
-    const response = await fetch(`${DATA_BASE_URL}/latest.json`, {
-      cache: "no-cache",
-    });
+    const timestamp = Date.now();
+    const response = await fetch(
+      `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
+      {
+        cache: "no-cache",
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch chart data");

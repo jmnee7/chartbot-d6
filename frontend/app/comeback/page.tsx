@@ -64,36 +64,36 @@ export default function ComebackPage() {
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
           {comebackSchedule
-            .filter(schedule => schedule.dDay >= 0) // 오늘 이후 일정만 표시
+            .filter((schedule) => schedule.dDay >= 0) // 오늘 이후 일정만 표시
             .map((schedule, index) => (
-            <SwiperSlide key={index} className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="w-6 h-6" />
-                    <Badge className="bg-white/20 text-white border-white/30">
-                      {schedule.dDay === 0
-                        ? "D-DAY"
-                        : `D-${schedule.dDay}`}
-                    </Badge>
+              <SwiperSlide key={index} className="p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Calendar className="w-6 h-6" />
+                      <Badge className="bg-white/20 text-white border-white/30">
+                        {schedule.dDay === 0 ? "D-DAY" : `D-${schedule.dDay}`}
+                      </Badge>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-1">
+                      {schedule.event}
+                    </h3>
+                    <p className="text-white/80 text-sm">{schedule.date}</p>
+                    <p className="text-white/80 text-sm">
+                      {schedule.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold mb-1">{schedule.event}</h3>
-                  <p className="text-white/80 text-sm">{schedule.date}</p>
-                  <p className="text-white/80 text-sm">{schedule.description}</p>
+                  <div className="text-right">
+                    <div className="text-3xl font-bold">
+                      {schedule.dDay === 0 ? "D-DAY" : `${schedule.dDay}일`}
+                    </div>
+                    <div className="text-sm text-white">
+                      {schedule.dDay === 0 ? "오늘" : "남음"}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold">
-                    {schedule.dDay === 0
-                      ? "D-DAY"
-                      : `${schedule.dDay}일`}
-                  </div>
-                  <div className="text-sm text-white">
-                    {schedule.dDay === 0 ? "오늘" : "남음"}
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
 
         {/* Mobile Divider */}
