@@ -8,38 +8,61 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-const comebackSchedule = [
+const comebackScheduleRaw = [
   {
     date: "2025.09.06",
     event: "놀라운 토요일",
     status: "upcoming",
     description: "StvN 놀라운 토요일 출연",
-    dDay: Math.ceil(
-      (new Date("2025-09-06").getTime() - new Date().getTime()) /
-        (1000 * 60 * 60 * 24)
-    ),
+    datetime: "2025-09-06",
   },
   {
-    date: "2025.09.07",
+    date: "2025.09.07", 
     event: "1박 2일",
     status: "upcoming",
     description: "SKBS2 1박 2일 출연",
-    dDay: Math.ceil(
-      (new Date("2025-09-07").getTime() - new Date().getTime()) /
-        (1000 * 60 * 60 * 24)
-    ),
+    datetime: "2025-09-07",
+  },
+  {
+    date: "2025.09.09",
+    event: "10주년 다큐멘터리",
+    status: "upcoming", 
+    description: "DAY6: Time of Our Decade Teaser 공개 (오후 9:07)",
+    datetime: "2025-09-09",
   },
   {
     date: "2025.09.10",
     event: "유 퀴즈 온 더 블럭",
     status: "upcoming",
-    description: "StvN 유 퀴즈 온 더 블럭 출연",
-    dDay: Math.ceil(
-      (new Date("2025-09-10").getTime() - new Date().getTime()) /
-        (1000 * 60 * 60 * 24)
-    ),
+    description: "StvN 유 퀴즈 온 더 블럭 출연", 
+    datetime: "2025-09-10",
+  },
+  {
+    date: "2025.09.12",
+    event: "인천 시야제한석 오픈",
+    status: "upcoming",
+    description: "FOREVER YOUNG 인천 시야제한석 추가 오픈 (오후 8시)",
+    datetime: "2025-09-12",
+  },
+  {
+    date: "2025.09.14", 
+    event: "The DECADE 사인회",
+    status: "upcoming",
+    description: "4th Full Album 발매기념 대면·영상통화 사인회 (오후 1시)",
+    datetime: "2025-09-14",
   },
 ];
+
+// 날짜순 정렬하고 D-Day 계산
+const comebackSchedule = comebackScheduleRaw
+  .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
+  .map(schedule => ({
+    ...schedule,
+    dDay: Math.ceil(
+      (new Date(schedule.datetime).getTime() - new Date().getTime()) /
+        (1000 * 60 * 60 * 24)
+    ),
+  }));
 
 export default function ComebackPage() {
   return (
@@ -75,7 +98,7 @@ export default function ComebackPage() {
                         {schedule.dDay === 0 ? "D-DAY" : `D-${schedule.dDay}`}
                       </Badge>
                     </div>
-                    <h3 className="text-2xl font-bold mb-1">
+                    <h3 className="text-xl md:text-2xl font-bold mb-1 leading-tight">
                       {schedule.event}
                     </h3>
                     <p className="text-white/80 text-sm">{schedule.date}</p>
@@ -84,10 +107,10 @@ export default function ComebackPage() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold">
+                    <div className="text-3xl font-bold whitespace-nowrap">
                       {schedule.dDay === 0 ? "D-DAY" : `${schedule.dDay}일`}
                     </div>
-                    <div className="text-sm text-white">
+                    <div className="text-sm text-white whitespace-nowrap">
                       {schedule.dDay === 0 ? "오늘" : "남음"}
                     </div>
                   </div>
