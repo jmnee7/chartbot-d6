@@ -64,76 +64,36 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
 
   const platforms = [
     "melon_top100",
-    "melon_hot100",
+    "melon_hot100", 
     "genie",
     "bugs",
     "vibe",
     "flo",
   ];
-  const platformData: { platform: string; song: ChartSong | null }[] = [];
+  
+  const platformData: { 
+    platform: string; 
+    dreamBusSong: ChartSong | null; 
+    insideOutSong: ChartSong | null; 
+  }[] = [];
 
   platforms.forEach((platform) => {
     const songs =
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
 
-    if (songs.length > 0) {
-      // targetSong이 지정된 경우 해당 곡만 찾기
-      let targetSongData = null;
+    // 각 플랫폼에서 두 타이틀곡 모두 찾기
+    const dreamBusSong = songs.find(
+      (song) => song.title && song.title.includes("꿈의 버스")
+    );
+    const insideOutSong = songs.find(
+      (song) => song.title && song.title.includes("INSIDE OUT")
+    );
 
-      if (targetSong === "INSIDE OUT") {
-        targetSongData = songs.find(
-          (song) => song.title && song.title.includes("INSIDE OUT")
-        );
-      } else if (targetSong === "꿈의 버스") {
-        targetSongData = songs.find(
-          (song) => song.title && song.title.includes("꿈의 버스")
-        );
-      } else {
-        // targetSong이 없으면 3초마다 전환
-        const insideOutSong = songs.find(
-          (song) => song.title && song.title.includes("INSIDE OUT")
-        );
-        const dreamBusSong = songs.find(
-          (song) => song.title && song.title.includes("꿈의 버스")
-        );
-        // showFirstSong 상태에 따라 표시할 곡 선택
-        targetSongData = showFirstSong ? dreamBusSong : insideOutSong;
-        // 둘 다 없으면 있는 것을 표시
-        if (!targetSongData) {
-          targetSongData = insideOutSong || dreamBusSong;
-        }
-      }
-
-      if (targetSongData) {
-        platformData.push({ platform, song: targetSongData });
-      } else {
-        // 타겟 곡이 없으면 차트아웃 상태 표시
-        platformData.push({
-          platform,
-          song: {
-            title: "차트아웃",
-            artist: "DAY6",
-            album: "",
-            rank: null,
-            change: 0,
-            timestamp: "",
-          } as ChartSong,
-        });
-      }
-    } else {
-      // 차트에 곡이 없으면 차트아웃 상태 표시
-      platformData.push({
-        platform,
-        song: {
-          title: "차트아웃",
-          artist: "DAY6",
-          album: "",
-          rank: null,
-          change: 0,
-          timestamp: "",
-        } as ChartSong,
-      });
-    }
+    platformData.push({ 
+      platform, 
+      dreamBusSong: dreamBusSong || null, 
+      insideOutSong: insideOutSong || null 
+    });
   });
 
   const getPlatformLogo = (platform: string) => {
@@ -184,9 +144,11 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
           slidesPerView={2}
           spaceBetween={8}
           freeMode={true}
+          loop={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
+            reverseDirection: false,
           }}
           breakpoints={{
             640: {
@@ -201,62 +163,112 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
           }}
           className="compact-chart-swiper"
         >
-          {platformData.map(({ platform, song }) => (
-            <SwiperSlide key={platform}>
-              <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <Image
-                      src={getPlatformLogo(platform)}
-                      alt={getPlatformName(platform)}
-                      width={20}
-                      height={20}
-                      className="rounded-sm object-cover"
-                    />
-                    <span className="text-sm font-medium text-gray-800">
-                      {getPlatformName(platform)}
-                    </span>
-                  </div>
-                  {song?.change !== undefined && (
-                    <div
-                      className={`text-xs font-medium ${getRankChangeColor(
-                        song.change ?? 0
-                      )}`}
-                    >
-                      {getRankChangeIcon(song.change ?? 0)}
-                    </div>
-                  )}
-                </div>
+          {platformData.map(({ platform, dreamBusSong, insideOutSong }) => {
+            // targetSong이 지정된 경우 해당 곡만 표시
+            let currentSong = null;
+            if (targetSong === "꿈의 버스") {
+              currentSong = dreamBusSong;
+            } else if (targetSong === "INSIDE OUT") {
+              currentSong = insideOutSong;
+            } else {
+              // targetSong이 없으면 롤링으로 표시
+              currentSong = showFirstSong ? dreamBusSong : insideOutSong;
+              // 둘 중 하나가 없으면 있는 것을 표시
+              if (!currentSong) {
+                currentSong = dreamBusSong || insideOutSong;
+              }
+            }
 
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1">
-                    <div
-                      className={`text-xl font-bold ${
-                        song?.rank ? "text-gray-900" : "text-orange-500"
-                      }`}
-                    >
-                      {song?.rank || "-"}
+            return (
+              <SwiperSlide key={platform}>
+                <div className="bg-gray-50 rounded-lg p-3 border border-gray-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src={getPlatformLogo(platform)}
+                        alt={getPlatformName(platform)}
+                        width={20}
+                        height={20}
+                        className="rounded-sm object-cover"
+                      />
+                      <span className="text-sm font-medium text-gray-800">
+                        {getPlatformName(platform)}
+                      </span>
                     </div>
-                    <div className="text-xs text-gray-400">위</div>
-                  </div>
-                  <div className="flex-1 min-w-0 text-center">
-                    {song?.rank ? (
-                      <>
-                        <p className="font-medium text-sm truncate text-gray-900">
-                          {targetSong || song.title}
-                        </p>
-                        <p className="text-xs text-gray-500 truncate">
-                          {song.artist}
-                        </p>
-                      </>
-                    ) : (
-                      <p className="font-medium text-sm text-orange-600">❌</p>
+                    {currentSong?.change !== undefined && (
+                      <div
+                        className={`text-xs font-medium ${getRankChangeColor(
+                          currentSong.change ?? 0
+                        )}`}
+                      >
+                        {getRankChangeIcon(currentSong.change ?? 0)}
+                      </div>
                     )}
                   </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      <div
+                        className={`text-xl font-bold ${
+                          currentSong?.rank ? "text-gray-900" : "text-orange-500"
+                        }`}
+                      >
+                        {currentSong?.rank || "-"}
+                      </div>
+                      <div className="text-xs text-gray-400">위</div>
+                    </div>
+                    <div className="flex-1 min-w-0 text-center">
+                      {currentSong?.rank ? (
+                        <div className="relative overflow-hidden h-10 flex items-center justify-center">
+                          {/* 꿈의 버스 */}
+                          <div 
+                            className={`absolute inset-0 flex flex-col justify-center transition-transform duration-500 ease-in-out ${
+                              !targetSong && !isManualMode ? 
+                                (showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0') 
+                                : targetSong === '꿈의 버스' || (dreamBusSong && !insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                            }`}
+                          >
+                            {dreamBusSong && (
+                              <>
+                                <p className="font-medium text-sm truncate text-gray-900">
+                                  {dreamBusSong.title}
+                                </p>
+                                <p className="text-xs text-gray-500 truncate">
+                                  {dreamBusSong.artist}
+                                </p>
+                              </>
+                            )}
+                          </div>
+                          
+                          {/* INSIDE OUT */}
+                          <div 
+                            className={`absolute inset-0 flex flex-col justify-center transition-transform duration-500 ease-in-out ${
+                              !targetSong && !isManualMode ? 
+                                (!showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0') 
+                                : targetSong === 'INSIDE OUT' || (!dreamBusSong && insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                            }`}
+                          >
+                            {insideOutSong && (
+                              <>
+                                <p className="font-medium text-sm truncate text-gray-900">
+                                  {insideOutSong.title}
+                                </p>
+                                <p className="text-xs text-gray-500 truncate">
+                                  {insideOutSong.artist}
+                                </p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="font-medium text-sm text-orange-600">❌</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </CardContent>
     </Card>
