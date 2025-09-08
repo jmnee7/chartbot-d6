@@ -4,8 +4,13 @@ import type { DeviceType, AppType } from "@/lib/utils/device-detection";
 import { detectAppType } from "@/lib/utils/device-detection";
 
 export function useDeviceType(): DeviceType {
-  // react-device-detect는 SSR에서도 안전하게 작동
-  const deviceType: DeviceType = isAndroid ? "android" : isIOS ? "ios" : "pc";
+  const [deviceType, setDeviceType] = useState<DeviceType>("pc");
+  
+  useEffect(() => {
+    // 클라이언트에서만 실행
+    setDeviceType(isAndroid ? "android" : isIOS ? "ios" : "pc");
+  }, []);
+  
   return deviceType;
 }
 

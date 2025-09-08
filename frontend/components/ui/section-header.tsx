@@ -3,6 +3,7 @@
 import { Clock } from "lucide-react";
 import { getLastUpdateDateTime } from "@/lib/utils/index";
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
 interface SectionHeaderProps {
   title: string;
@@ -19,10 +20,7 @@ export function SectionHeader({
   const [updateDateTime, setUpdateDateTime] = useState<{
     date: string;
     time: string;
-  }>({
-    date: "--.--.--",
-    time: "--:--",
-  });
+  } | null>(null);
 
   useEffect(() => {
     if (showDateTime) {
@@ -33,7 +31,7 @@ export function SectionHeader({
   return (
     <div className="flex items-center justify-between mb-4">
       <h2 className="text-lg md:text-xl font-bold text-gray-900">{title}</h2>
-      {showDateTime && (
+      {showDateTime && updateDateTime && (
         <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
           <span className="text-xs text-gray-500">{updateDateTime.date}</span>
           <Clock className="h-3 w-3 text-mint-primary" />

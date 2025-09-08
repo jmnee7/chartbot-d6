@@ -89,7 +89,7 @@ export function PlatformCard({
                   onClick={() => openStep(platform, 0)}
                 >
                   <Smartphone className="w-3 h-3 mr-1" />
-                  {hasUrls ? "앱으로" : deeplinks[0].label}
+                  {hasUrls ? "앱으로" : (deeplinks[0]?.label || "앱 스킴")}
                 </Button>
               ) : (
                 // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식

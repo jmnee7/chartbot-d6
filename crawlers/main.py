@@ -707,6 +707,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     except Exception as e:
         print(f"❌ day6_chart.json 저장 실패: {e}")
 
+
 def main():
     """
     메인 실행 함수
