@@ -11,7 +11,7 @@ import {
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, FreeMode } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { useState, useEffect } from "react";
@@ -140,15 +140,15 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
           </div>
         )}
         <Swiper
-          modules={[Autoplay, FreeMode]}
+          modules={[Autoplay]}
           slidesPerView={2}
           spaceBetween={8}
-          freeMode={true}
           loop={true}
+          speed={800}
           autoplay={{
-            delay: 3000,
+            delay: 5000,
             disableOnInteraction: false,
-            reverseDirection: false,
+            pauseOnMouseEnter: true,
           }}
           breakpoints={{
             640: {
@@ -222,10 +222,10 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
                         <div className="relative overflow-hidden h-10 flex items-center justify-center">
                           {/* 꿈의 버스 */}
                           <div 
-                            className={`absolute inset-0 flex flex-col justify-center transition-transform duration-500 ease-in-out ${
+                            className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
                               !targetSong && !isManualMode ? 
-                                (showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0') 
-                                : targetSong === '꿈의 버스' || (dreamBusSong && !insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                                (showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0') 
+                                : targetSong === '꿈의 버스' || (dreamBusSong && !insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0'
                             }`}
                           >
                             {dreamBusSong && (
@@ -242,10 +242,10 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
                           
                           {/* INSIDE OUT */}
                           <div 
-                            className={`absolute inset-0 flex flex-col justify-center transition-transform duration-500 ease-in-out ${
+                            className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
                               !targetSong && !isManualMode ? 
-                                (!showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0') 
-                                : targetSong === 'INSIDE OUT' || (!dreamBusSong && insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-full opacity-0'
+                                (!showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0') 
+                                : targetSong === 'INSIDE OUT' || (!dreamBusSong && insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0'
                             }`}
                           >
                             {insideOutSong && (
