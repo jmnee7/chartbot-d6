@@ -30,12 +30,12 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
   const [showFirstSong, setShowFirstSong] = useState(true);
   const [isManualMode, setIsManualMode] = useState(false);
 
-  // 3초마다 곡 전환 (targetSong이 없고, 수동 모드가 아닐 때만)
+  // 5초마다 곡 전환 (targetSong이 없고, 수동 모드가 아닐 때만)
   useEffect(() => {
     if (!targetSong && !isManualMode) {
       const interval = setInterval(() => {
         setShowFirstSong(prev => !prev);
-      }, 3000);
+      }, 5000);
       return () => clearInterval(interval);
     }
   }, [targetSong, isManualMode]);
