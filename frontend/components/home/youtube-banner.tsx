@@ -12,15 +12,15 @@ function getScheduledVideo(): string {
 
   // 9월 5일: INSIDE OUT
   if (month === 9 && day === 5) {
-    return "b_Eh-9Jz_L8"; // INSIDE OUT
+    return "-N-pmPKS-bE"; // INSIDE OUT
   }
   // 9월 6일 이후: 꿈의 버스
   else if (month === 9 && day >= 6) {
-    return "y_tOzRLM2o8"; // 꿈의 버스
+    return "hZ6pts6e8dI"; // 꿈의 버스
   }
   // 그 외: INSIDE OUT (기본값)
   else {
-    return "b_Eh-9Jz_L8"; // INSIDE OUT
+    return "-N-pmPKS-bE"; // INSIDE OUT
   }
 }
 

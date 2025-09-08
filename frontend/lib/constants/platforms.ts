@@ -302,7 +302,7 @@ export const OTHER_MUSIC_PLATFORMS: Platform[] = [
     id: "youtube-music-vedio",
     name: "유튜브 뮤비",
     logo: "/streaming/youtube-music-logo.png",
-    url: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+    url: "https://www.youtube.com/watch?v=-N-pmPKS-bE",
     color: "bg-[var(--mint-dark)]",
     category: "music",
   },

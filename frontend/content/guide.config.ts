@@ -88,7 +88,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/streaming/music/Guide_youtube.png"],
     cta: {
       label: "YouTube로 이동",
-      href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      href: "https://www.youtube.com/watch?v=-N-pmPKS-bE",
       external: true,
     },
     category: "streaming",
@@ -136,7 +136,7 @@ export const GUIDE_CATEGORIES: GuideCategory[] = [
     images: ["/guide/youtube-mv.png"],
     cta: {
       label: "유튜브 뮤비",
-      href: "https://www.youtube.com/watch?v=0fyZqS0N19o",
+      href: "https://www.youtube.com/watch?v=-N-pmPKS-bE",
       external: true,
     },
     category: "streaming",
