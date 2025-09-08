@@ -1,26 +1,17 @@
 import { ChartData, VoteItem, MVStats, ChartSong } from "./types";
 
-// Use GitHub raw data for production, local files for development
-const DATA_BASE_URL =
-  process.env.NEXT_PUBLIC_DATA_BASE_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data"
-    : "/data");
+// Use Next.js API route to avoid CORS issues
 
 export async function fetchChartData(): Promise<ChartData> {
   try {
-    const timestamp = Date.now();
-    const response = await fetch(
-      `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
-      {
-        cache: "no-cache",
-        headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      }
-    );
+    const response = await fetch("/api/chart-data", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Failed to fetch chart data");
@@ -28,7 +19,14 @@ export async function fetchChartData(): Promise<ChartData> {
 
     const rawData = await response.json();
 
-    console.log("response", rawData);
+    console.log("fetchChartData Debug:", {
+      status: response.status,
+      url: "/api/chart-data",
+      hasData: !!rawData,
+      collectedAt: rawData?.collectedAtKST,
+      melonTop100Length: rawData?.melon_top100?.length || 0,
+      platforms: Object.keys(rawData || {}).filter(key => Array.isArray(rawData[key]))
+    });
 
     // Transform the data to match our types
     const transformSongs = (songs: unknown[]): ChartSong[] => {
@@ -83,7 +81,8 @@ export async function fetchChartData(): Promise<ChartData> {
 
 export async function fetchSummaryData(): Promise<Record<string, unknown>> {
   try {
-    const response = await fetch(`${DATA_BASE_URL}/summary.json`, {
+    // TODO: 별도 API route 생성 필요
+    const response = await fetch("/api/summary-data", {
       next: { revalidate: 300 },
     });
 
@@ -134,8 +133,8 @@ export async function fetchVotes(): Promise<VoteItem[]> {
 // Fetch MV stats from YouTube crawler data
 export async function fetchMVStats(): Promise<MVStats[]> {
   try {
-    // Try to fetch from actual YouTube stats data first
-    const response = await fetch(`${DATA_BASE_URL}/youtube_stats.json`, {
+    // TODO: 별도 API route 생성 필요 
+    const response = await fetch("/api/youtube-stats", {
       cache: "no-cache",
     });
 
@@ -235,12 +234,8 @@ export async function fetchComebackData(): Promise<{
   try {
     // Try to get real data from crawlers
     const [chartResponse, youtubeResponse] = await Promise.all([
-      fetch(`${DATA_BASE_URL}/latest.json`, { cache: "no-cache" }).catch(
-        () => null
-      ),
-      fetch(`${DATA_BASE_URL}/youtube_stats.json`, { cache: "no-cache" }).catch(
-        () => null
-      ),
+      fetch("/api/chart-data", { cache: "no-cache" }).catch(() => null),
+      fetch("/api/youtube-stats", { cache: "no-cache" }).catch(() => null),
     ]);
 
     // Process chart data

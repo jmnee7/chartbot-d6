@@ -156,26 +156,15 @@ export async function getLastUpdateDateTime(): Promise<{
   time: string;
 }> {
   try {
-    // DATA_BASE_URL 설정 (api.ts와 동일)
-    const DATA_BASE_URL =
-      process.env.NEXT_PUBLIC_DATA_BASE_URL ||
-      (process.env.NODE_ENV === "production"
-        ? "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data"
-        : "/data");
-
-    // 실제 크롤링된 데이터의 날짜와 시간을 가져오기 (캐시 방지용 타임스탬프 추가)
-    const timestamp = Date.now();
-    const response = await fetch(
-      `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
-      {
-        cache: "no-cache",
-        headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate",
-          Pragma: "no-cache",
-          Expires: "0",
-        },
-      }
-    );
+    // Next.js API route 사용 (CORS 문제 해결)
+    const response = await fetch("/api/chart-data", {
+      cache: "no-cache",
+      headers: {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
     if (response.ok) {
       const data = await response.json();
 

@@ -21,9 +21,18 @@ interface CompactChartProps {
 }
 
 export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
-  const { data: chartData, isLoading } = useQuery({
+  const { data: chartData, isLoading, error } = useQuery({
     queryKey: ["chartData"],
     queryFn: fetchChartData,
+  });
+
+  // 디버깅용 로그
+  console.log("CompactChart Debug:", {
+    isLoading,
+    error,
+    hasData: !!chartData,
+    platforms: Object.keys(chartData || {}),
+    melonTop100Count: chartData?.melon_top100?.length || 0
   });
 
   if (isLoading) {
