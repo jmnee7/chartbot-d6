@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
+import { useState, useEffect } from "react";
 
 interface CompactChartProps {
   targetSong?: string;
@@ -25,15 +26,18 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
     queryKey: ["chartData"],
     queryFn: fetchChartData,
   });
+  
+  const [showFirstSong, setShowFirstSong] = useState(true);
 
-  // 디버깅용 로그
-  console.log("CompactChart Debug:", {
-    isLoading,
-    error,
-    hasData: !!chartData,
-    platforms: Object.keys(chartData || {}),
-    melonTop100Count: chartData?.melon_top100?.length || 0
-  });
+  // 3초마다 곡 전환 (targetSong이 없을 때만)
+  useEffect(() => {
+    if (!targetSong) {
+      const interval = setInterval(() => {
+        setShowFirstSong(prev => !prev);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [targetSong]);
 
   if (isLoading) {
     return (
@@ -74,14 +78,19 @@ export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
           (song) => song.title && song.title.includes("꿈의 버스")
         );
       } else {
-        // targetSong이 없으면 기존 로직 (INSIDE OUT 우선)
+        // targetSong이 없으면 3초마다 전환
         const insideOutSong = songs.find(
           (song) => song.title && song.title.includes("INSIDE OUT")
         );
         const dreamBusSong = songs.find(
           (song) => song.title && song.title.includes("꿈의 버스")
         );
-        targetSongData = insideOutSong || dreamBusSong;
+        // showFirstSong 상태에 따라 표시할 곡 선택
+        targetSongData = showFirstSong ? dreamBusSong : insideOutSong;
+        // 둘 다 없으면 있는 것을 표시
+        if (!targetSongData) {
+          targetSongData = insideOutSong || dreamBusSong;
+        }
       }
 
       if (targetSongData) {
