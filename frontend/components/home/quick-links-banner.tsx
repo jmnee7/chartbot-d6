@@ -6,6 +6,7 @@ import { useState } from "react";
 export function QuickLinksBanner() {
   const [showRadioModal, setShowRadioModal] = useState(false);
   const [showMusicBankModal, setShowMusicBankModal] = useState(false);
+  const [selectedSong, setSelectedSong] = useState<"INSIDE OUT" | "꿈의 버스">("INSIDE OUT");
 
   return (
     <>
@@ -55,9 +56,36 @@ export function QuickLinksBanner() {
               </button>
             </div>
 
+            {/* 타이틀곡 선택 버튼 */}
+            <div className="mb-6">
+              <p className="text-sm text-gray-600 mb-3">신청할 타이틀곡을 선택해주세요:</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setSelectedSong("INSIDE OUT")}
+                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedSong === "INSIDE OUT"
+                      ? "bg-mint-primary text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  INSIDE OUT
+                </button>
+                <button
+                  onClick={() => setSelectedSong("꿈의 버스")}
+                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedSong === "꿈의 버스"
+                      ? "bg-mint-primary text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  꿈의 버스
+                </button>
+              </div>
+            </div>
+
             <div className="space-y-3">
               <a
-                href="sms:%238910?body=DAY6(데이식스)의 INSIDE OUT 신청합니다."
+                href={`sms:%238910?body=DAY6(데이식스)의 ${selectedSong} 신청합니다.`}
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-red-500 hover:bg-red-600 text-white text-center rounded-lg font-medium transition-colors"
@@ -65,7 +93,7 @@ export function QuickLinksBanner() {
                 KBS 라디오 신청
               </a>
               <a
-                href="sms:%238000?body=DAY6(데이식스)의 INSIDE OUT 신청합니다."
+                href={`sms:%238000?body=DAY6(데이식스)의 ${selectedSong} 신청합니다.`}
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-blue-500 hover:bg-blue-600 text-white text-center rounded-lg font-medium transition-colors"
@@ -73,7 +101,7 @@ export function QuickLinksBanner() {
                 MBC 라디오 신청
               </a>
               <a
-                href="sms:%231077?body=DAY6(데이식스)의 INSIDE OUT 신청합니다."
+                href={`sms:%231077?body=DAY6(데이식스)의 ${selectedSong} 신청합니다.`}
                 target="_blank"
                 rel="noreferrer"
                 className="block w-full p-3 bg-green-500 hover:bg-green-600 text-white text-center rounded-lg font-medium transition-colors"
