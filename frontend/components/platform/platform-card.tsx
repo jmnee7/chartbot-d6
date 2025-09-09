@@ -14,8 +14,6 @@ import { useDeviceType } from "@/lib/hooks/useDeviceType";
 import { openPlatformAuto } from "@/lib/deep-link-runtime";
 import { useState } from "react";
 
-type DeviceType = "android" | "ios" | "pc";
-
 interface PlatformCardProps {
   platform: Platform;
   variant?: "default" | "compact" | "grid";
@@ -29,7 +27,7 @@ export function PlatformCard({
   showDescription = true,
   isHome = false,
 }: PlatformCardProps) {
-  const deviceType = useDeviceType() as DeviceType;
+  const deviceType = useDeviceType();
   const [showDropdown, setShowDropdown] = useState(false);
 
   // urls 필드 확인 (새로운 tinyurl 링크)
@@ -79,7 +77,7 @@ export function PlatformCard({
           </span>
 
           {/* 디바이스에 맞는 링크 자동 선택 */}
-          {hasLinks ? (
+          {hasLinks && deviceType !== "pc" ? (
             <>
               {links.length === 1 ? (
                 // 단일 딥링크인 경우 바로 표시
@@ -163,7 +161,7 @@ export function PlatformCard({
                 ) : (
                   <ExternalLink className="w-3 h-3 mr-1" />
                 )}
-                {platform.id === "flo" || hasUrls
+                {platform.id === "flo" || (hasUrls && deviceType !== "pc")
                   ? isHome
                     ? "앱으로"
                     : "앱으로 열기"
