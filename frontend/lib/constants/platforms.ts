@@ -125,7 +125,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
     urls: {
       android: ["https://tinyurl.com/4cheu3py"],
       iphone: ["https://tinyurl.com/yndm9fu6"],
-      pc: ["https://tinyurl.com/4kujhmcb"],
+      pc: ["https://www.genie.co.kr/player/shareProcessV2?xgnm=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310"],
     },
     url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
     deeplinks: {
@@ -167,7 +167,7 @@ export const MUSIC_PLATFORMS: Platform[] = [
     urls: {
       android: ["https://tinyurl.com/2k3pumww"],
       iphone: ["https://tinyurl.com/2k3pumww"],
-      pc: ["https://tinyurl.com/2565ex7c"],
+      pc: ["https://music.bugs.co.kr/newPlayer?trackId=33526777,33526778,33122825,33284304,31650949,33284305,33526777,33526778,30540153,33284304,33122824,33284310,33526777,33526778,33122825,4551006,33284307,33284303"],
     },
     url: "https://music.bugs.co.kr/album/20724195",
     deeplinks: {
@@ -216,6 +216,11 @@ export const MUSIC_PLATFORMS: Platform[] = [
         "https://tinyurl.com/mry674ry",
         "https://tinyurl.com/yz4wu8an",
         "https://tinyurl.com/36kcavbb",
+      ],
+      pc: [
+        "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
+        "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446", 
+        "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
       ],
     },
     url: "https://vibe.naver.com/search?query=DAY6",
