@@ -51,9 +51,8 @@ export const MUSIC_PLATFORMS: Platform[] = [
         "https://tinyurl.com/5buw56a8",
       ],
       pc: [
-        "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,37323944,37946921,31927275,37946922",
-        "melonapp://play?ctype=1&menuid=1000002721&cList=38892497,38892498,30232719,37946921,37323943",
-        "melonapp://play?ctype=1&menuid=1000002721&cList=37946927,38892497,38892498,37323944,7844374,37946924,37946920",
+        "https://www.melon.com/album/detail.htm?albumId=12100029",
+        "https://www.melon.com/artist/timeline.htm?artistId=754897",
       ],
     },
     url: "https://www.melon.com/album/detail.htm?albumId=11796328",
@@ -167,7 +166,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     urls: {
       android: ["https://tinyurl.com/2k3pumww"],
       iphone: ["https://tinyurl.com/2k3pumww"],
-      pc: ["https://music.bugs.co.kr/newPlayer?trackId=33526777,33526778,33122825,33284304,31650949,33284305,33526777,33526778,30540153,33284304,33122824,33284310,33526777,33526778,33122825,4551006,33284307,33284303"],
+      pc: [
+        "https://music.bugs.co.kr/newPlayer?trackId=33526777,33526778,33122825,33284304,31650949,33284305,33284310,4551006,33284307,33284303",
+      ],
     },
     url: "https://music.bugs.co.kr/album/20724195",
     deeplinks: {
@@ -218,9 +219,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
         "https://tinyurl.com/36kcavbb",
       ],
       pc: [
-        "vibe://listen?version=3&trackIds=93668872,93668873,83681270,86961440,27852478,86961441",
-        "vibe://listen?version=3&trackIds=93668872,93668873,16081363,86961440,83681269,86961446", 
-        "vibe://listen?version=3&trackIds=93668872,93668873,83681270,5701361,86961443,86961439",
+        "https://vibe.naver.com/search?query=DAY6+꿈의+버스",
+        "https://vibe.naver.com/search?query=DAY6+INSIDE+OUT",
+        "https://vibe.naver.com/search?query=DAY6+HAPPY",
       ],
     },
     url: "https://vibe.naver.com/search?query=DAY6",
@@ -291,6 +292,11 @@ export const MUSIC_PLATFORMS: Platform[] = [
     urls: {
       android: ["https://tinyurl.com/2k5psx66"],
       iphone: ["https://tinyurl.com/2k5psx66"],
+      pc: [
+        "https://www.music-flo.com/search?keyword=DAY6+꿈의+버스",
+        "https://www.music-flo.com/search?keyword=DAY6+INSIDE+OUT",
+        "https://www.music-flo.com/search?keyword=DAY6+HAPPY",
+      ],
     },
     url: "https://tinyurl.com/dekaadx3",
     color: "bg-gradient-to-br from-[var(--mint-primary)] to-[var(--navy-dark)]",
