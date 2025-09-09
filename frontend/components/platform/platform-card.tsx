@@ -152,12 +152,12 @@ export function PlatformCard({
                 size="sm"
                 className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
               >
-                {platform.id === "flo" ? (
+                {platform.id === "flo" && deviceType !== "pc" ? (
                   <Smartphone className="w-3 h-3 mr-1" />
                 ) : (
                   <ExternalLink className="w-3 h-3 mr-1" />
                 )}
-                {platform.id === "flo" || (hasUrls && deviceType !== "pc")
+                {(platform.id === "flo" && deviceType !== "pc") || (hasUrls && deviceType !== "pc")
                   ? isHome
                     ? "앱으로"
                     : "앱으로 열기"
