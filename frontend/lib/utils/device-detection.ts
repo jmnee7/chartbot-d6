@@ -22,23 +22,46 @@ export function detectAppType(): AppType {
 
   const userAgent = navigator.userAgent.toLowerCase();
 
+  // 디버깅 로그 추가
+  if (process.env.NODE_ENV === "development") {
+    console.log("detectAppType - userAgent:", userAgent);
+  }
+
   // 카카오톡 인앱 브라우저
-  if (/kakaotalk/i.test(userAgent)) return "app";
+  if (/kakaotalk/i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: kakaotalk detected");
+    return "app";
+  }
 
   // 네이버 앱
-  if (/naver/i.test(userAgent)) return "app";
+  if (/naver/i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: naver detected");
+    return "app";
+  }
 
   // 페이스북 앱
-  if (/fbav|fban/i.test(userAgent)) return "app";
+  if (/fbav|fban/i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: facebook detected");
+    return "app";
+  }
 
   // 인스타그램 앱
-  if (/instagram/i.test(userAgent)) return "app";
+  if (/instagram/i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: instagram detected");
+    return "app";
+  }
 
   // 라인 앱
-  if (/line\//i.test(userAgent)) return "app";
+  if (/line\//i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: line detected");
+    return "app";
+  }
 
   // WebView 일반 감지
-  if (/; wv\)|webview/i.test(userAgent)) return "app";
+  if (/; wv\)|webview/i.test(userAgent)) {
+    if (process.env.NODE_ENV === "development") console.log("detectAppType: webview detected");
+    return "app";
+  }
 
   // iOS Safari 여부 확인 (더 정확한 검사)
   if (isIOS) {
@@ -48,15 +71,24 @@ export function detectAppType(): AppType {
     const hasOpera = /opios/i.test(userAgent);
     const hasEdge = /edgios/i.test(userAgent);
 
+    if (process.env.NODE_ENV === "development") {
+      console.log("detectAppType iOS check:", { hasSafari, hasChrome, hasFirefox, hasOpera, hasEdge });
+    }
+
     if (hasChrome || hasFirefox || hasOpera || hasEdge) {
+      if (process.env.NODE_ENV === "development") console.log("detectAppType: iOS third-party browser");
       return "web"; // iOS 서드파티 브라우저는 웹으로 처리
     }
 
-    if (!hasSafari) {
-      return "app"; // Safari가 없으면 앱 웹뷰
+    // Safari가 없으면서 다른 브라우저도 없으면 앱 웹뷰로 판단하는 것은 너무 엄격함
+    // 대신 더 구체적인 조건을 사용
+    if (!hasSafari && !/version\//i.test(userAgent)) {
+      if (process.env.NODE_ENV === "development") console.log("detectAppType: iOS webview (no safari, no version)");
+      return "app"; // Safari와 Version이 없으면 앱 웹뷰
     }
   }
 
+  if (process.env.NODE_ENV === "development") console.log("detectAppType: web (default)");
   return "web";
 }
 
@@ -93,7 +125,7 @@ export function canUseAppLink(): boolean {
 
 // 플랫폼별 최적 링크 선택
 export function getBestStreamingLink(
-  platform: string,
+  _platform: string,
   urls?: {
     android?: string[];
     iphone?: string[];
