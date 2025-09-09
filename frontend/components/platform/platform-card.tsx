@@ -141,31 +141,59 @@ export function PlatformCard({
               )}
             </>
           ) : (
-            // 링크가 없으면 웹 링크 표시
-            <a
-              href={platform.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full"
-            >
+            // PC에서 여러 링크가 있으면 순차 실행, 없으면 웹 링크
+            deviceType === "pc" && platform.urls?.pc && platform.urls.pc.length > 1 ? (
               <Button
                 size="sm"
                 className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                onClick={() => {
+                  // 첫 번째 링크는 현재 탭에서 열기
+                  if (platform.urls?.pc?.[0]) {
+                    window.location.href = platform.urls.pc[0];
+                  }
+                  
+                  // 나머지 링크들은 새 탭에서 열기 (1초 간격)
+                  platform.urls.pc.slice(1).forEach((url, index) => {
+                    setTimeout(() => {
+                      window.open(url, '_blank');
+                    }, (index + 1) * 1000);
+                  });
+                }}
               >
-                {platform.id === "flo" && deviceType !== "pc" ? (
-                  <Smartphone className="w-3 h-3 mr-1" />
-                ) : (
-                  <ExternalLink className="w-3 h-3 mr-1" />
-                )}
-                {(platform.id === "flo" && deviceType !== "pc") || (hasUrls && deviceType !== "pc")
-                  ? isHome
-                    ? "앱으로"
-                    : "앱으로 열기"
-                  : isHome
-                    ? "웹"
-                    : "웹으로"}
+                <ExternalLink className="w-3 h-3 mr-1" />
+                {isHome ? "웹" : "웹으로 (전곡)"}
               </Button>
-            </a>
+            ) : (
+              // 단일 링크이거나 PC가 아닌 경우
+              <a
+                href={
+                  deviceType === "pc" && platform.urls?.pc?.[0] 
+                    ? platform.urls.pc[0] 
+                    : platform.url
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+              >
+                <Button
+                  size="sm"
+                  className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
+                >
+                  {platform.id === "flo" && deviceType !== "pc" ? (
+                    <Smartphone className="w-3 h-3 mr-1" />
+                  ) : (
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                  )}
+                  {(platform.id === "flo" && deviceType !== "pc") || (hasUrls && deviceType !== "pc")
+                    ? isHome
+                      ? "앱으로"
+                      : "앱으로 열기"
+                    : isHome
+                      ? "웹"
+                      : "웹으로"}
+                </Button>
+              </a>
+            )
           )}
         </div>
       </div>
