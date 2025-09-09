@@ -21,8 +21,8 @@ interface CompactChartProps {
   title?: string;
 }
 
-export function CompactChart({ targetSong, title }: CompactChartProps = {}) {
-  const { data: chartData, isLoading, error } = useQuery({
+export function CompactChart({ targetSong }: CompactChartProps = {}) {
+  const { data: chartData, isLoading } = useQuery({
     queryKey: ["chartData"],
     queryFn: fetchChartData,
   });

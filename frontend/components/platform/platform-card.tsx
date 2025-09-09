@@ -27,7 +27,7 @@ export function PlatformCard({
   showDescription = true,
   isHome = false,
 }: PlatformCardProps) {
-  const deviceType = useDeviceType();
+  const deviceType = useDeviceType() as "android" | "ios" | "pc";
   const [showDropdown, setShowDropdown] = useState(false);
 
   // urls 필드 확인 (새로운 tinyurl 링크)
@@ -98,11 +98,7 @@ export function PlatformCard({
                     onClick={() => setShowDropdown(!showDropdown)}
                   >
                     <Smartphone className="w-3 h-3 mr-1" />
-                    {isHome
-                      ? "앱으로"
-                      : deviceType === "pc"
-                        ? "앱으로 열기"
-                        : "앱으로 열기"}
+                    {isHome ? "앱으로" : "앱으로 열기"}
                     <ChevronDown
                       className={`w-3 h-3 ml-1 transition-transform ${showDropdown ? "rotate-180" : ""}`}
                     />
