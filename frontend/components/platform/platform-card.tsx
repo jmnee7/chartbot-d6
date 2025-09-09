@@ -153,7 +153,7 @@ export function PlatformCard({
                   }
                   
                   // 나머지 링크들은 새 탭에서 열기 (1초 간격)
-                  platform.urls.pc.slice(1).forEach((url, index) => {
+                  platform.urls?.pc?.slice(1).forEach((url, index) => {
                     setTimeout(() => {
                       window.open(url, '_blank');
                     }, (index + 1) * 1000);
