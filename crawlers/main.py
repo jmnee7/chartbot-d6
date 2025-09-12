@@ -527,8 +527,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     }
     
     # 필터링된 데이터를 latest.json 형태로 변환
-    print(f"🔍 순위 변화 디버깅:")
-    print(f"rank_changes: {rank_changes}")
+    print(f"🔄 순위 변화 계산 중...")
     
     for service, songs in filtered_data.items():
         if service in latest_data and songs:
@@ -536,20 +535,13 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
             for song in songs:
                 # 순위 변화 찾기
                 change_value = 0
-                print(f"  📝 {service}: '{song.get('title')}' by '{song.get('artist')}'")
                 
                 if rank_changes and service in rank_changes:
-                    print(f"    🔄 rank_changes[{service}]: {rank_changes[service]}")
                     for change_info in rank_changes[service]:
                         if (change_info.get('artist') == song.get('artist') and 
                             change_info.get('title') == song.get('title')):
                             change_value = change_info.get('change', 0)
-                            print(f"    ✅ 매칭 성공! change: {change_value}")
                             break
-                    else:
-                        print(f"    ❌ 매칭 실패")
-                else:
-                    print(f"    ⚠️ rank_changes 없음 또는 {service} 서비스 없음")
                 
                 converted_songs.append({
                     "rank": song.get("rank"),
