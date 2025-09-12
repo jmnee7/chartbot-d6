@@ -10,46 +10,18 @@ import Link from "next/link";
 
 const comebackScheduleRaw = [
   {
-    date: "2025.09.06",
-    event: "놀라운 토요일",
+    date: "2025.09.14",
+    event: "데이식스 is 10 EP2",
     status: "upcoming",
-    description: "StvN 놀라운 토요일 출연",
-    datetime: "2025-09-06",
-  },
-  {
-    date: "2025.09.07", 
-    event: "1박 2일",
-    status: "upcoming",
-    description: "SKBS2 1박 2일 출연",
-    datetime: "2025-09-07",
-  },
-  {
-    date: "2025.09.09",
-    event: "10주년 다큐멘터리",
-    status: "upcoming", 
-    description: "DAY6: Time of Our Decade Teaser 공개 (오후 9:07)",
-    datetime: "2025-09-09",
-  },
-  {
-    date: "2025.09.10",
-    event: "유 퀴즈 온 더 블럭",
-    status: "upcoming",
-    description: "StvN 유 퀴즈 온 더 블럭 출연", 
-    datetime: "2025-09-10",
-  },
-  {
-    date: "2025.09.12",
-    event: "인천 시야제한석 오픈",
-    status: "upcoming",
-    description: "FOREVER YOUNG 인천 시야제한석 추가 오픈 (오후 8시)",
-    datetime: "2025-09-12",
-  },
-  {
-    date: "2025.09.14", 
-    event: "The DECADE 사인회",
-    status: "upcoming",
-    description: "4th Full Album 발매기념 대면·영상통화 사인회 (오후 1시)",
+    description: "데이식스 is 10 EP2 방송",
     datetime: "2025-09-14",
+  },
+  {
+    date: "2025.09.15", 
+    event: "라이브클립 with 마이데이",
+    status: "upcoming",
+    description: "라이브클립 with 마이데이",
+    datetime: "2025-09-15",
   },
 ];
 
