@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2025-09-13 02:00",
+  "lastUpdated": "2025-09-13 03:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -47,8 +47,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 1,
-          "changeText": "↑1"
+          "change": 0,
+          "changeText": "-"
         },
         {
           "rank": 40,
@@ -56,8 +56,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": -1,
-          "changeText": "↓1"
+          "change": 0,
+          "changeText": "-"
         },
         {
           "rank": 81,
@@ -69,13 +69,13 @@
           "changeText": "-"
         },
         {
-          "rank": 96,
+          "rank": 97,
           "title": "Disco Day",
           "artist": "DAY6 (데이식스)",
           "album": "The DECADE",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": -1,
+          "changeText": "↓1"
         }
       ],
       "count": 8
@@ -495,16 +495,16 @@
           "changeText": "-"
         },
         {
-          "rank": 84,
+          "rank": 85,
           "title": "예뻤어",
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
-          "rank": 98,
+          "rank": 99,
           "title": "해야 뜨지 말아 줘",
           "artist": "DAY6 (데이식스)",
           "album": "The DECADE",
