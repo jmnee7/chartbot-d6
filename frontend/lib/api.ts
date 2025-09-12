@@ -6,14 +6,17 @@ const DATA_BASE_URL = "/data";
 export async function fetchChartData(): Promise<ChartData> {
   try {
     const timestamp = Date.now();
-    const response = await fetch(`${DATA_BASE_URL}/latest.json?t=${timestamp}`, {
-      cache: "no-cache",
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    });
+    const response = await fetch(
+      `${DATA_BASE_URL}/latest.json?t=${timestamp}`,
+      {
+        cache: "no-cache",
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch chart data");
@@ -27,7 +30,9 @@ export async function fetchChartData(): Promise<ChartData> {
       hasData: !!rawData,
       collectedAt: rawData?.collectedAtKST,
       melonTop100Length: rawData?.melon_top100?.length || 0,
-      platforms: Object.keys(rawData || {}).filter(key => Array.isArray(rawData[key]))
+      platforms: Object.keys(rawData || {}).filter((key) =>
+        Array.isArray(rawData[key])
+      ),
     });
 
     // Transform the data to match our types
@@ -234,8 +239,12 @@ export async function fetchComebackData(): Promise<{
   try {
     // Try to get real data from crawlers
     const [chartResponse, youtubeResponse] = await Promise.all([
-      fetch(`${DATA_BASE_URL}/latest.json`, { cache: "no-cache" }).catch(() => null),
-      fetch(`${DATA_BASE_URL}/youtube_stats.json`, { cache: "no-cache" }).catch(() => null),
+      fetch(`${DATA_BASE_URL}/latest.json`, { cache: "no-cache" }).catch(
+        () => null
+      ),
+      fetch(`${DATA_BASE_URL}/youtube_stats.json`, { cache: "no-cache" }).catch(
+        () => null
+      ),
     ]);
 
     // Process chart data

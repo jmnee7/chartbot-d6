@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/data/:path*",
-        destination: "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data/:path*",
+        destination:
+          "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data/:path*",
       },
     ];
   },

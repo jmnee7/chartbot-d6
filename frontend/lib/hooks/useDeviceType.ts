@@ -5,12 +5,12 @@ import { detectAppType } from "@/lib/utils/device-detection";
 
 export function useDeviceType(): DeviceType {
   const [deviceType, setDeviceType] = useState<DeviceType>("pc");
-  
+
   useEffect(() => {
     // 클라이언트에서만 실행
     setDeviceType(isAndroid ? "android" : isIOS ? "ios" : "pc");
   }, []);
-  
+
   return deviceType;
 }
 

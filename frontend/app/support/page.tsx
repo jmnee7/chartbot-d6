@@ -308,7 +308,6 @@ export default function SupportPage() {
           </CardContent>
         </Card>
 
-
         {/* Mobile Divider */}
         <div
           className="md:hidden -mx-9"
@@ -461,7 +460,6 @@ export default function SupportPage() {
 
               <div className="p-4 space-y-4">
                 {/* Warning */}
-
                 {/* Version Selector */}
                 <div className="overflow-x-auto -mx-4 px-4">
                   <div className="flex gap-2 min-w-max">
@@ -485,7 +483,6 @@ export default function SupportPage() {
                     )}
                   </div>
                 </div>
-
                 {/* Selected Version Info */}
                 <div className="bg-mint-primary/10 rounded-lg p-3">
                   <div className="flex items-center justify-between">
@@ -497,8 +494,7 @@ export default function SupportPage() {
                     </div>
                   </div>
                 </div>
-
-                {/* Store List for Selected Version */}
+                {/* Store List for Selected Version
                 <div className="space-y-2">
                   {albumStores.map((store, index) => (
                     <div
@@ -548,8 +544,7 @@ export default function SupportPage() {
                       </div>
                     </div>
                   ))}
-                </div>
-
+                </div> */}
                 {/* CTA */}
                 <Button
                   asChild
@@ -611,7 +606,7 @@ export default function SupportPage() {
                         <th className="text-center py-3 px-4"></th>
                       </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                       {albumStores.map((store, index) => (
                         <tr key={index} className="border-b hover:bg-gray-50">
                           <td className="py-3 px-4">
@@ -662,7 +657,7 @@ export default function SupportPage() {
                           </td>
                         </tr>
                       ))}
-                    </tbody>
+                    </tbody> */}
                   </table>
                 </div>
 

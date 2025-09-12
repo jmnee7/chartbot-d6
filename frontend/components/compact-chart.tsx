@@ -26,7 +26,7 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
     queryKey: ["chartData"],
     queryFn: fetchChartData,
   });
-  
+
   const [showFirstSong, setShowFirstSong] = useState(true);
   const [isManualMode, setIsManualMode] = useState(false);
 
@@ -34,12 +34,12 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
   useEffect(() => {
     if (!targetSong && !isManualMode) {
       const interval = setInterval(() => {
-        setShowFirstSong(prev => !prev);
+        setShowFirstSong((prev) => !prev);
       }, 5000);
       return () => clearInterval(interval);
     }
   }, [targetSong, isManualMode]);
-  
+
   // 인디케이터 클릭 핸들러
   const handleDotClick = (isFirst: boolean) => {
     setShowFirstSong(isFirst);
@@ -64,17 +64,17 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
 
   const platforms = [
     "melon_top100",
-    "melon_hot100", 
+    "melon_hot100",
     "genie",
     "bugs",
     "vibe",
     "flo",
   ];
-  
-  const platformData: { 
-    platform: string; 
-    dreamBusSong: ChartSong | null; 
-    insideOutSong: ChartSong | null; 
+
+  const platformData: {
+    platform: string;
+    dreamBusSong: ChartSong | null;
+    insideOutSong: ChartSong | null;
   }[] = [];
 
   platforms.forEach((platform) => {
@@ -89,10 +89,10 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
       (song) => song.title && song.title.includes("INSIDE OUT")
     );
 
-    platformData.push({ 
-      platform, 
-      dreamBusSong: dreamBusSong || null, 
-      insideOutSong: insideOutSong || null 
+    platformData.push({
+      platform,
+      dreamBusSong: dreamBusSong || null,
+      insideOutSong: insideOutSong || null,
     });
   });
 
@@ -118,24 +118,24 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
               <button
                 onClick={() => handleDotClick(false)}
                 className={`rounded-full transition-all duration-300 hover:scale-110 ${
-                  !showFirstSong 
-                    ? 'bg-mint-primary w-4 h-2' 
-                    : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
+                  !showFirstSong
+                    ? "bg-mint-primary w-4 h-2"
+                    : "bg-gray-300 w-2 h-2 hover:bg-gray-400"
                 }`}
                 aria-label="INSIDE OUT 보기"
               />
               <button
                 onClick={() => handleDotClick(true)}
                 className={`rounded-full transition-all duration-300 hover:scale-110 ${
-                  showFirstSong 
-                    ? 'bg-mint-primary w-4 h-2' 
-                    : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
+                  showFirstSong
+                    ? "bg-mint-primary w-4 h-2"
+                    : "bg-gray-300 w-2 h-2 hover:bg-gray-400"
                 }`}
                 aria-label="꿈의 버스 보기"
               />
             </div>
             <span className="text-xs text-gray-600 font-medium">
-              {showFirstSong ? '꿈의 버스' : 'INSIDE OUT'}
+              {showFirstSong ? "꿈의 버스" : "INSIDE OUT"}
             </span>
           </div>
         )}
@@ -210,7 +210,9 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
                     <div className="flex items-center gap-1">
                       <div
                         className={`text-xl font-bold ${
-                          currentSong?.rank ? "text-gray-900" : "text-orange-500"
+                          currentSong?.rank
+                            ? "text-gray-900"
+                            : "text-orange-500"
                         }`}
                       >
                         {currentSong?.rank || "-"}
@@ -221,11 +223,16 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
                       {currentSong?.rank ? (
                         <div className="relative overflow-hidden h-10 flex items-center justify-center">
                           {/* 꿈의 버스 */}
-                          <div 
+                          <div
                             className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
-                              !targetSong && !isManualMode ? 
-                                (showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0') 
-                                : targetSong === '꿈의 버스' || (dreamBusSong && !insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0'
+                              !targetSong && !isManualMode
+                                ? showFirstSong
+                                  ? "transform translate-y-0 opacity-100"
+                                  : "transform -translate-y-6 opacity-0"
+                                : targetSong === "꿈의 버스" ||
+                                    (dreamBusSong && !insideOutSong)
+                                  ? "transform translate-y-0 opacity-100"
+                                  : "transform -translate-y-6 opacity-0"
                             }`}
                           >
                             {dreamBusSong && (
@@ -239,13 +246,18 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
                               </>
                             )}
                           </div>
-                          
+
                           {/* INSIDE OUT */}
-                          <div 
+                          <div
                             className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
-                              !targetSong && !isManualMode ? 
-                                (!showFirstSong ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0') 
-                                : targetSong === 'INSIDE OUT' || (!dreamBusSong && insideOutSong) ? 'transform translate-y-0 opacity-100' : 'transform -translate-y-6 opacity-0'
+                              !targetSong && !isManualMode
+                                ? !showFirstSong
+                                  ? "transform translate-y-0 opacity-100"
+                                  : "transform -translate-y-6 opacity-0"
+                                : targetSong === "INSIDE OUT" ||
+                                    (!dreamBusSong && insideOutSong)
+                                  ? "transform translate-y-0 opacity-100"
+                                  : "transform -translate-y-6 opacity-0"
                             }`}
                           >
                             {insideOutSong && (
@@ -261,7 +273,9 @@ export function CompactChart({ targetSong }: CompactChartProps = {}) {
                           </div>
                         </div>
                       ) : (
-                        <p className="font-medium text-sm text-orange-600">❌</p>
+                        <p className="font-medium text-sm text-orange-600">
+                          ❌
+                        </p>
                       )}
                     </div>
                   </div>

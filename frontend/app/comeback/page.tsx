@@ -17,7 +17,7 @@ const comebackScheduleRaw = [
     datetime: "2025-09-14",
   },
   {
-    date: "2025.09.15", 
+    date: "2025.09.15",
     event: "라이브클립 with 마이데이",
     status: "upcoming",
     description: "라이브클립 with 마이데이",
@@ -27,8 +27,10 @@ const comebackScheduleRaw = [
 
 // 날짜순 정렬하고 D-Day 계산
 const comebackSchedule = comebackScheduleRaw
-  .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
-  .map(schedule => ({
+  .sort(
+    (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
+  )
+  .map((schedule) => ({
     ...schedule,
     dDay: Math.ceil(
       (new Date(schedule.datetime).getTime() - new Date().getTime()) /

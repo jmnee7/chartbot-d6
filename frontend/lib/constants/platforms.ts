@@ -124,7 +124,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     urls: {
       android: ["https://tinyurl.com/4cheu3py"],
       iphone: ["https://tinyurl.com/yndm9fu6"],
-      pc: ["https://www.genie.co.kr/player/shareProcessV2?xgnm=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310"],
+      pc: [
+        "https://www.genie.co.kr/player/shareProcessV2?xgnm=110009288;110009289;105757622;107632311;89220627;107632312;110009288;110009289;86931930;107632311;105757621;107632317;110009288;110009289;105757622;84964153;107632314;107632310",
+      ],
     },
     url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
     deeplinks: {

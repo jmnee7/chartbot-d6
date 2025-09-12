@@ -60,13 +60,13 @@ function PlatformChart({
     if (timeMatch) {
       return timeMatch[1];
     }
-    
+
     // 백업: 레거시 형식 처리 (YYYY-MM-DD HH:mm:ss)
     const hourMatch = dateTimeString.match(/(\d{2}):/);
     if (hourMatch) {
       return `${hourMatch[1]}:00`;
     }
-    
+
     return "00:00"; // 최종 백업
   };
 
