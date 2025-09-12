@@ -88,6 +88,7 @@ def safe_int(value):
 
 
 from datetime import datetime, timedelta
+import pytz
 
 def get_current_timestamp():
     """
@@ -96,10 +97,10 @@ def get_current_timestamp():
     Returns:
         str: 현재 KST 시간 (YYYY-MM-DD HH:00:00 형식)
     """
-    # UTC 현재 시간
-    now_utc = datetime.utcnow()
-    # KST (UTC+9)로 변환
-    now_kst = now_utc + timedelta(hours=9)
+    # KST 시간대 객체 생성
+    kst_timezone = pytz.timezone('Asia/Seoul')
+    # 현재 UTC 시간을 KST로 변환
+    now_kst = datetime.now(kst_timezone)
     # 분과 초를 0으로 설정하여 정각으로 맞춤
     return now_kst.replace(minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:00:00')
 
@@ -111,11 +112,11 @@ def get_current_kst_timestamp_short():
     Returns:
         str: 현재 KST 시간 (YYYY-MM-DD HH:00 형식)
     """
-    # UTC 현재 시간
-    now_utc = datetime.utcnow()
-    # KST (UTC+9)로 변환
-    now_kst = now_utc + timedelta(hours=9)
-    # 분과 초를 0으로 설정하여 정각으로 맞춤
+    # KST 시간대 객체 생성
+    kst_timezone = pytz.timezone('Asia/Seoul')
+    # 현재 UTC 시간을 KST로 변환
+    now_kst = datetime.now(kst_timezone)
+    # 분과 초를 0으로 설정하여 정각으로 맞춤  
     return now_kst.replace(minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:00')
 
 
@@ -126,10 +127,10 @@ def get_current_kst_iso():
     Returns:
         str: 현재 KST 시간 (ISO 형식)
     """
-    # UTC 현재 시간
-    now_utc = datetime.utcnow()
-    # KST (UTC+9)로 변환
-    now_kst = now_utc + timedelta(hours=9)
+    # KST 시간대 객체 생성
+    kst_timezone = pytz.timezone('Asia/Seoul')
+    # 현재 KST 시간
+    now_kst = datetime.now(kst_timezone)
     return now_kst.isoformat() 
 
 
@@ -140,8 +141,8 @@ def get_current_kst_exact():
     Returns:
         str: 현재 KST 시간 (YYYY-MM-DD HH:mm:ss 형식)
     """
-    # UTC 현재 시간
-    now_utc = datetime.utcnow()
-    # KST (UTC+9)로 변환
-    now_kst = now_utc + timedelta(hours=9)
+    # KST 시간대 객체 생성
+    kst_timezone = pytz.timezone('Asia/Seoul')
+    # 현재 KST 시간
+    now_kst = datetime.now(kst_timezone)
     return now_kst.strftime('%Y-%m-%d %H:%M:%S')
