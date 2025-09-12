@@ -191,7 +191,7 @@ def get_youtube_stats_for_dashboard():
     print(f"📹 YouTube API 호출 시작 - {current_time.strftime('%H:%M')}")
     
     VIDEOS = [
-        {"id": "0fyZqS0N19o", "title": "Maybe Tomorrow"},  # DAY6 
+        {"id": "b_Eh-9Jz_L8", "title": "INSIDE OUT"},  # DAY6 
     ]
     
     crawler = YouTubeCrawler()
