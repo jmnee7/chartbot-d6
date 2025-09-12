@@ -55,16 +55,19 @@ function PlatformChart({
   };
 
   const formatCollectionTime = (dateTimeString: string) => {
-    // KST 시간 문자열에서 직접 시간 추출 (시간대 변환 문제 방지)
+    // KST 시간 문자열에서 직접 시간 추출 (Python에서 이미 HH:mm 형식으로 전송)
+    const timeMatch = dateTimeString.match(/(\d{2}:\d{2})/);
+    if (timeMatch) {
+      return timeMatch[1];
+    }
+    
+    // 백업: 레거시 형식 처리 (YYYY-MM-DD HH:mm:ss)
     const hourMatch = dateTimeString.match(/(\d{2}):/);
     if (hourMatch) {
       return `${hourMatch[1]}:00`;
     }
     
-    // 백업: 기존 방식
-    const date = new Date(dateTimeString + "+09:00"); // KST 명시
-    const hours = String(date.getHours()).padStart(2, "0");
-    return `${hours}:00`;
+    return "00:00"; // 최종 백업
   };
 
   return (

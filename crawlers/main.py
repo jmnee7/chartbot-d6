@@ -507,7 +507,7 @@ def save_frontend_data(filtered_data, youtube_stats, timestamp, rank_changes=Non
     
     # 정각 시간으로 collectedAtKST 설정 (시 + 00분)
     from utils import get_current_kst_timestamp_short
-    collected_at_kst = get_current_kst_timestamp_short() + ":00"
+    collected_at_kst = get_current_kst_timestamp_short()
     
     # latest.json 생성 (차트 데이터)
     latest_data = {
