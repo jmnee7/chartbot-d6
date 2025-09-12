@@ -208,8 +208,8 @@ def get_youtube_stats_for_dashboard():
         if stats:
             # 이전 데이터에서 24시간 전 값 찾기
             previous_stats = previous_data.get(video['id'], {})
-            previous_views = previous_stats.get('views', 0)
-            previous_likes = previous_stats.get('likes', 0)
+            previous_views = previous_stats.get('views', previous_stats.get('view_count', 0))
+            previous_likes = previous_stats.get('likes', previous_stats.get('like_count', 0))
             
             # 24시간 변화량 계산
             views_delta = calculate_24h_delta(stats['view_count'], previous_views)

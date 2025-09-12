@@ -42,7 +42,7 @@ def is_target_song(artist_name, song_title):
         return (artist_clean, song_clean) == TARGET_ARTIST_SONG
     
     elif SEARCH_MODE == "all":
-        is_target_artist = artist_clean == TARGET_ARTIST
+        is_target_artist = TARGET_ARTIST in artist_clean  # 부분 매칭으로 통일
         is_target_song_check = song_clean == TARGET_SONG
         is_specific_combo = (artist_clean, song_clean) == TARGET_ARTIST_SONG
         return is_target_artist or is_target_song_check or is_specific_combo

@@ -4,6 +4,7 @@
 
 import json
 import os
+import requests
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -70,8 +71,17 @@ def crawl_all_charts(crawlers, chart_type="top_100"):
                 print(f"  - 월간: {len(all_chart_data['melon_monthly'])} songs")
             else:
                 print(f"Successfully crawled {len(chart_data)} songs from {service_name}")
+        except requests.exceptions.Timeout as e:
+            print(f"⏱️ {service_name} 요청 시간 초과: {e}")
+            all_chart_data[service_name] = []
+        except requests.exceptions.ConnectionError as e:
+            print(f"🌐 {service_name} 연결 오류: {e}")
+            all_chart_data[service_name] = []
+        except requests.exceptions.HTTPError as e:
+            print(f"🚫 {service_name} HTTP 오류 ({e.response.status_code}): {e}")
+            all_chart_data[service_name] = []
         except Exception as e:
-            print(f"Error crawling {service_name}: {e}")
+            print(f"❌ {service_name} 크롤링 오류: {e}")
             all_chart_data[service_name] = []
     
     return all_chart_data
