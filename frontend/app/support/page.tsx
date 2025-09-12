@@ -308,41 +308,6 @@ export default function SupportPage() {
           </CardContent>
         </Card>
 
-        {/* 공구 진행 알림 배너 */}
-        <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
-          <CardContent className="p-4">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
-                <ShoppingBag className="w-4 h-4 text-white" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-purple-900 mb-1">
-                  정규 4집 &apos;The DECADE&apos; 공구 준비 중!
-                </h3>
-                <p className="text-sm text-purple-700 mb-2">
-                  데이식스 음원총공팀에서 공구를 준비하고 있습니다.
-                </p>
-                <div className="text-xs text-purple-600 space-y-1">
-                  <p>The DECADE Ver. - Random / 2종 SET</p>
-                  <p>The DECADE (Nemo Ver.) - Random / 2종 SET</p>
-                  <p>The DECADE (ID Card Ver.)</p>
-                  <p>The DECADE (In-Ear Earphones Ver.) - Random / 4종 SET</p>
-                </div>
-                <Button
-                  asChild
-                  size="sm"
-                  className="mt-3 bg-purple-600 hover:bg-purple-700 text-white"
-                >
-                  {}
-                  <a href="https://x.com/DAY6_STREAM/status/1956007712321318942">
-                    공구 소식 확인하기
-                    <ExternalLink className="w-3 h-3 ml-2" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Mobile Divider */}
         <div
@@ -595,7 +560,7 @@ export default function SupportPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    음원총공팀 공구 확인하기 →
+                    음원총공팀 확인하기 →
                   </a>
                 </Button>
               </div>
@@ -629,9 +594,7 @@ export default function SupportPage() {
                 {/* Warning */}
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
                   <p className="text-sm text-amber-800">
-                    아래는 일반 구매 가격입니다.{" "}
-                    <strong>공구 참여 시 더 저렴한 가격과 추가 특전</strong>을
-                    받을 수 있어요!
+                    아래는 일반 구매 가격입니다.
                   </p>
                 </div>
 
@@ -730,7 +693,7 @@ export default function SupportPage() {
                 <Card className="bg-purple-50 border-purple-200">
                   <CardContent className="p-4">
                     <p className="text-sm text-purple-800 mb-3">
-                      <strong>공구로 더 저렴하게 구매하세요!</strong>
+                      <strong>음원총공팀에서 더 많은 정보를 확인하세요!</strong>
                     </p>
                     <Button
                       asChild
@@ -742,7 +705,7 @@ export default function SupportPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        데이식스 음원총공팀 공구 확인하기
+                        데이식스 음원총공팀 확인하기
                         <ExternalLink className="w-3 h-3 ml-2" />
                       </a>
                     </Button>
