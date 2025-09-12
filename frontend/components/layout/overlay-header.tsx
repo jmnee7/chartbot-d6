@@ -12,7 +12,6 @@ interface OverlayHeaderProps {
 
 export function OverlayHeader({
   onMenuClick,
-  title = "데이식스 음원총공팀",
   variant = "overlay",
 }: OverlayHeaderProps) {
   const isOverlay = variant === "overlay";

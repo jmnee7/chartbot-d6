@@ -55,7 +55,7 @@ class ApiClient {
     }
   }
 
-  async getChartData(platform?: PlatformType): Promise<ApiResponse<ChartData>> {
+  async getChartData(): Promise<ApiResponse<ChartData>> {
     try {
       // All chart data is in latest.json
       const data = await this.fetchWithRetry<ChartData>(

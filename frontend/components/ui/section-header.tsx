@@ -3,7 +3,6 @@
 import { Clock } from "lucide-react";
 import { getLastUpdateDateTime } from "@/lib/utils/index";
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 
 interface SectionHeaderProps {
   title: string;

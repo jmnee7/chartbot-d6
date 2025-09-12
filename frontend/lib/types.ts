@@ -36,7 +36,7 @@ export interface ChartData {
   vibe: ChartSong[];
   flo: ChartSong[];
   last_updated?: string;
-  [key: string]: any; // Index signature for dynamic platform access
+  [key: string]: unknown; // Index signature for dynamic platform access
 }
 
 // Platform types
