@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/data/:path*",
-        destination:
-          "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data/:path*",
-      },
-    ];
-  },
+  // Temporary: Use local files directly instead of rewrite
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/data/:path*",
+  //       destination:
+  //         "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data/:path*",
+  //     },
+  //   ];
+  // },
   images: {
     remotePatterns: [
       {
