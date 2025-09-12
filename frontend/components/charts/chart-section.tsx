@@ -55,8 +55,14 @@ function PlatformChart({
   };
 
   const formatCollectionTime = (dateTimeString: string) => {
-    const date = new Date(dateTimeString);
-    // 정각으로 표시 (메인페이지와 통일)
+    // KST 시간 문자열에서 직접 시간 추출 (시간대 변환 문제 방지)
+    const hourMatch = dateTimeString.match(/(\d{2}):/);
+    if (hourMatch) {
+      return `${hourMatch[1]}:00`;
+    }
+    
+    // 백업: 기존 방식
+    const date = new Date(dateTimeString + "+09:00"); // KST 명시
     const hours = String(date.getHours()).padStart(2, "0");
     return `${hours}:00`;
   };
