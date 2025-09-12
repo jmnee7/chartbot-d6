@@ -2,7 +2,7 @@
 
 import {
   ExternalLink,
-  ShoppingBag,
+  // ShoppingBag, // 앨범 구매처 주석 처리로 인해 미사용
   Heart,
   Users,
   DollarSign,
@@ -36,116 +36,116 @@ interface SubItem {
   modalType?: "comingSoon";
 }
 
-// Album purchase locations data
-const albumStores = [
-  {
-    name: "FANS SHOP",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "5만원 미만 3,000원",
-    benefit: "포토카드 증정",
-    note: "",
-    url: "https://bit.ly/45fHCLp",
-  },
-  {
-    name: "YES24",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "무료",
-    benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
-    note: "배송비 무료",
-    url: "https://www.yes24.com/product/category/series/003001018002001?SeriesNumber=364429",
-  },
-  {
-    name: "애플뮤직",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "5만원 미만 3,500원",
-    benefit:
-      "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정 (4종 구매 시 중복 X)",
-    note: "이어폰반 2개 이상 구매 시 버전 중복 없이 발송",
-    url: "https://www.applemusic.co.kr",
-  },
-  {
-    name: "뮤직플랜트",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "5만원 미만 3,000원",
-    benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
-    note: "",
-    url: "https://www.musicplant.co.kr",
-  },
-  {
-    name: "위드뮤",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "5만원 미만 3,000원",
-    benefit:
-      "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정 (4종 구매 시 중복 X)",
-    note: "커버 확인 가능 시 이어폰반 4세트 구매 시 버전별 동일 수량 발송",
-    url: "#",
-  },
-  {
-    name: "뮤직코리아",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종)",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤)",
-    },
-    shipping: "5만원 미만 3,000원",
-    benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
-    note: "",
-    url: "https://www.musickorea.co.kr",
-  },
-  {
-    name: "알라딘",
-    prices: {
-      standard: "19,300원 (2종)",
-      nemo: "11,900원 (2종) / 세트 23,800원",
-      idCard: "22,300원",
-      earphone: "66,700원 (4종 랜덤) / 세트 266,800원",
-    },
-    shipping: "무료",
-    benefit: "",
-    note: "이어폰반 세트로 구매 가능",
-    url: "https://www.aladin.co.kr",
-  },
-];
+// Album purchase locations data - 주석 처리 (공구 삭제로 인해 사용 안 함)
+// const albumStores = [
+//   {
+//     name: "FANS SHOP",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "5만원 미만 3,000원",
+//     benefit: "포토카드 증정",
+//     note: "",
+//     url: "https://bit.ly/45fHCLp",
+//   },
+//   {
+//     name: "YES24",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "무료",
+//     benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
+//     note: "배송비 무료",
+//     url: "https://www.yes24.com/product/category/series/003001018002001?SeriesNumber=364429",
+//   },
+//   {
+//     name: "애플뮤직",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "5만원 미만 3,500원",
+//     benefit:
+//       "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정 (4종 구매 시 중복 X)",
+//     note: "이어폰반 2개 이상 구매 시 버전 중복 없이 발송",
+//     url: "https://www.applemusic.co.kr",
+//   },
+//   {
+//     name: "뮤직플랜트",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "5만원 미만 3,000원",
+//     benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
+//     note: "",
+//     url: "https://www.musicplant.co.kr",
+//   },
+//   {
+//     name: "위드뮤",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "5만원 미만 3,000원",
+//     benefit:
+//       "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정 (4종 구매 시 중복 X)",
+//     note: "커버 확인 가능 시 이어폰반 4세트 구매 시 버전별 동일 수량 발송",
+//     url: "#",
+//   },
+//   {
+//     name: "뮤직코리아",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종)",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤)",
+//     },
+//     shipping: "5만원 미만 3,000원",
+//     benefit: "예약판매기간 일반반 구매 시 포토카드 4종 중 1종 증정",
+//     note: "",
+//     url: "https://www.musickorea.co.kr",
+//   },
+//   {
+//     name: "알라딘",
+//     prices: {
+//       standard: "19,300원 (2종)",
+//       nemo: "11,900원 (2종) / 세트 23,800원",
+//       idCard: "22,300원",
+//       earphone: "66,700원 (4종 랜덤) / 세트 266,800원",
+//     },
+//     shipping: "무료",
+//     benefit: "",
+//     note: "이어폰반 세트로 구매 가능",
+//     url: "https://www.aladin.co.kr",
+//   },
+// ];
 
 const supportItems = [
-  {
-    title: "앨범 구매처",
-    icon: ShoppingBag,
-    color: "bg-purple-500",
-    links: [
-      {
-        name: "일반 구매처 가격 비교",
-        url: "#",
-        isModal: true,
-      },
-    ],
-  },
+  // {
+  //   title: "앨범 구매처",
+  //   icon: ShoppingBag,
+  //   color: "bg-purple-500",
+  //   links: [
+  //     {
+  //       name: "일반 구매처 가격 비교",
+  //       url: "#",
+  //       isModal: true,
+  //     },
+  //   ],
+  // },
   {
     title: "아이디 기부",
     icon: Heart,
