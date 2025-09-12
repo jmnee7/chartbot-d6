@@ -15,8 +15,9 @@ export default function AlertBanner() {
   console.log("votes", votes);
 
   const urgentVotes = votes?.filter((v) => {
+    const deadline = new Date(v.deadline);
     const daysLeft = Math.ceil(
-      (v.deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
+      (deadline.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
     );
     return daysLeft <= 1;
   });

@@ -21,7 +21,7 @@ export function useSummaryData() {
 export function useChartData(platform?: PlatformType) {
   return useQuery({
     queryKey: ["chart", platform],
-    queryFn: () => apiClient.getChartData(platform),
+    queryFn: () => apiClient.getChartData(),
     staleTime: 1000 * 60 * 30, // 30 minutes
     refetchInterval: CHART_UPDATE_INTERVAL, // Only refetch every hour
     retry: 2,
