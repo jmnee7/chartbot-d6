@@ -81,7 +81,7 @@ jobs:
           # 변경 사항이 있을 때만 커밋
           if ! git diff --staged --quiet; then
             echo "=== Committing changes ==="
-            git commit -m "📈 차트 데이터 자동 업데이트 - $(date +'%Y-%m-%d %H:%M KST')"
+            git commit -m "📈 차트 데이터 자동 업데이트 - $(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M KST')"
             # 원격 변경사항을 먼저 가져오기
             git pull origin main --no-rebase
             git push origin main
