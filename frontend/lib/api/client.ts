@@ -1,10 +1,9 @@
 // API client for fetching data from GitHub Pages
-import { ChartData, MVData, ApiResponse } from "@/lib/types/index";
-import { PlatformType } from "@/lib/types";
+import { ChartData, MVStats, ApiResponse, PlatformType } from "@/lib/types";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_DATA_BASE_URL ||
-  "https://raw.githubusercontent.com/YOUR_USERNAME//main/public-data";
+  "https://raw.githubusercontent.com/0seo8/d6/main/frontend/public/data";
 
 class ApiClient {
   private async fetchWithRetry<T>(url: string, retries = 3): Promise<T> {
@@ -56,10 +55,11 @@ class ApiClient {
     }
   }
 
-  async getChartData(platform: PlatformType): Promise<ApiResponse<ChartData>> {
+  async getChartData(platform?: PlatformType): Promise<ApiResponse<ChartData>> {
     try {
+      // All chart data is in latest.json
       const data = await this.fetchWithRetry<ChartData>(
-        `${BASE_URL}/charts/${platform}/latest.json`
+        `${BASE_URL}/latest.json`
       );
       return {
         data,
@@ -99,10 +99,10 @@ class ApiClient {
     }
   }
 
-  async getMVData(): Promise<ApiResponse<MVData[]>> {
+  async getMVData(): Promise<ApiResponse<MVStats[]>> {
     try {
-      const data = await this.fetchWithRetry<MVData[]>(
-        `${BASE_URL}/youtube/latest.json`
+      const data = await this.fetchWithRetry<MVStats[]>(
+        `${BASE_URL}/youtube_stats.json`
       );
       return {
         data,

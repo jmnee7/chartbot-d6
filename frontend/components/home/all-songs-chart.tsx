@@ -108,9 +108,11 @@ export function AllSongsChart() {
                   {/* 순위 */}
                   <div className="flex flex-col items-center min-w-[40px]">
                     <span className="text-xl font-bold text-gray-900">
-                      {song.rank}
+                      {song.rank || "-"}
                     </span>
-                    <span className="text-xs text-gray-400">위</span>
+                    <span className="text-xs text-gray-400">
+                      {song.rank ? "위" : ""}
+                    </span>
                   </div>
 
                   {/* 곡 정보 */}
