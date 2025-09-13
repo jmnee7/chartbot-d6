@@ -11,7 +11,7 @@ export default function MVStatsCard() {
     queryFn: fetchMVStats,
   });
 
-  const videoId = "b_Eh-9Jz_L8";
+  const videoId = "-N-pmPKS-bE";
   const videoTitle = "DAY6 - INSIDE OUT";
 
   return (
