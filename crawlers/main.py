@@ -19,8 +19,6 @@ from utils import get_current_timestamp, get_current_kst_timestamp_short, get_cu
 from target_songs import is_target_song, get_target_info
 from rank_tracker import RankTracker
 from youtube_crawler import get_youtube_stats_for_dashboard
-from supabase_client import SupabaseClient
-import time
 
 
 def init_crawlers():
@@ -716,23 +714,7 @@ def main():
     """
     메인 실행 함수
     """
-    start_time = time.time()
     print("Starting music chart crawler...")
-    
-    # Supabase 클라이언트 초기화
-    try:
-        db_client = SupabaseClient()
-        print("✅ Supabase 연결 성공")
-    except Exception as e:
-        print(f"⚠️ Supabase 연결 실패: {e}")
-        db_client = None
-    
-    # GitHub Run ID 또는 로컬 실행 ID 생성
-    execution_id = os.getenv('GITHUB_RUN_ID', f'local_{int(time.time())}')
-    
-    # 크롤러 실행 시작 로그
-    if db_client:
-        db_client.log_crawler_start(execution_id, 'scheduled' if os.getenv('GITHUB_ACTIONS') else 'manual')
     
     # 타겟 설정 정보 출력
     target_info = get_target_info()
@@ -754,24 +736,7 @@ def main():
     rank_changes = rank_tracker.get_rank_changes(filtered_data, target_songs_only=False)
     print(f"🔄 계산된 순위 변화: {rank_changes}")
     
-    # === 데이터베이스 저장 ===
-    if db_client:
-        print("\n💾 데이터베이스 저장 중...")
-        
-        # 플랫폼별로 차트 데이터 저장
-        for platform, songs in filtered_data.items():
-            if songs:  # 곡이 있는 경우만
-                platform_start = time.time()
-                try:
-                    db_client.save_chart_data(
-                        platform=platform,
-                        songs=songs,
-                        execution_time=int(time.time() - platform_start),
-                        github_run_id=execution_id
-                    )
-                    print(f"✅ {platform}: {len(songs)}곡 DB 저장 완료")
-                except Exception as e:
-                    print(f"❌ {platform} DB 저장 실패: {e}")
+    # 트위터 연동 제거됨
     
     # 현재 데이터를 히스토리에 저장 (타겟 곡만)
     current_timestamp = get_current_kst_timestamp_short() + ":00" # 정각 타임스탬프 가져오기
@@ -783,39 +748,16 @@ def main():
     # 타겟 곡 요약 출력 (순위 변화 포함)
     print_target_summary(filtered_data, rank_changes)
     
-    # YouTube 통계 수집 및 DB 저장
+    # 타겟 곡 웹페이지는 제거 (프론트엔드에서 처리)
+    
+    # YouTube 통계 수집
     print("\n📹 YouTube 통계 수집 중...")
     youtube_stats = get_youtube_stats_for_dashboard()
     
-    if db_client and youtube_stats:
-        try:
-            # YouTube 통계를 DB에 저장 (관리자 설정에서 비디오 정보 가져오기)
-            stats_video = db_client.get_admin_setting('youtube_videos', {}).get('stats_video', {})
-            if stats_video and 'id' in stats_video:
-                db_client.save_youtube_stats(
-                    video_id=stats_video['id'],
-                    video_title=stats_video.get('title', 'Unknown'),
-                    stats=youtube_stats,
-                    github_run_id=execution_id
-                )
-                print("✅ YouTube 통계 DB 저장 완료")
-        except Exception as e:
-            print(f"❌ YouTube 통계 DB 저장 실패: {e}")
-    
-    # frontend용 데이터 파일 생성 (기존 방식 유지)
+    # frontend용 데이터 파일 생성
     save_frontend_data(filtered_data, youtube_stats, current_timestamp, rank_changes)
     
-    # 크롤러 실행 완료 로그
-    total_execution_time = int(time.time() - start_time)
-    if db_client:
-        try:
-            results = {platform: songs for platform, songs in filtered_data.items() if songs}
-            db_client.log_crawler_complete(execution_id, results)
-            print(f"✅ 크롤러 실행 로그 저장 완료 (실행시간: {total_execution_time}초)")
-        except Exception as e:
-            print(f"❌ 크롤러 완료 로그 저장 실패: {e}")
-    
-    print(f"Music chart crawling completed successfully! (총 {total_execution_time}초)")
+    print("Music chart crawling completed successfully!")
 
 
 if __name__ == "__main__":
