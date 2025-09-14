@@ -127,12 +127,33 @@ def is_exact_hour():
 
 def load_previous_youtube_data():
     """
-    이전 YouTube 통계 데이터 로드
+    이전 YouTube 통계 데이터 로드 (1시간 전 데이터)
     
     Returns:
         Dict: 이전 YouTube 통계 데이터 (video_id를 키로 하는 딕셔너리)
     """
     try:
+        # 먼저 history 파일에서 1시간 전 데이터 찾기
+        history_file = "../frontend/public/data/youtube_history.json"
+        if os.path.exists(history_file):
+            with open(history_file, 'r', encoding='utf-8') as f:
+                history_data = json.load(f)
+                # 1시간 전 데이터 찾기
+                if history_data:
+                    kst_timezone = pytz.timezone('Asia/Seoul')
+                    now = datetime.now(kst_timezone)
+                    hour_ago = now - timedelta(hours=1)
+                    hour_ago_key = hour_ago.strftime('%Y-%m-%d %H:00')
+                    
+                    if hour_ago_key in history_data:
+                        return history_data[hour_ago_key]
+                    else:
+                        # 가장 최근 데이터 반환
+                        sorted_keys = sorted(history_data.keys())
+                        if sorted_keys:
+                            return history_data[sorted_keys[-1]]
+        
+        # history 파일이 없으면 현재 파일에서 로드 (첫 실행 시)
         output_file = "../frontend/public/data/youtube_stats.json"
         if os.path.exists(output_file):
             with open(output_file, 'r', encoding='utf-8') as f:
@@ -159,21 +180,21 @@ def load_previous_youtube_data():
     
     return {}
 
-def calculate_24h_delta(current_value, previous_value):
+def calculate_hourly_delta(current_value, previous_value):
     """
-    24시간 변화량 계산
+    1시간 변화량 계산
     
     Args:
         current_value (int): 현재 값
         previous_value (int): 이전 값
         
     Returns:
-        int: 24시간 변화량
+        int: 1시간 변화량
     """
     try:
-        if previous_value is None or previous_value == 0:
+        if previous_value is None:
             return 0  # 이전 데이터가 없으면 변화량 0
-        return max(0, current_value - previous_value)  # 음수 방지 (조회수는 감소하지 않음)
+        return current_value - previous_value  # 1시간 변화는 음수도 가능 (좋아요 취소 등)
     except (TypeError, ValueError):
         return 0
 
@@ -197,7 +218,7 @@ def get_youtube_stats_for_dashboard():
     crawler = YouTubeCrawler()
     all_stats = []
     
-    # 이전 데이터 로드 (24시간 변화량 계산용)
+    # 이전 데이터 로드 (1시간 변화량 계산용)
     previous_data = load_previous_youtube_data()
     print(f"📊 이전 YouTube 데이터 로드: {len(previous_data)}개")
     
@@ -206,14 +227,14 @@ def get_youtube_stats_for_dashboard():
         stats = crawler.get_video_stats(video['id'])
         
         if stats:
-            # 이전 데이터에서 24시간 전 값 찾기
+            # 이전 데이터에서 1시간 전 값 찾기
             previous_stats = previous_data.get(video['id'], {})
             previous_views = previous_stats.get('views', previous_stats.get('view_count', 0))
             previous_likes = previous_stats.get('likes', previous_stats.get('like_count', 0))
             
-            # 24시간 변화량 계산
-            views_delta = calculate_24h_delta(stats['view_count'], previous_views)
-            likes_delta = calculate_24h_delta(stats['like_count'], previous_likes)
+            # 1시간 변화량 계산
+            views_delta = calculate_hourly_delta(stats['view_count'], previous_views)
+            likes_delta = calculate_hourly_delta(stats['like_count'], previous_likes)
             
             print(f"  📊 {video['title']} 변화량: 조회수 +{views_delta:,}, 좋아요 +{likes_delta:,}")
             
@@ -221,8 +242,8 @@ def get_youtube_stats_for_dashboard():
                 'title': video['title'],
                 'views': stats['view_count'],
                 'likes': stats['like_count'],
-                'viewsDelta24h': views_delta,
-                'likesDelta24h': likes_delta,
+                'viewsDelta1h': views_delta,
+                'likesDelta1h': likes_delta,
                 'video_id': video['id'],  # video_id 추가 (다음 비교를 위해)
                 'link': f"https://youtu.be/{video['id']}",
                 'last_updated': stats['last_updated']
@@ -234,8 +255,8 @@ def get_youtube_stats_for_dashboard():
                 'title': video['title'],
                 'views': previous_stats.get('views', 0),
                 'likes': previous_stats.get('likes', 0),
-                'viewsDelta24h': 0,  # API 실패시 변화량은 0
-                'likesDelta24h': 0,
+                'viewsDelta1h': 0,  # API 실패시 변화량은 0
+                'likesDelta1h': 0,
                 'video_id': video['id'],
                 'link': f"https://youtu.be/{video['id']}",
                 'last_updated': get_current_kst_iso()
