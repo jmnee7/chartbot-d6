@@ -5,7 +5,7 @@ YouTube 데이터 크롤러 - YouTube Data API v3 사용
 import os
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Dict, Optional
 from utils import get_current_kst_iso
 import pytz
@@ -244,12 +244,44 @@ def get_youtube_stats_for_dashboard():
     # 통합 통계 파일로 저장
     try:
         output_file = "../frontend/public/data/youtube_stats.json"
+        history_file = "../frontend/public/data/youtube_history.json"
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         
+        # 현재 통계 저장
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(all_stats, f, ensure_ascii=False, indent=2)
         
+        # history 파일에도 저장 (시간별로 보관)
+        kst_timezone = pytz.timezone('Asia/Seoul')
+        current_hour = datetime.now(kst_timezone).strftime('%Y-%m-%d %H:00')
+        
+        # 기존 history 로드
+        history = {}
+        if os.path.exists(history_file):
+            try:
+                with open(history_file, 'r', encoding='utf-8') as f:
+                    history = json.load(f)
+            except:
+                history = {}
+        
+        # 현재 시간 데이터를 video_id 기반 딕셔너리로 저장
+        current_data = {}
+        for stat in all_stats:
+            if 'video_id' in stat:
+                current_data[stat['video_id']] = stat
+        
+        history[current_hour] = current_data
+        
+        # 7일 이상 된 데이터 삭제 (메모리 관리)
+        cutoff_date = (datetime.now(kst_timezone) - timedelta(days=7)).strftime('%Y-%m-%d')
+        history = {k: v for k, v in history.items() if k >= cutoff_date}
+        
+        # history 저장
+        with open(history_file, 'w', encoding='utf-8') as f:
+            json.dump(history, f, ensure_ascii=False, indent=2)
+        
         print(f"📊 YouTube 통계 저장 완료: {output_file}")
+        print(f"📚 YouTube history 저장 완료: {history_file} ({len(history)}개 시간대)")
     except Exception as e:
         print(f"❌ YouTube 통계 저장 실패: {e}")
     
