@@ -361,6 +361,31 @@ export const MV_PLATFORMS: Platform[] = [
   },
 ];
 
+export interface MusicVideo {
+  id: string;
+  title: string;
+  subtitle?: string;
+  youtubeUrl: string;
+  thumbnail?: string;
+}
+
+export const FEATURED_MVS: MusicVideo[] = [
+  {
+    id: "inside-out",
+    title: "INSIDE OUT",
+    subtitle: "Official MV",
+    youtubeUrl: "https://www.youtube.com/watch?v=-N-pmPKS-bE",
+    thumbnail: "https://i.ytimg.com/vi/-N-pmPKS-bE/hqdefault.jpg",
+  },
+  {
+    id: "dream-bus",
+    title: "꿈의 버스 (Dream Bus)",
+    subtitle: "Official MV",
+    youtubeUrl: "https://www.youtube.com/watch?v=hZ6pts6e8dI",
+    thumbnail: "https://i.ytimg.com/vi/hZ6pts6e8dI/hqdefault.jpg",
+  },
+];
+
 export const DOWNLOAD_PLATFORMS: Platform[] = [
   {
     id: "melon",

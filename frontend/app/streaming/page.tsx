@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { MUSIC_PLATFORMS } from "@/lib/constants/platforms";
+import { MUSIC_PLATFORMS, FEATURED_MVS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -88,35 +88,52 @@ export default function StreamingPage() {
                 className="space-y-6"
               >
                 <Card>
-                  <CardContent className="p-4">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 border border-gray-200 rounded-lg">
-                      <div className="flex items-center gap-3 flex-1 min-w-0">
-                        <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Play className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="font-medium text-sm truncate">
-                            Maybe Tomorrow
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            Official MV
-                          </div>
-                        </div>
-                      </div>
-                      <Button
-                        size="sm"
-                        className="bg-red-500 hover:bg-red-600 text-white text-xs w-full sm:w-auto"
-                        onClick={() =>
-                          window.open(
-                            "https://www.youtube.com/watch?v=-N-pmPKS-bE",
-                            "_blank"
-                          )
-                        }
+                  <CardContent className="p-4 space-y-3">
+                    {FEATURED_MVS.map((mv) => (
+                      <div
+                        key={mv.id}
+                        className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors"
                       >
-                        <Play className="w-3 h-3 mr-1" />
-                        재생
-                      </Button>
-                    </div>
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                          {mv.thumbnail ? (
+                            <div className="relative w-20 h-12 flex-shrink-0 rounded overflow-hidden">
+                              <Image
+                                src={mv.thumbnail}
+                                alt={mv.title}
+                                fill
+                                className="object-cover"
+                                sizes="80px"
+                              />
+                              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                <Play className="w-4 h-4 text-white" />
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <Play className="w-5 h-5 text-white" />
+                            </div>
+                          )}
+                          <div className="min-w-0 flex-1">
+                            <div className="font-medium text-sm truncate">
+                              {mv.title}
+                            </div>
+                            {mv.subtitle && (
+                              <div className="text-xs text-gray-500">
+                                {mv.subtitle}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <Button
+                          size="sm"
+                          className="bg-red-500 hover:bg-red-600 text-white text-xs w-full sm:w-auto"
+                          onClick={() => window.open(mv.youtubeUrl, "_blank")}
+                        >
+                          <Play className="w-3 h-3 mr-1" />
+                          재생
+                        </Button>
+                      </div>
+                    ))}
                   </CardContent>
                 </Card>
               </motion.div>
