@@ -136,23 +136,28 @@ export function openPlatformAuto(
 ): void {
   const deviceType = getDeviceType();
 
-  // urls 필드 확인 (새로운 tinyurl 링크)
-  const urls =
-    platform.urls?.[deviceType === "ios" ? "iphone" : deviceType] || [];
+  // 바이브 안드로이드의 경우 deeplinks를 우선 사용 (앱 실행 문제 해결)
+  const useDeeplinksFirst = platform.id === "vibe" && deviceType === "android";
+  
+  if (!useDeeplinksFirst) {
+    // urls 필드 확인 (새로운 tinyurl 링크)
+    const urls =
+      platform.urls?.[deviceType === "ios" ? "iphone" : deviceType] || [];
 
-  // urls가 있으면 사용, 없으면 기존 deeplinks 사용
-  if (urls.length > 0) {
-    let stepIndex = 0;
-    if (deviceType === "android" && options.androidStep !== undefined) {
-      stepIndex = options.androidStep;
-    } else if (deviceType === "ios" && options.iosStep !== undefined) {
-      stepIndex = options.iosStep;
-    }
+    // urls가 있으면 사용, 없으면 기존 deeplinks 사용
+    if (urls.length > 0) {
+      let stepIndex = 0;
+      if (deviceType === "android" && options.androidStep !== undefined) {
+        stepIndex = options.androidStep;
+      } else if (deviceType === "ios" && options.iosStep !== undefined) {
+        stepIndex = options.iosStep;
+      }
 
-    const url = urls[stepIndex] || urls[0];
-    if (url) {
-      window.open(url, "_blank");
-      return;
+      const url = urls[stepIndex] || urls[0];
+      if (url) {
+        window.open(url, "_blank");
+        return;
+      }
     }
   }
 
