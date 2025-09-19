@@ -59,7 +59,7 @@ export default function StreamingPage() {
                   <CardContent className="p-4">
                     <div className="relative w-full">
                       <Image
-                        src="/streaming/streaming-list.png"
+                        src="/streaming/10th_anniversary.jpg"
                         alt="스트리밍 리스트"
                         width={1200}
                         height={800}
