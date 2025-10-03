@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2025-10-04 03:00",
+  "lastUpdated": "2025-10-04 04:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -25,19 +25,19 @@
         },
         {
           "rank": 37,
-          "title": "꿈의 버스",
+          "title": "예뻤어",
           "artist": "DAY6 (데이식스)",
-          "album": "The DECADE",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
+          "album": "Every DAY6 February",
+          "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
           "change": 1,
           "changeText": "↑1"
         },
         {
           "rank": 38,
-          "title": "예뻤어",
+          "title": "꿈의 버스",
           "artist": "DAY6 (데이식스)",
-          "album": "Every DAY6 February",
-          "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
+          "album": "The DECADE",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
           "change": -1,
           "changeText": "↓1"
         },
@@ -378,13 +378,13 @@
       "name": "플로",
       "songs": [
         {
-          "rank": 34,
+          "rank": 33,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": 1,
+          "changeText": "↑1"
         },
         {
           "rank": 40,
@@ -401,11 +401,11 @@
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": -10,
-          "changeText": "↓10"
+          "change": 0,
+          "changeText": "-"
         },
         {
-          "rank": 80,
+          "rank": 81,
           "title": "꿈의 버스",
           "artist": "DAY6 (데이식스)",
           "album": "The DECADE",
