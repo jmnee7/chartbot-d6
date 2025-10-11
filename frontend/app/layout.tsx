@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import { MobileAppLayout } from "@/components/layout/mobile-app-layout";
+import { ConditionalLayout } from "@/components/layout/conditional-layout";
 
 const notoSansKR = Noto_Sans_KR({
   variable: "--font-noto-sans-kr",
@@ -95,7 +95,7 @@ export default function RootLayout({
         className={`${notoSansKR.variable} ${montserrat.variable} antialiased font-sans`}
       >
         <Providers>
-          <MobileAppLayout>{children}</MobileAppLayout>
+          <ConditionalLayout>{children}</ConditionalLayout>
         </Providers>
       </body>
     </html>
