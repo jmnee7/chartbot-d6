@@ -131,5 +131,5 @@ These are configured in **GitHub Actions secrets** for automated runs.
 Frontend-specific variables (place in `frontend/.env.local`):
 
 ```
-NEXT_PUBLIC_DATA_BASE_URL=https://raw.githubusercontent.com/<OWNER>/<REPO>/master/docs/public-data
+NEXT_PUBLIC_DATA_BASE_URL=https://raw.githubusercontent.com/<OWNER>/<REPO>/main/docs/public-data
 ```
