@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { 
   fetchTrackingVideos,
-  updateVideo,
-  type YouTubeVideo
+  updateVideo
 } from "@/lib/api/youtube";
 import {
   Dialog,

@@ -15,7 +15,15 @@ import {
 } from "lucide-react";
 
 // Mock data - 나중에 실제 데이터로 교체
-const stats = [
+type ChangeType = "positive" | "negative" | "neutral";
+
+const stats: Array<{
+  title: string;
+  value: string;
+  change: string;
+  changeType: ChangeType;
+  icon: any;
+}> = [
   {
     title: "총 링크 수",
     value: "24",

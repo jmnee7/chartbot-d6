@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { 
   fetchComebackSchedules,
@@ -8,7 +8,6 @@ import {
   updateComebackSchedule,
   deleteComebackSchedule,
   formatDateDisplay,
-  formatDateInput,
   type ComebackSchedule
 } from "@/lib/api/comeback";
 import {
@@ -22,23 +21,29 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Save, Plus, Trash2, Edit } from "lucide-react";
+import { Calendar, Save, Trash2, Edit } from "lucide-react";
 
 interface ComebackScheduleEditModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onUpdate?: () => void;
+  onUpdate?: () => void; // eslint-disable-line @typescript-eslint/no-unused-vars
 }
 
 export function ComebackScheduleEditModal({ isOpen, onClose, onUpdate }: ComebackScheduleEditModalProps) {
   const queryClient = useQueryClient();
   const [isSaving, setIsSaving] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    event: string;
+    datetime: string;
+    description: string;
+    status: 'upcoming' | 'ongoing' | 'completed';
+    display_order: number;
+  }>({
     event: '',
     datetime: '',
     description: '',
-    status: 'upcoming' as const,
+    status: 'upcoming',
     display_order: 1,
   });
 

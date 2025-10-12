@@ -12,7 +12,7 @@ interface YouTubeBannerProps {
 
 export default function YouTubeBanner({ videoId }: YouTubeBannerProps) {
   const { isAdminMode } = useAdminMode();
-  const [featuredVideo, setFeaturedVideo] = useState<any>(null);
+  const [featuredVideo, setFeaturedVideo] = useState<{video_id: string} | null>(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
   useEffect(() => {

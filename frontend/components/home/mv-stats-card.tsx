@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Eye, Heart, Edit } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMVStats } from "@/lib/api";
-import { fetchTrackingVideos, fetchVideoStats } from "@/lib/api/youtube";
+import { fetchTrackingVideos } from "@/lib/api/youtube";
 import { useEffect, useState } from "react";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 import { MVStatsEditModal } from "@/components/admin/mv-stats-edit-modal";
@@ -12,7 +12,7 @@ import { MVStatsEditModal } from "@/components/admin/mv-stats-edit-modal";
 export default function MVStatsCard() {
   const { isAdminMode } = useAdminMode();
   const [showEditModal, setShowEditModal] = useState(false);
-  const [currentVideo, setCurrentVideo] = useState<any>(null);
+  const [currentVideo, setCurrentVideo] = useState<{video_id: string; title: string} | null>(null);
   
   const { data: mvStats } = useQuery({
     queryKey: ["mvStats"],

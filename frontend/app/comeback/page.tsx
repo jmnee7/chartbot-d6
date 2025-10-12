@@ -7,9 +7,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchComebackSchedules, calculateDDay, type ComebackSchedule } from "@/lib/api/comeback";
+import { fetchComebackSchedules, calculateDDay } from "@/lib/api/comeback";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 import { ComebackScheduleEditModal } from "@/components/admin/comeback-schedule-edit-modal";
 
@@ -19,7 +19,7 @@ export default function ComebackPage() {
   const [showEditModal, setShowEditModal] = useState(false);
   
   // DB에서 컴백 스케줄 가져오기
-  const { data: dbSchedules, isLoading } = useQuery({
+  const { data: dbSchedules } = useQuery({
     queryKey: ["comebackSchedules"],
     queryFn: fetchComebackSchedules,
     staleTime: 60000,

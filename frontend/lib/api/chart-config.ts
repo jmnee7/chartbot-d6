@@ -142,7 +142,7 @@ export async function addChartDisplayConfig(
 // 차트 설정 업데이트 (관리자용)
 export async function updateChartSetting(
   key: string,
-  value: any
+  value: string | number | boolean
 ): Promise<boolean> {
   try {
     const { error } = await supabase
