@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-10-12 16:00",
+  "collectedAtKST": "2025-10-12 17:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -15,7 +15,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": 0
     },
     {
       "rank": 31,
@@ -23,23 +23,23 @@
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/103/07/346/10307346_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
-    },
-    {
-      "rank": 42,
-      "title": "예뻤어",
-      "artist": "DAY6 (데이식스)",
-      "album": "Every DAY6 February",
-      "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
     },
     {
       "rank": 44,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "album": "Every DAY6 February",
+      "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": -2
+    },
+    {
+      "rank": 45,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": -1
     },
     {
       "rank": 49,
@@ -47,15 +47,15 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -1
+      "change": 0
     },
     {
-      "rank": 91,
+      "rank": 86,
       "title": "INSIDE OUT",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -4
+      "change": 5
     }
   ],
   "melon_hot100": [
@@ -65,7 +65,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -1
+      "change": 0
     },
     {
       "rank": 25,
@@ -84,44 +84,44 @@
       "change": 0
     },
     {
-      "rank": 49,
+      "rank": 54,
       "title": "Disco Day",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 4
+      "change": -5
     },
     {
-      "rank": 60,
+      "rank": 59,
       "title": "별들 앞에서",
+      "artist": "DAY6 (데이식스)",
+      "album": "The DECADE",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 1
+    },
+    {
+      "rank": 66,
+      "title": "우리의 계절",
+      "artist": "DAY6 (데이식스)",
+      "album": "The DECADE",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 3
+    },
+    {
+      "rank": 67,
+      "title": "Take All My Heart",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
       "change": -2
     },
     {
-      "rank": 65,
-      "title": "Take All My Heart",
-      "artist": "DAY6 (데이식스)",
-      "album": "The DECADE",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 2
-    },
-    {
-      "rank": 67,
+      "rank": 68,
       "title": "My Way",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 4
-    },
-    {
-      "rank": 69,
-      "title": "우리의 계절",
-      "artist": "DAY6 (데이식스)",
-      "album": "The DECADE",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -3
+      "change": -1
     },
     {
       "rank": 70,
@@ -137,7 +137,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": 0
     }
   ],
   "melon_daily": [
@@ -305,7 +305,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": 0
     },
     {
       "rank": 31,
@@ -313,23 +313,23 @@
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/103/07/346/10307346_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
-    },
-    {
-      "rank": 42,
-      "title": "예뻤어",
-      "artist": "DAY6 (데이식스)",
-      "album": "Every DAY6 February",
-      "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
     },
     {
       "rank": 44,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "album": "Every DAY6 February",
+      "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": -2
+    },
+    {
+      "rank": 45,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": -1
     },
     {
       "rank": 49,
@@ -337,15 +337,15 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -1
+      "change": 0
     },
     {
-      "rank": 91,
+      "rank": 86,
       "title": "INSIDE OUT",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -4
+      "change": 5
     },
     {
       "rank": 37,
@@ -356,44 +356,44 @@
       "change": 0
     },
     {
-      "rank": 49,
+      "rank": 54,
       "title": "Disco Day",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 4
+      "change": -5
     },
     {
-      "rank": 60,
+      "rank": 59,
       "title": "별들 앞에서",
+      "artist": "DAY6 (데이식스)",
+      "album": "The DECADE",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 1
+    },
+    {
+      "rank": 66,
+      "title": "우리의 계절",
+      "artist": "DAY6 (데이식스)",
+      "album": "The DECADE",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 3
+    },
+    {
+      "rank": 67,
+      "title": "Take All My Heart",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
       "change": -2
     },
     {
-      "rank": 65,
-      "title": "Take All My Heart",
-      "artist": "DAY6 (데이식스)",
-      "album": "The DECADE",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 2
-    },
-    {
-      "rank": 67,
+      "rank": 68,
       "title": "My Way",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 4
-    },
-    {
-      "rank": 69,
-      "title": "우리의 계절",
-      "artist": "DAY6 (데이식스)",
-      "album": "The DECADE",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": -3
+      "change": -1
     },
     {
       "rank": 70,
@@ -409,12 +409,12 @@
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/121/00/029/12100029_20250905101446_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 1
+      "change": 0
     }
   ],
   "genie": [
     {
-      "rank": 15,
+      "rank": 16,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -422,126 +422,126 @@
       "change": -1
     },
     {
-      "rank": 23,
+      "rank": 24,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/244/101/81244101_1563174738943_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 3
+      "change": -1
     },
     {
-      "rank": 30,
+      "rank": 31,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
       "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 0
+      "change": -1
     },
     {
-      "rank": 31,
+      "rank": 32,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/084/877/280/84877280_1710728168568_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 1
+      "change": -1
     },
     {
-      "rank": 82,
+      "rank": 84,
       "title": "Congratulations",
       "artist": "DAY6 (데이식스)",
       "album": "The Day",
       "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/683/898/80683898_1441353050316_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 4
+      "change": -2
     }
   ],
   "bugs": [
     {
-      "rank": 19,
+      "rank": 16,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/202657/20265759.jpg?version=20211119004415",
-      "change": 0
+      "change": 3
     },
     {
-      "rank": 20,
-      "title": "INSIDE OUT",
-      "artist": "DAY6 (데이식스)",
-      "album": "",
-      "albumArt": "https://image.bugsm.co.kr/album/images/50/207535/20753540.jpg?version=20250916011214",
-      "change": 2
-    },
-    {
-      "rank": 23,
-      "title": "꿈의 버스",
-      "artist": "DAY6 (데이식스)",
-      "album": "",
-      "albumArt": "https://image.bugsm.co.kr/album/images/50/207535/20753540.jpg?version=20250916011214",
-      "change": -2
-    },
-    {
-      "rank": 25,
+      "rank": 21,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-      "change": -8
+      "change": 4
     },
     {
-      "rank": 31,
+      "rank": 27,
+      "title": "INSIDE OUT",
+      "artist": "DAY6 (데이식스)",
+      "album": "",
+      "albumArt": "https://image.bugsm.co.kr/album/images/50/207535/20753540.jpg?version=20250916011214",
+      "change": -7
+    },
+    {
+      "rank": 28,
+      "title": "꿈의 버스",
+      "artist": "DAY6 (데이식스)",
+      "album": "",
+      "albumArt": "https://image.bugsm.co.kr/album/images/50/207535/20753540.jpg?version=20250916011214",
+      "change": -5
+    },
+    {
+      "rank": 36,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-      "change": -3
+      "change": -5
     },
     {
-      "rank": 42,
-      "title": "Congratulations",
-      "artist": "DAY6 (데이식스)",
-      "album": "",
-      "albumArt": "https://image.bugsm.co.kr/album/images/50/5297/529710.jpg?version=20190719114948",
-      "change": 2
-    },
-    {
-      "rank": 56,
-      "title": "Love me or Leave me",
-      "artist": "DAY6 (데이식스)",
-      "album": "",
-      "albumArt": "https://image.bugsm.co.kr/album/images/50/203237/20323788.jpg?version=20241114011724",
-      "change": 37
-    },
-    {
-      "rank": 66,
+      "rank": 47,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/200804/20080494.jpg?version=20240805121438",
-      "change": -12
+      "change": 19
     },
     {
-      "rank": 83,
-      "title": "녹아내려요",
+      "rank": 61,
+      "title": "Congratulations",
       "artist": "DAY6 (데이식스)",
       "album": "",
-      "albumArt": "https://image.bugsm.co.kr/album/images/50/206680/20668087.jpg?version=20240903005613",
-      "change": 11
+      "albumArt": "https://image.bugsm.co.kr/album/images/50/5297/529710.jpg?version=20190719114948",
+      "change": -19
     },
     {
-      "rank": 92,
+      "rank": 76,
+      "title": "Love me or Leave me",
+      "artist": "DAY6 (데이식스)",
+      "album": "",
+      "albumArt": "https://image.bugsm.co.kr/album/images/50/203237/20323788.jpg?version=20241114011724",
+      "change": -20
+    },
+    {
+      "rank": 80,
       "title": "Maybe Tomorrow",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/207241/20724195.jpg?version=20250508024718",
-      "change": -47
+      "change": 12
     },
     {
-      "rank": 99,
+      "rank": 88,
+      "title": "녹아내려요",
+      "artist": "DAY6 (데이식스)",
+      "album": "",
+      "albumArt": "https://image.bugsm.co.kr/album/images/50/206680/20668087.jpg?version=20240903005613",
+      "change": -5
+    },
+    {
+      "rank": 98,
       "title": "해야 뜨지 말아 줘",
       "artist": "DAY6 (데이식스)",
       "album": "",
       "albumArt": "https://image.bugsm.co.kr/album/images/50/207535/20753540.jpg?version=20250916011214",
-      "change": -1
+      "change": 1
     }
   ],
   "vibe": [
@@ -593,31 +593,31 @@
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": 0
     },
     {
-      "rank": 73,
+      "rank": 71,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": 2
     },
     {
-      "rank": 91,
+      "rank": 89,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
       "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": 2
     },
     {
-      "rank": 94,
+      "rank": 93,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/735/875/42/04/442875735_1861b36c51b94209_s.jpg?1756882609883/dims/resize/1000x1000/quality/90",
-      "change": -1
+      "change": 1
     }
   ]
 }
