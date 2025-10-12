@@ -16,6 +16,9 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { useState, useEffect } from "react";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { ChartEditModal } from "@/components/admin/chart-edit-modal";
+import { Settings } from "lucide-react";
 
 interface CompactChartProps {
   targetSong?: string;
@@ -23,6 +26,8 @@ interface CompactChartProps {
 }
 
 export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
+  const { isAdminMode } = useAdminMode();
+  
   // 차트 데이터
   const { data: chartData, isLoading: isChartLoading } = useQuery({
     queryKey: ["chartData"],
@@ -139,8 +144,21 @@ export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
   };
 
   return (
-    <Card>
+    <Card className="relative">
       <CardContent className="p-0">
+        {/* 관리자 편집 버튼 */}
+        {isAdminMode && (
+          <div className="absolute top-2 right-2 z-10">
+            <ChartEditModal
+              trigger={
+                <button className="w-8 h-8 bg-mint-primary/10 hover:bg-mint-primary/20 rounded-lg flex items-center justify-center transition-colors">
+                  <Settings className="w-4 h-4 text-mint-primary" />
+                </button>
+              }
+            />
+          </div>
+        )}
+        
         {/* 기존과 동일한 타이틀곡 인디케이터 */}
         {!targetSong && activeSongs.length > 1 && (
           <div className="flex items-center gap-2 pt-3 pb-2 px-4">

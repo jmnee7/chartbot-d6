@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { MobileAppLayout } from "@/components/layout/mobile-app-layout";
 import { AdminAuthModal } from "@/components/admin/auth-modal";
+import { AdminIndicator } from "@/components/admin/admin-indicator";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
       <>
         {children}
         <AdminAuthModal />
+        <AdminIndicator />
       </>
     );
   }
@@ -29,6 +31,7 @@ export function ConditionalLayout({ children }: ConditionalLayoutProps) {
     <>
       <MobileAppLayout>{children}</MobileAppLayout>
       <AdminAuthModal />
+      <AdminIndicator />
     </>
   );
 }
