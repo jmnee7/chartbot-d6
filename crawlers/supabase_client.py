@@ -168,6 +168,32 @@ class SupabaseClient:
         })
         return config
     
+    def get_tracking_videos(self) -> List[Dict[str, str]]:
+        """
+        크롤링할 tracking 비디오 목록 가져오기
+        
+        Returns:
+            List[Dict]: video_id와 title이 포함된 비디오 목록
+        """
+        if not self.is_available():
+            return []
+            
+        try:
+            response = self.client.table('youtube_videos').select('video_id, title').eq('is_active', True).eq('is_tracking', True).order('display_order').execute()
+            
+            videos = []
+            for item in response.data:
+                videos.append({
+                    'id': item['video_id'],
+                    'title': item['title']
+                })
+            
+            print(f"✅ Tracking 비디오 {len(videos)}개 로드 완료")
+            return videos
+        except Exception as e:
+            print(f"❌ Tracking 비디오 조회 실패: {e}")
+            return []
+    
     def test_connection(self) -> bool:
         """
         연결 테스트
