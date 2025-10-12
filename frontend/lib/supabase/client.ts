@@ -63,6 +63,41 @@ export type Database = {
           is_active?: boolean;
         };
       };
+      platform_links: {
+        Row: {
+          id: number;
+          platform_id: string;
+          device_type: string;
+          link_index: number;
+          url: string;
+          label: string | null;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: number;
+          platform_id: string;
+          device_type: string;
+          link_index: number;
+          url: string;
+          label?: string | null;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: number;
+          platform_id?: string;
+          device_type?: string;
+          link_index?: number;
+          url?: string;
+          label?: string | null;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
       crawler_logs: {
         Row: {
           id: string;

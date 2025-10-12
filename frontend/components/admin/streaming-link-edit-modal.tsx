@@ -2,6 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { 
+  fetchPlatformLinksById, 
+  updatePlatformLinks,
+  initializePlatformLinks 
+} from "@/lib/api/platform-links";
 import {
   Dialog,
   DialogContent,
@@ -23,16 +28,44 @@ interface StreamingLinkEditModalProps {
 }
 
 export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditModalProps) {
+  const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   
-  // 편집 상태 - tinyurl 링크들의 pathname 부분만 관리
+  // DB에서 플랫폼 링크 데이터 가져오기
+  const { data: platformLinks, isLoading } = useQuery({
+    queryKey: ["platformLinks", platform.id],
+    queryFn: () => fetchPlatformLinksById(platform.id),
+    staleTime: 60000, // 1분간 캐시
+  });
+
+  // 편집 상태 - DB 데이터 또는 기본값 사용
   const [editingLinks, setEditingLinks] = useState({
-    android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
-    iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
-    pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
+    android: [] as string[],
+    iphone: [] as string[],
+    pc: [] as string[],
     webUrl: platform.url || "",
   });
+
+  // 데이터 로드시 편집 상태 초기화
+  useEffect(() => {
+    if (platformLinks) {
+      setEditingLinks({
+        android: platformLinks.android.map(link => extractTinyUrlPath(link.url)),
+        iphone: platformLinks.iphone.map(link => extractTinyUrlPath(link.url)),
+        pc: platformLinks.pc.map(link => extractTinyUrlPath(link.url)),
+        webUrl: platform.url || "",
+      });
+    } else {
+      // DB에 데이터가 없으면 기본값 사용
+      setEditingLinks({
+        android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
+        iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
+        pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
+        webUrl: platform.url || "",
+      });
+    }
+  }, [platformLinks, platform]);
 
   // tinyurl에서 경로 부분만 추출하는 함수
   function extractTinyUrlPath(url: string): string {
@@ -73,37 +106,80 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
     }));
   };
 
-  // 저장 함수 (나중에 API 연동)
+  // DB에 저장하는 함수
   const handleSave = async () => {
     setIsSaving(true);
     
     try {
-      // TODO: API 호출로 DB에 저장
-      console.log('Saving links for platform:', platform.id, editingLinks);
+      // DB에 플랫폼 링크 저장
+      const success = await updatePlatformLinks(platform.id, editingLinks);
       
-      // 임시로 로컬스토리지에 저장
-      localStorage.setItem(`platform_links_${platform.id}`, JSON.stringify(editingLinks));
-      
-      setIsOpen(false);
-      alert('링크가 저장되었습니다.');
+      if (success) {
+        // React Query 캐시 무효화
+        queryClient.invalidateQueries({ 
+          queryKey: ["platformLinks", platform.id] 
+        });
+        
+        setIsOpen(false);
+        alert('링크가 저장되었습니다.');
+      } else {
+        alert('저장에 실패했습니다. 다시 시도해주세요.');
+      }
       
     } catch (error) {
       console.error('저장 실패:', error);
-      alert('저장에 실패했습니다.');
+      alert('저장 중 오류가 발생했습니다.');
     } finally {
       setIsSaving(false);
     }
   };
 
-  // 초기화 함수
+  // 초기화 함수 - DB 데이터 또는 기본값으로 복원
   const handleReset = () => {
-    setEditingLinks({
-      android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
-      iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
-      pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
-      webUrl: platform.url || "",
-    });
+    if (platformLinks) {
+      setEditingLinks({
+        android: platformLinks.android.map(link => extractTinyUrlPath(link.url)),
+        iphone: platformLinks.iphone.map(link => extractTinyUrlPath(link.url)),
+        pc: platformLinks.pc.map(link => extractTinyUrlPath(link.url)),
+        webUrl: platform.url || "",
+      });
+    } else {
+      setEditingLinks({
+        android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
+        iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
+        pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
+        webUrl: platform.url || "",
+      });
+    }
   };
+
+  if (isLoading) {
+    return (
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          {trigger || (
+            <Button variant="outline" size="sm" className="gap-2">
+              <Settings className="w-4 h-4" />
+              링크 편집
+            </Button>
+          )}
+        </DialogTrigger>
+        
+        <DialogContent className="sm:max-w-2xl bg-white">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Settings className="w-5 h-5" />
+              {platform.name} 링크 편집
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="flex items-center justify-center py-8">
+            <div className="text-sm text-gray-500">링크 데이터를 불러오는 중...</div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -320,27 +396,27 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
               <p>• 웹 URL: {editingLinks.webUrl ? '설정됨' : '미설정'}</p>
             </div>
           </div>
-        </div>
 
-        {/* 버튼 */}
-        <div className="flex justify-between pt-4">
-          <Button
-            variant="outline"
-            onClick={handleReset}
-            className="gap-2"
-          >
-            <RotateCcw className="w-4 h-4" />
-            초기화
-          </Button>
-          
-          <Button
-            onClick={handleSave}
-            disabled={isSaving}
-            className="gap-2 bg-mint-primary hover:bg-mint-dark"
-          >
-            <Save className="w-4 h-4" />
-            {isSaving ? '저장 중...' : '저장'}
-          </Button>
+          {/* 버튼 */}
+          <div className="flex justify-between pt-4">
+            <Button
+              variant="outline"
+              onClick={handleReset}
+              className="gap-2"
+            >
+              <RotateCcw className="w-4 h-4" />
+              초기화
+            </Button>
+            
+            <Button
+              onClick={handleSave}
+              disabled={isSaving}
+              className="gap-2 bg-mint-primary hover:bg-mint-dark"
+            >
+              <Save className="w-4 h-4" />
+              {isSaving ? '저장 중...' : '저장'}
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
