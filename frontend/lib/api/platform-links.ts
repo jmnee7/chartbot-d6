@@ -1,25 +1,27 @@
 import { supabase } from "@/lib/supabase/client";
 
-// 플랫폼 링크 타입 정의
+// 플랫폼 링크 타입 정의 (실제 테이블 구조에 맞춤)
 export interface PlatformLink {
-  id: number;
+  id: string; // uuid
+  platform: string;
   platform_id: string;
-  device_type: 'android' | 'iphone' | 'pc';
-  link_index: number;
-  url: string;
-  label?: string;
+  song_title: string;
+  device_type: string;
+  urls: Record<string, string>; // jsonb
   is_active: boolean;
+  notes?: string;
   created_at?: string;
   updated_at?: string;
+  updated_by: string;
+  link_index?: number;
 }
 
-// 플랫폼별 링크 그룹 타입
+// 플랫폼별 링크 그룹 타입 (실제 구조에 맞춤)
 export interface PlatformLinksGroup {
   platform_id: string;
-  android: PlatformLink[];
-  iphone: PlatformLink[];
-  pc: PlatformLink[];
-  base_url?: string;
+  android: string[];
+  iphone: string[];
+  pc: string[];
 }
 
 // 플랫폼 링크 목록 조회
@@ -54,7 +56,14 @@ export async function fetchPlatformLinks(platformId?: string): Promise<PlatformL
       const existing = acc.find(group => group.platform_id === link.platform_id);
       
       if (existing) {
-        existing[link.device_type as keyof typeof existing].push(link);
+        // 안전하게 배열에 추가
+        if (link.device_type === 'android') {
+          existing.android.push(link);
+        } else if (link.device_type === 'iphone') {
+          existing.iphone.push(link);
+        } else if (link.device_type === 'pc') {
+          existing.pc.push(link);
+        }
       } else {
         acc.push({
           platform_id: link.platform_id,
@@ -112,7 +121,7 @@ export async function updatePlatformLinks(
     }
 
     // 2. 새 링크들 추가
-    const newLinks: Omit<PlatformLink, 'id' | 'created_at' | 'updated_at'>[] = [];
+    const newLinks: any[] = [];
 
     // Android 링크 추가
     links.android.forEach((url, index) => {

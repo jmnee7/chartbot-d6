@@ -33,6 +33,7 @@ export function PlatformCard({
   const deviceType = useDeviceType() as "android" | "ios" | "pc";
   const { isAdminMode } = useAdminMode();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   // urls 필드 확인 (새로운 tinyurl 링크)
   const urls =
@@ -65,14 +66,12 @@ export function PlatformCard({
         {/* 관리자 편집 버튼 */}
         {isAdminMode && (
           <div className="absolute top-1 right-1 z-10">
-            <StreamingLinkEditModal
-              platform={platform}
-              trigger={
-                <button className="w-6 h-6 bg-mint-primary/10 hover:bg-mint-primary/20 rounded-md flex items-center justify-center transition-colors">
-                  <Settings className="w-3 h-3 text-mint-primary" />
-                </button>
-              }
-            />
+            <button 
+              onClick={() => setShowEditModal(true)}
+              className="w-6 h-6 bg-mint-primary/10 hover:bg-mint-primary/20 rounded-md flex items-center justify-center transition-colors"
+            >
+              <Settings className="w-3 h-3 text-mint-primary" />
+            </button>
           </div>
         )}
         
@@ -332,5 +331,20 @@ export function PlatformCard({
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+// 편집 모달을 별도 컴포넌트로 분리
+function PlatformEditModal({ platform, isOpen, onClose }: { 
+  platform: Platform; 
+  isOpen: boolean; 
+  onClose: () => void; 
+}) {
+  return (
+    <StreamingLinkEditModal
+      platform={platform}
+      isOpen={isOpen}
+      onClose={onClose}
+    />
   );
 }

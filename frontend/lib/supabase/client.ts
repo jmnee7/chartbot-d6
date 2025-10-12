@@ -98,6 +98,156 @@ export type Database = {
           updated_at?: string;
         };
       };
+      radio_stations: {
+        Row: {
+          id: number;
+          name: string;
+          url: string;
+          logo: string | null;
+          description: string | null;
+          is_active: boolean;
+          display_order: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: number;
+          name: string;
+          url: string;
+          logo?: string | null;
+          description?: string | null;
+          is_active?: boolean;
+          display_order: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: number;
+          name?: string;
+          url?: string;
+          logo?: string | null;
+          description?: string | null;
+          is_active?: boolean;
+          display_order?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      music_shows: {
+        Row: {
+          id: number;
+          show_id: string;
+          name: string;
+          channel: string;
+          schedule: string;
+          voting_method: string;
+          voting_app: string;
+          app_download_android: string | null;
+          app_download_ios: string | null;
+          app_download_web: string | null;
+          program_url: string | null;
+          icon: string;
+          color: string;
+          description: string;
+          voting_period: string | null;
+          voting_windows: string[] | null;
+          notes: string | null;
+          has_voting: boolean;
+          is_active: boolean;
+          display_order: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: number;
+          show_id: string;
+          name: string;
+          channel: string;
+          schedule: string;
+          voting_method: string;
+          voting_app: string;
+          app_download_android?: string | null;
+          app_download_ios?: string | null;
+          app_download_web?: string | null;
+          program_url?: string | null;
+          icon: string;
+          color: string;
+          description: string;
+          voting_period?: string | null;
+          voting_windows?: string[] | null;
+          notes?: string | null;
+          has_voting: boolean;
+          is_active?: boolean;
+          display_order: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: number;
+          show_id?: string;
+          name?: string;
+          channel?: string;
+          schedule?: string;
+          voting_method?: string;
+          voting_app?: string;
+          app_download_android?: string | null;
+          app_download_ios?: string | null;
+          app_download_web?: string | null;
+          program_url?: string | null;
+          icon?: string;
+          color?: string;
+          description?: string;
+          voting_period?: string | null;
+          voting_windows?: string[] | null;
+          notes?: string | null;
+          has_voting?: boolean;
+          is_active?: boolean;
+          display_order?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      quick_links_content: {
+        Row: {
+          id: number;
+          content_type: string;
+          title: string;
+          description: string;
+          songs: string[] | null;
+          radio_stations: unknown | null;
+          vote_sms: unknown | null;
+          is_active: boolean;
+          display_order: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: number;
+          content_type: string;
+          title: string;
+          description: string;
+          songs?: string[] | null;
+          radio_stations?: unknown | null;
+          vote_sms?: unknown | null;
+          is_active?: boolean;
+          display_order: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: number;
+          content_type?: string;
+          title?: string;
+          description?: string;
+          songs?: string[] | null;
+          radio_stations?: unknown | null;
+          vote_sms?: unknown | null;
+          is_active?: boolean;
+          display_order?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
       crawler_logs: {
         Row: {
           id: string;

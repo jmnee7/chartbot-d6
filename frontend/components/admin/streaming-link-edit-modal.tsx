@@ -24,12 +24,13 @@ import { Platform } from "@/lib/constants/platforms";
 
 interface StreamingLinkEditModalProps {
   platform: Platform;
-  trigger?: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  onUpdate?: () => void;
 }
 
-export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditModalProps) {
+export function StreamingLinkEditModal({ platform, isOpen, onClose, onUpdate }: StreamingLinkEditModalProps) {
   const queryClient = useQueryClient();
-  const [isOpen, setIsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   
   // DB에서 플랫폼 링크 데이터 가져오기
@@ -69,6 +70,9 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
 
   // tinyurl에서 경로 부분만 추출하는 함수
   function extractTinyUrlPath(url: string): string {
+    if (!url || typeof url !== 'string') {
+      return '';
+    }
     if (url.includes('tinyurl.com/')) {
       return url.split('tinyurl.com/')[1] || '';
     }
@@ -120,7 +124,8 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
           queryKey: ["platformLinks", platform.id] 
         });
         
-        setIsOpen(false);
+        onClose();
+        onUpdate?.();
         alert('링크가 저장되었습니다.');
       } else {
         alert('저장에 실패했습니다. 다시 시도해주세요.');
@@ -155,16 +160,7 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
 
   if (isLoading) {
     return (
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>
-          {trigger || (
-            <Button variant="outline" size="sm" className="gap-2">
-              <Settings className="w-4 h-4" />
-              링크 편집
-            </Button>
-          )}
-        </DialogTrigger>
-        
+      <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="sm:max-w-2xl bg-white">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
@@ -182,15 +178,7 @@ export function StreamingLinkEditModal({ platform, trigger }: StreamingLinkEditM
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        {trigger || (
-          <Button variant="outline" size="sm" className="gap-2">
-            <Settings className="w-4 h-4" />
-            링크 편집
-          </Button>
-        )}
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       
       <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto bg-white">
         <DialogHeader>
