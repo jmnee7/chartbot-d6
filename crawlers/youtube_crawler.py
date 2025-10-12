@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from typing import Dict, Optional
 from utils import get_current_kst_iso
 import pytz
+from supabase_client import supabase_client
 
 
 class YouTubeCrawler:
@@ -211,9 +212,16 @@ def get_youtube_stats_for_dashboard():
     # 항상 YouTube API 호출
     print(f"📹 YouTube API 호출 시작 - {current_time.strftime('%H:%M')}")
     
-    VIDEOS = [
-        {"id": "b_Eh-9Jz_L8", "title": "INSIDE OUT"},  # DAY6 
-    ]
+    # Supabase에서 tracking 비디오 목록 가져오기
+    print("📊 Supabase에서 tracking 비디오 목록 조회 중...")
+    tracking_videos = supabase_client.get_tracking_videos()
+    
+    if not tracking_videos:
+        print("⚠️ Tracking 비디오가 없습니다. 기본 비디오 사용...")
+        VIDEOS = [{"id": "b_Eh-9Jz_L8", "title": "INSIDE OUT"}]  # 기본값
+    else:
+        VIDEOS = tracking_videos
+        print(f"✅ Tracking 비디오 {len(VIDEOS)}개 로드: {[v['title'] for v in VIDEOS]}")
     
     crawler = YouTubeCrawler()
     all_stats = []

@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-is a K-pop music chart tracking application focused on DAY6 fandom streaming and voting support. It consists of:
+d6 is a K-pop music chart tracking application focused on DAY6 fandom streaming and voting support. It consists of:
 
 - **Python crawlers** for collecting chart data from Korean music platforms (Melon, Genie, Bugs, Vibe, Flo)
 - **Next.js frontend** for displaying charts and providing streaming/voting guidance
 - **shadcn/ui** for consistent, accessible, and themeable UI components
 - **GitHub Actions** for automated hourly data collection
+- **Supabase** for admin dashboard data management and logging
 
 ## Development Commands
 
@@ -21,6 +22,9 @@ yarn install          # Install dependencies
 yarn dev              # Start development server (Turbopack enabled)
 yarn build            # Build for production
 yarn lint             # Run ESLint
+yarn lint:fix          # Fix ESLint issues automatically
+yarn format           # Format code with Prettier
+yarn clean            # Clean build artifacts and dependencies
 ```
 
 ### Crawlers (Python)
@@ -30,6 +34,7 @@ cd crawlers
 pip install -r requirements.txt    # Install dependencies
 python main.py                      # Run all crawlers manually
 python test_melon.py                # Test Melon crawler specifically
+python test_supabase.py             # Test Supabase connection
 ```
 
 ## Architecture
@@ -37,9 +42,10 @@ python test_melon.py                # Test Melon crawler specifically
 ### Data Flow
 
 1. **GitHub Actions** runs crawlers every hour (KST timezone)
-2. Crawlers fetch chart data and save to `docs/` as JSON files
-3. Data is deployed to GitHub Pages for static hosting
-4. Frontend fetches JSON data from GitHub Pages endpoint and renders charts/UI
+2. Crawlers fetch chart data and save to `frontend/public/data/` as JSON files
+3. Crawler execution logs are stored in Supabase for admin monitoring
+4. Data is deployed automatically via Vercel
+5. Frontend fetches JSON data from static files and renders charts/UI
 
 ### Key Components
 
@@ -131,5 +137,5 @@ These are configured in **GitHub Actions secrets** for automated runs.
 Frontend-specific variables (place in `frontend/.env.local`):
 
 ```
-NEXT_PUBLIC_DATA_BASE_URL=https://raw.githubusercontent.com/<OWNER>/<REPO>/master/docs/public-data
+NEXT_PUBLIC_DATA_BASE_URL=https://raw.githubusercontent.com/<OWNER>/<REPO>/main/docs/public-data
 ```

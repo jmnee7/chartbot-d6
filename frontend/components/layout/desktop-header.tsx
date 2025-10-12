@@ -4,9 +4,11 @@ import { Menu } from "lucide-react";
 import { useSidebar } from "./mobile-app-layout";
 import Link from "next/link";
 import Image from "next/image";
+import { useAdminClick } from "@/lib/hooks/use-admin-click";
 
 export function DesktopHeader() {
   const { openSidebar } = useSidebar();
+  const { clickCount, handleClick } = useAdminClick();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-8 xl:px-12 h-16 bg-white border-b border-gray-100">
@@ -34,7 +36,13 @@ export function DesktopHeader() {
                   "brightness(0) saturate(100%) invert(60%) sepia(91%) saturate(449%) hue-rotate(118deg) brightness(96%) contrast(91%)",
               }}
             />
-            <h1 className="font-sans text-2xl lg:text-2xl xl:text-3xl font-bold text-[#666] tracking-tight leading-none m-0 hover:opacity-80 transition-opacity cursor-pointer">
+            <h1 
+              className={`font-sans text-2xl lg:text-2xl xl:text-3xl font-bold text-[#666] tracking-tight leading-none m-0 hover:opacity-80 transition-all cursor-pointer select-none ${
+                clickCount > 0 ? 'scale-105' : ''
+              }`}
+              onClick={handleClick}
+              title={clickCount > 0 ? `관리자 모드 활성화 (${clickCount}/6)` : undefined}
+            >
               데이식스 음원총공팀
             </h1>
           </Link>

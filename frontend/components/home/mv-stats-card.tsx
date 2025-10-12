@@ -1,26 +1,62 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Eye, Heart } from "lucide-react";
+import { Eye, Heart, Edit } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMVStats } from "@/lib/api";
+import { fetchTrackingVideos, fetchVideoStats } from "@/lib/api/youtube";
+import { useEffect, useState } from "react";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { MVStatsEditModal } from "@/components/admin/mv-stats-edit-modal";
 
 export default function MVStatsCard() {
+  const { isAdminMode } = useAdminMode();
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState<any>(null);
+  
   const { data: mvStats } = useQuery({
     queryKey: ["mvStats"],
     queryFn: fetchMVStats,
   });
 
-  const videoId = "-N-pmPKS-bE";
-  const videoTitle = "DAY6 - INSIDE OUT";
+  const { data: trackingVideos } = useQuery({
+    queryKey: ["trackingVideos"],
+    queryFn: fetchTrackingVideos,
+  });
+
+  // 첫 번째 추적 비디오를 메인으로 표시
+  useEffect(() => {
+    if (trackingVideos && trackingVideos.length > 0) {
+      setCurrentVideo(trackingVideos[0]);
+    } else {
+      // 기본값
+      setCurrentVideo({
+        video_id: "-N-pmPKS-bE",
+        title: "DAY6 - INSIDE OUT"
+      });
+    }
+  }, [trackingVideos]);
+
+  const videoId = currentVideo?.video_id || "-N-pmPKS-bE";
+  const videoTitle = currentVideo?.title || "DAY6 - INSIDE OUT";
 
   return (
     <Card className="md:p-6">
       <CardContent className="p-0">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <h3 className="font-semibold text-gray-900 text-sm md:text-base">
             {videoTitle}
           </h3>
+          {/* 관리자 편집 버튼 */}
+          {isAdminMode && (
+            <button
+              onClick={() => setShowEditModal(true)}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white p-1.5 rounded-full shadow-lg transition-colors"
+              title="MV 통계 편집"
+            >
+              <Edit className="h-3 w-3" />
+            </button>
+          )}
         </div>
         {/* 유튜브 임베드 */}
         <div className="aspect-video w-full rounded-lg overflow-hidden mb-4">
@@ -86,6 +122,19 @@ export default function MVStatsCard() {
         </div>
 
         {/* 업데이트 시간 */}
+        
+        {/* MV 통계 편집 모달 */}
+        {showEditModal && (
+          <MVStatsEditModal
+            isOpen={showEditModal}
+            onClose={() => setShowEditModal(false)}
+            onUpdate={() => {
+              // 비디오 다시 로드
+              setCurrentVideo(null);
+              // React Query 캐시 무효화
+            }}
+          />
+        )}
       </CardContent>
     </Card>
   );

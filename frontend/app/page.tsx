@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CompactChart } from "@/components/compact-chart";
+import { CompactChartDBFixed as CompactChart } from "@/components/compact-chart-db-fixed";
 import Link from "next/link";
 import YouTubeBanner from "@/components/home/youtube-banner";
 import MVStatsCard from "@/components/home/mv-stats-card";

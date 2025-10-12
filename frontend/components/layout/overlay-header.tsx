@@ -3,6 +3,7 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useAdminClick } from "@/lib/hooks/use-admin-click";
 
 interface OverlayHeaderProps {
   onMenuClick?: () => void;
@@ -15,6 +16,7 @@ export function OverlayHeader({
   variant = "overlay",
 }: OverlayHeaderProps) {
   const isOverlay = variant === "overlay";
+  const { clickCount, handleClick } = useAdminClick();
 
   return (
     <div
@@ -50,9 +52,11 @@ export function OverlayHeader({
           }}
         />
         <h1
-          className={`font-sans text-lg font-bold tracking-tight leading-none m-0 ${
+          className={`font-sans text-lg font-bold tracking-tight leading-none m-0 cursor-pointer select-none transition-all ${
             isOverlay ? "text-white drop-shadow-lg" : "text-[#666]"
-          }`}
+          } ${clickCount > 0 ? 'scale-105' : ''}`}
+          onClick={handleClick}
+          title={clickCount > 0 ? `관리자 모드 활성화 (${clickCount}/6)` : undefined}
         >
           데이식스 음원총공팀
         </h1>

@@ -1,10 +1,15 @@
 "use client";
 
-import { ExternalLink, Radio } from "lucide-react";
+import { ExternalLink, Radio, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { RadioStationEditModal } from "@/components/admin/radio-station-edit-modal";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { useQuery } from "@tanstack/react-query";
+import { fetchRadioStations } from "@/lib/api/voting-content";
 
-const radioStations = [
+// 하드코딩된 기본값 (DB 연결 실패시 폴백)
+const fallbackRadioStations = [
   {
     name: "KBS",
     url: "https://world.kbs.co.kr/service/program_main.htm?lang=e&procode=weekend",
@@ -20,6 +25,20 @@ const radioStations = [
 ];
 
 export default function RadioPage() {
+  const { isAdminMode } = useAdminMode();
+  
+  // DB에서 라디오 방송국 데이터 가져오기
+  const { data: dbRadioStations, isLoading } = useQuery({
+    queryKey: ["radioStations"],
+    queryFn: fetchRadioStations,
+    staleTime: 60000, // 1분간 캐시
+  });
+
+  // DB 데이터가 있으면 사용, 없으면 폴백 데이터 사용
+  const radioStations = dbRadioStations && dbRadioStations.length > 0 
+    ? dbRadioStations 
+    : fallbackRadioStations;
+
   return (
     <div>
       {/* Content with same padding as homepage */}
@@ -31,7 +50,18 @@ export default function RadioPage() {
               라디오 신청
             </h2>
           </div>
-          <div className="text-gray-300"></div>
+          <div className="flex items-center gap-2">
+            {isAdminMode && (
+              <RadioStationEditModal
+                trigger={
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Settings className="w-4 h-4" />
+                    편집
+                  </Button>
+                }
+              />
+            )}
+          </div>
         </div>
 
         {/* Mobile Divider */}

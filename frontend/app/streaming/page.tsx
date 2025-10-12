@@ -1,14 +1,18 @@
 "use client";
 
-import { Play } from "lucide-react";
+import { Play, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { MUSIC_PLATFORMS, FEATURED_MVS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
+import { StreamingLinkEditModal } from "@/components/admin/streaming-link-edit-modal";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 import Image from "next/image";
 
 export default function StreamingPage() {
+  const { isAdminMode } = useAdminMode();
+  
   return (
     <div>
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">

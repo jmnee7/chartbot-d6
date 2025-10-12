@@ -1,44 +1,41 @@
 "use client";
 
-import { Calendar, Smartphone, Heart, Star } from "lucide-react";
+import { Calendar, Smartphone, Heart, Star, Edit } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchComebackSchedules, calculateDDay, type ComebackSchedule } from "@/lib/api/comeback";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { ComebackScheduleEditModal } from "@/components/admin/comeback-schedule-edit-modal";
 
-const comebackScheduleRaw = [
-  {
-    date: "2025.09.14",
-    event: "데이식스 is 10 EP2",
-    status: "upcoming",
-    description: "데이식스 is 10 EP2 방송",
-    datetime: "2025-09-14",
-  },
-  {
-    date: "2025.09.15",
-    event: "라이브클립 with 마이데이",
-    status: "upcoming",
-    description: "라이브클립 with 마이데이",
-    datetime: "2025-09-15",
-  },
-];
-
-// 날짜순 정렬하고 D-Day 계산
-const comebackSchedule = comebackScheduleRaw
-  .sort(
-    (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
-  )
-  .map((schedule) => ({
-    ...schedule,
-    dDay: Math.ceil(
-      (new Date(schedule.datetime).getTime() - new Date().getTime()) /
-        (1000 * 60 * 60 * 24)
-    ),
-  }));
 
 export default function ComebackPage() {
+  const { isAdminMode } = useAdminMode();
+  const [showEditModal, setShowEditModal] = useState(false);
+  
+  // DB에서 컴백 스케줄 가져오기
+  const { data: dbSchedules, isLoading } = useQuery({
+    queryKey: ["comebackSchedules"],
+    queryFn: fetchComebackSchedules,
+    staleTime: 60000,
+  });
+
+  // DB 데이터만 사용 (기본값 없음)
+  const schedules = dbSchedules || [];
+  
+  // 날짜순 정렬하고 D-Day 계산
+  const comebackSchedule = schedules
+    .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
+    .map((schedule) => ({
+      ...schedule,
+      dDay: calculateDDay(schedule.datetime),
+    }));
+
   return (
     <div>
       {/* Content with same padding as homepage */}
@@ -50,7 +47,19 @@ export default function ComebackPage() {
               컴백 지원 센터
             </h2>
           </div>
-          <div className="text-gray-300"></div>
+          <div className="flex items-center gap-2">
+            {/* 관리자 편집 버튼 */}
+            {isAdminMode && (
+              <button
+                onClick={() => setShowEditModal(true)}
+                className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded-full shadow-lg transition-colors"
+                title="컴백 스케줄 편집"
+              >
+                <Edit className="h-4 w-4" />
+              </button>
+            )}
+            <div className="text-gray-300"></div>
+          </div>
         </div>
 
         {/* Comeback Status Banner */}
@@ -60,9 +69,11 @@ export default function ComebackPage() {
           autoplay={{ delay: 5000 }}
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
-          {comebackSchedule
-            .filter((schedule) => schedule.dDay >= 0) // 오늘 이후 일정만 표시
-            .map((schedule, index) => (
+          {/* 오늘 이후 일정만 표시 */}
+          {comebackSchedule.filter((schedule) => schedule.dDay >= 0).length > 0 ? (
+            comebackSchedule
+              .filter((schedule) => schedule.dDay >= 0)
+              .map((schedule, index) => (
               <SwiperSlide key={index} className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -90,7 +101,19 @@ export default function ComebackPage() {
                   </div>
                 </div>
               </SwiperSlide>
-            ))}
+            ))
+          ) : (
+            // 일정이 없을 때 메시지 표시
+            <SwiperSlide className="p-6">
+              <div className="text-center">
+                <Calendar className="w-12 h-12 mx-auto mb-4 opacity-70" />
+                <h3 className="text-xl font-bold mb-2">예정된 일정이 없습니다</h3>
+                <p className="text-white/80">
+                  {isAdminMode ? '관리자 모드에서 새로운 일정을 추가할 수 있습니다.' : '곧 새로운 소식을 전해드릴게요!'}
+                </p>
+              </div>
+            </SwiperSlide>
+          )}
         </Swiper>
 
         {/* Mobile Divider */}
@@ -148,6 +171,17 @@ export default function ComebackPage() {
             </Link>
           </div>
         </div>
+        
+        {/* 컴백 스케줄 편집 모달 */}
+        {showEditModal && (
+          <ComebackScheduleEditModal
+            isOpen={showEditModal}
+            onClose={() => setShowEditModal(false)}
+            onUpdate={() => {
+              // React Query 캐시 무효화로 데이터 새로고침
+            }}
+          />
+        )}
       </div>
 
       {/* Bottom spacing for mobile nav */}
