@@ -8,11 +8,14 @@ import {
   TrendingUp,
   Smartphone,
   ChevronDown,
+  Settings,
 } from "lucide-react";
 import { Platform } from "@/lib/constants/platforms";
 import { useDeviceType } from "@/lib/hooks/useDeviceType";
 import { openPlatformAuto } from "@/lib/deep-link-runtime";
 import { useState } from "react";
+import { StreamingLinkEditModal } from "@/components/admin/streaming-link-edit-modal";
+import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 
 interface PlatformCardProps {
   platform: Platform;
@@ -28,6 +31,7 @@ export function PlatformCard({
   isHome = false,
 }: PlatformCardProps) {
   const deviceType = useDeviceType() as "android" | "ios" | "pc";
+  const { isAdminMode } = useAdminMode();
   const [showDropdown, setShowDropdown] = useState(false);
 
   // urls 필드 확인 (새로운 tinyurl 링크)
@@ -58,6 +62,20 @@ export function PlatformCard({
   if (variant === "grid") {
     return (
       <div className="relative">
+        {/* 관리자 편집 버튼 */}
+        {isAdminMode && (
+          <div className="absolute top-1 right-1 z-10">
+            <StreamingLinkEditModal
+              platform={platform}
+              trigger={
+                <button className="w-6 h-6 bg-mint-primary/10 hover:bg-mint-primary/20 rounded-md flex items-center justify-center transition-colors">
+                  <Settings className="w-3 h-3 text-mint-primary" />
+                </button>
+              }
+            />
+          </div>
+        )}
+        
         <div className="flex flex-col items-center p-3 border border-gray-100 hover:border-gray-200 rounded-lg">
           <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mb-2 bg-white border border-gray-100 overflow-hidden">
             {platform.logo !== "/file.svg" ? (
