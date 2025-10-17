@@ -217,6 +217,15 @@ export function PlatformCard({
             </a>
           )}
         </div>
+        
+        {/* 편집 모달 */}
+        {showEditModal && (
+          <StreamingLinkEditModal
+            platform={platform}
+            isOpen={showEditModal}
+            onClose={() => setShowEditModal(false)}
+          />
+        )}
       </div>
     );
   }
@@ -334,17 +343,3 @@ export function PlatformCard({
   );
 }
 
-// 편집 모달을 별도 컴포넌트로 분리
-function PlatformEditModal({ platform, isOpen, onClose }: { 
-  platform: Platform; 
-  isOpen: boolean; 
-  onClose: () => void; 
-}) {
-  return (
-    <StreamingLinkEditModal
-      platform={platform}
-      isOpen={isOpen}
-      onClose={onClose}
-    />
-  );
-}
