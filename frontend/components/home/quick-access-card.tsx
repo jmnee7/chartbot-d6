@@ -7,13 +7,16 @@ import { PlatformCard } from "@/components/platform/platform-card";
 import { usePlatformLinks } from "@/lib/api/platform-links";
 
 export default function QuickAccessCard() {
-  const { data: platformLinks } = usePlatformLinks();
+  const { data: platformLinks, isLoading } = usePlatformLinks();
+
+  // 항상 모든 플랫폼을 표시하되, PlatformCard에서 DB 데이터 유무에 따라 처리
+  const platformsToShow = MUSIC_PLATFORMS;
 
   return (
     <Card>
       <CardContent className="p-0">
         <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 overflow-visible">
-          {MUSIC_PLATFORMS.map((platform, index) => (
+          {platformsToShow.map((platform, index) => (
             <motion.div
               key={platform.id}
               initial={{ opacity: 0, y: 10 }}

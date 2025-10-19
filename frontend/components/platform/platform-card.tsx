@@ -84,7 +84,43 @@ export function PlatformCard({
     }
   };
 
-  // 공용 핸들러 함수들
+  // 링크 정보 표시 및 앱 실행 함수
+  function showLinksAndOpen() {
+    const currentUrls = urls;
+    const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
+    
+    if (currentUrls.length > 0) {
+      const linksList = currentUrls.map((url, index) => `${index + 1}. ${url}`).join('\n');
+      const message = `[${platform.name}] ${deviceName}에서 사용될 링크:\n\n${linksList}\n\n이 링크들로 앱을 실행하시겠습니까?`;
+      
+      if (confirm(message)) {
+        openPlatformAuto(dynamicPlatform);
+      }
+    } else {
+      alert(`[${platform.name}] ${deviceName}용 링크가 설정되지 않았습니다.`);
+    }
+  }
+
+  function showStepLinksAndOpen(stepIndex: number) {
+    const currentUrls = urls;
+    const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
+    const targetUrl = currentUrls[stepIndex] || currentUrls[0];
+    
+    if (targetUrl) {
+      const message = `[${platform.name}] ${deviceName} 링크 ${stepIndex + 1}:\n\n${targetUrl}\n\n이 링크로 앱을 실행하시겠습니까?`;
+      
+      if (confirm(message)) {
+        openPlatformAuto(dynamicPlatform, undefined, {
+          androidStep: stepIndex,
+          iosStep: stepIndex,
+        });
+      }
+    } else {
+      alert(`[${platform.name}] ${deviceName}용 링크 ${stepIndex + 1}이 설정되지 않았습니다.`);
+    }
+  }
+
+  // 기존 함수들 (호환성 유지)
   function openPrimary() {
     openPlatformAuto(dynamicPlatform);
   }
@@ -137,7 +173,7 @@ export function PlatformCard({
                 <Button
                   size="sm"
                   className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
-                  onClick={() => openStep(0)}
+                  onClick={() => showStepLinksAndOpen(0)}
                 >
                   <Smartphone className="w-3 h-3 mr-1" />
                   앱으로

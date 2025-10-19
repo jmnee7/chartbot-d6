@@ -8,10 +8,15 @@ import { MUSIC_PLATFORMS, FEATURED_MVS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { StreamingLinkEditModal } from "@/components/admin/streaming-link-edit-modal";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { usePlatformLinks } from "@/lib/api/platform-links";
 import Image from "next/image";
 
 export default function StreamingPage() {
   const { isAdminMode } = useAdminMode();
+  const { data: platformLinks } = usePlatformLinks();
+
+  // 항상 모든 플랫폼을 표시하되, PlatformCard에서 DB 데이터 유무에 따라 처리
+  const platformsToShow = MUSIC_PLATFORMS;
 
   return (
     <div>
@@ -38,11 +43,12 @@ export default function StreamingPage() {
               <Card>
                 <CardContent className="p-4">
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3">
-                    {MUSIC_PLATFORMS.map((platform) => (
+                    {platformsToShow.map((platform) => (
                       <PlatformCard
                         key={platform.id}
                         platform={platform}
                         variant="grid"
+                        platformLinks={platformLinks}
                       />
                     ))}
                   </div>
