@@ -74,13 +74,23 @@ export function PlatformCard({
   const links = urls;
   const hasLinks = hasUrls;
 
+  // DB 데이터를 포함한 동적 플랫폼 객체 생성
+  const dynamicPlatform: Platform = {
+    ...platform,
+    urls: {
+      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
+      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
+      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || [],
+    }
+  };
+
   // 공용 핸들러 함수들
-  function openPrimary(platform: Platform) {
-    openPlatformAuto(platform);
+  function openPrimary() {
+    openPlatformAuto(dynamicPlatform);
   }
 
-  function openStep(platform: Platform, stepIndex: number) {
-    openPlatformAuto(platform, undefined, {
+  function openStep(stepIndex: number) {
+    openPlatformAuto(dynamicPlatform, undefined, {
       androidStep: stepIndex,
       iosStep: stepIndex,
     });
@@ -127,7 +137,7 @@ export function PlatformCard({
                 <Button
                   size="sm"
                   className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
-                  onClick={() => openStep(platform, 0)}
+                  onClick={() => openStep(0)}
                 >
                   <Smartphone className="w-3 h-3 mr-1" />
                   앱으로
@@ -149,13 +159,13 @@ export function PlatformCard({
 
                   {showDropdown && (
                     <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 space-y-1">
-                      {urls.map((url, index) => (
+                      {urls.map((_: string, index: number) => (
                         <Button
                           key={index}
                           size="sm"
                           variant="ghost"
                           className="w-full justify-start text-xs"
-                          onClick={() => openStep(platform, index)}
+                          onClick={() => openStep(index)}
                         >
                           {`링크 ${index + 1}`}
                         </Button>
@@ -183,7 +193,7 @@ export function PlatformCard({
                 }
 
                 // 나머지 링크들은 새 탭에서 열기 (1초 간격)
-                urls.slice(1).forEach((url, index) => {
+                urls.slice(1).forEach((url: string, index: number) => {
                   setTimeout(
                     () => {
                       window.open(url, "_blank");
@@ -241,7 +251,7 @@ export function PlatformCard({
       <Card
         className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer"
         onClick={() =>
-          hasLinks ? openPrimary(platform) : window.open(platform.url, "_blank")
+          hasLinks ? openPrimary() : window.open(platform.url, "_blank")
         }
       >
         <CardContent className="p-4">
@@ -289,7 +299,7 @@ export function PlatformCard({
     <Card
       className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
       onClick={() =>
-        hasLinks ? openPrimary(platform) : window.open(platform.url, "_blank")
+        hasLinks ? openPrimary() : window.open(platform.url, "_blank")
       }
     >
       <CardContent className="p-4">

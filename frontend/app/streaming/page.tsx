@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function StreamingPage() {
   const { isAdminMode } = useAdminMode();
-  
+
   return (
     <div>
       <div className="px-5 md:px-6 lg:px-8 xl:px-12 space-y-6 pt-6">
@@ -54,7 +54,7 @@ export default function StreamingPage() {
                 <CardContent className="p-4">
                   <div className="relative w-full">
                     <Image
-                      src="/streaming/streaming-list.jpg"
+                      src="/streaming/streaming-list.png"
                       alt="스트리밍 리스트"
                       width={1200}
                       height={800}

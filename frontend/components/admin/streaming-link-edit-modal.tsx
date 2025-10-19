@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { 
-  fetchPlatformLinksById, 
+import {
+  fetchPlatformLinksById,
   updatePlatformLinks,
-  initializePlatformLinks 
+  initializePlatformLinks,
 } from "@/lib/api/platform-links";
 import {
   Dialog,
@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Settings, Save, RotateCcw, ExternalLink } from "lucide-react";
+import { Settings, Save, RotateCcw, ExternalLink, Trash2 } from "lucide-react";
 import { Platform } from "@/lib/constants/platforms";
 
 interface StreamingLinkEditModalProps {
@@ -28,10 +28,14 @@ interface StreamingLinkEditModalProps {
   onClose: () => void;
 }
 
-export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingLinkEditModalProps) {
+export function StreamingLinkEditModal({
+  platform,
+  isOpen,
+  onClose,
+}: StreamingLinkEditModalProps) {
   const queryClient = useQueryClient();
   const [isSaving, setIsSaving] = useState(false);
-  
+
   // DB에서 플랫폼 링크 데이터 가져오기
   const { data: platformLinks, isLoading } = useQuery({
     queryKey: ["platformLinks", platform.id],
@@ -51,17 +55,23 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
   useEffect(() => {
     if (platformLinks) {
       setEditingLinks({
-        android: platformLinks.android.map(link => extractTinyUrlPath(link.url)),
-        iphone: platformLinks.iphone.map(link => extractTinyUrlPath(link.url)),
-        pc: platformLinks.pc.map(link => extractTinyUrlPath(link.url)),
+        android: platformLinks.android.map((link) =>
+          extractTinyUrlPath(link.url)
+        ),
+        iphone: platformLinks.iphone.map((link) =>
+          extractTinyUrlPath(link.url)
+        ),
+        pc: platformLinks.pc.map((link) => extractTinyUrlPath(link.url)),
         webUrl: platform.url || "",
       });
     } else {
       // DB에 데이터가 없으면 기본값 사용
       setEditingLinks({
-        android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
-        iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
-        pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
+        android:
+          platform.urls?.android?.map((url) => extractTinyUrlPath(url)) || [],
+        iphone:
+          platform.urls?.iphone?.map((url) => extractTinyUrlPath(url)) || [],
+        pc: platform.urls?.pc?.map((url) => extractTinyUrlPath(url)) || [],
         webUrl: platform.url || "",
       });
     }
@@ -69,72 +79,80 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
 
   // tinyurl에서 경로 부분만 추출하는 함수
   function extractTinyUrlPath(url: string): string {
-    if (!url || typeof url !== 'string') {
-      return '';
+    if (!url || typeof url !== "string") {
+      return "";
     }
-    if (url.includes('tinyurl.com/')) {
-      return url.split('tinyurl.com/')[1] || '';
+    if (url.includes("tinyurl.com/")) {
+      return url.split("tinyurl.com/")[1] || "";
     }
     return url;
   }
 
   // 전체 URL로 복원하는 함수
   function buildFullUrl(path: string): string {
-    if (path.startsWith('http')) {
+    if (path.startsWith("http")) {
       return path; // 이미 전체 URL인 경우
     }
     return `https://tinyurl.com/${path}`;
   }
 
   // 링크 수정 핸들러
-  const updateLink = (deviceType: 'android' | 'iphone' | 'pc', index: number, value: string) => {
-    setEditingLinks(prev => ({
+  const updateLink = (
+    deviceType: "android" | "iphone" | "pc",
+    index: number,
+    value: string
+  ) => {
+    setEditingLinks((prev) => ({
       ...prev,
-      [deviceType]: prev[deviceType].map((link, i) => i === index ? value : link)
+      [deviceType]: prev[deviceType].map((link, i) =>
+        i === index ? value : link
+      ),
     }));
   };
 
   // 링크 추가/제거
-  const addLink = (deviceType: 'android' | 'iphone' | 'pc') => {
-    setEditingLinks(prev => ({
+  const addLink = (deviceType: "android" | "iphone" | "pc") => {
+    setEditingLinks((prev) => ({
       ...prev,
-      [deviceType]: [...prev[deviceType], '']
+      [deviceType]: [...prev[deviceType], ""],
     }));
   };
 
-  const removeLink = (deviceType: 'android' | 'iphone' | 'pc', index: number) => {
-    setEditingLinks(prev => ({
+  const removeLink = (
+    deviceType: "android" | "iphone" | "pc",
+    index: number
+  ) => {
+    setEditingLinks((prev) => ({
       ...prev,
-      [deviceType]: prev[deviceType].filter((_, i) => i !== index)
+      [deviceType]: prev[deviceType].filter((_, i) => i !== index),
     }));
   };
 
   // DB에 저장하는 함수
   const handleSave = async () => {
     setIsSaving(true);
-    
+
     try {
       // DB에 플랫폼 링크 저장
       const success = await updatePlatformLinks(platform.id, editingLinks);
-      
+
       if (success) {
         // React Query 캐시 무효화 (개별 + 전체)
-        queryClient.invalidateQueries({ 
-          queryKey: ["platformLinks", platform.id] 
+        queryClient.invalidateQueries({
+          queryKey: ["platformLinks", platform.id],
         });
-        queryClient.invalidateQueries({ 
-          queryKey: ["platformLinks"] 
+        queryClient.invalidateQueries({
+          queryKey: ["platformLinks"],
         });
-        
+
         onClose();
-        alert('링크가 저장되었습니다.');
+        alert("링크가 저장되었습니다.");
       } else {
-        alert('저장에 실패했습니다. 다시 시도해주세요.');
+        alert("저장에 실패했습니다. 다시 시도해주세요.");
       }
-      
     } catch (error) {
-      console.error('저장 실패:', error);
-      alert('저장 중 오류가 발생했습니다.');
+      console.error("저장 실패:", error);
+      alert("저장 중 오류가 발생했습니다.");
     } finally {
       setIsSaving(false);
     }
@@ -144,16 +162,22 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
   const handleReset = () => {
     if (platformLinks) {
       setEditingLinks({
-        android: platformLinks.android.map(link => extractTinyUrlPath(link.url)),
-        iphone: platformLinks.iphone.map(link => extractTinyUrlPath(link.url)),
-        pc: platformLinks.pc.map(link => extractTinyUrlPath(link.url)),
+        android: platformLinks.android.map((link) =>
+          extractTinyUrlPath(link.url)
+        ),
+        iphone: platformLinks.iphone.map((link) =>
+          extractTinyUrlPath(link.url)
+        ),
+        pc: platformLinks.pc.map((link) => extractTinyUrlPath(link.url)),
         webUrl: platform.url || "",
       });
     } else {
       setEditingLinks({
-        android: platform.urls?.android?.map(url => extractTinyUrlPath(url)) || [],
-        iphone: platform.urls?.iphone?.map(url => extractTinyUrlPath(url)) || [],
-        pc: platform.urls?.pc?.map(url => extractTinyUrlPath(url)) || [],
+        android:
+          platform.urls?.android?.map((url) => extractTinyUrlPath(url)) || [],
+        iphone:
+          platform.urls?.iphone?.map((url) => extractTinyUrlPath(url)) || [],
+        pc: platform.urls?.pc?.map((url) => extractTinyUrlPath(url)) || [],
         webUrl: platform.url || "",
       });
     }
@@ -169,9 +193,11 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
               {platform.name} 링크 편집
             </DialogTitle>
           </DialogHeader>
-          
+
           <div className="flex items-center justify-center py-8">
-            <div className="text-sm text-gray-500">링크 데이터를 불러오는 중...</div>
+            <div className="text-sm text-gray-500">
+              링크 데이터를 불러오는 중...
+            </div>
           </div>
         </DialogContent>
       </Dialog>
@@ -180,7 +206,6 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      
       <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto bg-white">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
@@ -202,7 +227,9 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
               <div className="space-y-3">
                 <Label className="text-sm font-semibold flex items-center gap-2">
                   Android 링크
-                  <Badge variant="outline">{editingLinks.android.length}개</Badge>
+                  <Badge variant="outline">
+                    {editingLinks.android.length}개
+                  </Badge>
                 </Label>
                 {editingLinks.android.map((link, index) => (
                   <div key={index} className="flex gap-2">
@@ -216,7 +243,9 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                         </span>
                         <Input
                           value={link}
-                          onChange={(e) => updateLink('android', index, e.target.value)}
+                          onChange={(e) =>
+                            updateLink("android", index, e.target.value)
+                          }
                           placeholder="4r7fwzc2"
                           className="rounded-l-none"
                         />
@@ -226,17 +255,21 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => window.open(buildFullUrl(link), '_blank')}
+                        onClick={() =>
+                          window.open(buildFullUrl(link), "_blank")
+                        }
                         disabled={!link}
+                        className="bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-600 disabled:bg-gray-50 disabled:text-gray-400"
                       >
                         <ExternalLink className="w-3 h-3" />
                       </Button>
                       <Button
                         size="sm"
-                        variant="destructive"
-                        onClick={() => removeLink('android', index)}
+                        variant="outline"
+                        onClick={() => removeLink("android", index)}
+                        className="bg-red-50 hover:bg-red-100 border-red-200 text-red-600"
                       >
-                        ×
+                        <Trash2 className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
@@ -244,8 +277,8 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => addLink('android')}
-                  className="w-full"
+                  onClick={() => addLink("android")}
+                  className="w-full bg-green-50 hover:bg-green-100 border-green-200 text-green-600"
                 >
                   + Android 링크 추가
                 </Button>
@@ -255,7 +288,9 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
               <div className="space-y-3">
                 <Label className="text-sm font-semibold flex items-center gap-2">
                   iPhone 링크
-                  <Badge variant="outline">{editingLinks.iphone.length}개</Badge>
+                  <Badge variant="outline">
+                    {editingLinks.iphone.length}개
+                  </Badge>
                 </Label>
                 {editingLinks.iphone.map((link, index) => (
                   <div key={index} className="flex gap-2">
@@ -269,7 +304,9 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                         </span>
                         <Input
                           value={link}
-                          onChange={(e) => updateLink('iphone', index, e.target.value)}
+                          onChange={(e) =>
+                            updateLink("iphone", index, e.target.value)
+                          }
                           placeholder="4r7fwzc2"
                           className="rounded-l-none"
                         />
@@ -279,17 +316,21 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => window.open(buildFullUrl(link), '_blank')}
+                        onClick={() =>
+                          window.open(buildFullUrl(link), "_blank")
+                        }
                         disabled={!link}
+                        className="bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-600 disabled:bg-gray-50 disabled:text-gray-400"
                       >
                         <ExternalLink className="w-3 h-3" />
                       </Button>
                       <Button
                         size="sm"
-                        variant="destructive"
-                        onClick={() => removeLink('iphone', index)}
+                        variant="outline"
+                        onClick={() => removeLink("iphone", index)}
+                        className="bg-red-50 hover:bg-red-100 border-red-200 text-red-600"
                       >
-                        ×
+                        <Trash2 className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
@@ -297,8 +338,8 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => addLink('iphone')}
-                  className="w-full"
+                  onClick={() => addLink("iphone")}
+                  className="w-full bg-green-50 hover:bg-green-100 border-green-200 text-green-600"
                 >
                   + iPhone 링크 추가
                 </Button>
@@ -319,7 +360,9 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                       </Label>
                       <Input
                         value={link}
-                        onChange={(e) => updateLink('pc', index, e.target.value)}
+                        onChange={(e) =>
+                          updateLink("pc", index, e.target.value)
+                        }
                         placeholder="전체 URL 또는 tinyurl 경로"
                       />
                     </div>
@@ -327,17 +370,23 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => window.open(link.startsWith('http') ? link : buildFullUrl(link), '_blank')}
+                        onClick={() =>
+                          window.open(
+                            link.startsWith("http") ? link : buildFullUrl(link),
+                            "_blank"
+                          )
+                        }
                         disabled={!link}
                       >
                         <ExternalLink className="w-3 h-3" />
                       </Button>
                       <Button
                         size="sm"
-                        variant="destructive"
-                        onClick={() => removeLink('pc', index)}
+                        variant="outline"
+                        onClick={() => removeLink("pc", index)}
+                        className="bg-red-50 hover:bg-red-100 border-red-200 text-red-600"
                       >
-                        ×
+                        <Trash2 className="w-3 h-3" />
                       </Button>
                     </div>
                   </div>
@@ -345,8 +394,8 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => addLink('pc')}
-                  className="w-full"
+                  onClick={() => addLink("pc")}
+                  className="w-full bg-green-50 hover:bg-green-100 border-green-200 text-green-600"
                 >
                   + PC 링크 추가
                 </Button>
@@ -358,13 +407,18 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
                 <Label className="text-sm font-semibold">기본 웹 URL</Label>
                 <Input
                   value={editingLinks.webUrl}
-                  onChange={(e) => setEditingLinks(prev => ({ ...prev, webUrl: e.target.value }))}
+                  onChange={(e) =>
+                    setEditingLinks((prev) => ({
+                      ...prev,
+                      webUrl: e.target.value,
+                    }))
+                  }
                   placeholder="https://www.melon.com/album/detail.htm?albumId=11796328"
                 />
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => window.open(editingLinks.webUrl, '_blank')}
+                  onClick={() => window.open(editingLinks.webUrl, "_blank")}
                   disabled={!editingLinks.webUrl}
                   className="w-fit"
                 >
@@ -377,33 +431,35 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingL
 
           {/* 미리보기 */}
           <div className="bg-gray-50 p-4 rounded-lg">
-            <Label className="text-sm font-semibold text-gray-700">현재 설정 요약</Label>
+            <Label className="text-sm font-semibold text-gray-700">
+              현재 설정 요약
+            </Label>
             <div className="mt-2 space-y-1 text-sm text-gray-600">
               <p>• Android: {editingLinks.android.length}개 링크</p>
               <p>• iPhone: {editingLinks.iphone.length}개 링크</p>
               <p>• PC: {editingLinks.pc.length}개 링크</p>
-              <p>• 웹 URL: {editingLinks.webUrl ? '설정됨' : '미설정'}</p>
+              <p>• 웹 URL: {editingLinks.webUrl ? "설정됨" : "미설정"}</p>
             </div>
           </div>
 
           {/* 버튼 */}
           <div className="flex justify-between pt-4">
-            <Button
-              variant="outline"
-              onClick={handleReset}
-              className="gap-2"
+            <Button 
+              variant="outline" 
+              onClick={handleReset} 
+              className="gap-2 bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-600"
             >
               <RotateCcw className="w-4 h-4" />
               초기화
             </Button>
-            
+
             <Button
               onClick={handleSave}
               disabled={isSaving}
-              className="gap-2 bg-mint-primary hover:bg-mint-dark"
+              className="gap-2 bg-blue-600 hover:bg-blue-700 text-white disabled:bg-blue-300"
             >
               <Save className="w-4 h-4" />
-              {isSaving ? '저장 중...' : '저장'}
+              {isSaving ? "저장 중..." : "저장"}
             </Button>
           </div>
         </div>
