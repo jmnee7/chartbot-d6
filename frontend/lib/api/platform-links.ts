@@ -73,7 +73,7 @@ export async function fetchPlatformLinks(
         // 안전하게 배열에 추가
         if (link.device_type === "android") {
           existing.android.push(linkWithUrl);
-        } else if (link.device_type === "iphone") {
+        } else if (link.device_type === "ios") {
           existing.iphone.push(linkWithUrl);
         } else if (link.device_type === "pc") {
           existing.pc.push(linkWithUrl);
@@ -82,7 +82,7 @@ export async function fetchPlatformLinks(
         acc.push({
           platform_id: link.platform_id,
           android: link.device_type === "android" ? [linkWithUrl] : [],
-          iphone: link.device_type === "iphone" ? [linkWithUrl] : [],
+          iphone: link.device_type === "ios" ? [linkWithUrl] : [],
           pc: link.device_type === "pc" ? [linkWithUrl] : [],
         });
       }
@@ -167,7 +167,7 @@ export async function updatePlatformLinks(
         newLinks.push({
           platform_id: platformId,
           platform: platformId,
-          device_type: "iphone",
+          device_type: "ios",
           link_index: index,
           song_title: `${platformId}(iOS)`,
           urls: {

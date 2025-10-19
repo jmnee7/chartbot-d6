@@ -48,8 +48,10 @@ export function PlatformCard({
   });
 
   // 외부 데이터가 있으면 그걸 사용, 없으면 개별 쿼리 결과 사용
-  const platformLinks = Array.isArray(externalPlatformLinks) 
-    ? externalPlatformLinks.find((group: any) => group.platform_id === platform.id)
+  const platformLinks = Array.isArray(externalPlatformLinks)
+    ? externalPlatformLinks.find(
+        (group: any) => group.platform_id === platform.id
+      )
     : externalPlatformLinks?.[platform.id] || individualPlatformLinks;
 
   // DB 데이터 우선, 없으면 정적 데이터 사용
@@ -58,7 +60,8 @@ export function PlatformCard({
   let dbUrls = platformLinks?.[deviceKey]?.map((link: any) => link.url) || [];
 
   // 2. DB 데이터가 없으면 정적 데이터 사용
-  const staticUrls = platform.urls?.[deviceKey] || [];
+  const staticKey = deviceType === "ios" ? "iphone" : deviceType;
+  const staticUrls = platform.urls?.[staticKey] || [];
 
   // 3. iPhone 데이터가 없으면 Android 데이터로 폴백 (DB 우선, 정적 폴백)
   if (deviceType === "ios" && dbUrls.length === 0 && staticUrls.length === 0) {
@@ -70,75 +73,88 @@ export function PlatformCard({
   const urls = dbUrls.length > 0 ? dbUrls : staticUrls;
   const hasUrls = urls.length > 0;
 
+  // 멜론 데이터 소스 확인을 위한 임시 디버깅
+  if (platform.id === "melon") {
+    console.group(`🔍 [멜론 데이터 소스 확인] ${deviceType}`);
+    console.log("📊 DB 데이터 (platformLinks):", platformLinks);
+    console.log("📱 DB URLs:", dbUrls);
+    console.log("📋 정적 URLs:", staticUrls);
+    console.log("✅ 최종 사용 URLs:", urls);
+    console.log("🎯 데이터 소스:", dbUrls.length > 0 ? "DB 데이터" : "정적 데이터");
+    console.groupEnd();
+  }
+
   // DB 데이터만 사용 (deeplinks 폴백 제거)
   const links = urls;
   const hasLinks = hasUrls;
+
+  // PlatformCard에서 받은 데이터 상태 로그
+  console.group(`🎵 [PlatformCard] ${platform.name} 데이터 처리 상태`);
+  console.log("📱 현재 디바이스:", deviceType);
+  console.log("💾 전달받은 platformLinks:", platformLinks);
+  console.log("🔍 해당 플랫폼 DB 데이터:", platformLinks);
+  console.log("📋 정적 플랫폼 URLs:", platform.urls);
 
   // DB 데이터를 포함한 동적 플랫폼 객체 생성
   const dynamicPlatform: Platform = {
     ...platform,
     urls: {
-      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
-      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
-      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || [],
-    }
+      android:
+        platformLinks?.android?.map((link: any) => link.url) ||
+        platform.urls?.android ||
+        [],
+      iphone:
+        platformLinks?.iphone?.map((link: any) => link.url) ||
+        platform.urls?.iphone ||
+        [],
+      pc:
+        platformLinks?.pc?.map((link: any) => link.url) ||
+        platform.urls?.pc ||
+        [],
+    },
   };
+
+  console.log("✨ 최종 dynamicPlatform.urls:", dynamicPlatform.urls);
+  console.log("🎯 현재 디바이스용 최종 URLs:", urls);
+  console.groupEnd();
 
   // 링크 정보 표시 및 앱 실행 함수
   function showLinksAndOpen() {
-    const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
-    
+    const deviceName =
+      deviceType === "ios"
+        ? "iPhone"
+        : deviceType === "android"
+          ? "Android"
+          : "PC";
+
     // 모든 디바이스별 링크 정보 수집
     const deviceUrls = {
-      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
-      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
-      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || []
+      android:
+        platformLinks?.android?.map((link: any) => link.url) ||
+        platform.urls?.android ||
+        [],
+      iphone:
+        platformLinks?.iphone?.map((link: any) => link.url) ||
+        platform.urls?.iphone ||
+        [],
+      pc:
+        platformLinks?.pc?.map((link: any) => link.url) ||
+        platform.urls?.pc ||
+        [],
     };
-    
+
     // iOS 폴백 처리
     if (deviceUrls.iphone.length === 0 && deviceUrls.android.length > 0) {
       deviceUrls.iphone = deviceUrls.android;
     }
-    
+
     // 현재 디바이스용 링크
     const currentDeviceKey = deviceType === "ios" ? "iphone" : deviceType;
     const currentUrls = deviceUrls[currentDeviceKey] || [];
-    
-    
+
+
     if (currentUrls.length > 0) {
-      // 디바이스별 링크 정보 표시
-      let deviceLinksInfo = '';
-      if (deviceUrls.android.length > 0) {
-        deviceLinksInfo += `📱 Android (${deviceUrls.android.length}개):\n`;
-        deviceUrls.android.forEach((url: string, i: number) => {
-          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
-        });
-        deviceLinksInfo += '\n';
-      }
-      
-      if (deviceUrls.iphone.length > 0) {
-        deviceLinksInfo += `📱 iPhone (${deviceUrls.iphone.length}개):\n`;
-        deviceUrls.iphone.forEach((url: string, i: number) => {
-          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
-        });
-        deviceLinksInfo += '\n';
-      }
-      
-      if (deviceUrls.pc.length > 0) {
-        deviceLinksInfo += `💻 PC (${deviceUrls.pc.length}개):\n`;
-        deviceUrls.pc.forEach((url: string, i: number) => {
-          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
-        });
-        deviceLinksInfo += '\n';
-      }
-      
-      const currentDeviceLinks = currentUrls.map((url: string, i: number) => `  ${i + 1}. ${url}`).join('\n');
-      
-      const message = `[${platform.name}] 디바이스별 링크 정보:\n\n${deviceLinksInfo}🎯 현재 ${deviceName}에서 열릴 링크:\n${currentDeviceLinks}\n\n이 링크들로 앱을 실행하시겠습니까?`;
-      
-      if (confirm(message)) {
-        openPlatformAuto(dynamicPlatform);
-      }
+      openPlatformAuto(dynamicPlatform);
     } else {
       const errorMsg = `[${platform.name}] ${deviceName}용 링크가 설정되지 않았습니다.`;
       alert(errorMsg);
@@ -146,53 +162,26 @@ export function PlatformCard({
   }
 
   function showStepLinksAndOpen(stepIndex: number) {
-    const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
-    
-    // 모든 디바이스별 링크 정보 수집
-    const deviceUrls = {
-      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
-      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
-      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || []
-    };
-    
-    // iOS 폴백 처리
-    if (deviceUrls.iphone.length === 0 && deviceUrls.android.length > 0) {
-      deviceUrls.iphone = deviceUrls.android;
-    }
-    
-    // 현재 디바이스용 링크
-    const currentDeviceKey = deviceType === "ios" ? "iphone" : deviceType;
-    const currentUrls = deviceUrls[currentDeviceKey] || [];
+    const currentUrls = urls;
+    const deviceName =
+      deviceType === "ios"
+        ? "iPhone"
+        : deviceType === "android"
+          ? "Android"
+          : "PC";
     const targetUrl = currentUrls[stepIndex] || currentUrls[0];
-    
-    
+
+
     if (targetUrl) {
-      // 디바이스별 해당 번호 링크 정보 표시
-      let deviceLinksInfo = '';
-      if (deviceUrls.android.length > stepIndex) {
-        deviceLinksInfo += `📱 Android 링크 ${stepIndex + 1}: ${deviceUrls.android[stepIndex]}\n\n`;
-      }
-      if (deviceUrls.iphone.length > stepIndex) {
-        deviceLinksInfo += `📱 iPhone 링크 ${stepIndex + 1}: ${deviceUrls.iphone[stepIndex]}\n\n`;
-      }
-      if (deviceUrls.pc.length > stepIndex) {
-        deviceLinksInfo += `💻 PC 링크 ${stepIndex + 1}: ${deviceUrls.pc[stepIndex]}\n\n`;
-      }
-      
-      const message = `[${platform.name}] 디바이스별 링크 ${stepIndex + 1} 정보:\n\n${deviceLinksInfo}🎯 현재 ${deviceName}에서 열릴 링크:\n${targetUrl}\n\n이 링크로 앱을 실행하시겠습니까?`;
-      
-      if (confirm(message)) {
-        openPlatformAuto(dynamicPlatform, undefined, {
-          androidStep: stepIndex,
-          iosStep: stepIndex,
-        });
-      }
+      openPlatformAuto(dynamicPlatform, undefined, {
+        androidStep: stepIndex,
+        iosStep: stepIndex,
+      });
     } else {
       const errorMsg = `[${platform.name}] ${deviceName}용 링크 ${stepIndex + 1}이 설정되지 않았습니다.`;
       alert(errorMsg);
     }
   }
-
 
   if (variant === "grid") {
     return (
