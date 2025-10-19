@@ -125,14 +125,14 @@ export async function updatePlatformLinks(
   try {
     // 트랜잭션 시뮬레이션: 기존 링크 삭제 후 새로 추가
 
-    // 1. 기존 링크 비활성화
-    const { error: deactivateError } = await supabase
+    // 1. 기존 링크 완전 삭제
+    const { error: deleteError } = await supabase
       .from("platform_links")
-      .update({ is_active: false })
+      .delete()
       .eq("platform_id", platformId);
 
-    if (deactivateError) {
-      console.error("기존 링크 비활성화 실패:", deactivateError);
+    if (deleteError) {
+      console.error("기존 링크 삭제 실패:", deleteError);
       return false;
     }
 
