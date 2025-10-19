@@ -151,8 +151,7 @@ export async function updatePlatformLinks(
               ? url
               : `https://tinyurl.com/${url}`,
           },
-          label: `링크 ${index + 1}`,
-          is_active: true, // 무조건 활성화 // 무조건 활성화
+          is_active: true,
         });
       }
     });
@@ -169,8 +168,7 @@ export async function updatePlatformLinks(
               ? url
               : `https://tinyurl.com/${url}`,
           },
-          label: `링크 ${index + 1}`,
-          is_active: true, // 무조건 활성화
+          is_active: true,
         });
       }
     });
@@ -187,8 +185,7 @@ export async function updatePlatformLinks(
               ? url
               : `https://tinyurl.com/${url}`,
           },
-          label: `링크 ${index + 1}`,
-          is_active: true, // 무조건 활성화
+          is_active: true,
         });
       }
     });
@@ -229,7 +226,6 @@ export async function updatePlatformBaseUrl(
       urls: {
         redirect: baseUrl,
       },
-      label: "base_url",
       is_active: true,
     });
 
