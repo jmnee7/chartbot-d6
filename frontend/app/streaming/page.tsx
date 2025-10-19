@@ -15,6 +15,7 @@ export default function StreamingPage() {
   const { isAdminMode } = useAdminMode();
   const { data: platformLinks } = usePlatformLinks();
 
+
   // 항상 모든 플랫폼을 표시하되, PlatformCard에서 DB 데이터 유무에 따라 처리
   const platformsToShow = MUSIC_PLATFORMS;
 

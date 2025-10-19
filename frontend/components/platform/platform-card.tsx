@@ -48,9 +48,9 @@ export function PlatformCard({
   });
 
   // 외부 데이터가 있으면 그걸 사용, 없으면 개별 쿼리 결과 사용
-  const platformLinks = externalPlatformLinks?.find(
-    (group: any) => group.platform_id === platform.id
-  ) || individualPlatformLinks;
+  const platformLinks = Array.isArray(externalPlatformLinks) 
+    ? externalPlatformLinks.find((group: any) => group.platform_id === platform.id)
+    : externalPlatformLinks?.[platform.id] || individualPlatformLinks;
 
   // DB 데이터 우선, 없으면 정적 데이터 사용
   // 1. DB에서 디바이스별 링크 가져오기
@@ -86,28 +86,100 @@ export function PlatformCard({
 
   // 링크 정보 표시 및 앱 실행 함수
   function showLinksAndOpen() {
-    const currentUrls = urls;
     const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
     
+    // 모든 디바이스별 링크 정보 수집
+    const deviceUrls = {
+      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
+      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
+      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || []
+    };
+    
+    // iOS 폴백 처리
+    if (deviceUrls.iphone.length === 0 && deviceUrls.android.length > 0) {
+      deviceUrls.iphone = deviceUrls.android;
+    }
+    
+    // 현재 디바이스용 링크
+    const currentDeviceKey = deviceType === "ios" ? "iphone" : deviceType;
+    const currentUrls = deviceUrls[currentDeviceKey] || [];
+    
+    
     if (currentUrls.length > 0) {
-      const linksList = currentUrls.map((url, index) => `${index + 1}. ${url}`).join('\n');
-      const message = `[${platform.name}] ${deviceName}에서 사용될 링크:\n\n${linksList}\n\n이 링크들로 앱을 실행하시겠습니까?`;
+      // 디바이스별 링크 정보 표시
+      let deviceLinksInfo = '';
+      if (deviceUrls.android.length > 0) {
+        deviceLinksInfo += `📱 Android (${deviceUrls.android.length}개):\n`;
+        deviceUrls.android.forEach((url: string, i: number) => {
+          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
+        });
+        deviceLinksInfo += '\n';
+      }
+      
+      if (deviceUrls.iphone.length > 0) {
+        deviceLinksInfo += `📱 iPhone (${deviceUrls.iphone.length}개):\n`;
+        deviceUrls.iphone.forEach((url: string, i: number) => {
+          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
+        });
+        deviceLinksInfo += '\n';
+      }
+      
+      if (deviceUrls.pc.length > 0) {
+        deviceLinksInfo += `💻 PC (${deviceUrls.pc.length}개):\n`;
+        deviceUrls.pc.forEach((url: string, i: number) => {
+          deviceLinksInfo += `  ${i + 1}. ${url}\n`;
+        });
+        deviceLinksInfo += '\n';
+      }
+      
+      const currentDeviceLinks = currentUrls.map((url: string, i: number) => `  ${i + 1}. ${url}`).join('\n');
+      
+      const message = `[${platform.name}] 디바이스별 링크 정보:\n\n${deviceLinksInfo}🎯 현재 ${deviceName}에서 열릴 링크:\n${currentDeviceLinks}\n\n이 링크들로 앱을 실행하시겠습니까?`;
       
       if (confirm(message)) {
         openPlatformAuto(dynamicPlatform);
       }
     } else {
-      alert(`[${platform.name}] ${deviceName}용 링크가 설정되지 않았습니다.`);
+      const errorMsg = `[${platform.name}] ${deviceName}용 링크가 설정되지 않았습니다.`;
+      alert(errorMsg);
     }
   }
 
   function showStepLinksAndOpen(stepIndex: number) {
-    const currentUrls = urls;
     const deviceName = deviceType === "ios" ? "iPhone" : deviceType === "android" ? "Android" : "PC";
+    
+    // 모든 디바이스별 링크 정보 수집
+    const deviceUrls = {
+      android: platformLinks?.android?.map((link: any) => link.url) || platform.urls?.android || [],
+      iphone: platformLinks?.iphone?.map((link: any) => link.url) || platform.urls?.iphone || [],
+      pc: platformLinks?.pc?.map((link: any) => link.url) || platform.urls?.pc || []
+    };
+    
+    // iOS 폴백 처리
+    if (deviceUrls.iphone.length === 0 && deviceUrls.android.length > 0) {
+      deviceUrls.iphone = deviceUrls.android;
+    }
+    
+    // 현재 디바이스용 링크
+    const currentDeviceKey = deviceType === "ios" ? "iphone" : deviceType;
+    const currentUrls = deviceUrls[currentDeviceKey] || [];
     const targetUrl = currentUrls[stepIndex] || currentUrls[0];
     
+    
     if (targetUrl) {
-      const message = `[${platform.name}] ${deviceName} 링크 ${stepIndex + 1}:\n\n${targetUrl}\n\n이 링크로 앱을 실행하시겠습니까?`;
+      // 디바이스별 해당 번호 링크 정보 표시
+      let deviceLinksInfo = '';
+      if (deviceUrls.android.length > stepIndex) {
+        deviceLinksInfo += `📱 Android 링크 ${stepIndex + 1}: ${deviceUrls.android[stepIndex]}\n\n`;
+      }
+      if (deviceUrls.iphone.length > stepIndex) {
+        deviceLinksInfo += `📱 iPhone 링크 ${stepIndex + 1}: ${deviceUrls.iphone[stepIndex]}\n\n`;
+      }
+      if (deviceUrls.pc.length > stepIndex) {
+        deviceLinksInfo += `💻 PC 링크 ${stepIndex + 1}: ${deviceUrls.pc[stepIndex]}\n\n`;
+      }
+      
+      const message = `[${platform.name}] 디바이스별 링크 ${stepIndex + 1} 정보:\n\n${deviceLinksInfo}🎯 현재 ${deviceName}에서 열릴 링크:\n${targetUrl}\n\n이 링크로 앱을 실행하시겠습니까?`;
       
       if (confirm(message)) {
         openPlatformAuto(dynamicPlatform, undefined, {
@@ -116,21 +188,11 @@ export function PlatformCard({
         });
       }
     } else {
-      alert(`[${platform.name}] ${deviceName}용 링크 ${stepIndex + 1}이 설정되지 않았습니다.`);
+      const errorMsg = `[${platform.name}] ${deviceName}용 링크 ${stepIndex + 1}이 설정되지 않았습니다.`;
+      alert(errorMsg);
     }
   }
 
-  // 기존 함수들 (호환성 유지)
-  function openPrimary() {
-    openPlatformAuto(dynamicPlatform);
-  }
-
-  function openStep(stepIndex: number) {
-    openPlatformAuto(dynamicPlatform, undefined, {
-      androidStep: stepIndex,
-      iosStep: stepIndex,
-    });
-  }
 
   if (variant === "grid") {
     return (
@@ -201,7 +263,7 @@ export function PlatformCard({
                           size="sm"
                           variant="ghost"
                           className="w-full justify-start text-xs"
-                          onClick={() => openStep(index)}
+                          onClick={() => showStepLinksAndOpen(index)}
                         >
                           {`링크 ${index + 1}`}
                         </Button>
@@ -287,7 +349,7 @@ export function PlatformCard({
       <Card
         className="w-40 flex-shrink-0 hover:shadow-md transition-shadow cursor-pointer"
         onClick={() =>
-          hasLinks ? openPrimary() : window.open(platform.url, "_blank")
+          hasLinks ? showLinksAndOpen() : window.open(platform.url, "_blank")
         }
       >
         <CardContent className="p-4">
@@ -335,7 +397,7 @@ export function PlatformCard({
     <Card
       className="hover:shadow-md transition-all duration-200 hover:scale-[1.02] cursor-pointer"
       onClick={() =>
-        hasLinks ? openPrimary() : window.open(platform.url, "_blank")
+        hasLinks ? showLinksAndOpen() : window.open(platform.url, "_blank")
       }
     >
       <CardContent className="p-4">

@@ -7,7 +7,8 @@ import { PlatformCard } from "@/components/platform/platform-card";
 import { usePlatformLinks } from "@/lib/api/platform-links";
 
 export default function QuickAccessCard() {
-  const { data: platformLinks, isLoading } = usePlatformLinks();
+  const { data: platformLinks } = usePlatformLinks();
+
 
   // 항상 모든 플랫폼을 표시하되, PlatformCard에서 DB 데이터 유무에 따라 처리
   const platformsToShow = MUSIC_PLATFORMS;
