@@ -41,21 +41,21 @@ export const MUSIC_PLATFORMS: Platform[] = [
     logo: "/streaming/melon-logo.png",
     urls: {
       android: [
-        "https://tinyurl.com/4r7fwzc2",
-        "https://tinyurl.com/5xza4dmm",
+        "https://tinyurl.com/3mzecame",
+        "https://tinyurl.com/zveta2vs", 
         "https://tinyurl.com/2p7c55sv",
       ],
       iphone: [
-        "https://tinyurl.com/4r7fwzc2",
-        "https://tinyurl.com/5xza4dmm",
+        "https://tinyurl.com/3mzecame",
+        "https://tinyurl.com/zveta2vs",
         "https://tinyurl.com/2p7c55sv",
       ],
       pc: [
-        "https://tinyurl.com/5fkdnhzz",
-        "https://tinyurl.com/4h6kp369",
+        "https://tinyurl.com/5s9zwnx5",
+        "https://tinyurl.com/4856xja5",
         "https://tinyurl.com/32n7px2x",
-        "https://tinyurl.com/ttuaxsx8",
-        "https://tinyurl.com/bdj87fxv",
+        "https://tinyurl.com/nhcmnzhf",
+        "https://tinyurl.com/bdcsktsf",
         "https://tinyurl.com/2ydd2j9a",
       ],
     },
@@ -126,9 +126,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "지니",
     logo: "/streaming/genie-logo.jpg",
     urls: {
-      android: ["https://tinyurl.com/t27y87r3"],
-      iphone: ["https://tinyurl.com/cz2mr3a4"],
-      pc: ["https://tinyurl.com/3kt467zp"],
+      android: ["https://tinyurl.com/2mjnzjns"],
+      iphone: ["https://tinyurl.com/4cddm82p"],
+      pc: ["https://tinyurl.com/bddehv9v"],
     },
     url: "https://mw.genie.co.kr/detail/albumInfo?axnm=86234533",
     deeplinks: {
@@ -168,9 +168,9 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "벅스",
     logo: "/streaming/bugs-logo.jpeg",
     urls: {
-      android: ["https://tinyurl.com/yrkef59b"],
-      iphone: ["https://tinyurl.com/yrkef59b"],
-      pc: ["https://tinyurl.com/3h5efnc5"],
+      android: ["https://tinyurl.com/3cuc69ep"],
+      iphone: ["https://tinyurl.com/3cuc69ep"],
+      pc: ["https://tinyurl.com/5z87sfm3"],
     },
     url: "https://music.bugs.co.kr/album/20724195",
     deeplinks: {
@@ -211,13 +211,13 @@ export const MUSIC_PLATFORMS: Platform[] = [
     logo: "/streaming/vibe-logo.png",
     urls: {
       android: [
-        "https://tinyurl.com/432vxc97",
-        "https://tinyurl.com/ycfzddx9",
+        "https://tinyurl.com/bd7c66d9",
+        "https://tinyurl.com/932cbyyw",
         "https://tinyurl.com/48fwb9t6",
       ],
       iphone: [
-        "https://tinyurl.com/432vxc97",
-        "https://tinyurl.com/ycfzddx9",
+        "https://tinyurl.com/bd7c66d9",
+        "https://tinyurl.com/932cbyyw",
         "https://tinyurl.com/48fwb9t6",
       ],
       pc: [
@@ -292,8 +292,8 @@ export const MUSIC_PLATFORMS: Platform[] = [
     name: "플로",
     logo: "/streaming/FLO-logo.png",
     urls: {
-      android: ["https://tinyurl.com/2pswchy2"],
-      iphone: ["https://tinyurl.com/2pswchy2"],
+      android: ["https://tinyurl.com/yhcdy3jk"],
+      iphone: ["https://tinyurl.com/yhcdy3jk"],
       pc: [
         "https://www.music-flo.com/search?keyword=DAY6+꿈의+버스",
         "https://www.music-flo.com/search?keyword=DAY6+INSIDE+OUT",
