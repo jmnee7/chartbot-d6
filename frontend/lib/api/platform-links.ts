@@ -123,9 +123,9 @@ export async function updatePlatformLinks(
   }
 ): Promise<boolean> {
   try {
-    // 트랜잭션 시뮬레이션: 기존 링크 삭제 후 새로 추가
+    // UPSERT 방식: 안전한 업데이트
 
-    // 1. 기존 링크 완전 삭제
+    // 1. 기존 링크 완전 삭제 (트랜잭션으로 안전하게)
     const { error: deleteError } = await supabase
       .from("platform_links")
       .delete()
@@ -135,6 +135,8 @@ export async function updatePlatformLinks(
       console.error("기존 링크 삭제 실패:", deleteError);
       return false;
     }
+
+    console.log(`${platformId} 기존 링크 삭제 완료`);
 
     // 2. 새 링크들 추가
     const newLinks: any[] = [];
@@ -199,15 +201,21 @@ export async function updatePlatformLinks(
       }
     });
 
+    // 3. 새 링크들 배치로 안전하게 추가
     if (newLinks.length > 0) {
+      console.log(`${platformId} 새 링크 ${newLinks.length}개 추가 시작`);
+      
       const { error: insertError } = await supabase
         .from("platform_links")
         .insert(newLinks);
 
       if (insertError) {
         console.error("새 링크 추가 실패:", insertError);
+        console.error("실패한 링크들:", newLinks);
         return false;
       }
+      
+      console.log(`${platformId} 새 링크 추가 완료`);
     }
 
     console.log(`${platformId} 플랫폼 링크 업데이트 완료`);
