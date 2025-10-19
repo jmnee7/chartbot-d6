@@ -16,12 +16,15 @@ import { openPlatformAuto } from "@/lib/deep-link-runtime";
 import { useState } from "react";
 import { StreamingLinkEditModal } from "@/components/admin/streaming-link-edit-modal";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
+import { useQuery } from "@tanstack/react-query";
+import { fetchPlatformLinksById } from "@/lib/api/platform-links";
 
 interface PlatformCardProps {
   platform: Platform;
   variant?: "default" | "compact" | "grid";
   showDescription?: boolean;
   isHome?: boolean;
+  platformLinks?: any[];
 }
 
 export function PlatformCard({
@@ -29,24 +32,47 @@ export function PlatformCard({
   variant = "default",
   showDescription = true,
   isHome = false,
+  platformLinks: externalPlatformLinks,
 }: PlatformCardProps) {
   const deviceType = useDeviceType() as "android" | "ios" | "pc";
   const { isAdminMode } = useAdminMode();
   const [showDropdown, setShowDropdown] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
-  // urls 필드 확인 (새로운 tinyurl 링크)
-  const urls =
-    platform.urls?.[deviceType === "ios" ? "iphone" : deviceType] || [];
+  // 외부에서 받은 platformLinks가 있으면 우선 사용, 없으면 개별 쿼리
+  const { data: individualPlatformLinks } = useQuery({
+    queryKey: ["platformLinks", platform.id, isAdminMode],
+    queryFn: () => fetchPlatformLinksById(platform.id, isAdminMode),
+    staleTime: 60000, // 1분간 캐시
+    enabled: !externalPlatformLinks, // 외부 데이터가 없을 때만 실행
+  });
+
+  // 외부 데이터가 있으면 그걸 사용, 없으면 개별 쿼리 결과 사용
+  const platformLinks = externalPlatformLinks?.find(
+    (group: any) => group.platform_id === platform.id
+  ) || individualPlatformLinks;
+
+  // DB 데이터 우선, 없으면 정적 데이터 사용
+  // 1. DB에서 디바이스별 링크 가져오기
+  const deviceKey = deviceType === "ios" ? "iphone" : deviceType;
+  let dbUrls = platformLinks?.[deviceKey]?.map((link: any) => link.url) || [];
+
+  // 2. DB 데이터가 없으면 정적 데이터 사용
+  const staticUrls = platform.urls?.[deviceKey] || [];
+
+  // 3. iPhone 데이터가 없으면 Android 데이터로 폴백 (DB 우선, 정적 폴백)
+  if (deviceType === "ios" && dbUrls.length === 0 && staticUrls.length === 0) {
+    dbUrls = platformLinks?.android?.map((link: any) => link.url) || [];
+    const androidStaticUrls = platform.urls?.android || [];
+    dbUrls = dbUrls.length > 0 ? dbUrls : androidStaticUrls;
+  }
+
+  const urls = dbUrls.length > 0 ? dbUrls : staticUrls;
   const hasUrls = urls.length > 0;
 
-  // 기존 deeplinks 폴백
-  const deeplinks = platform.deeplinks?.[deviceType] || [];
-  const hasDeeplinks = deeplinks.length > 0;
-
-  // urls가 있으면 우선 사용
-  const links = hasUrls ? urls : deeplinks;
-  const hasLinks = hasUrls || hasDeeplinks;
+  // DB 데이터만 사용 (deeplinks 폴백 제거)
+  const links = urls;
+  const hasLinks = hasUrls;
 
   // 공용 핸들러 함수들
   function openPrimary(platform: Platform) {
@@ -66,7 +92,7 @@ export function PlatformCard({
         {/* 관리자 편집 버튼 */}
         {isAdminMode && (
           <div className="absolute top-1 right-1 z-10">
-            <button 
+            <button
               onClick={() => setShowEditModal(true)}
               className="w-6 h-6 bg-mint-primary/10 hover:bg-mint-primary/20 rounded-md flex items-center justify-center transition-colors"
             >
@@ -74,7 +100,7 @@ export function PlatformCard({
             </button>
           </div>
         )}
-        
+
         <div className="flex flex-col items-center p-3 border border-gray-100 hover:border-gray-200 rounded-lg">
           <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center mb-2 bg-white border border-gray-100 overflow-hidden">
             {platform.logo !== "/file.svg" ? (
@@ -104,7 +130,7 @@ export function PlatformCard({
                   onClick={() => openStep(platform, 0)}
                 >
                   <Smartphone className="w-3 h-3 mr-1" />
-                  {hasUrls ? "앱으로" : deeplinks[0]?.label || "앱 스킴"}
+                  앱으로
                 </Button>
               ) : (
                 // 여러 딥링크인 경우 - 모바일/PC 모두 드롭다운 방식
@@ -123,29 +149,17 @@ export function PlatformCard({
 
                   {showDropdown && (
                     <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-2 space-y-1">
-                      {hasUrls
-                        ? urls.map((url, index) => (
-                            <Button
-                              key={index}
-                              size="sm"
-                              variant="ghost"
-                              className="w-full justify-start text-xs"
-                              onClick={() => openStep(platform, index)}
-                            >
-                              {`링크 ${index + 1}`}
-                            </Button>
-                          ))
-                        : deeplinks.map((link, index) => (
-                            <Button
-                              key={index}
-                              size="sm"
-                              variant="ghost"
-                              className="w-full justify-start text-xs"
-                              onClick={() => openStep(platform, index)}
-                            >
-                              {link.label}
-                            </Button>
-                          ))}
+                      {urls.map((url, index) => (
+                        <Button
+                          key={index}
+                          size="sm"
+                          variant="ghost"
+                          className="w-full justify-start text-xs"
+                          onClick={() => openStep(platform, index)}
+                        >
+                          {`링크 ${index + 1}`}
+                        </Button>
+                      ))}
                     </div>
                   )}
                 </>
@@ -157,21 +171,19 @@ export function PlatformCard({
                 </p>
               )}
             </>
-          ) : // PC에서 여러 링크가 있으면 순차 실행, 없으면 웹 링크
-          deviceType === "pc" &&
-            platform.urls?.pc &&
-            platform.urls.pc.length > 1 ? (
+          ) : // PC에서 여러 링크가 있으면 순차 실행, 없으면 비활성화
+          deviceType === "pc" && urls.length > 1 ? (
             <Button
               size="sm"
               className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
               onClick={() => {
                 // 첫 번째 링크는 현재 탭에서 열기
-                if (platform.urls?.pc?.[0]) {
-                  window.location.href = platform.urls.pc[0];
+                if (urls[0]) {
+                  window.location.href = urls[0];
                 }
 
                 // 나머지 링크들은 새 탭에서 열기 (1초 간격)
-                platform.urls?.pc?.slice(1).forEach((url, index) => {
+                urls.slice(1).forEach((url, index) => {
                   setTimeout(
                     () => {
                       window.open(url, "_blank");
@@ -184,14 +196,10 @@ export function PlatformCard({
               <ExternalLink className="w-3 h-3 mr-1" />
               {isHome ? "웹" : "웹으로 (전곡)"}
             </Button>
-          ) : (
-            // 단일 링크이거나 PC가 아닌 경우
+          ) : urls.length === 1 ? (
+            // 단일 링크인 경우
             <a
-              href={
-                deviceType === "pc" && platform.urls?.pc?.[0]
-                  ? platform.urls.pc[0]
-                  : platform.url
-              }
+              href={urls[0]}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
@@ -200,24 +208,22 @@ export function PlatformCard({
                 size="sm"
                 className="w-full text-xs bg-mint-primary hover:bg-mint-dark text-white"
               >
-                {platform.id === "flo" && deviceType !== "pc" ? (
-                  <Smartphone className="w-3 h-3 mr-1" />
-                ) : (
-                  <ExternalLink className="w-3 h-3 mr-1" />
-                )}
-                {(platform.id === "flo" && deviceType !== "pc") ||
-                (hasUrls && deviceType !== "pc")
-                  ? isHome
-                    ? "앱으로"
-                    : "앱으로 열기"
-                  : isHome
-                    ? "웹"
-                    : "웹으로"}
+                <ExternalLink className="w-3 h-3 mr-1" />
+                {isHome ? "웹" : "웹으로"}
               </Button>
             </a>
+          ) : (
+            // DB에 데이터가 없으면 비활성화
+            <Button
+              size="sm"
+              disabled
+              className="w-full text-xs bg-gray-300 text-gray-500"
+            >
+              링크 설정 필요
+            </Button>
           )}
         </div>
-        
+
         {/* 편집 모달 */}
         {showEditModal && (
           <StreamingLinkEditModal
@@ -312,27 +318,15 @@ export function PlatformCard({
               {platform.name}
             </h3>
             <div className="flex items-center justify-center mt-2 text-xs text-gray-500">
-              {hasLinks || hasUrls ? (
+              {hasLinks ? (
                 <>
                   <Smartphone className="w-3 h-3 mr-1" />
                   <span>앱으로 열기</span>
                 </>
               ) : (
                 <>
-                  {platform.id === "flo" ? (
-                    <Smartphone className="w-3 h-3 mr-1" />
-                  ) : (
-                    <ExternalLink className="w-3 h-3 mr-1" />
-                  )}
-                  <span>
-                    {platform.id === "flo"
-                      ? "앱으로 열기"
-                      : platform.category === "music"
-                        ? "바로 스트리밍"
-                        : platform.category === "download"
-                          ? "바로 다운로드"
-                          : "바로 시청"}
-                  </span>
+                  <ExternalLink className="w-3 h-3 mr-1" />
+                  <span>링크 설정 필요</span>
                 </>
               )}
             </div>
@@ -342,4 +336,3 @@ export function PlatformCard({
     </Card>
   );
 }
-

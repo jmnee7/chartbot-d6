@@ -26,10 +26,9 @@ interface StreamingLinkEditModalProps {
   platform: Platform;
   isOpen: boolean;
   onClose: () => void;
-  onUpdate?: () => void;
 }
 
-export function StreamingLinkEditModal({ platform, isOpen, onClose, onUpdate }: StreamingLinkEditModalProps) {
+export function StreamingLinkEditModal({ platform, isOpen, onClose }: StreamingLinkEditModalProps) {
   const queryClient = useQueryClient();
   const [isSaving, setIsSaving] = useState(false);
   
@@ -119,13 +118,15 @@ export function StreamingLinkEditModal({ platform, isOpen, onClose, onUpdate }: 
       const success = await updatePlatformLinks(platform.id, editingLinks);
       
       if (success) {
-        // React Query 캐시 무효화
+        // React Query 캐시 무효화 (개별 + 전체)
         queryClient.invalidateQueries({ 
           queryKey: ["platformLinks", platform.id] 
         });
+        queryClient.invalidateQueries({ 
+          queryKey: ["platformLinks"] 
+        });
         
         onClose();
-        onUpdate?.();
         alert('링크가 저장되었습니다.');
       } else {
         alert('저장에 실패했습니다. 다시 시도해주세요.');

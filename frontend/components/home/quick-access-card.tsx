@@ -4,8 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { MUSIC_PLATFORMS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
+import { usePlatformLinks } from "@/lib/api/platform-links";
 
 export default function QuickAccessCard() {
+  const { data: platformLinks } = usePlatformLinks();
+
   return (
     <Card>
       <CardContent className="p-0">
@@ -21,7 +24,12 @@ export default function QuickAccessCard() {
                 ease: "easeOut",
               }}
             >
-              <PlatformCard platform={platform} variant="grid" isHome={true} />
+              <PlatformCard 
+                platform={platform} 
+                variant="grid" 
+                isHome={true} 
+                platformLinks={platformLinks}
+              />
             </motion.div>
           ))}
         </div>
