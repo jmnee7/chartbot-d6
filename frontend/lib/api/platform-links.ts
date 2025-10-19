@@ -144,14 +144,17 @@ export async function updatePlatformLinks(
       if (url.trim()) {
         newLinks.push({
           platform_id: platformId,
+          platform: platformId,
           device_type: "android",
           link_index: index,
+          song_title: `${platformId}(안드로이드)`,
           urls: {
             redirect: url.startsWith("http")
               ? url
               : `https://tinyurl.com/${url}`,
           },
           is_active: true,
+          updated_by: "admin",
         });
       }
     });
@@ -161,14 +164,17 @@ export async function updatePlatformLinks(
       if (url.trim()) {
         newLinks.push({
           platform_id: platformId,
+          platform: platformId,
           device_type: "iphone",
           link_index: index,
+          song_title: `${platformId}(iOS)`,
           urls: {
             redirect: url.startsWith("http")
               ? url
               : `https://tinyurl.com/${url}`,
           },
           is_active: true,
+          updated_by: "admin",
         });
       }
     });
@@ -178,14 +184,17 @@ export async function updatePlatformLinks(
       if (url.trim()) {
         newLinks.push({
           platform_id: platformId,
+          platform: platformId,
           device_type: "pc",
           link_index: index,
+          song_title: `${platformId}(PC)`,
           urls: {
             redirect: url.startsWith("http")
               ? url
               : `https://tinyurl.com/${url}`,
           },
           is_active: true,
+          updated_by: "admin",
         });
       }
     });
@@ -221,12 +230,15 @@ export async function updatePlatformBaseUrl(
     // 임시로 특별한 link_index (-1)로 기본 URL 저장
     const { error } = await supabase.from("platform_links").upsert({
       platform_id: platformId,
+      platform: platformId,
       device_type: "pc",
       link_index: -1,
+      song_title: `${platformId}(기본URL)`,
       urls: {
         redirect: baseUrl,
       },
       is_active: true,
+      updated_by: "admin",
     });
 
     if (error) {
