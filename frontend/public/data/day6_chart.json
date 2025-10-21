@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2025-10-22 05:00",
+  "lastUpdated": "2025-10-22 06:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -288,7 +288,7 @@
           "album": "The Book of Us : Gravity",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/003/117/3117381.jpg?type=r480Fll&v=20230331153414",
           "change": 0,
-          "changeText": "NEW"
+          "changeText": "-"
         },
         {
           "rank": 36,
@@ -297,7 +297,7 @@
           "album": "Fourever",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/031/043/31043036.jpg?type=r480Fll&v=20240402145726",
           "change": 0,
-          "changeText": "NEW"
+          "changeText": "-"
         },
         {
           "rank": 57,
@@ -306,7 +306,7 @@
           "album": "Fourever",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/031/043/31043036.jpg?type=r480Fll&v=20240402145726",
           "change": 0,
-          "changeText": "NEW"
+          "changeText": "-"
         },
         {
           "rank": 73,
@@ -315,7 +315,7 @@
           "album": "Every DAY6 February",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/001/779/1779662.jpg?type=r480Fll&v=20240129085632",
           "change": 0,
-          "changeText": "NEW"
+          "changeText": "-"
         }
       ],
       "count": 4
@@ -324,22 +324,22 @@
       "name": "플로",
       "songs": [
         {
-          "rank": 49,
+          "rank": 48,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": 1,
+          "changeText": "↑1"
         },
         {
-          "rank": 53,
+          "rank": 55,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "The Book of Us : Gravity",
           "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": -2,
+          "changeText": "↓2"
         },
         {
           "rank": 75,
@@ -347,8 +347,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": -2,
-          "changeText": "↓2"
+          "change": 0,
+          "changeText": "-"
         },
         {
           "rank": 93,
@@ -356,8 +356,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-          "change": 2,
-          "changeText": "↑2"
+          "change": 0,
+          "changeText": "-"
         }
       ],
       "count": 4
