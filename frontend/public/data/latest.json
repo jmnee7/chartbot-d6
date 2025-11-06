@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-11-07 03:00",
+  "collectedAtKST": "2025-11-07 04:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -404,7 +404,7 @@
   ],
   "flo": [
     {
-      "rank": 43,
+      "rank": 44,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -412,12 +412,12 @@
       "change": -1
     },
     {
-      "rank": 45,
+      "rank": 52,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
       "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-      "change": 1
+      "change": -7
     },
     {
       "rank": 65,
@@ -428,12 +428,12 @@
       "change": 0
     },
     {
-      "rank": 86,
+      "rank": 85,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
       "albumArt": "https://cdn.music-flo.com/image/album/631/296/02/04/402296631_5c9d4078.jpg?1553809529721/dims/resize/1000x1000/quality/90",
-      "change": -3
+      "change": 1
     }
   ]
 }
