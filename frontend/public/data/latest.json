@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-11-08 15:00:00",
+  "collectedAtKST": "2025-11-08 16:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,7 +10,7 @@
   ],
   "melon_top100": [
     {
-      "rank": 31,
+      "rank": 30,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -18,7 +18,7 @@
       "change": 0
     },
     {
-      "rank": 37,
+      "rank": 36,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -42,7 +42,7 @@
       "change": 0
     },
     {
-      "rank": 80,
+      "rank": 84,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
@@ -52,7 +52,7 @@
   ],
   "melon_hot100": [
     {
-      "rank": 24,
+      "rank": 23,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
@@ -68,7 +68,7 @@
       "change": 0
     },
     {
-      "rank": 91,
+      "rank": 83,
       "title": "해야 뜨지 말아 줘",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
@@ -78,7 +78,7 @@
   ],
   "melon": [
     {
-      "rank": 31,
+      "rank": 30,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -86,7 +86,7 @@
       "change": 0
     },
     {
-      "rank": 37,
+      "rank": 36,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -110,7 +110,7 @@
       "change": 0
     },
     {
-      "rank": 80,
+      "rank": 84,
       "title": "꿈의 버스",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
@@ -126,7 +126,7 @@
       "change": 0
     },
     {
-      "rank": 91,
+      "rank": 83,
       "title": "해야 뜨지 말아 줘",
       "artist": "DAY6 (데이식스)",
       "album": "The DECADE",
@@ -136,7 +136,7 @@
   ],
   "genie": [
     {
-      "rank": 19,
+      "rank": 18,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -144,7 +144,7 @@
       "change": 0
     },
     {
-      "rank": 24,
+      "rank": 23,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -152,15 +152,7 @@
       "change": 0
     },
     {
-      "rank": 29,
-      "title": "예뻤어",
-      "artist": "DAY6 (데이식스)",
-      "album": "Every DAY6 February",
-      "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 0
-    },
-    {
-      "rank": 31,
+      "rank": 28,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -168,7 +160,15 @@
       "change": 0
     },
     {
-      "rank": 78,
+      "rank": 31,
+      "title": "예뻤어",
+      "artist": "DAY6 (데이식스)",
+      "album": "Every DAY6 February",
+      "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
+      "change": 0
+    },
+    {
+      "rank": 89,
       "title": "Congratulations",
       "artist": "DAY6 (데이식스)",
       "album": "The Day",
