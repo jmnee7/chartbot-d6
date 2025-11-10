@@ -116,6 +116,7 @@ export function ComebackScheduleEditModal({ isOpen, onClose, onUpdate }: Comebac
       if (success) {
         queryClient.invalidateQueries({ queryKey: ["comebackSchedules"] });
         resetForm();
+        onUpdate?.(); // onUpdate 콜백 호출
         alert(editingId ? '일정이 수정되었습니다.' : '일정이 추가되었습니다.');
       } else {
         alert('저장에 실패했습니다.');
@@ -138,6 +139,7 @@ export function ComebackScheduleEditModal({ isOpen, onClose, onUpdate }: Comebac
     
     if (success) {
       queryClient.invalidateQueries({ queryKey: ["comebackSchedules"] });
+      onUpdate?.(); // onUpdate 콜백 호출
       alert('일정이 삭제되었습니다.');
     } else {
       alert('삭제에 실패했습니다.');

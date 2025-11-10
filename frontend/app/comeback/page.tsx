@@ -13,11 +13,10 @@ import { fetchComebackSchedules, calculateDDay } from "@/lib/api/comeback";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 import { ComebackScheduleEditModal } from "@/components/admin/comeback-schedule-edit-modal";
 
-
 export default function ComebackPage() {
   const { isAdminMode } = useAdminMode();
   const [showEditModal, setShowEditModal] = useState(false);
-  
+
   // DB에서 컴백 스케줄 가져오기
   const { data: dbSchedules } = useQuery({
     queryKey: ["comebackSchedules"],
@@ -27,10 +26,12 @@ export default function ComebackPage() {
 
   // DB 데이터만 사용 (기본값 없음)
   const schedules = dbSchedules || [];
-  
+
   // 날짜순 정렬하고 D-Day 계산
   const comebackSchedule = schedules
-    .sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
+    .sort(
+      (a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
+    )
     .map((schedule) => ({
       ...schedule,
       dDay: calculateDDay(schedule.datetime),
@@ -70,46 +71,51 @@ export default function ComebackPage() {
           className="bg-gradient-to-r from-[#49c4b0] to-[#6dd5c0] text-white rounded-lg"
         >
           {/* 오늘 이후 일정만 표시 */}
-          {comebackSchedule.filter((schedule) => schedule.dDay >= 0).length > 0 ? (
+          {comebackSchedule.filter((schedule) => schedule.dDay >= 0).length >
+          0 ? (
             comebackSchedule
               .filter((schedule) => schedule.dDay >= 0)
               .map((schedule, index) => (
-              <SwiperSlide key={index} className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Calendar className="w-6 h-6" />
-                      <Badge className="bg-white/20 text-white border-white/30">
-                        {schedule.dDay === 0 ? "D-DAY" : `D-${schedule.dDay}`}
-                      </Badge>
+                <SwiperSlide key={index} className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Calendar className="w-6 h-6" />
+                        <Badge className="bg-white/20 text-white border-white/30">
+                          {schedule.dDay === 0 ? "D-DAY" : `D-${schedule.dDay}`}
+                        </Badge>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-1 leading-tight">
+                        {schedule.event}
+                      </h3>
+                      <p className="text-white/80 text-sm">{schedule.date}</p>
+                      <p className="text-white/80 text-sm">
+                        {schedule.description}
+                      </p>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold mb-1 leading-tight">
-                      {schedule.event}
-                    </h3>
-                    <p className="text-white/80 text-sm">{schedule.date}</p>
-                    <p className="text-white/80 text-sm">
-                      {schedule.description}
-                    </p>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold whitespace-nowrap">
+                        {schedule.dDay === 0 ? "D-DAY" : `${schedule.dDay}일`}
+                      </div>
+                      <div className="text-sm text-white whitespace-nowrap">
+                        {schedule.dDay === 0 ? "오늘" : "남음"}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-bold whitespace-nowrap">
-                      {schedule.dDay === 0 ? "D-DAY" : `${schedule.dDay}일`}
-                    </div>
-                    <div className="text-sm text-white whitespace-nowrap">
-                      {schedule.dDay === 0 ? "오늘" : "남음"}
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))
+                </SwiperSlide>
+              ))
           ) : (
             // 일정이 없을 때 메시지 표시
             <SwiperSlide className="p-6">
               <div className="text-center">
                 <Calendar className="w-12 h-12 mx-auto mb-4 opacity-70" />
-                <h3 className="text-xl font-bold mb-2">예정된 일정이 없습니다</h3>
+                <h3 className="text-xl font-bold mb-2">
+                  예정된 일정이 없습니다
+                </h3>
                 <p className="text-white/80">
-                  {isAdminMode ? '관리자 모드에서 새로운 일정을 추가할 수 있습니다.' : '곧 새로운 소식을 전해드릴게요!'}
+                  {isAdminMode
+                    ? "관리자 모드에서 새로운 일정을 추가할 수 있습니다."
+                    : "곧 새로운 소식을 전해드릴게요!"}
                 </p>
               </div>
             </SwiperSlide>
@@ -171,13 +177,14 @@ export default function ComebackPage() {
             </Link>
           </div>
         </div>
-        
-        {/* 컴백 스케줄 편집 모달 */}
+
+        {/* ㅇ 스케줄 편집 모달 */}
         {showEditModal && (
           <ComebackScheduleEditModal
             isOpen={showEditModal}
             onClose={() => setShowEditModal(false)}
             onUpdate={() => {
+              console.log("onUpdate 콜백 호출됨 - 데이터 새로고침 시작");
               // React Query 캐시 무효화로 데이터 새로고침
             }}
           />
