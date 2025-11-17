@@ -1,238 +1,4 @@
 {
-  "2025-11-16 10:00:00": {
-    "_processed_at": "2025-11-16T10:06:18.376811+09:00",
-    "melon_top100": [
-      {
-        "rank": 35,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 40,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 52,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 53,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 100,
-        "title": "꿈의 버스",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      }
-    ],
-    "melon_hot100": [
-      {
-        "rank": 35,
-        "title": "꿈의 버스",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 44,
-        "title": "INSIDE OUT",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "melon": [
-      {
-        "rank": 35,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 40,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 52,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 53,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 100,
-        "title": "꿈의 버스",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 44,
-        "title": "INSIDE OUT",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "genie": [
-      {
-        "rank": 31,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 34,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 42,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 48,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      }
-    ],
-    "bugs": [
-      {
-        "rank": 18,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 22,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 28,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 37,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 45,
-        "title": "꿈의 버스",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 57,
-        "title": "Congratulations",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 68,
-        "title": "Love me or Leave me",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 71,
-        "title": "INSIDE OUT",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 77,
-        "title": "Maybe Tomorrow",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      }
-    ],
-    "vibe": [
-      {
-        "rank": 32,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 35,
-        "title": "HAPPY",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 55,
-        "title": "Welcome to the Show",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 70,
-        "title": "예뻤어",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      }
-    ],
-    "flo": [
-      {
-        "rank": 59,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 60,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 77,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      },
-      {
-        "rank": 88,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2025-11-16 10:00:00"
-      }
-    ]
-  },
   "2025-11-16 12:00:00": {
     "_processed_at": "2025-11-16T12:12:54.882096+09:00",
     "melon_top100": [
@@ -5902,6 +5668,260 @@
         "title": "예뻤어",
         "artist": "DAY6 (데이식스)",
         "timestamp": "2025-11-17 12:00:00"
+      }
+    ]
+  },
+  "2025-11-17 13:00:00": {
+    "_processed_at": "2025-11-17T13:20:15.764987+09:00",
+    "melon_top100": [
+      {
+        "rank": 33,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 45,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 48,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 51,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 90,
+        "title": "꿈의 버스",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      }
+    ],
+    "melon_hot100": [
+      {
+        "rank": 35,
+        "title": "꿈의 버스",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 43,
+        "title": "INSIDE OUT",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 94,
+        "title": "해야 뜨지 말아 줘",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "melon": [
+      {
+        "rank": 33,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 45,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 48,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 51,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 90,
+        "title": "꿈의 버스",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 43,
+        "title": "INSIDE OUT",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 94,
+        "title": "해야 뜨지 말아 줘",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "genie": [
+      {
+        "rank": 20,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 33,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 42,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 44,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 92,
+        "title": "Congratulations",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      }
+    ],
+    "bugs": [
+      {
+        "rank": 20,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 22,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 28,
+        "title": "INSIDE OUT",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 35,
+        "title": "꿈의 버스",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 44,
+        "title": "Congratulations",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 54,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 56,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 63,
+        "title": "Love me or Leave me",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 81,
+        "title": "Maybe Tomorrow",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      }
+    ],
+    "vibe": [
+      {
+        "rank": 31,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 36,
+        "title": "HAPPY",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 56,
+        "title": "Welcome to the Show",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 73,
+        "title": "예뻤어",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      }
+    ],
+    "flo": [
+      {
+        "rank": 44,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 55,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 76,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
+      },
+      {
+        "rank": 93,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2025-11-17 13:00:00"
       }
     ]
   }
