@@ -1,19 +1,24 @@
 "use client";
 
-import { Play, Settings } from "lucide-react";
+import { useState } from "react";
+import { Play, Settings, ImagePlus } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { MUSIC_PLATFORMS, FEATURED_MVS } from "@/lib/constants/platforms";
 import { PlatformCard } from "@/components/platform/platform-card";
 import { StreamingLinkEditModal } from "@/components/admin/streaming-link-edit-modal";
+import { ImageUploadModal } from "@/components/admin/image-upload-modal";
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
 import { usePlatformLinks } from "@/lib/api/platform-links";
+import { useImagesByCategory } from "@/lib/api/image-resources";
 import Image from "next/image";
 
 export default function StreamingPage() {
   const { isAdminMode } = useAdminMode();
   const { data: platformLinks } = usePlatformLinks();
+  const { data: streamingGuideImages } = useImagesByCategory("streaming_guide");
+  const [showImageModal, setShowImageModal] = useState(false);
 
 
   // 항상 모든 플랫폼을 표시하되, PlatformCard에서 DB 데이터 유무에 따라 처리
@@ -59,15 +64,52 @@ export default function StreamingPage() {
               {/* 스트리밍 리스트 이미지 */}
               <Card>
                 <CardContent className="p-4">
-                  <div className="relative w-full">
-                    <Image
-                      src="/streaming/streaming-list.png"
-                      alt="스트리밍 리스트"
-                      width={1200}
-                      height={800}
-                      className="w-full h-auto rounded-lg"
-                      priority
-                    />
+                  {/* 관리자 모드: 이미지 관리 버튼 */}
+                  {isAdminMode && (
+                    <div className="flex justify-end mb-3">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => setShowImageModal(true)}
+                        className="text-xs"
+                      >
+                        <ImagePlus className="w-4 h-4 mr-1" />
+                        이미지 관리
+                      </Button>
+                    </div>
+                  )}
+
+                  {/* DB에서 이미지 불러오기 (있으면) / 없으면 정적 이미지 */}
+                  <div className="space-y-4">
+                    {streamingGuideImages && streamingGuideImages.length > 0 ? (
+                      streamingGuideImages.map((img) => (
+                        <div key={img.id} className="relative w-full">
+                          <Image
+                            src={img.file_url}
+                            alt={img.title}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto rounded-lg"
+                          />
+                          {img.title && (
+                            <p className="text-xs text-gray-500 mt-1 text-center">
+                              {img.title}
+                            </p>
+                          )}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="relative w-full">
+                        <Image
+                          src="/streaming/streaming-list.png"
+                          alt="스트리밍 리스트"
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto rounded-lg"
+                          priority
+                        />
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -122,6 +164,15 @@ export default function StreamingPage() {
       </div>
 
       <div className="h-20 md:h-8"></div>
+
+      {/* 이미지 업로드 모달 */}
+      {showImageModal && (
+        <ImageUploadModal
+          isOpen={showImageModal}
+          onClose={() => setShowImageModal(false)}
+          defaultCategory="streaming_guide"
+        />
+      )}
     </div>
   );
 }

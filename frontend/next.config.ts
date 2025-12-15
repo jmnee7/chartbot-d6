@@ -79,6 +79,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/album/**",
       },
+      {
+        protocol: "https",
+        hostname: "gbprycyolfwdpijoblhb.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
     ],
   },
 };
