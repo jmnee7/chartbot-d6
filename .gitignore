@@ -47,6 +47,8 @@ __pycache__/
 *.so
 .Python
 
-.claude/**
+.claude/
+.moai/
+
 
 docs/**
