@@ -25,6 +25,18 @@ interface CompactChartProps {
   title?: string;
 }
 
+// 특수문자 정규화 함수 - 아포스트로피 유사 문자들을 표준화
+function normalizeText(text: string): string {
+  if (!text) return "";
+  return text
+    // 아포스트로피 유사 문자들을 표준 아포스트로피로 변환
+    .replace(/[\u2032\u2019\u0060\u00B4\u2018]/g, "'")
+    // 공백 정규화
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
   const { isAdminMode } = useAdminMode();
   
@@ -116,12 +128,15 @@ export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
     const songs =
       (chartData?.[platform as keyof typeof chartData] as ChartSong[]) || [];
 
-    // DB에서 가져온 곡명으로 검색 (기존과 동일한 방식)
+    // DB에서 가져온 곡명으로 검색 (정규화된 문자열 비교)
+    const normalizedFirstSong = normalizeText(firstSong);
+    const normalizedSecondSong = normalizeText(secondSong);
+
     const foundFirstSong = songs.find(
-      (song) => song.title && song.title.includes(firstSong)
+      (song) => song.title && normalizeText(song.title).includes(normalizedFirstSong)
     );
     const foundSecondSong = songs.find(
-      (song) => song.title && song.title.includes(secondSong)
+      (song) => song.title && normalizeText(song.title).includes(normalizedSecondSong)
     );
 
     platformData.push({
