@@ -291,7 +291,7 @@ export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
                           <div
                             className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
                               !targetSong && !isManualMode
-                                ? showFirstSong
+                                ? (showFirstSong || !secondSongData)
                                   ? "transform translate-y-0 opacity-100"
                                   : "transform -translate-y-6 opacity-0"
                                 : targetSong === firstSong ||
@@ -316,7 +316,7 @@ export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
                           <div
                             className={`absolute inset-0 flex flex-col justify-center transition-all duration-500 ease-out ${
                               !targetSong && !isManualMode
-                                ? !showFirstSong
+                                ? (!showFirstSong && secondSongData)
                                   ? "transform translate-y-0 opacity-100"
                                   : "transform -translate-y-6 opacity-0"
                                 : targetSong === secondSong ||
