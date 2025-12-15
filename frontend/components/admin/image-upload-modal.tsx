@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -54,7 +53,6 @@ export function ImageUploadModal({
   const [selectedCategory, setSelectedCategory] =
     useState<ImageResource["category"]>(defaultCategory);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"upload" | "manage">("upload");
@@ -105,14 +103,12 @@ export function ImageUploadModal({
         file: selectedFile,
         category: selectedCategory,
         title,
-        description,
       });
 
       // 초기화
       setSelectedFile(null);
       setPreviewUrl(null);
       setTitle("");
-      setDescription("");
 
       alert("이미지가 업로드되었습니다!");
     } catch (error) {
@@ -149,7 +145,7 @@ export function ImageUploadModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <ImageIcon className="w-5 h-5" />
@@ -199,96 +195,69 @@ export function ImageUploadModal({
           </Select>
         </div>
 
-        {activeTab === "upload" ? (
-          <div className="space-y-4">
-            {/* 파일 드롭존 */}
-            <div
-              className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer
-                ${selectedFile ? "border-green-500 bg-green-50" : "border-gray-300 hover:border-gray-400"}`}
-              onClick={() => fileInputRef.current?.click()}
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleFileSelect}
-                className="hidden"
-              />
-
-              {previewUrl ? (
-                <div className="relative">
-                  <Image
-                    src={previewUrl}
-                    alt="Preview"
-                    width={400}
-                    height={300}
-                    className="max-h-48 mx-auto object-contain rounded"
-                  />
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      clearFile();
-                    }}
-                    className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                  <p className="mt-2 text-sm text-gray-600">
-                    {selectedFile?.name} (
-                    {(selectedFile?.size || 0 / 1024).toFixed(1)} KB)
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <Upload className="w-10 h-10 mx-auto text-gray-400 mb-2" />
-                  <p className="text-gray-600">클릭하여 이미지 선택</p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    PNG, JPG, WEBP, GIF (최대 5MB)
-                  </p>
-                </>
-              )}
-            </div>
-
-            {/* 제목 입력 */}
-            <div className="space-y-2">
-              <Label>제목 *</Label>
-              <Input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="이미지 제목"
-              />
-            </div>
-
-            {/* 설명 입력 */}
-            <div className="space-y-2">
-              <Label>설명 (선택)</Label>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="이미지에 대한 설명"
-                rows={2}
-              />
-            </div>
-
-            {/* 업로드 버튼 */}
-            <div className="flex gap-2 justify-end">
-              <Button variant="outline" onClick={onClose}>
-                취소
-              </Button>
-              <Button
-                onClick={handleUpload}
-                disabled={!selectedFile || !title || uploadMutation.isPending}
+        {/* 스크롤 영역 */}
+        <div className="flex-1 overflow-y-auto">
+          {activeTab === "upload" ? (
+            <div className="space-y-4">
+              {/* 파일 드롭존 */}
+              <div
+                className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors cursor-pointer
+                  ${selectedFile ? "border-green-500 bg-green-50" : "border-gray-300 hover:border-gray-400"}`}
+                onClick={() => fileInputRef.current?.click()}
               >
-                {uploadMutation.isPending ? (
-                  <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+
+                {previewUrl ? (
+                  <div className="relative">
+                    <Image
+                      src={previewUrl}
+                      alt="Preview"
+                      width={400}
+                      height={300}
+                      className="max-h-48 mx-auto object-contain rounded"
+                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        clearFile();
+                      }}
+                      className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                    <p className="mt-2 text-sm text-gray-600">
+                      {selectedFile?.name} (
+                      {(selectedFile?.size || 0 / 1024).toFixed(1)} KB)
+                    </p>
+                  </div>
                 ) : (
-                  <Check className="w-4 h-4 mr-1" />
+                  <>
+                    <Upload className="w-10 h-10 mx-auto text-gray-400 mb-2" />
+                    <p className="text-gray-600">클릭하여 이미지 선택</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      PNG, JPG, WEBP, GIF (최대 5MB)
+                    </p>
+                  </>
                 )}
-                업로드
-              </Button>
+              </div>
+
+              {/* 제목 입력 */}
+              <div className="space-y-2">
+                <Label>제목 *</Label>
+                <Input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="이미지 제목"
+                />
+              </div>
             </div>
-          </div>
-        ) : (
+          ) : (
           <div className="space-y-3">
             {imagesLoading ? (
               <div className="text-center py-8">
@@ -339,7 +308,29 @@ export function ImageUploadModal({
               </div>
             )}
           </div>
-        )}
+          )}
+        </div>
+
+        {/* 하단 고정 버튼 영역 */}
+        <div className="flex gap-2 justify-end pt-4 border-t mt-4">
+          <Button variant="outline" onClick={onClose}>
+            닫기
+          </Button>
+          {activeTab === "upload" && (
+            <Button
+              onClick={handleUpload}
+              disabled={!selectedFile || !title || uploadMutation.isPending}
+              className="bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300"
+            >
+              {uploadMutation.isPending ? (
+                <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+              ) : (
+                <Check className="w-4 h-4 mr-1" />
+              )}
+              업로드
+            </Button>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );

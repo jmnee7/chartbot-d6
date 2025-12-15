@@ -91,11 +91,6 @@ export default function StreamingPage() {
                             height={800}
                             className="w-full h-auto rounded-lg"
                           />
-                          {img.title && (
-                            <p className="text-xs text-gray-500 mt-1 text-center">
-                              {img.title}
-                            </p>
-                          )}
                         </div>
                       ))
                     ) : (
