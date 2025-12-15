@@ -74,9 +74,9 @@ export function ImageUploadModal({
         return;
       }
 
-      // 파일 크기 검증 (5MB)
-      if (file.size > 5 * 1024 * 1024) {
-        alert("파일 크기는 5MB 이하여야 합니다.");
+      // 파일 크기 검증 (50MB)
+      if (file.size > 50 * 1024 * 1024) {
+        alert("파일 크기는 50MB 이하여야 합니다.");
         return;
       }
 
@@ -241,7 +241,7 @@ export function ImageUploadModal({
                     <Upload className="w-10 h-10 mx-auto text-gray-400 mb-2" />
                     <p className="text-gray-600">클릭하여 이미지 선택</p>
                     <p className="text-xs text-gray-400 mt-1">
-                      PNG, JPG, WEBP, GIF (최대 5MB)
+                      PNG, JPG, WEBP, GIF (최대 50MB)
                     </p>
                   </>
                 )}
