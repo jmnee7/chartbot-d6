@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2025-12-18 15:00:00",
+  "collectedAtKST": "2025-12-18 16:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,7 +10,7 @@
   ],
   "melon_top100": [
     {
-      "rank": 37,
+      "rank": 35,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -26,7 +26,7 @@
       "change": 0
     },
     {
-      "rank": 54,
+      "rank": 58,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -40,11 +40,19 @@
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
+    },
+    {
+      "rank": 100,
+      "title": "Lovin′ the Christmas",
+      "artist": "DAY6 (데이식스)",
+      "album": "Lovin' the Christmas",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/124/36/788/12436788_20251212182939_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
     }
   ],
   "melon_hot100": [
     {
-      "rank": 21,
+      "rank": 20,
       "title": "Lovin′ the Christmas",
       "artist": "DAY6 (데이식스)",
       "album": "Lovin' the Christmas",
@@ -54,7 +62,7 @@
   ],
   "melon": [
     {
-      "rank": 37,
+      "rank": 35,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -70,7 +78,7 @@
       "change": 0
     },
     {
-      "rank": 54,
+      "rank": 58,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -86,7 +94,7 @@
       "change": 0
     },
     {
-      "rank": 21,
+      "rank": 100,
       "title": "Lovin′ the Christmas",
       "artist": "DAY6 (데이식스)",
       "album": "Lovin' the Christmas",
@@ -104,7 +112,7 @@
       "change": 0
     },
     {
-      "rank": 30,
+      "rank": 31,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -112,7 +120,7 @@
       "change": 0
     },
     {
-      "rank": 37,
+      "rank": 43,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -120,7 +128,7 @@
       "change": 0
     },
     {
-      "rank": 45,
+      "rank": 44,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -165,7 +173,7 @@
   ],
   "flo": [
     {
-      "rank": 61,
+      "rank": 55,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -173,7 +181,7 @@
       "change": 0
     },
     {
-      "rank": 69,
+      "rank": 68,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -181,7 +189,7 @@
       "change": 0
     },
     {
-      "rank": 96,
+      "rank": 95,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
