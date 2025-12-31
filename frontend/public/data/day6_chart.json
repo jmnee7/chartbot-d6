@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2026-01-01 04:00",
+  "lastUpdated": "2026-01-01 05:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -29,8 +29,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://cdnimg.melon.co.kr/cm/album/images/100/36/099/10036099_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 1,
-          "changeText": "↑1"
+          "change": 0,
+          "changeText": "-"
         },
         {
           "rank": 52,
@@ -261,13 +261,13 @@
       "name": "플로",
       "songs": [
         {
-          "rank": 58,
+          "rank": 59,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
           "rank": 60,
@@ -279,13 +279,13 @@
           "changeText": "-"
         },
         {
-          "rank": 87,
+          "rank": 88,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-          "change": -3,
-          "changeText": "↓3"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
           "rank": 96,
@@ -294,7 +294,7 @@
           "album": "Pilmography",
           "albumArt": "https://cdn.music-flo.com/image/v2/album/731/498/07/04/407498731_62007f2d_s.jpg?1644199728409/dims/resize/1000x1000/quality/90",
           "change": 0,
-          "changeText": "NEW"
+          "changeText": "-"
         }
       ],
       "count": 4
