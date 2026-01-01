@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2026-01-02 04:00",
+  "collectedAtKST": "2026-01-02 05:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -26,12 +26,12 @@
       "change": 0
     },
     {
-      "rank": 35,
+      "rank": 36,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
+      "change": -1
     },
     {
       "rank": 51,
@@ -180,12 +180,12 @@
       "change": 0
     },
     {
-      "rank": 35,
+      "rank": 36,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
+      "change": -1
     },
     {
       "rank": 51,
@@ -372,20 +372,20 @@
       "change": 0
     },
     {
-      "rank": 54,
+      "rank": 55,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-      "change": 0
+      "change": -1
     },
     {
-      "rank": 66,
+      "rank": 68,
       "title": "행운을 빌어 줘",
       "artist": "원필 (DAY6)",
       "album": "Pilmography",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/731/498/07/04/407498731_62007f2d_s.jpg?1644199728409/dims/resize/1000x1000/quality/90",
-      "change": -1
+      "change": -2
     },
     {
       "rank": 88,
@@ -393,7 +393,7 @@
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
       "albumArt": "https://cdn.music-flo.com/image/v2/album/343/942/22/04/422942343_65f79af1_s.jpg?1710725874947/dims/resize/1000x1000/quality/90",
-      "change": -1
+      "change": 0
     }
   ]
 }
