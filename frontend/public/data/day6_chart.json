@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2026-01-03 05:00",
+  "lastUpdated": "2026-01-03 06:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -243,16 +243,16 @@
       "name": "플로",
       "songs": [
         {
-          "rank": 55,
+          "rank": 56,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "The Book of Us : Gravity",
           "albumArt": "https://cdn.music-flo.com/image/album/931/230/03/04/403230931_5d2be198.jpg?1563156889809/dims/resize/1000x1000/quality/90",
-          "change": 0,
-          "changeText": "-"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
-          "rank": 57,
+          "rank": 58,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
@@ -261,7 +261,7 @@
           "changeText": "↓1"
         },
         {
-          "rank": 86,
+          "rank": 87,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
