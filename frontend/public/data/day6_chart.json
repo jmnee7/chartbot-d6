@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2026-01-23 02:00",
+  "lastUpdated": "2026-01-23 03:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -38,8 +38,8 @@
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 1,
-          "changeText": "↑1"
+          "change": 0,
+          "changeText": "-"
         }
       ],
       "count": 4
@@ -243,7 +243,7 @@
           "changeText": "-"
         },
         {
-          "rank": 87,
+          "rank": 88,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
