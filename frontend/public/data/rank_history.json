@@ -1,119 +1,4 @@
 {
-  "2026-02-11 13:00:00": {
-    "_processed_at": "2026-02-11T13:21:16.311907",
-    "melon_top100": [
-      {
-        "rank": 42,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 45,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 46,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 58,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      }
-    ],
-    "melon_hot100": [
-      {
-        "rank": 89,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "melon": [
-      {
-        "rank": 42,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 45,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 46,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 58,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 89,
-        "timestamp": "2026-02-11 13:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "genie": [
-      {
-        "rank": 23,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 33,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 37,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 49,
-        "timestamp": "2026-02-11 13:00"
-      }
-    ],
-    "bugs": [
-      {
-        "rank": null,
-        "timestamp": "2026-02-11 13:00:00"
-      }
-    ],
-    "vibe": [
-      {
-        "rank": 37,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 50,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 76,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 82,
-        "timestamp": "2026-02-11 13:00"
-      }
-    ],
-    "flo": [
-      {
-        "rank": 60,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 68,
-        "timestamp": "2026-02-11 13:00"
-      },
-      {
-        "rank": 90,
-        "timestamp": "2026-02-11 13:00"
-      }
-    ]
-  },
   "2026-02-11 15:00:00": {
     "_processed_at": "2026-02-11T15:02:35.975860",
     "melon_top100": [
@@ -2744,6 +2629,121 @@
       {
         "rank": 81,
         "timestamp": "2026-02-12 17:00"
+      }
+    ]
+  },
+  "2026-02-12 18:00:00": {
+    "_processed_at": "2026-02-12T18:36:57.465022",
+    "melon_top100": [
+      {
+        "rank": 41,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 46,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 47,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 56,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      }
+    ],
+    "melon_hot100": [
+      {
+        "rank": 85,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "melon": [
+      {
+        "rank": 41,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 46,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 47,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 56,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 85,
+        "timestamp": "2026-02-12 18:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "genie": [
+      {
+        "rank": 24,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 33,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 40,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 44,
+        "timestamp": "2026-02-12 18:00"
+      }
+    ],
+    "bugs": [
+      {
+        "rank": null,
+        "timestamp": "2026-02-12 18:00:00"
+      }
+    ],
+    "vibe": [
+      {
+        "rank": 36,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 47,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 77,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 80,
+        "timestamp": "2026-02-12 18:00"
+      }
+    ],
+    "flo": [
+      {
+        "rank": 51,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 56,
+        "timestamp": "2026-02-12 18:00"
+      },
+      {
+        "rank": 81,
+        "timestamp": "2026-02-12 18:00"
       }
     ]
   }
