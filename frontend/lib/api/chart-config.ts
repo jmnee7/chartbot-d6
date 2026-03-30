@@ -39,6 +39,26 @@ export async function fetchChartDisplayConfig(): Promise<ChartDisplayConfig[]> {
   }
 }
 
+// 관리자용: 비활성화된 설정 포함 전체 조회
+export async function fetchAllChartDisplayConfig(): Promise<ChartDisplayConfig[]> {
+  try {
+    const { data, error } = await supabase
+      .from('chart_display_config')
+      .select('*')
+      .order('priority', { ascending: true });
+
+    if (error) {
+      console.error('Error fetching all chart display config:', error);
+      return [];
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Failed to fetch all chart display config:', error);
+    return [];
+  }
+}
+
 // 차트 설정 가져오기 (롤링 시간 등)
 export async function fetchChartSettings(): Promise<ChartSettings> {
   try {
