@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2026-03-31 10:00:00",
+  "collectedAtKST": "2026-03-31 13:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,15 +10,7 @@
   ],
   "melon_top100": [
     {
-      "rank": 30,
-      "title": "사랑병동",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 35,
+      "rank": 34,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -26,7 +18,7 @@
       "change": 0
     },
     {
-      "rank": 39,
+      "rank": 37,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -34,7 +26,7 @@
       "change": 0
     },
     {
-      "rank": 45,
+      "rank": 44,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -42,7 +34,15 @@
       "change": 0
     },
     {
-      "rank": 66,
+      "rank": 48,
+      "title": "사랑병동",
+      "artist": "원필 (DAY6)",
+      "album": "Unpiltered",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 63,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -50,7 +50,7 @@
       "change": 0
     },
     {
-      "rank": 67,
+      "rank": 95,
       "title": "Toxic Love",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -58,40 +58,8 @@
       "change": 0
     },
     {
-      "rank": 71,
+      "rank": 99,
       "title": "어른이 되어 버렸다",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 79,
-      "title": "Up All Night",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 85,
-      "title": "백만송이는 아니지만",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 90,
-      "title": "피아노",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 91,
-      "title": "Step by Step",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
@@ -100,7 +68,7 @@
   ],
   "melon_hot100": [
     {
-      "rank": 15,
+      "rank": 16,
       "title": "사랑병동",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -108,7 +76,7 @@
       "change": 0
     },
     {
-      "rank": 19,
+      "rank": 21,
       "title": "Toxic Love",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -116,7 +84,7 @@
       "change": 0
     },
     {
-      "rank": 20,
+      "rank": 22,
       "title": "어른이 되어 버렸다",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -124,7 +92,7 @@
       "change": 0
     },
     {
-      "rank": 22,
+      "rank": 25,
       "title": "Up All Night",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -132,7 +100,7 @@
       "change": 0
     },
     {
-      "rank": 23,
+      "rank": 26,
       "title": "백만송이는 아니지만",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -140,7 +108,7 @@
       "change": 0
     },
     {
-      "rank": 24,
+      "rank": 27,
       "title": "피아노",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -148,7 +116,7 @@
       "change": 0
     },
     {
-      "rank": 25,
+      "rank": 28,
       "title": "Step by Step",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -158,15 +126,7 @@
   ],
   "melon": [
     {
-      "rank": 30,
-      "title": "사랑병동",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 35,
+      "rank": 34,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -174,7 +134,7 @@
       "change": 0
     },
     {
-      "rank": 39,
+      "rank": 37,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -182,7 +142,7 @@
       "change": 0
     },
     {
-      "rank": 45,
+      "rank": 44,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -190,7 +150,15 @@
       "change": 0
     },
     {
-      "rank": 66,
+      "rank": 48,
+      "title": "사랑병동",
+      "artist": "원필 (DAY6)",
+      "album": "Unpiltered",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/132/99/726/13299726_20260330102221_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 63,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -198,7 +166,7 @@
       "change": 0
     },
     {
-      "rank": 67,
+      "rank": 95,
       "title": "Toxic Love",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -206,7 +174,7 @@
       "change": 0
     },
     {
-      "rank": 71,
+      "rank": 99,
       "title": "어른이 되어 버렸다",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -214,7 +182,7 @@
       "change": 0
     },
     {
-      "rank": 79,
+      "rank": 25,
       "title": "Up All Night",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -222,7 +190,7 @@
       "change": 0
     },
     {
-      "rank": 85,
+      "rank": 26,
       "title": "백만송이는 아니지만",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -230,7 +198,7 @@
       "change": 0
     },
     {
-      "rank": 90,
+      "rank": 27,
       "title": "피아노",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -238,7 +206,7 @@
       "change": 0
     },
     {
-      "rank": 91,
+      "rank": 28,
       "title": "Step by Step",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -248,7 +216,7 @@
   ],
   "genie": [
     {
-      "rank": 26,
+      "rank": 23,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -256,7 +224,7 @@
       "change": 0
     },
     {
-      "rank": 48,
+      "rank": 36,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -264,7 +232,7 @@
       "change": 0
     },
     {
-      "rank": 55,
+      "rank": 44,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -272,15 +240,7 @@
       "change": 0
     },
     {
-      "rank": 60,
-      "title": "사랑병동",
-      "artist": "원필 (DAY6)",
-      "album": "Unpiltered",
-      "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/087/433/182/87433182_1774589491037_1_140x140.JPG/dims/resize/Q_80,0",
-      "change": 0
-    },
-    {
-      "rank": 64,
+      "rank": 54,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -325,7 +285,7 @@
   ],
   "flo": [
     {
-      "rank": 59,
+      "rank": 61,
       "title": "사랑병동",
       "artist": "원필 (DAY6)",
       "album": "Unpiltered",
@@ -333,7 +293,7 @@
       "change": 0
     },
     {
-      "rank": 64,
+      "rank": 63,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -349,7 +309,7 @@
       "change": 0
     },
     {
-      "rank": 85,
+      "rank": 86,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
