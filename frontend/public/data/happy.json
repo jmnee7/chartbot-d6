@@ -3,10 +3,10 @@
   "artist": "DAY6",
   "album": "Fourever",
   "status": "in_chart",
-  "lastUpdated": "2026-06-01 19:00",
+  "lastUpdated": "2026-06-02 01:00",
   "platforms": {
     "melon_top100": {
-      "rank": 42,
+      "rank": 40,
       "change": 2,
       "status": "in_chart"
     },
@@ -16,13 +16,13 @@
       "status": "chart_out"
     },
     "genie": {
-      "rank": 29,
-      "change": -1,
+      "rank": 71,
+      "change": -42,
       "status": "in_chart"
     },
     "bugs": {
-      "rank": 38,
-      "change": 5,
+      "rank": 54,
+      "change": -16,
       "status": "in_chart"
     },
     "vibe": {
@@ -31,8 +31,8 @@
       "status": "in_chart"
     },
     "flo": {
-      "rank": 64,
-      "change": 8,
+      "rank": 72,
+      "change": -8,
       "status": "in_chart"
     }
   }
