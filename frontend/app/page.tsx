@@ -10,10 +10,14 @@ import QuickAccessCard from "@/components/home/quick-access-card";
 import { MelonMusicwaveBanner } from "@/components/home/melon-musicwave-banner";
 import { QuickLinksBanner } from "@/components/home/quick-links-banner";
 import { SectionHeader } from "@/components/ui/section-header";
+import { AnnouncementBottomSheet } from "@/components/announcement/announcement-bottom-sheet";
 
 export default function HomePage() {
   return (
     <div>
+      {/* 홍보성 공지 바텀시트 (활성 공지가 있고 '다시 보지 않기' 하지 않은 경우 노출) */}
+      <AnnouncementBottomSheet />
+
       {/* YouTube Banner - 모바일에서는 전체 너비 */}
       <div className="px-0 md:px-6 lg:px-8 xl:px-12 md:pt-0 pb-6">
         <YouTubeBanner />
