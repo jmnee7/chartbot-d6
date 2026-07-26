@@ -1,12 +1,14 @@
 "use client";
 
 import { useAdminMode } from "@/lib/contexts/admin-mode-context";
-import { Shield, X, Move } from "lucide-react";
+import { Shield, X, Move, Megaphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";
+import { AnnouncementEditModal } from "@/components/admin/announcement-edit-modal";
 
 export function AdminIndicator() {
   const { isAdminMode, disableAdminMode } = useAdminMode();
+  const [isAnnouncementOpen, setIsAnnouncementOpen] = useState(false);
   const [position, setPosition] = useState({ x: 20, y: 64 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -125,7 +127,7 @@ export function AdminIndicator() {
         userSelect: 'none'
       }}
     >
-      <div 
+      <div
         className="flex items-center gap-2 cursor-grab active:cursor-grabbing"
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
@@ -134,6 +136,18 @@ export function AdminIndicator() {
         <Shield className="w-4 h-4" />
         <span className="font-medium">관리자 모드</span>
       </div>
+
+      {/* 공지 관리 버튼 */}
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => setIsAnnouncementOpen(true)}
+        title="공지 바텀시트 관리"
+        className="h-6 w-6 p-0 hover:bg-white/20 text-white"
+      >
+        <Megaphone className="w-3.5 h-3.5" />
+      </Button>
+
       <Button
         variant="ghost"
         size="sm"
@@ -142,6 +156,12 @@ export function AdminIndicator() {
       >
         <X className="w-3 h-3" />
       </Button>
+
+      {/* 공지 편집 모달 */}
+      <AnnouncementEditModal
+        isOpen={isAnnouncementOpen}
+        onClose={() => setIsAnnouncementOpen(false)}
+      />
     </div>
   );
 }
