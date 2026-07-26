@@ -2,7 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { fetchChartData } from "@/lib/api";
-import { fetchChartDisplayConfig, fetchChartSettings } from "@/lib/api/chart-config";
+import { fetchChartDisplayConfig, fetchChartSettings, getDisplaySong } from "@/lib/api/chart-config";
+import { useNow } from "@/lib/hooks/use-now";
 import { ChartSong } from "@/lib/types";
 import {
   getPlatformName,
@@ -64,17 +65,21 @@ export function CompactChartDBFixed({ targetSong }: CompactChartProps = {}) {
   const [showFirstSong, setShowFirstSong] = useState(true);
   const [isManualMode, setIsManualMode] = useState(false);
 
+  // 예약 발매 시각 재평가용 현재 시각 (1분마다 갱신)
+  const now = useNow();
+
   // DB 설정에 따른 롤링 시간 (기본값 5초)
   const rollingInterval = chartSettings?.chart_rolling_interval || 5000;
 
-  // 활성화된 타이틀곡 목록 (우선순위 순)
-  const activeSongs = displayConfig?.filter(config => 
+  // 활성화된 타이틀곡 목록 (우선순위 순).
+  // 슬롯은 그대로 유지하고, 각 슬롯의 표시곡은 예약 시각에 따라 결정한다.
+  const activeSongs = displayConfig?.filter(config =>
     config.is_active && config.target_song
   ).sort((a, b) => a.priority - b.priority) || [];
 
-  // 첫 번째, 두 번째 곡 (기존 로직과 동일)
-  const firstSong = activeSongs[0]?.target_song || "꿈의 버스";
-  const secondSong = activeSongs[1]?.target_song || "INSIDE OUT";
+  // 각 슬롯의 표시곡: 발매 전이면 이전 곡(target_song), 발매 후면 예약곡(pending_song)
+  const firstSong = (activeSongs[0] && getDisplaySong(activeSongs[0], now)) || "꿈의 버스";
+  const secondSong = (activeSongs[1] && getDisplaySong(activeSongs[1], now)) || "INSIDE OUT";
 
   // 기존과 동일한 롤링 효과
   useEffect(() => {

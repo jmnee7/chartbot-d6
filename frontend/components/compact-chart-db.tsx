@@ -2,7 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { fetchChartData } from "@/lib/api";
-import { fetchChartDisplayConfig, fetchChartSettings } from "@/lib/api/chart-config";
+import { fetchChartDisplayConfig, fetchChartSettings, getDisplaySong } from "@/lib/api/chart-config";
+import { useNow } from "@/lib/hooks/use-now";
 import { ChartSong } from "@/lib/types";
 import {
   getPlatformName,
@@ -46,15 +47,20 @@ export function CompactChartDB({ targetSong }: CompactChartProps = {}) {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isManualMode, setIsManualMode] = useState(false);
 
+  // 예약 발매 시각 재평가용 현재 시각 (1분마다 갱신)
+  const now = useNow();
+
   // DB 설정에 따른 롤링 시간 (기본값 5초)
   const rollingInterval = chartSettings?.chart_rolling_interval || 5000;
   const autoRolling = chartSettings?.chart_auto_rolling ?? true;
   const maxDisplay = chartSettings?.chart_max_display || 2;
 
-  // 활성화된 타이틀곡 목록
-  const activeSongs = displayConfig?.filter(config => 
+  // 활성화된 타이틀곡 목록. 슬롯은 유지하고 각 슬롯에 표시할 곡명(displaySong)을 계산한다.
+  //   발매 전이면 이전 곡(target_song), 발매 후면 예약곡(pending_song)
+  const activeSongs = (displayConfig?.filter(config =>
     config.is_active && config.target_song
-  ).slice(0, maxDisplay) || [];
+  ).slice(0, maxDisplay) || [])
+    .map(config => ({ ...config, displaySong: getDisplaySong(config, now) || config.target_song! }));
 
   // 자동 롤링 효과
   useEffect(() => {
@@ -110,11 +116,11 @@ export function CompactChartDB({ targetSong }: CompactChartProps = {}) {
     const songMap = new Map<string, ChartSong>();
     
     activeSongs.forEach(config => {
-      const foundSong = songs.find((song) => 
-        song.title && song.title.includes(config.target_song!)
+      const foundSong = songs.find((song) =>
+        song.title && song.title.includes(config.displaySong)
       );
       if (foundSong) {
-        songMap.set(config.target_song!, foundSong);
+        songMap.set(config.displaySong, foundSong);
       }
     });
 
@@ -138,7 +144,7 @@ export function CompactChartDB({ targetSong }: CompactChartProps = {}) {
 
   // 현재 표시할 곡
   const currentConfig = activeSongs[currentSongIndex];
-  const currentSongTitle = targetSong || currentConfig?.target_song || "";
+  const currentSongTitle = targetSong || currentConfig?.displaySong || "";
 
   return (
     <Card>
@@ -156,7 +162,7 @@ export function CompactChartDB({ targetSong }: CompactChartProps = {}) {
                       ? "bg-mint-primary w-4 h-2"
                       : "bg-gray-300 w-2 h-2 hover:bg-gray-400"
                   }`}
-                  aria-label={`${config.target_song} 보기`}
+                  aria-label={`${config.displaySong} 보기`}
                 />
               ))}
             </div>

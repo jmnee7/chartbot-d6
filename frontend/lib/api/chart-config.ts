@@ -8,6 +8,10 @@ export interface ChartDisplayConfig {
   search_mode: string;
   priority: number;
   is_active: boolean;
+  // 예약된 곡명. publish_at 이전에는 노출되지 않고, 발매 시각 이후 target_song 대신 노출된다.
+  pending_song: string | null;
+  // 예약 발매 시각. 이 시각 이후부터 pending_song이 노출된다. null이면 예약 없음.
+  publish_at: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -16,6 +20,25 @@ export interface ChartSettings {
   chart_rolling_interval: number;
   chart_auto_rolling: boolean;
   chart_max_display: number;
+}
+
+// 예약 발매 시각이 지났는지 판정.
+// pending_song/publish_at이 설정돼 있고 현재 시각이 발매 시각 이후이면 true.
+export function isPublished(config: ChartDisplayConfig, now: number = Date.now()): boolean {
+  if (!config.publish_at || !config.pending_song) return false;
+  const publishTime = new Date(config.publish_at).getTime();
+  if (isNaN(publishTime)) return false; // 파싱 실패 시 예약 미적용
+  return publishTime <= now;
+}
+
+// 현재 노출할 곡명을 결정한다 (예약 교체 방식).
+//   발매 시각 전  => target_song (이전에 설정됐던 곡을 그대로 유지)
+//   발매 시각 이후 => pending_song (예약곡으로 자동 전환)
+export function getDisplaySong(
+  config: ChartDisplayConfig,
+  now: number = Date.now()
+): string | null {
+  return isPublished(config, now) ? config.pending_song : config.target_song;
 }
 
 // 메인 차트 표시 설정 가져오기
@@ -85,13 +108,13 @@ export async function fetchChartSettings(): Promise<ChartSettings> {
       chart_max_display: 2
     };
 
+    const settingsRecord = settings as unknown as Record<string, unknown>;
     data?.forEach(item => {
       try {
-        const value = JSON.parse(item.value);
-        settings[item.key as keyof ChartSettings] = value;
+        settingsRecord[item.key] = JSON.parse(item.value);
       } catch (e) {
         // JSON 파싱 실패시 그대로 사용
-        settings[item.key as keyof ChartSettings] = item.value;
+        settingsRecord[item.key] = item.value;
       }
     });
 
