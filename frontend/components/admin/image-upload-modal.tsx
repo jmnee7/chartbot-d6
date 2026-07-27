@@ -43,6 +43,9 @@ const CATEGORIES = [
   { value: "streaming_guide", label: "스트리밍 가이드" },
   { value: "banner", label: "배너" },
   { value: "voting_guide", label: "투표 가이드" },
+  { value: "radio_sbs", label: "SBS 라디오" },
+  { value: "radio_kbs", label: "KBS 라디오" },
+  { value: "radio_mbc", label: "MBC 라디오" },
 ] as const;
 
 export function ImageUploadModal({
@@ -233,7 +236,7 @@ export function ImageUploadModal({
                     </button>
                     <p className="mt-2 text-sm text-gray-600">
                       {selectedFile?.name} (
-                      {(selectedFile?.size || 0 / 1024).toFixed(1)} KB)
+                      {((selectedFile?.size ?? 0) / 1024).toFixed(1)} KB)
                     </p>
                   </div>
                 ) : (
