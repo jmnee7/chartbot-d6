@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { GUIDE_CATEGORIES } from "@/content/guide.config";
 import { CategoryTabs } from "@/components/guide/category-tabs";
 import { ImageGallery } from "@/components/guide/image-gallery";
+import { RadioGuideGallery } from "@/components/guide/radio-guide-gallery";
 import { SectionHeader } from "@/components/ui/section-header";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -67,14 +68,26 @@ export default async function GuideDetailPage({ params }: Props) {
       </header>
 
       {/* 가이드 이미지 갤러리 - 클릭 시 팝업 */}
-      <ImageGallery
-        images={
-          c.images?.length
-            ? c.images
-            : [c.heroImage].filter((img): img is string => Boolean(img))
-        }
-        label={c.label}
-      />
+      {c.category === "radio" ? (
+        <RadioGuideGallery
+          slug={slug}
+          label={c.label}
+          fallbackImages={
+            c.images?.length
+              ? c.images
+              : [c.heroImage].filter((img): img is string => Boolean(img))
+          }
+        />
+      ) : (
+        <ImageGallery
+          images={
+            c.images?.length
+              ? c.images
+              : [c.heroImage].filter((img): img is string => Boolean(img))
+          }
+          label={c.label}
+        />
+      )}
     </div>
   );
 }

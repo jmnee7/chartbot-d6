@@ -6,7 +6,13 @@ export interface ImageResource {
   id: string;
   title: string;
   description?: string;
-  category: "streaming_guide" | "banner" | "voting_guide";
+  category:
+    | "streaming_guide"
+    | "banner"
+    | "voting_guide"
+    | "radio_sbs"
+    | "radio_kbs"
+    | "radio_mbc";
   file_url: string;
   file_size?: number;
   mime_type?: string;
