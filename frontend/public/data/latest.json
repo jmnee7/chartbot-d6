@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2026-08-03 18:00:00",
+  "collectedAtKST": "2026-08-03 21:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,7 +10,7 @@
   ],
   "melon_top100": [
     {
-      "rank": 19,
+      "rank": 20,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -18,7 +18,7 @@
       "change": 0
     },
     {
-      "rank": 26,
+      "rank": 25,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -34,25 +34,25 @@
       "change": 0
     },
     {
-      "rank": 72,
-      "title": "Welcome to the Show",
-      "artist": "DAY6 (데이식스)",
-      "album": "Fourever",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 76,
+      "rank": 68,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 74,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "album": "Fourever",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
     }
   ],
   "melon_hot100": [
     {
-      "rank": 11,
+      "rank": 12,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -60,7 +60,7 @@
       "change": 0
     },
     {
-      "rank": 17,
+      "rank": 16,
       "title": "F world",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -68,7 +68,7 @@
       "change": 0
     },
     {
-      "rank": 18,
+      "rank": 19,
       "title": "응원가",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -76,7 +76,7 @@
       "change": 0
     },
     {
-      "rank": 19,
+      "rank": 20,
       "title": "Hey Honey",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -84,15 +84,7 @@
       "change": 0
     },
     {
-      "rank": 20,
-      "title": "Marionette",
-      "artist": "Young K (DAY6)",
-      "album": "YOUNGEST",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 21,
+      "rank": 22,
       "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -101,7 +93,7 @@
     },
     {
       "rank": 23,
-      "title": "SPIKE",
+      "title": "Marionette",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -109,7 +101,7 @@
     },
     {
       "rank": 24,
-      "title": "Yonge St.",
+      "title": "SPIKE",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -117,6 +109,14 @@
     },
     {
       "rank": 25,
+      "title": "Yonge St.",
+      "artist": "Young K (DAY6)",
+      "album": "YOUNGEST",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 26,
       "title": "Drivin' into Hell",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -124,7 +124,7 @@
       "change": 0
     },
     {
-      "rank": 26,
+      "rank": 27,
       "title": "million reasons",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -132,7 +132,7 @@
       "change": 0
     },
     {
-      "rank": 27,
+      "rank": 29,
       "title": "Goodbye, Love",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -140,7 +140,7 @@
       "change": 0
     },
     {
-      "rank": 28,
+      "rank": 30,
       "title": "whatever",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -148,7 +148,7 @@
       "change": 0
     },
     {
-      "rank": 29,
+      "rank": 31,
       "title": "집으로 향한다",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -156,7 +156,7 @@
       "change": 0
     },
     {
-      "rank": 31,
+      "rank": 35,
       "title": "안개꽃",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -164,25 +164,17 @@
       "change": 0
     },
     {
-      "rank": 33,
+      "rank": 36,
       "title": "작업실에서 커피를",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
-    },
-    {
-      "rank": 97,
-      "title": "다시 돌아온 계절",
-      "artist": "Young K (DAY6)",
-      "album": "멋진 신세계 OST Part.2",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/133/94/131/13394131_20260514163641_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
     }
   ],
   "melon": [
     {
-      "rank": 19,
+      "rank": 20,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -190,7 +182,7 @@
       "change": 0
     },
     {
-      "rank": 26,
+      "rank": 25,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -206,15 +198,7 @@
       "change": 0
     },
     {
-      "rank": 72,
-      "title": "Welcome to the Show",
-      "artist": "DAY6 (데이식스)",
-      "album": "Fourever",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 76,
+      "rank": 68,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -222,7 +206,15 @@
       "change": 0
     },
     {
-      "rank": 17,
+      "rank": 74,
+      "title": "Welcome to the Show",
+      "artist": "DAY6 (데이식스)",
+      "album": "Fourever",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/114/44/397/11444397_20240318115810_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 16,
       "title": "F world",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -230,7 +222,7 @@
       "change": 0
     },
     {
-      "rank": 18,
+      "rank": 19,
       "title": "응원가",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -238,7 +230,7 @@
       "change": 0
     },
     {
-      "rank": 19,
+      "rank": 20,
       "title": "Hey Honey",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -246,15 +238,7 @@
       "change": 0
     },
     {
-      "rank": 20,
-      "title": "Marionette",
-      "artist": "Young K (DAY6)",
-      "album": "YOUNGEST",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 21,
+      "rank": 22,
       "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -263,7 +247,7 @@
     },
     {
       "rank": 23,
-      "title": "SPIKE",
+      "title": "Marionette",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -271,7 +255,7 @@
     },
     {
       "rank": 24,
-      "title": "Yonge St.",
+      "title": "SPIKE",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -279,7 +263,7 @@
     },
     {
       "rank": 25,
-      "title": "Drivin' into Hell",
+      "title": "Yonge St.",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -287,7 +271,7 @@
     },
     {
       "rank": 26,
-      "title": "million reasons",
+      "title": "Drivin' into Hell",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -295,15 +279,7 @@
     },
     {
       "rank": 27,
-      "title": "Goodbye, Love",
-      "artist": "Young K (DAY6)",
-      "album": "YOUNGEST",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
-    },
-    {
-      "rank": 28,
-      "title": "whatever",
+      "title": "million reasons",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -311,6 +287,22 @@
     },
     {
       "rank": 29,
+      "title": "Goodbye, Love",
+      "artist": "Young K (DAY6)",
+      "album": "YOUNGEST",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 30,
+      "title": "whatever",
+      "artist": "Young K (DAY6)",
+      "album": "YOUNGEST",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
+      "rank": 31,
       "title": "집으로 향한다",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -318,7 +310,7 @@
       "change": 0
     },
     {
-      "rank": 31,
+      "rank": 35,
       "title": "안개꽃",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -326,25 +318,17 @@
       "change": 0
     },
     {
-      "rank": 33,
+      "rank": 36,
       "title": "작업실에서 커피를",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
-    },
-    {
-      "rank": 97,
-      "title": "다시 돌아온 계절",
-      "artist": "Young K (DAY6)",
-      "album": "멋진 신세계 OST Part.2",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/133/94/131/13394131_20260514163641_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
     }
   ],
   "genie": [
     {
-      "rank": 31,
+      "rank": 38,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -352,7 +336,7 @@
       "change": 0
     },
     {
-      "rank": 36,
+      "rank": 41,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -360,7 +344,7 @@
       "change": 0
     },
     {
-      "rank": 55,
+      "rank": 66,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -368,7 +352,7 @@
       "change": 0
     },
     {
-      "rank": 59,
+      "rank": 69,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -413,7 +397,7 @@
   ],
   "flo": [
     {
-      "rank": 69,
+      "rank": 64,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -421,7 +405,7 @@
       "change": 0
     },
     {
-      "rank": 74,
+      "rank": 75,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -429,7 +413,7 @@
       "change": 0
     },
     {
-      "rank": 93,
+      "rank": 91,
       "title": "Welcome to the Show",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
