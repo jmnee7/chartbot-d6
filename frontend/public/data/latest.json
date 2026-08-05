@@ -1,5 +1,5 @@
 {
-  "collectedAtKST": "2026-08-05 16:00:00",
+  "collectedAtKST": "2026-08-05 19:00:00",
   "artist": "DAY6",
   "tracks": [
     {
@@ -10,7 +10,7 @@
   ],
   "melon_top100": [
     {
-      "rank": 20,
+      "rank": 22,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -18,7 +18,7 @@
       "change": 0
     },
     {
-      "rank": 26,
+      "rank": 29,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -26,7 +26,7 @@
       "change": 0
     },
     {
-      "rank": 63,
+      "rank": 61,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -42,7 +42,7 @@
       "change": 0
     },
     {
-      "rank": 95,
+      "rank": 75,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -52,7 +52,7 @@
   ],
   "melon_hot100": [
     {
-      "rank": 13,
+      "rank": 12,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -60,7 +60,7 @@
       "change": 0
     },
     {
-      "rank": 19,
+      "rank": 18,
       "title": "F world",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -76,7 +76,7 @@
       "change": 0
     },
     {
-      "rank": 22,
+      "rank": 21,
       "title": "Hey Honey",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -116,6 +116,14 @@
       "change": 0
     },
     {
+      "rank": 27,
+      "title": "Drivin' into Hell",
+      "artist": "Young K (DAY6)",
+      "album": "YOUNGEST",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
       "rank": 28,
       "title": "million reasons",
       "artist": "Young K (DAY6)",
@@ -132,8 +140,8 @@
       "change": 0
     },
     {
-      "rank": 30,
-      "title": "Drivin' into Hell",
+      "rank": 31,
+      "title": "집으로 향한다",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -149,7 +157,7 @@
     },
     {
       "rank": 33,
-      "title": "집으로 향한다",
+      "title": "안개꽃",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -162,19 +170,11 @@
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
-    },
-    {
-      "rank": 35,
-      "title": "안개꽃",
-      "artist": "Young K (DAY6)",
-      "album": "YOUNGEST",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
     }
   ],
   "melon": [
     {
-      "rank": 20,
+      "rank": 22,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
@@ -182,7 +182,7 @@
       "change": 0
     },
     {
-      "rank": 26,
+      "rank": 29,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -190,7 +190,7 @@
       "change": 0
     },
     {
-      "rank": 63,
+      "rank": 61,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -206,7 +206,7 @@
       "change": 0
     },
     {
-      "rank": 95,
+      "rank": 75,
       "title": "Shut The Door",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -214,7 +214,7 @@
       "change": 0
     },
     {
-      "rank": 19,
+      "rank": 18,
       "title": "F world",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -230,7 +230,7 @@
       "change": 0
     },
     {
-      "rank": 22,
+      "rank": 21,
       "title": "Hey Honey",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
@@ -270,6 +270,14 @@
       "change": 0
     },
     {
+      "rank": 27,
+      "title": "Drivin' into Hell",
+      "artist": "Young K (DAY6)",
+      "album": "YOUNGEST",
+      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+      "change": 0
+    },
+    {
       "rank": 28,
       "title": "million reasons",
       "artist": "Young K (DAY6)",
@@ -286,8 +294,8 @@
       "change": 0
     },
     {
-      "rank": 30,
-      "title": "Drivin' into Hell",
+      "rank": 31,
+      "title": "집으로 향한다",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -303,7 +311,7 @@
     },
     {
       "rank": 33,
-      "title": "집으로 향한다",
+      "title": "안개꽃",
       "artist": "Young K (DAY6)",
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
@@ -316,19 +324,11 @@
       "album": "YOUNGEST",
       "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
       "change": 0
-    },
-    {
-      "rank": 35,
-      "title": "안개꽃",
-      "artist": "Young K (DAY6)",
-      "album": "YOUNGEST",
-      "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-      "change": 0
     }
   ],
   "genie": [
     {
-      "rank": 29,
+      "rank": 31,
       "title": "HAPPY",
       "artist": "DAY6 (데이식스)",
       "album": "Fourever",
@@ -344,7 +344,7 @@
       "change": 0
     },
     {
-      "rank": 52,
+      "rank": 54,
       "title": "예뻤어",
       "artist": "DAY6 (데이식스)",
       "album": "Every DAY6 February",
@@ -397,7 +397,7 @@
   ],
   "flo": [
     {
-      "rank": 68,
+      "rank": 61,
       "title": "한 페이지가 될 수 있게",
       "artist": "DAY6 (데이식스)",
       "album": "The Book of Us : Gravity",
