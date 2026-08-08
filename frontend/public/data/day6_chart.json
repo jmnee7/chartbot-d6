@@ -1,6 +1,6 @@
 {
   "artist": "DAY6",
-  "lastUpdated": "2026-08-09 06:00",
+  "lastUpdated": "2026-08-09 07:00",
   "platforms": {
     "melon_top100": {
       "name": "멜론 TOP100",
@@ -57,40 +57,49 @@
       "name": "멜론 HOT100",
       "songs": [
         {
-          "rank": 4,
+          "rank": 5,
           "title": "Shut The Door",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": -1,
+          "changeText": "↓1"
         },
         {
-          "rank": 10,
+          "rank": 9,
           "title": "F world",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": 1,
+          "changeText": "↑1"
         },
         {
-          "rank": 11,
-          "title": "응원가",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 12,
+          "rank": 10,
           "title": "Hey Honey",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": 2,
+          "changeText": "↑2"
+        },
+        {
+          "rank": 11,
+          "title": "Marionette",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": 4,
+          "changeText": "↑4"
+        },
+        {
+          "rank": 12,
+          "title": "응원가",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": -1,
+          "changeText": "↓1"
         },
         {
           "rank": 13,
@@ -103,93 +112,84 @@
         },
         {
           "rank": 14,
-          "title": "Drivin' into Hell",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 15,
-          "title": "Marionette",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 16,
-          "title": "Yonge St.",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 18,
           "title": "SPIKE",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": 4,
+          "changeText": "↑4"
         },
         {
-          "rank": 19,
-          "title": "Goodbye, Love",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 20,
-          "title": "million reasons",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 22,
-          "title": "집으로 향한다",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 23,
-          "title": "whatever",
-          "artist": "Young K (DAY6)",
-          "album": "YOUNGEST",
-          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 24,
+          "rank": 15,
           "title": "안개꽃",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": 9,
+          "changeText": "↑9"
         },
         {
-          "rank": 25,
+          "rank": 16,
+          "title": "Goodbye, Love",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": 3,
+          "changeText": "↑3"
+        },
+        {
+          "rank": 17,
+          "title": "Drivin' into Hell",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": -3,
+          "changeText": "↓3"
+        },
+        {
+          "rank": 18,
+          "title": "Yonge St.",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": -2,
+          "changeText": "↓2"
+        },
+        {
+          "rank": 19,
           "title": "작업실에서 커피를",
           "artist": "Young K (DAY6)",
           "album": "YOUNGEST",
           "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
-          "change": 0,
-          "changeText": "-"
+          "change": 6,
+          "changeText": "↑6"
+        },
+        {
+          "rank": 20,
+          "title": "whatever",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": 3,
+          "changeText": "↑3"
+        },
+        {
+          "rank": 21,
+          "title": "집으로 향한다",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": 1,
+          "changeText": "↑1"
+        },
+        {
+          "rank": 22,
+          "title": "million reasons",
+          "artist": "Young K (DAY6)",
+          "album": "YOUNGEST",
+          "albumArt": "https://cdnimg.melon.co.kr/cm2/album/images/140/39/492/14039492_20260724104456_500.jpg/melon/resize/120/quality/80/optimize",
+          "change": -2,
+          "changeText": "↓2"
         }
       ],
       "count": 15
@@ -198,31 +198,31 @@
       "name": "지니",
       "songs": [
         {
-          "rank": 56,
+          "rank": 70,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "Fourever",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/084/877/280/84877280_1710728168568_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": -14,
+          "changeText": "↓14"
         },
         {
-          "rank": 67,
+          "rank": 71,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "The Book of Us : Gravity",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/244/101/81244101_1563174738943_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": -4,
+          "changeText": "↓4"
         },
         {
-          "rank": 87,
+          "rank": 98,
           "title": "예뻤어",
           "artist": "DAY6 (데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/080/919/666/80919666_1486113823984_1_140x140.JPG/dims/resize/Q_80,0",
-          "change": 0,
-          "changeText": "-"
+          "change": -11,
+          "changeText": "↓11"
         }
       ],
       "count": 3
@@ -231,67 +231,67 @@
       "name": "벅스",
       "songs": [
         {
-          "rank": 47,
+          "rank": 57,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/202657/20265759.jpg?version=20211119004415",
-          "change": 0,
-          "changeText": "-"
+          "change": -10,
+          "changeText": "↓10"
         },
         {
-          "rank": 67,
-          "title": "예뻤어",
-          "artist": "DAY6 (데이식스)",
-          "album": "",
-          "albumArt": "https://image.bugsm.co.kr/album/images/50/200804/20080494.jpg?version=20240805121438",
-          "change": 0,
-          "changeText": "-"
-        },
-        {
-          "rank": 71,
+          "rank": 61,
           "title": "HAPPY",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-          "change": 0,
-          "changeText": "-"
+          "change": 10,
+          "changeText": "↑10"
         },
         {
-          "rank": 77,
+          "rank": 65,
           "title": "Welcome to the Show",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/206298/20629850.jpg?version=20250104012829",
-          "change": 0,
-          "changeText": "-"
+          "change": 12,
+          "changeText": "↑12"
         },
         {
-          "rank": 84,
-          "title": "Congratulations",
+          "rank": 69,
+          "title": "예뻤어",
           "artist": "DAY6 (데이식스)",
           "album": "",
-          "albumArt": "https://image.bugsm.co.kr/album/images/50/5297/529710.jpg?version=20190719114948",
-          "change": 0,
-          "changeText": "-"
+          "albumArt": "https://image.bugsm.co.kr/album/images/50/200804/20080494.jpg?version=20240805121438",
+          "change": -2,
+          "changeText": "↓2"
         },
         {
-          "rank": 85,
+          "rank": 91,
           "title": "Shut The Door",
           "artist": "Young K (DAY6)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/208286/20828607.jpg?version=20260728005444",
-          "change": 0,
-          "changeText": "-"
+          "change": -6,
+          "changeText": "↓6"
         },
         {
-          "rank": 96,
+          "rank": 92,
+          "title": "Congratulations",
+          "artist": "DAY6 (데이식스)",
+          "album": "",
+          "albumArt": "https://image.bugsm.co.kr/album/images/50/5297/529710.jpg?version=20190719114948",
+          "change": -8,
+          "changeText": "↓8"
+        },
+        {
+          "rank": 98,
           "title": "Love me or Leave me",
           "artist": "DAY6 (데이식스)",
           "album": "",
           "albumArt": "https://image.bugsm.co.kr/album/images/50/203237/20323788.jpg?version=20241114011724",
-          "change": 0,
-          "changeText": "-"
+          "change": -2,
+          "changeText": "↓2"
         }
       ],
       "count": 7
@@ -300,40 +300,40 @@
       "name": "바이브",
       "songs": [
         {
-          "rank": 45,
+          "rank": 43,
           "title": "한 페이지가 될 수 있게",
           "artist": "DAY6(데이식스)",
           "album": "The Book of Us : Gravity",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/003/117/3117381.jpg?type=r480Fll&v=20230331153414",
-          "change": 0,
-          "changeText": "-"
+          "change": 2,
+          "changeText": "↑2"
         },
         {
-          "rank": 55,
+          "rank": 58,
           "title": "HAPPY",
           "artist": "DAY6(데이식스)",
           "album": "Fourever",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/031/043/31043036.jpg?type=r480Fll&v=20240402145726",
-          "change": 0,
-          "changeText": "-"
+          "change": -3,
+          "changeText": "↓3"
         },
         {
-          "rank": 85,
+          "rank": 84,
           "title": "Welcome to the Show",
           "artist": "DAY6(데이식스)",
           "album": "Fourever",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/031/043/31043036.jpg?type=r480Fll&v=20240402145726",
-          "change": 0,
-          "changeText": "-"
+          "change": 1,
+          "changeText": "↑1"
         },
         {
-          "rank": 94,
+          "rank": 99,
           "title": "예뻤어",
           "artist": "DAY6(데이식스)",
           "album": "Every DAY6 February",
           "albumArt": "https://musicmeta-phinf.pstatic.net/album/001/779/1779662.jpg?type=r480Fll&v=20240129085632",
-          "change": 0,
-          "changeText": "-"
+          "change": -5,
+          "changeText": "↓5"
         }
       ],
       "count": 4
