@@ -1,307 +1,4 @@
 {
-  "2026-09-19 14:00:00": {
-    "_processed_at": "2026-09-19T14:21:00.589690+09:00",
-    "melon_top100": [
-      {
-        "rank": 42,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 59,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 64,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 75,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      }
-    ],
-    "melon_hot100": [
-      {
-        "rank": 33,
-        "title": "Shut The Door",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 71,
-        "title": "F world",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 75,
-        "title": "응원가",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 81,
-        "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 82,
-        "title": "Hey Honey",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 86,
-        "title": "SPIKE",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 87,
-        "title": "Drivin' into Hell",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 88,
-        "title": "Yonge St.",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 92,
-        "title": "Goodbye, Love",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 97,
-        "title": "million reasons",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "melon": [
-      {
-        "rank": 42,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 59,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 64,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 75,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "TOP100"
-      },
-      {
-        "rank": 33,
-        "title": "Shut The Door",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 71,
-        "title": "F world",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 75,
-        "title": "응원가",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 81,
-        "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 82,
-        "title": "Hey Honey",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 86,
-        "title": "SPIKE",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 87,
-        "title": "Drivin' into Hell",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 88,
-        "title": "Yonge St.",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 92,
-        "title": "Goodbye, Love",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      },
-      {
-        "rank": 97,
-        "title": "million reasons",
-        "artist": "Young K (DAY6)",
-        "timestamp": "2026-09-19 14:00:00",
-        "chart_type": "HOT100"
-      }
-    ],
-    "genie": [
-      {
-        "rank": 40,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 42,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 61,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 71,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      }
-    ],
-    "bugs": [
-      {
-        "rank": 45,
-        "title": "Welcome to the Show",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 58,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 60,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 86,
-        "title": "Congratulations",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 94,
-        "title": "Love me or Leave me",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 96,
-        "title": "예뻤어",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      }
-    ],
-    "vibe": [
-      {
-        "rank": 55,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 64,
-        "title": "HAPPY",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 95,
-        "title": "Welcome to the Show",
-        "artist": "DAY6(데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      }
-    ],
-    "flo": [
-      {
-        "rank": 87,
-        "title": "한 페이지가 될 수 있게",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      },
-      {
-        "rank": 91,
-        "title": "HAPPY",
-        "artist": "DAY6 (데이식스)",
-        "timestamp": "2026-09-19 14:00:00"
-      }
-    ]
-  },
   "2026-09-19 19:00:00": {
     "_processed_at": "2026-09-19T19:01:19.404935+09:00",
     "melon_top100": [
@@ -7854,6 +7551,295 @@
         "title": "HAPPY",
         "artist": "DAY6 (데이식스)",
         "timestamp": "2026-09-23 07:00:00"
+      }
+    ]
+  },
+  "2026-09-23 10:00:00": {
+    "_processed_at": "2026-09-23T10:05:56.995516+09:00",
+    "melon_top100": [
+      {
+        "rank": 56,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 72,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 77,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 87,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      }
+    ],
+    "melon_hot100": [
+      {
+        "rank": 36,
+        "title": "Shut The Door",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 71,
+        "title": "F world",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 73,
+        "title": "응원가",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 77,
+        "title": "SPIKE",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 81,
+        "title": "Hey Honey",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 88,
+        "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 89,
+        "title": "million reasons",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 93,
+        "title": "Drivin' into Hell",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 96,
+        "title": "Yonge St.",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "melon": [
+      {
+        "rank": 56,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 72,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 77,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 87,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "TOP100"
+      },
+      {
+        "rank": 36,
+        "title": "Shut The Door",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 71,
+        "title": "F world",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 73,
+        "title": "응원가",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 77,
+        "title": "SPIKE",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 81,
+        "title": "Hey Honey",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 88,
+        "title": "우리가 헤어질 100가지 이유 (with JINJOO of DNCE)",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 89,
+        "title": "million reasons",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 93,
+        "title": "Drivin' into Hell",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      },
+      {
+        "rank": 96,
+        "title": "Yonge St.",
+        "artist": "Young K (DAY6)",
+        "timestamp": "2026-09-23 10:00:00",
+        "chart_type": "HOT100"
+      }
+    ],
+    "genie": [
+      {
+        "rank": 63,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 64,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 81,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 84,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      }
+    ],
+    "bugs": [
+      {
+        "rank": 36,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 58,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 73,
+        "title": "Congratulations",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 77,
+        "title": "Love me or Leave me",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 85,
+        "title": "Welcome to the Show",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 86,
+        "title": "예뻤어",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      }
+    ],
+    "vibe": [
+      {
+        "rank": 52,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 64,
+        "title": "HAPPY",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 94,
+        "title": "Welcome to the Show",
+        "artist": "DAY6(데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      }
+    ],
+    "flo": [
+      {
+        "rank": 91,
+        "title": "한 페이지가 될 수 있게",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
+      },
+      {
+        "rank": 92,
+        "title": "HAPPY",
+        "artist": "DAY6 (데이식스)",
+        "timestamp": "2026-09-23 10:00:00"
       }
     ]
   }
